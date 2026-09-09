@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <inlineHelpText>This will be updated when the feedback submission is worked on and completed.</inlineHelpText>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>To be reviewed</fullName>
+                <default>true</default>
+                <label>Not Started</label>
+            </value>
+            <value>
+                <fullName>Triaged</fullName>
+                <default>false</default>
+                <label>Triaged</label>
+            </value>
+            <value>
+                <fullName>More Detail Required</fullName>
+                <default>false</default>
+                <label>More Detail Required</label>
+            </value>
+            <value>
+                <fullName>In progress</fullName>
+                <default>false</default>
+                <label>In progress</label>
+            </value>
+            <value>
+                <fullName>With Popcorn</fullName>
+                <default>false</default>
+                <label>With Developers</label>
+            </value>
+            <value>
+                <fullName>Testing required</fullName>
+                <default>false</default>
+                <label>Testing</label>
+            </value>
+            <value>
+                <fullName>Closed no action required</fullName>
+                <default>false</default>
+                <label>Closed no action required</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Dismissed</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dismissed</label>
+            </value>
+            <value>
+                <fullName>Doing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Doing</label>
+            </value>
+            <value>
+                <fullName>Done</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Done</label>
+            </value>
+            <value>
+                <fullName>On hold</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On hold</label>
+            </value>
+            <value>
+                <fullName>On hold - known issue</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On hold - known issue</label>
+            </value>
+            <value>
+                <fullName>On hold low priority</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On hold low priority</label>
+            </value>
+            <value>
+                <fullName>On hold waiting for feedback</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On hold waiting for feedback</label>
+            </value>
+            <value>
+                <fullName>On hold with 3rd Party</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>On hold with 3rd Party</label>
+            </value>
+            <value>
+                <fullName>Pending feature request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pending feature request</label>
+            </value>
+            <value>
+                <fullName>Waiting for code freeze to end</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waiting for code freeze to end</label>
+            </value>
+            <value>
+                <fullName>Waiting for the next release</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waiting for the next release</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

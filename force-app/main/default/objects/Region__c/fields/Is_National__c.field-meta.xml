@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_National__c</fullName>
+    <formula>IF(
+ISPICKVAL(Zone__c, &quot;National 1&quot;), TRUE,
+IF(
+ISPICKVAL(Zone__c, &quot;National 2&quot;), TRUE,
+IF(
+ISPICKVAL(Zone__c, &quot;National 3&quot;), TRUE,
+FALSE)))</formula>
+    <label>Is National?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

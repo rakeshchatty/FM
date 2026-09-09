@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsRoundActiveOnDay__c</fullName>
+    <formula>CASE(TextDays__c,
+&quot;Monday&quot;, IF(Round__r.Mon__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;Tuesday&quot;, IF(Round__r.Tue__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;Wednesday&quot;, IF(Round__r.Wed__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;Thursday&quot;, IF(Round__r.Thu__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;Friday&quot;, IF(Round__r.Fri__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;Saturday&quot;, IF(Round__r.Sat__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;Sunday&quot;, IF(Round__r.Sun__c, &quot;TRUE&quot;, &quot;FALSE&quot;),
+&quot;FALSE&quot;) == &quot;TRUE&quot;</formula>
+    <label>Round Active On Day?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

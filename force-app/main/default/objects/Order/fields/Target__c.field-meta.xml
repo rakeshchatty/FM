@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Target__c</fullName>
+    <formula>CASE(MONTH(Inv_Serv_Note_Date__c), 1, 1333760, 2, 1290320, 3, 1449952,  4, 1231254,  5, 1450443,  6, 1510112, 7, 1428380, 8, 1585990, 9, 1468848, 10, 1578361, 11, 1641997, 12, 1463591, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Target</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

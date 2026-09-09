@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BankstatementId__c</fullName>
+    <label>Bank Statement</label>
+    <referenceTo>Bank_Statement__c</referenceTo>
+    <relationshipLabel>PaymentAllocations</relationshipLabel>
+    <relationshipName>PaymentAllocations</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

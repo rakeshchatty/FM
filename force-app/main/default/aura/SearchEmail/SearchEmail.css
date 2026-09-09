@@ -1,0 +1,34 @@
+.THIS .slds-select {
+    background-image: none !important;
+}
+
+.THIS .tooltip {
+    
+}
+
+/* Tooltip text */
+.THIS .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    white-space: normal;
+    
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    left: 45px;
+    top: -52px;
+    
+}
+
+.THIS .slds-popover{
+    width:17rem !important;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.THIS .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.THIS .tooltiptext p {
+    text-align: left !important;
+}

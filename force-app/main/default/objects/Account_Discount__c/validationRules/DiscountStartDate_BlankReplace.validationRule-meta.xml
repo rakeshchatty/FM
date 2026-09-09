@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DiscountStartDate_BlankReplace</fullName>
+    <active>true</active>
+    <description>Blank Discount Start Date Cannot Replace Non-Blank One</description>
+    <errorConditionFormula>RecordType.DeveloperName != &apos;PartnerDiscount&apos; &amp;&amp; 
+NOT(ISBLANK(PRIORVALUE(DiscountSupStartDate__c))) &amp;&amp; ISBLANK(DiscountSupStartDate__c)</errorConditionFormula>
+    <errorDisplayField>DiscountSupStartDate__c</errorDisplayField>
+    <errorMessage>Blank Discount Start Date Cannot Replace Non-Blank One</errorMessage>
+</ValidationRule>

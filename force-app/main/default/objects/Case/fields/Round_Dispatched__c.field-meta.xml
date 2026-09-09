@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Round_Dispatched__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Round Dispatched</label>
+    <lookupFilter>
+        <active>false</active>
+        <filterItems>
+            <field>DailyDispatch__c.Status__c</field>
+            <operation>notEqual</operation>
+            <value>Round Complete, Complete</value>
+        </filterItems>
+        <filterItems>
+            <field>DailyDispatch__c.Dispatch_Date__c</field>
+            <operation>equals</operation>
+            <valueField>DailyDispatch__c.TODAY__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>DailyDispatch__c</referenceTo>
+    <relationshipLabel>Cases</relationshipLabel>
+    <relationshipName>Cases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

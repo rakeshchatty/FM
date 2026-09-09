@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Depot__c</fullName>
+    <label>Depot</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Minerva Road</fullName>
+                <default>false</default>
+                <label>Minerva Road</label>
+            </value>
+            <value>
+                <fullName>Camley Street</fullName>
+                <default>false</default>
+                <label>Camley Street</label>
+            </value>
+            <value>
+                <fullName>Harriet Walk</fullName>
+                <default>false</default>
+                <label>Harriet Walk</label>
+            </value>
+            <value>
+                <fullName>Lambeth</fullName>
+                <default>false</default>
+                <label>Lambeth</label>
+            </value>
+            <value>
+                <fullName>Birmingham S&amp;D</fullName>
+                <default>false</default>
+                <label>Birmingham S&amp;D</label>
+            </value>
+            <value>
+                <fullName>Redbridge</fullName>
+                <default>false</default>
+                <label>Redbridge</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireInvoiceFrequency</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  OR(RecordType.DeveloperName = &apos;Account&apos;, RecordType.DeveloperName = &apos;Partner&apos;),
+  ISPICKVAL(Enqix_Dead_Live__c, &apos;Live&apos;), ISBLANK(TEXT(InvoiceFrequency__c))
+)</errorConditionFormula>
+    <errorDisplayField>InvoiceFrequency__c</errorDisplayField>
+    <errorMessage>Invoice Frequency is required for Account or Partner when Live.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quantity_Limit_not_be_less_than_Remainin</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(Enqix_BID_Location_Limit_Quantity__c &lt; Quantity_Remaining__c,True,False)</errorConditionFormula>
+    <errorDisplayField>Quantity_Remaining__c</errorDisplayField>
+    <errorMessage>Quantity remaining must be less than Quantity Limit</errorMessage>
+</ValidationRule>

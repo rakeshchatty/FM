@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Suggested_Product__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Suggested Product</label>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Suggested Products (Suggested Product)</relationshipLabel>
+    <relationshipName>Suggested_Products1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

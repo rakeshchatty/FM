@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_Waste__c</fullName>
+    <label>Type of Waste</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aluminium</fullName>
+                <default>false</default>
+                <label>Aluminium</label>
+            </value>
+            <value>
+                <fullName>Aluminum Tubes</fullName>
+                <default>false</default>
+                <label>Aluminum Tubes</label>
+            </value>
+            <value>
+                <fullName>Batteries</fullName>
+                <default>false</default>
+                <label>Batteries</label>
+            </value>
+            <value>
+                <fullName>Biodegradable</fullName>
+                <default>false</default>
+                <label>Biodegradable</label>
+            </value>
+            <value>
+                <fullName>Cardboard</fullName>
+                <default>false</default>
+                <label>Cardboard</label>
+            </value>
+            <value>
+                <fullName>Coat Hangers</fullName>
+                <default>false</default>
+                <label>Coat Hangers</label>
+            </value>
+            <value>
+                <fullName>Coffee</fullName>
+                <default>false</default>
+                <label>Coffee</label>
+            </value>
+            <value>
+                <fullName>Coffee Cups</fullName>
+                <default>false</default>
+                <label>Coffee Cups</label>
+            </value>
+            <value>
+                <fullName>Cooking Oil</fullName>
+                <default>false</default>
+                <label>Cooking Oil</label>
+            </value>
+            <value>
+                <fullName>Flexible Plastics</fullName>
+                <default>false</default>
+                <label>Flexible Plastics</label>
+            </value>
+            <value>
+                <fullName>Food</fullName>
+                <default>false</default>
+                <label>Food</label>
+            </value>
+            <value>
+                <fullName>Fridges</fullName>
+                <default>false</default>
+                <label>Fridges</label>
+            </value>
+            <value>
+                <fullName>Glass</fullName>
+                <default>false</default>
+                <label>Glass</label>
+            </value>
+            <value>
+                <fullName>Helium Canisters</fullName>
+                <default>false</default>
+                <label>Helium Canisters</label>
+            </value>
+            <value>
+                <fullName>Light Bulbs</fullName>
+                <default>false</default>
+                <label>Light Bulbs</label>
+            </value>
+            <value>
+                <fullName>Metal</fullName>
+                <default>false</default>
+                <label>Metal</label>
+            </value>
+            <value>
+                <fullName>Mixed</fullName>
+                <default>false</default>
+                <label>Mixed</label>
+            </value>
+            <value>
+                <fullName>Non Clinical Medical</fullName>
+                <default>false</default>
+                <label>Non Clinical Medical</label>
+            </value>
+            <value>
+                <fullName>Paper</fullName>
+                <default>false</default>
+                <label>Paper</label>
+            </value>
+            <value>
+                <fullName>Plastics</fullName>
+                <default>false</default>
+                <label>Plastics</label>
+            </value>
+            <value>
+                <fullName>Recycling</fullName>
+                <default>false</default>
+                <label>Recycling</label>
+            </value>
+            <value>
+                <fullName>Rubber (wellies/tyres)</fullName>
+                <default>false</default>
+                <label>Rubber (wellies/tyres)</label>
+            </value>
+            <value>
+                <fullName>Textiles</fullName>
+                <default>false</default>
+                <label>Textiles</label>
+            </value>
+            <value>
+                <fullName>Toners &amp; Cartridges</fullName>
+                <default>false</default>
+                <label>Toners &amp; Cartridges</label>
+            </value>
+            <value>
+                <fullName>Waste</fullName>
+                <default>false</default>
+                <label>Waste</label>
+            </value>
+            <value>
+                <fullName>WEEE</fullName>
+                <default>false</default>
+                <label>WEEE</label>
+            </value>
+            <value>
+                <fullName>Confidential</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Confidential</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

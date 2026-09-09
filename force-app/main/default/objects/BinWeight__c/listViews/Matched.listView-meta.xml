@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Matched</fullName>
+    <columns>NAME</columns>
+    <columns>Location__c</columns>
+    <columns>Date__c</columns>
+    <columns>CategoryCode__c</columns>
+    <columns>Kilogram__c</columns>
+    <columns>OrderProduct__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Matched</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>THIS_WEEK</value>
+    </filters>
+    <filters>
+        <field>CategoryCode__c</field>
+        <operation>notContain</operation>
+        <value>spare</value>
+    </filters>
+    <label>Matched</label>
+</ListView>

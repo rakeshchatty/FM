@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictFinanceContactWithoutEmail</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(FinanceContact__c), NOT(ISBLANK(FinanceContact__c)), ISBLANK(FinanceContact__r.Email))</errorConditionFormula>
+    <errorDisplayField>FinanceContact__c</errorDisplayField>
+    <errorMessage>Finance contact without email is not allowed.</errorMessage>
+</ValidationRule>

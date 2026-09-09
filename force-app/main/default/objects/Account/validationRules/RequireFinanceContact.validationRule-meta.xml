@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireFinanceContact</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(Enqix_Dead_Live__c), TEXT(Enqix_Dead_Live__c) = &apos;Live&apos;, ISBLANK(FinanceContact__c), OR(RecordType.DeveloperName = &apos;Account&apos;, RecordType.DeveloperName = &apos;Partner&apos;))</errorConditionFormula>
+    <errorDisplayField>FinanceContact__c</errorDisplayField>
+    <errorMessage>Finance contact is required to make account live.</errorMessage>
+</ValidationRule>

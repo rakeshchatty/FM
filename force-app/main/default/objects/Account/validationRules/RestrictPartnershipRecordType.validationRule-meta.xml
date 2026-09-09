@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictPartnershipRecordType</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(Partnership__c)), Partnership__r.RecordType.DeveloperName != &apos;Partner&apos;)</errorConditionFormula>
+    <errorDisplayField>Partnership__c</errorDisplayField>
+    <errorMessage>Partnership must be Partner record type.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>NoData</name>
+        <label>NoData</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>GSCNoDataFound</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>No records have been found. </stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>NoDataFound</name>
+        <label>NoDataFound</label>
+        <locationX>314</locationX>
+        <locationY>695</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>NoDataFoundEmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>We can’t find a Recycle My Salon account registered to your email</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>NoDataOther</name>
+        <label>NoDataOther</label>
+        <locationX>1634</locationX>
+        <locationY>695</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>OtherNoDataFound</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>No Records Have Been Found</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmail</name>
+        <label>SendEmail</label>
+        <locationX>1018</locationX>
+        <locationY>1151</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>RMSEmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>customers@thefirstmile.co.uk</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Your Recycle My Salon ID</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmail1</name>
+        <label>SendEmail</label>
+        <locationX>1370</locationX>
+        <locationY>1151</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>OtherEmailbody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>customers@thefirstmile.co.uk</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Your Business ID</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmail_0</name>
+        <label>SendEmail</label>
+        <locationX>666</locationX>
+        <locationY>1151</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>GSCEmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>customers@thefirstmile.co.uk</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Green Salon Collective ID</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>AddTableRowToTheTableMarkup</name>
+        <label>AddTableRowToTheTableMarkup</label>
+        <locationX>1106</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>Table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>tableRowTextTemplate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopOverACR</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AddTableRowToTheTableMarkup1</name>
+        <label>AddTableRowToTheTableMarkup</label>
+        <locationX>1458</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>OtherTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>OtherTableRowTextTemplate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopOverACROther</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AddTableRowToTheTableMarkup_0</name>
+        <label>AddTableRowToTheTableMarkup</label>
+        <locationX>754</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>GSCTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>GSCTableRowTextTemplate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>GSCLoopOverACR</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>CloseTableMarkup</name>
+        <label>CloseTableMarkup</label>
+        <locationX>1018</locationX>
+        <locationY>911</locationY>
+        <assignmentItems>
+            <assignToReference>Table</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateTrigger</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ClosetableMarkup1</name>
+        <label>ClosetableMarkup</label>
+        <locationX>1370</locationX>
+        <locationY>911</locationY>
+        <assignmentItems>
+            <assignToReference>OtherTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateTrigger1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>CloseTableMarkup_0</name>
+        <label>CloseTableMarkup</label>
+        <locationX>666</locationX>
+        <locationY>911</locationY>
+        <assignmentItems>
+            <assignToReference>GSCTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;/table&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateTrigger_0_0</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Did the collection Variable return results?</description>
+        <name>CollectionVariable</name>
+        <label>CollectionVariable</label>
+        <locationX>842</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>UpdatetriggerOther</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>NoOther</defaultConnectorLabel>
+        <rules>
+            <name>No_GSC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetACR</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger_Value__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>GSC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateTrigger_0_0_0</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>NoGSC</label>
+        </rules>
+        <rules>
+            <name>No</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetACR</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger_Value__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Recycle My Salon</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateTrigger_0</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>NoRMS</label>
+        </rules>
+        <rules>
+            <name>GreenSalonCustomer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger_Value__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>GSC</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GSCLoopOverACR</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>GreenSalonCustomer</label>
+        </rules>
+        <rules>
+            <name>RecyclingMySalon</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger_Value__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Recycle My Salon</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>LoopOverACR</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>RecyclingMySalon</label>
+        </rules>
+        <rules>
+            <name>OtherCustomer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger_Value__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.External_Trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>LoopOverACROther</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>OtherCustomer</label>
+        </rules>
+    </decisions>
+    <description>This version allows lost ID for Green Salon.</description>
+    <environments>Default</environments>
+    <interviewLabel>LostAccountID {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>LostAccountID</label>
+    <loops>
+        <name>GSCLoopOverACR</name>
+        <label>GSCLoopOverACR</label>
+        <locationX>666</locationX>
+        <locationY>575</locationY>
+        <collectionReference>GetACR</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AddTableRowToTheTableMarkup_0</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>CloseTableMarkup_0</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopOverACR</name>
+        <label>LoopOverACR</label>
+        <locationX>1018</locationX>
+        <locationY>575</locationY>
+        <collectionReference>GetACR</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AddTableRowToTheTableMarkup</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>CloseTableMarkup</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopOverACROther</name>
+        <label>LoopOverACROther</label>
+        <locationX>1370</locationX>
+        <locationY>575</locationY>
+        <collectionReference>GetACR</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AddTableRowToTheTableMarkup1</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>ClosetableMarkup1</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetACR</name>
+        <label>GetACR</label>
+        <locationX>842</locationX>
+        <locationY>335</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CollectionVariable</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Location</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>AccountContactRelation</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>UpdateTrigger</name>
+        <label>UpdateTrigger</label>
+        <locationX>1018</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>SendEmail</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>External_Trigger_Value__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>External_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateTrigger1</name>
+        <label>UpdateTrigger</label>
+        <locationX>1370</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>SendEmail1</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>External_Trigger_Value__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>External_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateTrigger_0</name>
+        <label>UpdateTrigger</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <connector>
+            <targetReference>NoDataFound</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>External_Trigger_Value__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>External_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateTrigger_0_0</name>
+        <label>UpdateTrigger</label>
+        <locationX>666</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>SendEmail_0</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>External_Trigger_Value__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>External_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateTrigger_0_0_0</name>
+        <label>UpdateTrigger</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <connector>
+            <targetReference>NoData</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>External_Trigger_Value__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>External_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdatetriggerOther</name>
+        <label>UpdatetriggerOther</label>
+        <locationX>1634</locationX>
+        <locationY>575</locationY>
+        <connector>
+            <targetReference>NoDataOther</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>External_Trigger_Value__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>External_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>716</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetACR</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>External_Trigger__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>GSCEmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.FirstName},&lt;/p&gt;&lt;p&gt;We’ve got you covered! Your Green Salon Collective ID is:&lt;/p&gt;&lt;p&gt;{!GSCTable}&lt;/p&gt;&lt;p&gt;You will need this to book your next collection.&lt;/p&gt;&lt;p&gt;If you have any questions about your user ID, please use our support form here.&lt;/p&gt;&lt;p&gt;Our mailing address is:&lt;/p&gt;&lt;p&gt;Green Salon Collective&lt;/p&gt;&lt;p&gt;Office&lt;/p&gt;&lt;p&gt;High Street&lt;/p&gt;&lt;p&gt;Holywood&lt;/p&gt;&lt;p&gt;BT18 0PS&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>GSCNoDataFound</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi {!$Record.FirstName},
+You haven’t registered an account with us yet (or if you have, it wasn’t with that email address…)
+Not to worry. Please just go back to the collections page and when we ask ‘is this your first booking?’ select ‘yes’.
+This will allow you to book your collection, no more questions asked, and your new ID will be on your confirmation email. Please keep this somewhere safe so you have it for next time 😀
+If you have any questions about your user ID, please use our support form here.
+
+
+
+
+		Hair Recycling for Everyone
+
+
+
+		recyclemysalon.co.uk
+
+
+
+		Questions &amp; Support
+
+
+
+
+
+		
+
+		Our mailing address is:
+
+
+
+		
+
+		Recycle My Salon
+
+27 Sandringham Drive, Hove,
+
+East Sussex, BN3 6X</text>
+    </textTemplates>
+    <textTemplates>
+        <name>GSCTableRowTextTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!GSCLoopOverACR.Account.Name}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!GSCLoopOverACR.Account.ShippingStreet}, {!GSCLoopOverACR.Account.ShippingCity}, {!GSCLoopOverACR.Account.ShippingPostcode__c}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!GSCLoopOverACR.Account.External_Unique_ID__c}
+&lt;/th&gt;&lt;/tr&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>NoDataFoundEmailTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.FirstName},&lt;/p&gt;&lt;p&gt;You haven’t registered an account with us yet (or if you have, it wasn’t with that email address…)&lt;/p&gt;&lt;p&gt;Not to worry. Please just &lt;a href=&quot;https://www.recyclemysalon.co.uk/collections&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;go back to the collections page&lt;/a&gt; and when we ask ‘is this your first booking?’ select ‘yes’.&lt;/p&gt;&lt;p&gt;This will allow you to book your collection, no more questions asked, and your new ID will be on your confirmation email. Please keep this somewhere safe so you have it for next time 😀&lt;/p&gt;&lt;p&gt;If you have any questions about your user ID, please use our support form &lt;a href=&quot;https://www.recyclemysalon.co.uk/contact-questions-support&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here. &lt;/a&gt;&lt;/p&gt;&lt;p&gt;Peace, love and help save the planet 🌎&lt;/p&gt;&lt;p&gt;The Recycle My Salon Team&lt;/p&gt;&lt;p&gt;	&lt;/p&gt;&lt;p&gt;		Hair Recycling for Everyone&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;		&lt;a href=&quot;https://www.recyclemysalon.co.uk&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;recyclemysalon.co.uk&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;		&lt;a href=&quot;https://www.recyclemysalon.co.uk/contact-questions-support&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Questions &amp;amp; Support&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;		&lt;/p&gt;&lt;p&gt;		Our mailing address is:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;		&lt;/p&gt;&lt;p&gt;		Recycle My Salon&lt;/p&gt;&lt;p&gt;27 Sandringham Drive, Hove,&lt;/p&gt;&lt;p&gt;East Sussex, BN3 6XD&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;		&lt;/p&gt;&lt;p&gt;		&lt;/p&gt;&lt;p&gt;&lt;u&gt;		&lt;/u&gt;&lt;a href=&quot;https://www.recyclemysalon.co.uk/privacy-policy&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;u&gt;Privacy Policy&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;		 | &lt;/p&gt;&lt;p&gt;		&lt;/p&gt;&lt;p&gt;&lt;u&gt;		&lt;/u&gt;&lt;a href=&quot;https://www.recyclemysalon.co.uk/terms-conditions&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;u&gt;Terms of Use&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;	&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>OtherEmailbody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.FirstName},&lt;/p&gt;&lt;p&gt;We’ve got you covered! Your Business ID is:&lt;/p&gt;&lt;p&gt;{!OtherTable}&lt;/p&gt;&lt;p&gt;You will need this to book your next collection.&lt;/p&gt;&lt;p&gt;If you have any questions about your Business ID, please use our support form or contact us on 0333 300 3448&lt;/p&gt;&lt;p&gt;The First Mile Team&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>OtherNoDataFound</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.FirstName},&lt;/p&gt;&lt;p&gt;You haven’t registered an account with us yet (or if you have, it wasn’t with that email address…)&lt;/p&gt;&lt;p&gt;Not to worry. Please just go back to the collections page and follow the instructions for New Customer Sign up.&lt;/p&gt;&lt;p&gt;This will allow you to book your collection, no more questions asked, and your new ID will be sent to you in a  confirmation email. Please keep this somewhere safe so you have it for next time 😀&lt;/p&gt;&lt;p&gt;If you have any questions about your user ID, please call a member of our team on 0333 300 3448.&lt;/p&gt;&lt;p&gt;The First Mile Team&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>OtherTableRowTextTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOverACROther.Account.Name}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;
+{!LoopOverACROther.Account.ShippingStreet}, {!LoopOverACROther.Account.ShippingCity}, {!LoopOverACROther.Account.ShippingPostcode__c}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;
+{!LoopOverACROther.AccountId}
+&lt;/th&gt;&lt;/tr&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>RMSEmailBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.FirstName},&lt;/p&gt;&lt;p&gt;We’ve got you covered! Your Recycle My Salon ID is:&lt;/p&gt;&lt;p&gt;{!Table}&lt;/p&gt;&lt;p&gt;You will need this to &lt;a href=&quot;https://www.recyclemysalon.co.uk/collections&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;book your next collection. &lt;/a&gt;&lt;/p&gt;&lt;p&gt;If you have any questions about your user ID, please use our support form &lt;a href=&quot;https://www.recyclemysalon.co.uk/contact-questions-support&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Peace, love and help save the planet&lt;/p&gt;&lt;p&gt;The Recycle My Salon Team&lt;/p&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;/&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;/&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Web 1920 – 1&lt;/title&gt;
+&lt;style id=&quot;applicationStylesheet&quot; type=&quot;text/css&quot;&gt;
+	.mediaViewInfo {
+		--web-view-name: Web 1920 – 1;
+		--web-view-id: Web_1920__1;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: Web_1920__1;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#Web_1920__1 {
+		position: absolute;
+		width: 600px;
+		height: 372px;
+		background-color: rgba(255,255,255,1);
+		overflow: hidden;
+		--web-view-name: Web 1920 – 1;
+		--web-view-id: Web_1920__1;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	#RMS-Email-Signature {
+		position: absolute;
+		width: 600px;
+		height: 181px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#Rectangle_1 {
+		fill: rgba(26,164,149,1);
+	}
+	.Rectangle_1 {
+		position: absolute;
+		overflow: visible;
+		width: 600px;
+		height: 59px;
+		left: 0px;
+		top: 192px;
+	}
+	#Need_help_Contact_support_or_c {
+		left: 22px;
+		top: 212px;
+		position: absolute;
+		overflow: visible;
+		width: 557px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Helvetica Neue;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 15px;
+		color: rgba(255,255,255,1);
+	}
+	#Our_mailing_address_is_Recycle {
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 189px;
+		height: 97px;
+		text-align: left;
+		font-family: Helvetica Neue;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 14px;
+		color: rgba(0,0,0,1);
+	}
+&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;Web_1920__1&quot;&gt;
+
+	&lt;div id=&quot;Our_mailing_address_is_Recycle&quot;&gt;
+	
+		&lt;span&gt;Hair Recycling for Everyone&lt;/span&gt;&lt;/br&gt;
+		&lt;span style=&quot;font-style:normal;font-weight:normal;&quot;&gt;&lt;a href=&quot;https://www.recyclemysalon.co.uk&quot;&gt;recyclemysalon.co.uk&lt;/a&gt;&lt;/span&gt;&lt;/br&gt;
+		&lt;span style=&quot;font-style:normal;font-weight:normal;&quot;&gt;&lt;a href=&quot;https://www.recyclemysalon.co.uk/contact-questions-support&quot;&gt;Questions &amp; Support&lt;/a&gt;&lt;/span&gt;&lt;/br&gt;&lt;/br&gt;
+		
+		&lt;span&gt;Our mailing address is:&lt;/span&gt;&lt;br/&gt;
+		&lt;span style=&quot;font-style:normal;font-weight:normal;&quot;&gt;
+		Recycle My Salon&lt;br/&gt;27 Sandringham Drive, Hove,&lt;br/&gt;East Sussex, BN3 6XD&lt;br/&gt;&lt;/span&gt;&lt;br/&gt;
+		
+		&lt;span style=&quot;font-style:normal;font-weight:normal;text-decoration:underline;&quot;&gt;
+		&lt;a href=&quot;https://www.recyclemysalon.co.uk/privacy-policy&quot;&gt;Privacy Policy&lt;/a&gt;&lt;/span&gt;
+		&lt;span style=&quot;font-style:normal;font-weight:normal;&quot;&gt; | &lt;/span&gt;
+		&lt;span style=&quot;font-style:normal;font-weight:normal;text-decoration:underline;&quot;&gt;
+		&lt;a href=&quot;https://www.recyclemysalon.co.uk/terms-conditions&quot;&gt;Terms of Use&lt;/a&gt;&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>tableRowTextTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOverACR.Account.Name} 
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOverACR.Account.ShippingStreet}, {!LoopOverACR.Account.ShippingCity}, {!LoopOverACR.Account.ShippingPostcode__c}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOverACR.AccountId}
+&lt;/th&gt;&lt;/tr&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>GSCTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table style=&quot;width:100%; border: 1px solid black;&quot;&gt; &lt;tr&gt;   &lt;th style=&quot;border: 1px solid black;&quot;&gt;Salon Name&lt;/th&gt; &lt;th style=&quot;border: 1px solid black;&quot;&gt;Salon Address&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Salon ID&lt;/th&gt;   &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>OtherTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table style=&quot;width:100%; border: 1px solid black;&quot;&gt; &lt;tr&gt;   &lt;th style=&quot;border: 1px solid black;&quot;&gt;Business Name&lt;/th&gt; &lt;th style=&quot;border: 1px solid black;&quot;&gt;Business Address&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Business ID&lt;/th&gt;   &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentRecord</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Table</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>&lt;table style=&quot;width:100%; border: 1px solid black;&quot;&gt; &lt;tr&gt;   &lt;th style=&quot;border: 1px solid black;&quot;&gt;Salon Name&lt;/th&gt; &lt;th style=&quot;border: 1px solid black;&quot;&gt;Salon Address&lt;/th&gt;  &lt;th style=&quot;border: 1px solid black;&quot;&gt;Salon ID&lt;/th&gt;   &lt;/tr&gt;</stringValue>
+        </value>
+    </variables>
+</Flow>

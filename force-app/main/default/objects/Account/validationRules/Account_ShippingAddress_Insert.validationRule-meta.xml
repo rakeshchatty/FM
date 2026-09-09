@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_ShippingAddress_Insert</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(AND( 
+ISBLANK(ShippingStreet), 
+ISBLANK(ShippingCity), 
+ISBLANK(ShippingState), 
+ISBLANK(ShippingPostalCode), 
+ISBLANK(ShippingCountry)))
+&amp;&amp;
+AND( 
+ISBLANK(BillingStreet), 
+ISBLANK(BillingCity), 
+ISBLANK(BillingState), 
+ISBLANK(BillingPostalCode), 
+ISBLANK(BillingCountry))</errorConditionFormula>
+    <errorMessage>Can&apos;t have Shipping Address with blank Billing Address</errorMessage>
+</ValidationRule>

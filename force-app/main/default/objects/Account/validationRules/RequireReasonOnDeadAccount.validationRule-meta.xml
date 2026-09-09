@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireReasonOnDeadAccount</fullName>
+    <active>true</active>
+    <errorConditionFormula>RecordType.Name = &apos;Location&apos; &amp;&amp; ISPICKVAL(Enqix_Dead_Live__c, &apos;Dead&apos;) &amp;&amp; ISPICKVAL(Enqix_ReasonMarkedDead__c, &apos;&apos;)</errorConditionFormula>
+    <errorDisplayField>Enqix_ReasonMarkedDead__c</errorDisplayField>
+    <errorMessage>Dead Reason is required when a location is set dead.</errorMessage>
+</ValidationRule>

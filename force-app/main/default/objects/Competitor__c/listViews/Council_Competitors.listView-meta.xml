@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Council_Competitors</fullName>
+    <columns>NAME</columns>
+    <columns>General_Waste_Sack__c</columns>
+    <columns>Mixed_Recycling_Sack__c</columns>
+    <columns>Cardboard_Sticker__c</columns>
+    <columns>General_Waste_1100L__c</columns>
+    <columns>Mixed_Recycling_1100L__c</columns>
+    <columns>Cancellation_Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Services_Offered__c</field>
+        <operation>equals</operation>
+        <value>Local Council</value>
+    </filters>
+    <label>Council Competitors</label>
+</ListView>

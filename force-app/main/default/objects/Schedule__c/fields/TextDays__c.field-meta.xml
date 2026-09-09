@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TextDays__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( INCLUDES(Days__c, &apos;Monday&apos;), &apos;Monday&apos;, null)+
+IF( INCLUDES(Days__c, &apos;Tuesday&apos;), &apos;Tuesday&apos;, null)+
+IF( INCLUDES(Days__c, &apos;Wednesday&apos;), &apos;Wednesday&apos;, null)+
+IF( INCLUDES(Days__c, &apos;Thursday&apos;), &apos;Thursday&apos;, null)+
+IF( INCLUDES(Days__c, &apos;Friday&apos;), &apos;Friday&apos;, null)+
+IF( INCLUDES(Days__c, &apos;Saturday&apos;), &apos;Saturday&apos;, null)+
+IF( INCLUDES(Days__c, &apos;Sunday&apos;), &apos;Sunday&apos;, null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TextDays</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

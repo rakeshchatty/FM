@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_DDDiscount_NoDate</fullName>
+    <active>true</active>
+    <description>Cannot Enter a Direct Debit Discount PerCent Without a Start Date</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;Account&apos; || RecordType.DeveloperName = &apos;Partner&apos;)
+&amp;&amp; NOT(ISBLANK(Enqix_DDDiscount__c ))
+&amp;&amp; Enqix_DDDiscount__c != 0
+&amp;&amp; ISBLANK(Direct_Debit_Discount_Start_Date__c)</errorConditionFormula>
+    <errorDisplayField>Enqix_DDDiscount__c</errorDisplayField>
+    <errorMessage>Cannot Enter a Direct Debit Discount PerCent Without a Start Date</errorMessage>
+</ValidationRule>

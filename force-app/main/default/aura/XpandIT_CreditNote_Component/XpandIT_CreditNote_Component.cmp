@@ -1,0 +1,143 @@
+<aura:component controller="XpandIT_CreditNote_Controller" implements="flexipage:availableForRecordHome,force:lightningQuickAction,force:hasRecordId" >
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="invoiceId" type="Id" />
+    <aura:attribute name="locationId" type="Id" />
+    <aura:attribute name="invoicesMethod" type="String" />
+    <aura:attribute name="orderProds" type="List" />
+    <aura:attribute name="locations" type="List" />
+    <aura:attribute name="orders" type="List" />
+    <aura:attribute name="creditNoteDescription" type="String" />
+    <aura:attribute name="amount" type="decimal" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="isLONInvoice" type="Boolean"/>
+    <aura:attribute name="creditPartner" type="Boolean" default="false"/> 
+    <aura:handler name="XpandIT_CreditNoteDeleteLine_Event" event="c:XpandIT_CreditNoteDeleteLine_Event" action="{!c.removeDeletedRow}"/>
+    
+    <div style="width: 100%; padding: 1%;">
+        <aura:if isTrue="{!v.isOpen}">
+            <!--###### MODAL BOX Start######--> 
+            <section aura:id="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Credit Note?</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <b><p>This credit note will now be saved.</p><p>Are you sure you want to proceed?</p></b>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button aura:id="modalCancelBtn"
+                                          variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel popup"
+                                          disabled="false"
+                                          onclick="{! c.handleClick }"/>
+                        <lightning:button aura:id="modalConfirmBtn"
+                                          variant="brand" 
+                                          label="confirm Note"
+                                          title="confirm Note"
+                                          disabled="false"
+                                          onclick="{! c.confirmNote }"/>
+                    </footer>
+                </div>
+            </section>
+        </aura:if> 
+        
+        <!--###### MODAL BOX Part END Here ######-->
+        <div class="slds-page-header">
+            <aura:if isTrue="{!v.isLONInvoice}">
+                <aura:set attribute="else">
+                    <h1 class="slds-page-header__title">Create Credit Notes from {!v.invoicesMethod} Invoice</h1>
+                        <div id="Accspinner" style="height:50%; margin-top:30%;" class="slds-spinner_container">
+                        <div role="status" class="slds-spinner slds-spinner_medium">
+                              <span class="slds-assistive-text">Loading</span>
+                              <div class="slds-spinner__dot-a"></div>
+                              <div class="slds-spinner__dot-b"></div>
+                         </div>
+                        </div>
+                </aura:set>
+            </aura:if>
+            <aura:if isTrue="{!v.isLONInvoice}">      
+                <h1 class="slds-page-header__title">Create Credit Note</h1>
+                <div id="Accspinner" style="height:50%; margin-top:30%;" class="slds-spinner_container">
+                        <div role="status"  class="slds-spinner slds-spinner_medium">
+                              <span class="slds-assistive-text">Loading</span>
+                              <div class="slds-spinner__dot-a"></div>
+                              <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </aura:if>
+            <div id="creditNoteContext">
+                <lightning:select aura:id="locationsDropdown" name="locationsDropdown" Class="slds-col slds-size_1-of-2" label="Account" onchange="{!c.getOrderForLocation}">
+                    <option value="" text="Select a location..."></option>
+                    <aura:iteration items="{!v.locations}" var="location">
+                    	<option value="{!location.Id}" text="{!location.Name}"></option>
+                    </aura:iteration>
+                </lightning:select>
+                <aura:if isTrue="{!v.isLONInvoice}">
+                    <aura:set attribute="else">
+                    <lightning:select aura:id="ordersDropdown" name="ordersDropdown" Class="slds-col slds-size_2-of-2" label="Order" onchange="{!c.getOrderProds}">
+                        <option value="" text= "Select an Order..."></option>
+                        <aura:iteration items="{!v.orders}" var="order">
+                            <option value="{!order.Id}" text="{!order.OrderNumber}"></option>
+                        </aura:iteration>
+                    </lightning:select>
+                    	<lightning:input style="margin-top: 3%" type="checkbox" label="Credit Partner?" value="{!v.creditPartner}" onchange="{!c.onChange}"></lightning:input>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </div>
+        <aura:if isTrue="{!v.isLONInvoice}"> 
+            <aura:set attribute="else">
+        <div id="productList">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr>
+                        <th scope="col"><span class="slds-truncate">Line #</span></th>
+                        <th scope="col"><span class="slds-truncate">Product Name</span></th>
+                        <th scope="col"><span class="slds-truncate">Quantity</span></th>
+                        <th scope="col"><span class="slds-truncate">Unit. Price</span></th>
+                        <th scope="col"><span class="slds-truncate">Delete Row?</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.orderProds}" var="orderProd" indexVar="index">
+                        <c:XpandIT_CreditNoteLine_Component ordProdInstance="{!orderProd}" rowIndex="{!index}"/>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+            </aura:set>
+        </aura:if>
+        <aura:if isTrue="{!v.isLONInvoice}">
+            <div id="notesDiv" style="margin-top:10px;" class="slds-col slds-size_1-of-2">
+                <ui:inputNumber label="Enter credit amount ex VAT: " value="{!v.amount}"/>
+            </div>
+        </aura:if>
+        <div class="slds-grid">
+            <aura:if isTrue="{!v.isLONInvoice}">
+                <aura:set attribute="else">
+                    <div id="notesDiv" class="slds-col slds-size_1-of-2">    
+                        <lightning:textarea name="creditNoteDescription" label="Credit Note Description" value="{!v.creditNoteDescription}" style="height: 5rem" />
+                    </div>
+                </aura:set>
+            </aura:if>
+            <aura:if isTrue="{!v.isLONInvoice}">
+                <div id="notesDiv" class="slds-col slds-size_1-of-2">
+                    <lightning:textarea name="creditNoteDescription" label="Manual Product Name" value="{!v.creditNoteDescription}" style="height: 5rem" />
+                </div>
+            </aura:if>
+                <div id="buttonDiv" class="slds-col slds-size_2-of-2" style="text-align: center;flex: unset;margin-top: 2%;">
+                    <lightning:button variant="base" label="Switch Screens" iconName="utility:change_record_type" class="slds-button slds-button_neutral" title="Switch Screens" onclick="{! c.switchBetweenScreens }"/>
+                    <lightning:button variant="base" label="Reset" iconName="utility:rotate" class="slds-button slds-button_neutral" title="Reset" onclick="{! c.getOrderProds }"/>
+                    <lightning:button variant="base" label="Confirm" iconName="utility:check" class="slds-button slds-button_neutral" title="Confirm Credit Note" onclick="{! c.handleClick }"/>
+                </div>
+        </div>
+    </div>
+    				 <aura:if isTrue="{!v.isOpen}">
+                    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+</aura:component>

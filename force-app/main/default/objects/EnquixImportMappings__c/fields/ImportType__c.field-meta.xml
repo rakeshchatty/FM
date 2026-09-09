@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ImportType__c</fullName>
+    <description>Account or Order. Defines a scope for the particular mapping.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Account or Order. Defines a scope for the particular mapping.</inlineHelpText>
+    <label>Import Type</label>
+    <length>255</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictInvoiceFrequencyIfPartnerParent</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Parent.RecordType.DeveloperName = &apos;Partner&apos;, IsInvoiceFrequencyOverride__c)</errorConditionFormula>
+    <errorDisplayField>IsInvoiceFrequencyOverride__c</errorDisplayField>
+    <errorMessage>Invoice Frequency Override must be false when parent is a partner.</errorMessage>
+</ValidationRule>

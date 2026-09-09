@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Location_ParentAccountDead</fullName>
+    <active>false</active>
+    <description>Parent Account is Dead - Cannot Mark Location as Pending/Live</description>
+    <errorConditionFormula>RecordType.DeveloperName = &apos;Location&apos; 
+&amp;&amp; ISPICKVAL(Parent.Enqix_Dead_Live__c, &apos;Dead&apos;)
+&amp;&amp; NOT(ISPICKVAL(Enqix_Dead_Live__c, &apos;Dead&apos;))</errorConditionFormula>
+    <errorDisplayField>Enqix_Dead_Live__c</errorDisplayField>
+    <errorMessage>Parent Account is Dead - Cannot Mark Location as Pending/Live</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictNameLength</fullName>
+    <active>true</active>
+    <errorConditionFormula>LEN(Name) &gt; 68</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Round name should not exceed 68 characters.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Error_ID__c</columns>
+    <columns>Process_Name__c</columns>
+    <columns>Table_Name__c</columns>
+    <columns>sf_link__c</columns>
+    <columns>Enquix_ID__c</columns>
+    <columns>Error_Description__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Salesforce_ID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Process_Name__c</field>
+        <operation>notContain</operation>
+        <value>cp</value>
+    </filters>
+    <label>All</label>
+</ListView>

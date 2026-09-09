@@ -1,0 +1,9 @@
+<design:component>
+    	<design:attribute name="lookupField" label="Default" />
+        <design:attribute name="selectedRecordId" label="LookupContact" />
+    	<design:attribute name="objectAPIName" label="objectAPIName" />
+    	<design:attribute name="IconName" label="IconName" />
+    	<design:attribute name="avaiableContactList" label="avaiableContactList" />
+		<design:attribute name="selectedRecordToDelete" label="ContactToDelete" />
+   		<design:attribute name="contactId" label="ContactId" />
+</design:component>

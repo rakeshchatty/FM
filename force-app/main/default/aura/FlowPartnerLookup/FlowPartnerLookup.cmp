@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:availableForFlowScreens,lightning:availableForFlowActions">
+    <aura:attribute name="object" type="String" default="Account" access="public"></aura:attribute>
+    <aura:attribute name="lookupPartnerField" type="String" default="Partnership__c" access="public"></aura:attribute>
+    <aura:attribute name="selectedRecordId" type="String" access="public"></aura:attribute>
+    
+    <lightning:recordEditForm objectApiName="{! v.object }">
+    	<lightning:inputField style="max-width:30%" fieldName="{! v.lookupPartnerField }" onchange="{! c.handleOnChange }"/>
+    </lightning:recordEditForm>
+</aura:component>

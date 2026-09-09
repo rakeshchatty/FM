@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderItem__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup populated from process to relate the record back to it&apos;s original OrderItem</description>
+    <label>OrderItem</label>
+    <referenceTo>OrderItem</referenceTo>
+    <relationshipLabel>QR Codes from Detrack</relationshipLabel>
+    <relationshipName>QR_Codes_from_Detrack</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

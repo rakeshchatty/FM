@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_between_handed_to_sales_and_close__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(ISBLANK( CloseDate ),ISBLANK( Handed_to_Sales_date__c )),NULL,CloseDate - Handed_to_Sales_date__c )</formula>
+    <label>Days between handed to sales and close</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

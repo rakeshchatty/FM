@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictInvoiceFrequencyChange</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(InvoiceFrequency__c),
+NOT($Permission.ChangeFrequencyOnInvoice))</errorConditionFormula>
+    <errorDisplayField>InvoiceFrequency__c</errorDisplayField>
+    <errorMessage>No permission to change Invoice Frequency. Contact System Admin.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supplier_must_not_be_First_Mile_Ltd</fullName>
+    <active>true</active>
+    <description>Blocks the user from saving a subscribed product with first mile ltd as the supplier</description>
+    <errorConditionFormula>Supplier__r.Name = &apos;First Mile Ltd&apos;</errorConditionFormula>
+    <errorMessage>Supplier must not be First Mile. Please leave the Supplier field blank in this instance</errorMessage>
+</ValidationRule>

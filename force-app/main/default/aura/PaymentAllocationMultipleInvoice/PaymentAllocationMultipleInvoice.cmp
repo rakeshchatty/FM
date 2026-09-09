@@ -1,0 +1,53 @@
+<aura:component implements="force:appHostable,force:hasRecordId,force:lightningQuickAction,lightning:availableForFlowScreens,lightning:availableForFlowActions" access="global">
+	<aura:attribute name="availableInvoices" type="Invoice_Header__c[]" access="global"/>
+    <aura:attribute name="selectedInvoices" type="Invoice_Header__c[]" access="global"/>
+    <aura:attribute name="selectedInvoice" type="Invoice_Header__c"/> 
+    <aura:attribute name="paymentAmount" type="Decimal" access="global"/>
+    <aura:attribute name="availableAmount" type="Decimal"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="PaymentAllocationMultipleInvoiceEvent" event="c:PaymentAllocationMultipleInvoiceEvent" action="{!c.handleComponentEvent}"/>
+    
+    <div id="placeHolder">
+        <div id="amountPlaceHolder" class="slds-grid">
+            <div class="slds-col slds-size_1-of-2">
+                <label class="slds-form-element__label" for="lookup-348">Bank Statement Amount</label>
+                <lightning:formattedNumber value="{!v.paymentAmount}" style="currency" currencyCode="GPB" minimumFractionDigits="2" maximumFractionDigits="2"/>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <label class="slds-form-element__label" for="lookup-348">Unallocated Amount</label>
+                <lightning:formattedNumber value="{!v.availableAmount}" style="currency" currencyCode="GPB" minimumFractionDigits="2" maximumFractionDigits="2"/><br/><br/><br/>
+            </div>
+        </div>
+        <div id="invoicePlaceHolder" class="slds-grid">
+            <div id="availableInvoicesHolder" class="slds-col slds-size_4-of-12">
+                <div style="height:300px;overflow: auto;border-style:solid; border-width: 0.5px;">
+                    <ul>
+                        <aura:iteration items="{!v.availableInvoices}" var="singleRec">
+                            <c:PaymentAllocationMultipleInvoiceElement invoice="{!singleRec}" amount="{!v.availableAmount}" isNotSelected="true"/>
+                        </aura:iteration>
+                    </ul>
+                </div>
+            </div>
+            <div id="selectionButtonsHolder" class="slds-col slds-size_2-of-12" style="padding-left: 3.5rem; padding-top: 5rem;">
+                <span class="slds-icon_container sldsButton" onclick="{! c.addInvoice }">
+                    <lightning:icon iconName="utility:chevronright" class="slds-icon slds-icon_small" size="small" alternativeText="add"/>
+                </span>
+                <br/>
+                <br/>
+                <span class="slds-icon_container sldsButton" onclick="{! c.removeInvoice }">
+                    <lightning:icon iconName="utility:chevronleft" class="slds-icon slds-icon_small" size="small" alternativeText="remove"/>
+                  </span>
+            </div>
+            <div id="selectedInvoicesHolder" class="slds-col slds-size_4-of-12">
+                <div style="height:300px;overflow: auto;border-style:solid; border-width: 0.5px;">
+                    <ul>
+                        <aura:iteration items="{!v.selectedInvoices}" var="singleRec">
+                            <c:PaymentAllocationMultipleInvoiceElement invoice="{!singleRec}" amount="{!v.availableAmount}" isNotSelected="false"/>
+                        </aura:iteration>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>High_Priority</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>Feedback_type__c</columns>
+    <columns>NAME</columns>
+    <columns>Requested_by__c</columns>
+    <columns>Platform_type__c</columns>
+    <columns>Description__c</columns>
+    <columns>Date_required__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Pending feature request,On hold - known issue,On hold with 3rd Party,On hold waiting for feedback,Closed no action required,Completed</value>
+    </filters>
+    <filters>
+        <field>Priority_level__c</field>
+        <operation>equals</operation>
+        <value>High</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2021 12:00 AM</value>
+    </filters>
+    <label>High Priority</label>
+</ListView>

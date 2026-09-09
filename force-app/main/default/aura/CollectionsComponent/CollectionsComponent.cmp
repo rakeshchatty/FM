@@ -1,0 +1,128 @@
+<aura:component controller="CollectionScheduleController" implements="flexipage:availableForAllPageTypes,force:appHostable,force:hasRecordId,force:lightningQuickAction">
+	<aura:attribute name="allCollections" type="CollectionAggregator__c" />
+	<aura:dependency resource="markup://force:showToast" type="EVENT" />
+	<aura:handler event="force:showToast" action="{!c.doRefresh}" />
+	<aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+	<div class="slds-p-around--large" style="background-color: white; padding: 0.8em">
+        <div style="overflow: hidden !important">
+            <div style="padding-top:0.8em; margin-left: 1em; font-size: 17px; font-weight:bold; float: left">
+                Collection Schedules
+			</div>
+			<div style="float: right; margin: 10px">
+				<div style="float: left; margin: 10px">
+					<lightning:button label="Clear All" onclick="{!c.deleteAll}" type="submit"/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<lightning:button label="View All" onclick="{!c.navigateToRelatedList}" />
+				</div>
+				<div style="float: right; margin: 10px">
+					<lightning:button label="New" onclick="{!c.openModal}" />
+				</div>
+			</div>
+        </div>
+		
+		<aura:renderIf isTrue="{!v.allCollections.length>0}">
+			<table class="slds-table slds-table--bordered slds-table--fixed-layout slds-table--cell-buffer slds-table_striped">
+				<thead>
+					<tr class="slds-text-title--caps" style="font-size: 9px">
+						<th scope="col">
+							<div class="slds-truncate" >
+							</div>
+						</th>
+						<th scope="col">
+								<div class="slds-truncate" title="Product">
+									<lightning:formattedText value="Product" class="headers" />
+								</div>
+							</th>
+							<th scope="col">
+									<div class="slds-truncate">
+									</div>
+								</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Quantity">
+								<lightning:formattedText value="Qty" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Monday">
+								<lightning:formattedText value="Mon" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Tuesday">
+								<lightning:formattedText value="Tue" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Wednesday">
+								<lightning:formattedText value="Wed" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Thursday">
+								<lightning:formattedText value="Thu" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Friday">
+								<lightning:formattedText value="Fri" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Saturday">
+								<lightning:formattedText value="Sat" class="headers" />
+							</div>
+						</th>
+						<th scope="col">
+							<div class="slds-truncate" title="Sunday">
+								<lightning:formattedText value="Sun" class="headers" />
+							</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+						<colgroup>
+							<col width="5%"/><col width="5%"/>
+							<col width="5%"/><col width="5%"/>
+							<col width="5%"/><col width="5%"/>
+							<col width="5%"/><col width="5%"/>
+							<col width="5%"/><col width="5%"/>
+						</colgroup>
+					<aura:iteration items="{!v.allCollections}" var="allCollections">
+						<tr scope="row">
+							<td colspan="3" style="overflow: hidden; white-space: nowrap;"> {!allCollections.Supplier_Product__r.Product_Name__c} </td>
+
+							<td> {!allCollections.Quantity__c}</td>
+
+							<td>
+								<a href="{!'/'+allCollections.MondayURL}"> <aura:unescapedHtml value="{!allCollections.Monday__c}" /> </a>
+							</td>
+
+							<td>
+								<a href="{!'/'+allCollections.TuesdayURL}"> <aura:unescapedHtml value="{!allCollections.Tuesday__c}" /> </a>
+							</td>
+
+							<td>
+								<a href="{!'/'+allCollections.WednesdayURL}"> <aura:unescapedHtml value="{!allCollections.Wednesday__c}"  /></a>
+							</td>
+
+							<td>
+								<a href="{!'/'+allCollections.ThursdayURL}"> <aura:unescapedHtml value="{!allCollections.Thursday__c}"  /></a>
+							</td>
+
+							<td>
+								<a href="{!'/'+allCollections.FridayURL}"> <aura:unescapedHtml value="{!allCollections.Friday__c}" /></a>
+							</td>
+
+							<td>
+								<a href="{!'/'+allCollections.SaturdayURL}"> <aura:unescapedHtml value="{!allCollections.Saturday__c}"  /></a>
+							</td>
+
+							<td>
+								<a href="{!'/'+allCollections.SundayURL}"> <aura:unescapedHtml value="{!allCollections.Sunday__c}" /> </a>
+							</td>
+						</tr>
+					</aura:iteration>
+				</tbody>
+			</table>
+		</aura:renderIf>
+	</div>
+</aura:component>

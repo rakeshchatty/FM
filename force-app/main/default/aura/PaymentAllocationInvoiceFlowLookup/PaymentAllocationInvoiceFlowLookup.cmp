@@ -1,0 +1,49 @@
+<aura:component implements="force:appHostable,force:hasRecordId,force:lightningQuickAction,lightning:availableForFlowScreens,lightning:availableForFlowActions" access="global" >
+	<aura:attribute name="InvoiceToPay" type="Invoice_Header__c" access="global"/>
+	<aura:attribute name="AvailableInvoices" type="Invoice_Header__c[]" access="global"/>
+	<aura:attribute name="FilteredInvoices" type="Invoice_Header__c[]" access="global"/>
+	<aura:attribute name="searchKeyWord" type="string"/>
+    
+    <aura:handler name="InvoicePaymentEvent" event="c:PaymentAllocationInvoiceFlowEvent" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    
+    
+    <!-- https://www.lightningdesignsystem.com/components/lookups/ --> 
+    <div onmouseleave="{!c.onblur}" aura:id="searchRes" class="slds-form-element slds-lookup slds-is-close" data-select="single">
+        <label class="slds-form-element__label" for="lookup-348">Invoice</label>
+        
+        <!--This part is for display search bar for lookup-->  
+        <div class="slds-form-element__control">
+            <div class="slds-input-has-icon slds-input-has-icon--right">
+                <!-- This markup is for when an record is selected -->
+                <div style="width:92%;" aura:id="lookup-pill" class="slds-pill-container slds-hide">
+                     <lightning:pill class="pillSize" label="{!v.InvoiceToPay.InvoiceNo__c + ' (Outstanding: '+ v.InvoiceToPay.AmountOutstanding__c +')'}" name="{!v.InvoiceToPay.InvoiceNo + ' - ' + v.InvoiceToPay.AmountOutstanding__c}" onremove="{! c.clear }">
+                          <aura:set attribute="media">
+                             <lightning:icon iconName="custom:custom29" size="x-small" alternativeText="InvoiceImg"/>
+                          </aura:set>
+                      </lightning:pill>
+                </div>
+                <div aura:id="lookupField" style="width:92%;" class="slds-show">
+                    <lightning:icon style="left:88%;" class="slds-input__icon slds-show" iconName="utility:search" size="x-small" alternativeText="search"/>
+                    <span class="slds-icon_container  slds-combobox__input-entity-icon" title="record">
+                        <lightning:icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" iconName="custom:custom29" size="x-small" alternativeText="icon"/>
+                        <span class="slds-assistive-text"></span>
+                    </span>
+                    <ui:inputText click="{!c.onfocus}" updateOn="keyup" keyup="{!c.keyPressController}" class="slds-lookup__search-input slds-input leftPaddingClass" value="{!v.searchKeyWord}" placeholder="search.."/>
+                </div>   
+            </div>
+        </div>
+        
+        <!--This part is for Display typehead lookup result List-->  
+        <ul style="width:92%;min-height:40px;margin-top:0px !important" class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-lookup__menu slds" role="listbox">
+            <lightning:spinner class="slds-hide" variant="brand" size="small" aura:id="mySpinner"/>
+            <!--center> {!v.Message}</center-->
+            <aura:iteration items="{!v.FilteredInvoices}" var="singleRec">
+                <c:PaymentAllocationInvoiceFlowResult oRecord="{!singleRec}" IconName="custom:custom29"/> 
+        	</aura:iteration>
+        </ul>
+    
+    </div>
+    
+</aura:component>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_withParent</fullName>
+    <active>true</active>
+    <description>Account or Partner type records cannot have parent accounts</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;Account&apos; || RecordType.DeveloperName = &apos;Partner&apos;) 
+&amp;&amp; NOT(ISBLANK(ParentId))</errorConditionFormula>
+    <errorMessage>Account or Partner type records cannot have parent accounts</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BID_BIDPrice_Diff</fullName>
+    <active>true</active>
+    <description>BID Price Must Equal Net Price Less Location Price</description>
+    <errorConditionFormula>RecordType.DeveloperName = &apos;PartnerDiscount&apos; &amp;&amp;  
+BID_Price__c !=  Net_Price__c -  Location_Price__c</errorConditionFormula>
+    <errorDisplayField>BID_Price__c</errorDisplayField>
+    <errorMessage>BID Price Must Equal Net Price Less Location Price</errorMessage>
+</ValidationRule>

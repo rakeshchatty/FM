@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unmatched_lines_from_subcontractors</fullName>
+    <columns>NAME</columns>
+    <columns>Subcontractor__c</columns>
+    <columns>Order__c</columns>
+    <columns>Location_Name__c</columns>
+    <columns>Postcode__c</columns>
+    <columns>Product_Name__c</columns>
+    <columns>Delivery_Date__c</columns>
+    <columns>Qty__c</columns>
+    <columns>UnitPrice__c</columns>
+    <columns>Total_Price__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Delivery_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>9/21/2018</value>
+    </filters>
+    <label>Unmatched lines from subcontractors</label>
+</ListView>

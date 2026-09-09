@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>SendOrderDetailsToSupplier</name>
+        <label>Send Order Details To Supplier</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Supplier_Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>supplychain@thefirstmile.co.uk</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.Supplier__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <environments>Default</environments>
+    <formulas>
+        <name>EmailBody</name>
+        <dataType>String</dataType>
+        <expression>&apos;Dear &apos;&amp; {!$Record.Supplier__r.Name} &amp;
+
+&apos;&lt;p&gt;Please see below details for a new order.&lt;/p&gt;&apos; &amp;
+
+{!$Record.Supplier_location_name__c} &amp; &quot;,&quot; &amp; {!$Record.Order.ShippingStreet} &amp; &quot;, &quot; &amp;{!$Record.Order.ShippingCity} &amp; &quot;, &quot; &amp;{!$Record.Order.ShippingState} &amp; &quot;, &quot; &amp; {!$Record.Order.ShippingPostalCode}
+&amp;
+&apos;&lt;table border=&quot;1&quot; class=&quot;ql-table-blob&quot;&gt;&apos; &amp;
+  &apos;&lt;tr&gt;&apos; &amp;
+    &apos;&lt;th&gt;Date required&lt;/th&gt;&apos; &amp;
+    &apos;&lt;th&gt;Product&lt;/th&gt;&apos; &amp; 
+    &apos;&lt;th&gt;Quantity&lt;/th&gt;&apos; &amp;
+ &apos;&lt;th&gt;Price ex VAT&lt;/th&gt;&apos; &amp;
+ &apos;&lt;th&gt;Total&lt;/th&gt;&apos; &amp;
+ &apos;&lt;th&gt;PO number&lt;/th&gt;&apos; &amp;
+  &apos;&lt;/tr&gt;&apos; &amp;
+  &apos;&lt;tr&gt;&apos; &amp;
+    &apos;&lt;td&gt;&apos; &amp; TEXT({!$Record.Delivery_date_for_supplier__c}) &amp; &apos;&lt;/td&gt;&apos; &amp;
+    &apos;&lt;td&gt;&apos; &amp;{!$Record.Product_Name__c}  &amp;  &apos;&lt;/td&gt;&apos; &amp; 
+    &apos;&lt;td&gt;&apos; &amp; TEXT({!$Record.Quantity}) &amp; &apos;&lt;/td&gt;&apos; &amp;
+&apos;&lt;td&gt;&apos; &amp; TEXT({!$Record.Supplier_Unit_Price__c}) &amp; &apos;&lt;/td&gt;&apos; &amp;
+&apos;&lt;td&gt;&apos; &amp;  TEXT({!$Record.Supplier_total__c}) &amp;  &apos;&lt;/td&gt;&apos; &amp;
+&apos;&lt;td&gt;&apos; &amp; {!$Record.SupplierPONumber__c}&amp; &apos;&lt;/td&gt;&apos; &amp;
+
+  &apos;&lt;/tr&gt;&apos; &amp;
+
+&apos;&lt;/table&gt;&apos; &amp;
+
+&apos;&lt;p&gt; If you have any questions please contact &lt;a&apos; &amp; &apos;href=&quot;mailto:customers@thefirstmile.co.uk&quot;&gt;customers@thefirstmile.co.uk&lt;/a&gt; &lt;/p&gt;&apos; &amp;
+
+&apos;Many thanks &lt;/br&gt;&apos; &amp;
+&apos;The First Mile Customer Service Team&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>Subject</name>
+        <dataType>String</dataType>
+        <expression>&apos;New First Mile order for &apos; &amp; {!$Record.Supplier_location_name__c} &amp; &apos;, &apos; &amp; {!$Record.Post_code_for_supplier__c}</expression>
+    </formulas>
+    <interviewLabel>Order Product - Before Insert - Send Supplier Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Order Product - After Insert - Send Supplier Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SendOrderDetailsToSupplier</targetReference>
+        </connector>
+        <filterFormula>AND(
+{!$Record.Order.Type__c} != &apos;Invoicing&apos;,
+{!$Record.Supplier__r.Name} != &apos;First Mile Ltd&apos;,
+NOT(ISBLANK({!$Record.Supplier_Email__c})),
+NOT(CONTAINS({!$Record.Product2.Name}, &apos;Overweight&apos;))
+)</filterFormula>
+        <object>OrderItem</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

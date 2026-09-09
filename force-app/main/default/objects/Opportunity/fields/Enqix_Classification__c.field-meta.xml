@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enqix_Classification__c</fullName>
+    <label>Enqix Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Small (&lt;£250)</fullName>
+                <default>false</default>
+                <label>Small (&lt;£250)</label>
+            </value>
+            <value>
+                <fullName>Medium (£250 - £5000)</fullName>
+                <default>false</default>
+                <label>Medium (£250 - £5000)</label>
+            </value>
+            <value>
+                <fullName>Large (&lt;£5000 - £10000)</fullName>
+                <default>false</default>
+                <label>Large (&lt;£5000 - £10000)</label>
+            </value>
+            <value>
+                <fullName>Key Account (£10,000+)</fullName>
+                <default>false</default>
+                <label>Key Account (£10,000+)</label>
+            </value>
+            <value>
+                <fullName>Indirect Medium (&lt;£10000)</fullName>
+                <default>false</default>
+                <label>Indirect Medium (&lt;£10000)</label>
+            </value>
+            <value>
+                <fullName>Indirect Large (&gt;£10000)</fullName>
+                <default>false</default>
+                <label>Indirect Large (&gt;£10000)</label>
+            </value>
+            <value>
+                <fullName>BID</fullName>
+                <default>false</default>
+                <label>BID</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

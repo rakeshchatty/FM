@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ops_Resolution_for_Ops_Question_cases</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Status, &quot;Closed&quot;),
+    ISPICKVAL(Type, &quot;Ops Question&quot;),
+    ISBLANK(Ops_Resolution__c)
+)</errorConditionFormula>
+    <errorMessage>Please Fill out the Ops Resolution field before attempting to close this case</errorMessage>
+</ValidationRule>

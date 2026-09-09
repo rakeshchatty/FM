@@ -1,0 +1,24 @@
+.THIS .accounts-wrapper {
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    position:relative;
+}
+.THIS .slds-accounts-heading{
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    margin-top: 5px;
+}
+
+.THIS td.pagination{
+    text-align:center;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.THIS .slds-link{
+    border:none !important;
+    background:none !important;
+    color:rgb(0, 95, 178) !important;
+}

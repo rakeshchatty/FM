@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account</fullName>
+    <columns>NAME</columns>
+    <columns>SETUP_TYPE</columns>
+    <columns>CopyValueFromSheet__c</columns>
+    <columns>EnquixHeaderValue__c</columns>
+    <columns>ImportType__c</columns>
+    <columns>SalesforceFieldAPIName__c</columns>
+    <columns>SalesforceFieldLabel__c</columns>
+    <columns>SalesforceRecordGroup__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SalesforceRecordGroup__c</field>
+        <operation>equals</operation>
+        <value>Account</value>
+    </filters>
+    <label>Account</label>
+</ListView>

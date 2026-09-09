@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Collection_Note__c</fullName>
+    <inlineHelpText>e.g.  Collect from car park in front of building. Code to access is 1234.</inlineHelpText>
+    <label>Collection Note</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

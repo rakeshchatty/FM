@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireOrderOnCreation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISNEW(), ISBLANK(Order__c))</errorConditionFormula>
+    <errorDisplayField>Order__c</errorDisplayField>
+    <errorMessage>Order is mandatory for creating Received Waypoint.</errorMessage>
+</ValidationRule>

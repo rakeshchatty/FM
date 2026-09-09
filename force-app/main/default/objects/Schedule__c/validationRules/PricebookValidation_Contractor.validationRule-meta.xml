@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PricebookValidation_Contractor</fullName>
+    <active>false</active>
+    <description>Pricebook Must Be Null if Contractor</description>
+    <errorConditionFormula>NOT(Supplier__r.Enqix_ID__c = -1) 
+&amp;&amp; NOT(ISBLANK(Price_Book__c ))
+&amp;&amp; $User.Username != &apos;integration@thefirstmile.co.uk&apos;</errorConditionFormula>
+    <errorMessage>Pricebook Must Be Null if Contractor</errorMessage>
+</ValidationRule>

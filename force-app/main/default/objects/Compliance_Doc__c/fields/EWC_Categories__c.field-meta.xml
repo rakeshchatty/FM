@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EWC_Categories__c</fullName>
+    <label>EWC_Categories</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cardboard Waste</fullName>
+                <default>false</default>
+                <label>Cardboard Waste</label>
+            </value>
+            <value>
+                <fullName>Dry Mixed Recycling</fullName>
+                <default>false</default>
+                <label>Dry Mixed Recycling</label>
+            </value>
+            <value>
+                <fullName>Kitchen and canteen food waste</fullName>
+                <default>false</default>
+                <label>Kitchen and canteen food waste</label>
+            </value>
+            <value>
+                <fullName>Mixed commercial waste</fullName>
+                <default>false</default>
+                <label>Mixed commercial waste</label>
+            </value>
+            <value>
+                <fullName>Printer toner and cartridges</fullName>
+                <default>false</default>
+                <label>Printer toner and cartridges</label>
+            </value>
+            <value>
+                <fullName>Bulky Waste</fullName>
+                <default>false</default>
+                <label>Bulky Waste</label>
+            </value>
+            <value>
+                <fullName>Wifgets</fullName>
+                <default>false</default>
+                <label>Wifgets</label>
+            </value>
+            <value>
+                <fullName>Waste stationery equipment</fullName>
+                <default>false</default>
+                <label>Waste stationery equipment</label>
+            </value>
+            <value>
+                <fullName>Cooking Oil</fullName>
+                <default>false</default>
+                <label>Cooking Oil</label>
+            </value>
+            <value>
+                <fullName>Wooden Packaging</fullName>
+                <default>false</default>
+                <label>Wooden Packaging</label>
+            </value>
+            <value>
+                <fullName>Paint containing dangerous substances</fullName>
+                <default>false</default>
+                <label>Paint containing dangerous substances</label>
+            </value>
+            <value>
+                <fullName>Paint not containing dangerous substances</fullName>
+                <default>false</default>
+                <label>Paint not containing dangerous substances</label>
+            </value>
+            <value>
+                <fullName>Batteries</fullName>
+                <default>false</default>
+                <label>Batteries</label>
+            </value>
+            <value>
+                <fullName>Plasterboard</fullName>
+                <default>false</default>
+                <label>Plasterboard</label>
+            </value>
+            <value>
+                <fullName>Bulky Items</fullName>
+                <default>false</default>
+                <label>Bulky Items</label>
+            </value>
+            <value>
+                <fullName>Mixed office paper</fullName>
+                <default>false</default>
+                <label>Mixed office paper</label>
+            </value>
+            <value>
+                <fullName>Textiles</fullName>
+                <default>false</default>
+                <label>Textiles</label>
+            </value>
+            <value>
+                <fullName>sausage and mach</fullName>
+                <default>false</default>
+                <label>sausage and mach</label>
+            </value>
+            <value>
+                <fullName>Mixed glass</fullName>
+                <default>false</default>
+                <label>Mixed glass</label>
+            </value>
+            <value>
+                <fullName>Fluorescent Tube &amp; Bulbs</fullName>
+                <default>false</default>
+                <label>Fluorescent Tube &amp; Bulbs</label>
+            </value>
+            <value>
+                <fullName>Waste CD and media tapes</fullName>
+                <default>false</default>
+                <label>Waste CD and media tapes</label>
+            </value>
+            <value>
+                <fullName>Waste electronics</fullName>
+                <default>false</default>
+                <label>Waste electronics</label>
+            </value>
+            <value>
+                <fullName>Perspex</fullName>
+                <default>false</default>
+                <label>Perspex</label>
+            </value>
+            <value>
+                <fullName>WOOD PANELS</fullName>
+                <default>false</default>
+                <label>WOOD PANELS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

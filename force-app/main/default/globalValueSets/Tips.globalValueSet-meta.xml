@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Avon Metals</fullName>
+        <default>false</default>
+        <label>Avon Metals</label>
+    </customValue>
+    <customValue>
+        <fullName>Balcan Engineering</fullName>
+        <default>false</default>
+        <label>Balcan Engineering</label>
+    </customValue>
+    <customValue>
+        <fullName>Berry BPI</fullName>
+        <default>false</default>
+        <label>Berry BPI</label>
+    </customValue>
+    <customValue>
+        <fullName>Biffa Barking</fullName>
+        <default>false</default>
+        <label>Biffa Barking</label>
+    </customValue>
+    <customValue>
+        <fullName>Biffa Edmonton</fullName>
+        <default>false</default>
+        <label>Biffa Edmonton</label>
+    </customValue>
+    <customValue>
+        <fullName>Biffa Oldbury</fullName>
+        <default>false</default>
+        <label>Biffa Oldbury</label>
+    </customValue>
+    <customValue>
+        <fullName>Biffa Wembley</fullName>
+        <default>false</default>
+        <label>Biffa Wembley</label>
+    </customValue>
+    <customValue>
+        <fullName>BioBean</fullName>
+        <default>false</default>
+        <label>BioBean</label>
+    </customValue>
+    <customValue>
+        <fullName>Bio Collectors</fullName>
+        <default>false</default>
+        <label>Bio Collectors</label>
+    </customValue>
+    <customValue>
+        <fullName>BioGen</fullName>
+        <default>false</default>
+        <label>BioGen</label>
+    </customValue>
+    <customValue>
+        <fullName>Biomass UK</fullName>
+        <default>false</default>
+        <label>Biomass UK</label>
+    </customValue>
+    <customValue>
+        <fullName>Bywaters</fullName>
+        <default>false</default>
+        <label>Bywaters</label>
+    </customValue>
+    <customValue>
+        <fullName>Cater Oils</fullName>
+        <default>false</default>
+        <label>Cater Oils</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Barking</fullName>
+        <default>false</default>
+        <label>Cory Barking</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Belvedere</fullName>
+        <default>false</default>
+        <label>Cory Belvedere</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Cringle Dock</fullName>
+        <default>false</default>
+        <label>Cory Cringle Dock</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Northumberland Warf</fullName>
+        <default>false</default>
+        <label>Cory Northumberland Wharf</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Pensbury Place</fullName>
+        <default>false</default>
+        <label>Cory Pensbury Place</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Smugglers Way</fullName>
+        <default>false</default>
+        <label>Cory Smugglers Way</label>
+    </customValue>
+    <customValue>
+        <fullName>Cory Wallbrook Wharf</fullName>
+        <default>false</default>
+        <label>Cory Wallbrook Wharf</label>
+    </customValue>
+    <customValue>
+        <fullName>CTR Group</fullName>
+        <default>false</default>
+        <label>CTR Group</label>
+    </customValue>
+    <customValue>
+        <fullName>D.S Smith</fullName>
+        <default>false</default>
+        <label>D.S Smith</label>
+    </customValue>
+    <customValue>
+        <fullName>Edwards</fullName>
+        <default>false</default>
+        <label>Edwards</label>
+    </customValue>
+    <customValue>
+        <fullName>Endurmeta</fullName>
+        <default>false</default>
+        <label>Endurmeta</label>
+    </customValue>
+    <customValue>
+        <fullName>Enval</fullName>
+        <default>false</default>
+        <label>Enval</label>
+    </customValue>
+    <customValue>
+        <fullName>ENVAR</fullName>
+        <default>false</default>
+        <label>ENVAR</label>
+    </customValue>
+    <customValue>
+        <fullName>European Metal Recycling</fullName>
+        <default>false</default>
+        <label>European Metal Recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>G &amp; P Batteries</fullName>
+        <default>false</default>
+        <label>G &amp; P Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Go 4 Greener</fullName>
+        <default>false</default>
+        <label>Go 4 Greener</label>
+    </customValue>
+    <customValue>
+        <fullName>Green recycling</fullName>
+        <default>false</default>
+        <label>Green recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>Greensafe IT</fullName>
+        <default>false</default>
+        <label>Greensafe IT</label>
+    </customValue>
+    <customValue>
+        <fullName>Grimsby Granulation</fullName>
+        <default>false</default>
+        <label>Grimsby Granulation</label>
+    </customValue>
+    <customValue>
+        <fullName>Grundon</fullName>
+        <default>false</default>
+        <label>Grundon</label>
+    </customValue>
+    <customValue>
+        <fullName>Haulaway</fullName>
+        <default>false</default>
+        <label>Haulaway</label>
+    </customValue>
+    <customValue>
+        <fullName>Ink and Toner Recycling</fullName>
+        <default>false</default>
+        <label>Ink and Toner Recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>James Cropper</fullName>
+        <default>false</default>
+        <label>James Cropper</label>
+    </customValue>
+    <customValue>
+        <fullName>James Waste</fullName>
+        <default>false</default>
+        <label>James Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Keenan Recycling</fullName>
+        <default>false</default>
+        <label>Keenan Recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>Kimberly Clark</fullName>
+        <default>false</default>
+        <label>Kimberly Clark</label>
+    </customValue>
+    <customValue>
+        <fullName>LMB Textile</fullName>
+        <default>false</default>
+        <label>LMB Textile</label>
+    </customValue>
+    <customValue>
+        <fullName>London Energy</fullName>
+        <default>false</default>
+        <label>London Energy</label>
+    </customValue>
+    <customValue>
+        <fullName>Minerva</fullName>
+        <default>false</default>
+        <label>Minerva</label>
+    </customValue>
+    <customValue>
+        <fullName>Monoworld</fullName>
+        <default>false</default>
+        <label>Monoworld</label>
+    </customValue>
+    <customValue>
+        <fullName>New Recycling</fullName>
+        <default>false</default>
+        <label>New Recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>Norris</fullName>
+        <default>false</default>
+        <label>Norris</label>
+    </customValue>
+    <customValue>
+        <fullName>Oakleaf Recycling</fullName>
+        <default>false</default>
+        <label>Oakleaf Recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>OneCircle</fullName>
+        <default>false</default>
+        <label>OneCircle</label>
+    </customValue>
+    <customValue>
+        <fullName>Powerday</fullName>
+        <default>false</default>
+        <label>Powerday</label>
+    </customValue>
+    <customValue>
+        <fullName>Powerday Bermondsey</fullName>
+        <default>false</default>
+        <label>Powerday Bermondsey</label>
+    </customValue>
+    <customValue>
+        <fullName>Proper Oils</fullName>
+        <default>false</default>
+        <label>Proper Oils</label>
+    </customValue>
+    <customValue>
+        <fullName>Pulse Environmental</fullName>
+        <default>false</default>
+        <label>Pulse Environmental</label>
+    </customValue>
+    <customValue>
+        <fullName>Reborn</fullName>
+        <default>false</default>
+        <label>Reborn</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycle-ink</fullName>
+        <default>false</default>
+        <label>Recycle-ink</label>
+    </customValue>
+    <customValue>
+        <fullName>Restore</fullName>
+        <default>false</default>
+        <label>Restore</label>
+    </customValue>
+    <customValue>
+        <fullName>S&amp;P Oil</fullName>
+        <default>false</default>
+        <label>S&amp;P Oil</label>
+    </customValue>
+    <customValue>
+        <fullName>Sacktory</fullName>
+        <default>false</default>
+        <label>Sacktory</label>
+    </customValue>
+    <customValue>
+        <fullName>Seneca</fullName>
+        <default>false</default>
+        <label>Seneca</label>
+    </customValue>
+    <customValue>
+        <fullName>Severn Trent</fullName>
+        <default>false</default>
+        <label>Severn Trent</label>
+    </customValue>
+    <customValue>
+        <fullName>Shred Station</fullName>
+        <default>false</default>
+        <label>Shred Station</label>
+    </customValue>
+    <customValue>
+        <fullName>Smurfit Kappa</fullName>
+        <default>false</default>
+        <label>Smurfit Kappa</label>
+    </customValue>
+    <customValue>
+        <fullName>SUEZ Barking</fullName>
+        <default>false</default>
+        <label>SUEZ Barking</label>
+    </customValue>
+    <customValue>
+        <fullName>SUEZ Hayes</fullName>
+        <default>false</default>
+        <label>SUEZ Hayes</label>
+    </customValue>
+    <customValue>
+        <fullName>SUEZ Mitcham</fullName>
+        <default>false</default>
+        <label>SUEZ Mitcham</label>
+    </customValue>
+    <customValue>
+        <fullName>SUEZ Ruislip</fullName>
+        <default>false</default>
+        <label>SUEZ Ruislip</label>
+    </customValue>
+    <customValue>
+        <fullName>SUEZ Transport Avenue</fullName>
+        <default>false</default>
+        <label>SUEZ Transport Avenue</label>
+    </customValue>
+    <customValue>
+        <fullName>SWEEEP</fullName>
+        <default>false</default>
+        <label>SWEEEP</label>
+    </customValue>
+    <customValue>
+        <fullName>Synergy</fullName>
+        <default>false</default>
+        <label>Synergy</label>
+    </customValue>
+    <customValue>
+        <fullName>Tandom</fullName>
+        <default>false</default>
+        <label>Tandom</label>
+    </customValue>
+    <customValue>
+        <fullName>Valpack</fullName>
+        <default>false</default>
+        <label>Valpack</label>
+    </customValue>
+    <customValue>
+        <fullName>Vanden</fullName>
+        <default>false</default>
+        <label>Vanden</label>
+    </customValue>
+    <customValue>
+        <fullName>Veolia</fullName>
+        <default>false</default>
+        <label>Veolia</label>
+    </customValue>
+    <customValue>
+        <fullName>Viridor</fullName>
+        <default>false</default>
+        <label>Viridor</label>
+    </customValue>
+    <customValue>
+        <fullName>Viridor Lakeside</fullName>
+        <default>false</default>
+        <label>Viridor Lakeside</label>
+    </customValue>
+    <customValue>
+        <fullName>VK Recycling</fullName>
+        <default>false</default>
+        <label>VK Recycling</label>
+    </customValue>
+    <customValue>
+        <fullName>Weighbridge</fullName>
+        <default>false</default>
+        <label>Weighbridge</label>
+    </customValue>
+    <customValue>
+        <fullName>Weir</fullName>
+        <default>false</default>
+        <label>Weir</label>
+    </customValue>
+    <customValue>
+        <fullName>West London Composting</fullName>
+        <default>false</default>
+        <label>West London Composting</label>
+    </customValue>
+    <customValue>
+        <fullName>Clipstone</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Clipstone</label>
+    </customValue>
+    <customValue>
+        <fullName>Waterloo Hub Hotel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Waterloo Hub Hotel</label>
+    </customValue>
+    <customValue>
+        <fullName>Hot Sauce Tv</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Hot Sauce Tv</label>
+    </customValue>
+    <customValue>
+        <fullName>Edward Hotel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Edward Hotel</label>
+    </customValue>
+    <customValue>
+        <fullName>Mountbarrow House</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mountbarrow House</label>
+    </customValue>
+    <customValue>
+        <fullName>Adam&apos;s Row</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Adam&apos;s Row</label>
+    </customValue>
+    <customValue>
+        <fullName>Wylie</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Wylie</label>
+    </customValue>
+    <customValue>
+        <fullName>Waterloo</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Waterloo</label>
+    </customValue>
+    <customValue>
+        <fullName>Victoria</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Victoria</label>
+    </customValue>
+    <customValue>
+        <fullName>Cubana Bar And Restaurant(Lower Marsh)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cubana Bar And Restaurant(Lower Marsh)</label>
+    </customValue>
+    <masterLabel>Tips</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

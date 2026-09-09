@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Originator__c</fullName>
+    <label>Originator</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ana Hamilton</fullName>
+                <default>false</default>
+                <label>Ana Hamilton</label>
+            </value>
+            <value>
+                <fullName>Asha Bridewell</fullName>
+                <default>false</default>
+                <label>Asha Bridewell</label>
+            </value>
+            <value>
+                <fullName>Ben Mallett</fullName>
+                <default>false</default>
+                <label>Ben Mallett</label>
+            </value>
+            <value>
+                <fullName>David Badu</fullName>
+                <default>false</default>
+                <label>David Badu</label>
+            </value>
+            <value>
+                <fullName>Francesca Cotton</fullName>
+                <default>false</default>
+                <label>Francesca Cotton</label>
+            </value>
+            <value>
+                <fullName>Freya Rose</fullName>
+                <default>false</default>
+                <label>Freya Rose</label>
+            </value>
+            <value>
+                <fullName>Jamie McCormack</fullName>
+                <default>false</default>
+                <label>Jamie McCormack</label>
+            </value>
+            <value>
+                <fullName>Joseph Cerasale</fullName>
+                <default>false</default>
+                <label>Joseph Cerasale</label>
+            </value>
+            <value>
+                <fullName>Karys Coker</fullName>
+                <default>false</default>
+                <label>Karys Coker</label>
+            </value>
+            <value>
+                <fullName>Oliver Osborne</fullName>
+                <default>false</default>
+                <label>Oliver Osborne</label>
+            </value>
+            <value>
+                <fullName>Vinny Madhar</fullName>
+                <default>false</default>
+                <label>Vinny Madhar</label>
+            </value>
+            <value>
+                <fullName>Catherine Wood</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Catherine Wood</label>
+            </value>
+            <value>
+                <fullName>Laurie Briffett</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Laurie Briffett</label>
+            </value>
+            <value>
+                <fullName>Maria-Chiara Franco</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Maria-Chiara Franco</label>
+            </value>
+            <value>
+                <fullName>Owen Dunne</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Owen Dunne</label>
+            </value>
+            <value>
+                <fullName>Pailes Halai</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pailes Halai</label>
+            </value>
+            <value>
+                <fullName>Rosie Munns</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rosie Munns</label>
+            </value>
+            <value>
+                <fullName>Taku Ratcliff</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Taku Ratcliff</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

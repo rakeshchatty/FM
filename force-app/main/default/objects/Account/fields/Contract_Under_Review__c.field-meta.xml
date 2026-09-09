@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Under_Review__c</fullName>
+    <label>Contract Under Review?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dormant</fullName>
+                <default>false</default>
+                <label>Dormant</label>
+            </value>
+            <value>
+                <fullName>Upcoming tender</fullName>
+                <default>false</default>
+                <label>Upcoming tender</label>
+            </value>
+            <value>
+                <fullName>Contract under review</fullName>
+                <default>false</default>
+                <label>Contract under review</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>In contract</fullName>
+                <default>false</default>
+                <label>In contract</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

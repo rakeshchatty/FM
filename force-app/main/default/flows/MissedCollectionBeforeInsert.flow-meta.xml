@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>SetAddress</name>
+        <label>Address</label>
+        <locationX>176</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Address__Street__s</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Case__r.Account.BillingStreet</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Address__City__s</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Case__r.Account.BillingCity</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Address__CountryCode__s</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Case__r.Account.BillingCountryCode</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Address__Longitude__s</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Case__r.Account.BillingLongitude</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Address__Latitude__s</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Case__r.Account.BillingLatitude</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetCollectionDay</name>
+        <label>Set Collection Day</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>CollectionDay</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Collection_Schedule__r.Days__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>GetDailyDispatch</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>SetRoundAndDailyDispatch</name>
+        <label>Round &amp; Daily Dispatch</label>
+        <locationX>176</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.RoundId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Collection_Schedule__r.Round__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Daily_Dispatch__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetDailyDispatch.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>SetAddress</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>CollectionDate</name>
+        <dataType>Date</dataType>
+        <expression>CASE( {!CollectionDay},
+{!DayOfToday},TODAY(),
+{!DayOfTodayMinusOne},TODAY()-1,
+{!DayOfTodaMinusTwo},TODAY()-2,
+{!DayOfTodayMinusThree},TODAY()-3,
+{!DayOfTodayMinusFour},TODAY()-4,
+{!DayOfTodayMinusFive},TODAY()-5,
+TODAY()-6
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfTodaMinusTwo</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( (TODAY() -2)- DATE( 1900, 1, 7), 7 ),
+  0, &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfToday</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( TODAY() - DATE( 1900, 1, 7 ), 7 ),
+  0,  &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfTodayMinusFive</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( (TODAY()-5)- DATE( 1900, 1, 7), 7 ),
+   0, &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfTodayMinusFour</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( (TODAY()-4) - DATE( 1900, 1, 7 ), 7 ),
+  0, &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfTodayMinusOne</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( (TODAY()-1) - DATE( 1900, 1, 7 ), 7 ),
+  0, &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfTodayMinusSix</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( (TODAY()-6)- DATE( 1900, 1, 7), 7 ),
+  0, &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>DayOfTodayMinusThree</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+  MOD( (TODAY()-3)- DATE( 1900, 1, 7), 7 ),
+  0, &quot;Sunday&quot;,
+  1, &quot;Monday&quot;,
+  2, &quot;Tuesday&quot;,
+  3, &quot;Wednesday&quot;,
+  4, &quot;Thursday&quot;,
+  5, &quot;Friday&quot;,
+  &quot;Saturday&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>Missed Collection - Before Insert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Missed Collection - Before Insert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetDailyDispatch</name>
+        <label>Daily Dispatch</label>
+        <locationX>176</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SetRoundAndDailyDispatch</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Dispatch_Date__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CollectionDate</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RoundId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Collection_Schedule__r.Round__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>DailyDispatch__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SetCollectionDay</targetReference>
+        </connector>
+        <object>Missed_Collection__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>CollectionDay</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

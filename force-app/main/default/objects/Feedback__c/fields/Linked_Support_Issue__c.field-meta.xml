@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Linked_Support_Issue__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>This is used to tag known support tickets that have not been dealt with.</inlineHelpText>
+    <label>Linked Support Issue</label>
+    <referenceTo>Feedback__c</referenceTo>
+    <relationshipLabel>Support</relationshipLabel>
+    <relationshipName>Support</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

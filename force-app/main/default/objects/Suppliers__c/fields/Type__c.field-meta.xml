@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <label>Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sack Collection</fullName>
+                <default>false</default>
+                <label>Sack Collection</label>
+            </value>
+            <value>
+                <fullName>Wheelie Bins</fullName>
+                <default>false</default>
+                <label>Wheelie Bins</label>
+            </value>
+            <value>
+                <fullName>One Off Clearances</fullName>
+                <default>false</default>
+                <label>One Off Clearances</label>
+            </value>
+            <value>
+                <fullName>Compactors</fullName>
+                <default>false</default>
+                <label>Compactors</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequirePartnershipForPartnerAsParent</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Parent.RecordType.DeveloperName = &apos;Partner&apos;, ParentId != Partnership__c)</errorConditionFormula>
+    <errorDisplayField>Partnership__c</errorDisplayField>
+    <errorMessage>If parent is partner record type, same has to be selected as Partnership.</errorMessage>
+</ValidationRule>

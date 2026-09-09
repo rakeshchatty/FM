@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BID_Discount_Cannot_be_Negative</fullName>
+    <active>true</active>
+    <errorConditionFormula>PRIORVALUE(Product_Discount__c) &gt; 0 &amp;&amp; Product_Discount__c &lt;0</errorConditionFormula>
+    <errorDisplayField>Product_Discount__c</errorDisplayField>
+    <errorMessage>Can&apos;t change a product discount into a supplement. Delete the discount and add a supplement.</errorMessage>
+</ValidationRule>

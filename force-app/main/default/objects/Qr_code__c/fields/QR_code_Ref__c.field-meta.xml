@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QR_code_Ref__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Used to track order QR code came from</description>
+    <label>QR Codes Ref</label>
+    <referenceTo>QR_Codes_from_Detrack__c</referenceTo>
+    <relationshipLabel>Qr codes</relationshipLabel>
+    <relationshipName>Qr_codes</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

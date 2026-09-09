@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictStatusChange</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(TrackingId__c)), ISPICKVAL(Status__c, &quot;Retry&quot;))</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Status cannot be Retry because Tracking Id is already present.</errorMessage>
+</ValidationRule>

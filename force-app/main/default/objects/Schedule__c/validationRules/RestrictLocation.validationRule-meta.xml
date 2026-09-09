@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictLocation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISNEW(),
+    OR(Location__r.RecordType.DeveloperName != &apos;Location&apos;, NOT(ISPICKVAL(Location__r.Enqix_Dead_Live__c, &apos;Live&apos;)))
+   )</errorConditionFormula>
+    <errorDisplayField>Location__c</errorDisplayField>
+    <errorMessage>Collection allowed only on live locations.</errorMessage>
+</ValidationRule>

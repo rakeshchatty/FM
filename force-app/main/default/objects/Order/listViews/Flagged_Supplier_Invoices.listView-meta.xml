@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flagged_Supplier_Invoices</fullName>
+    <columns>ORDERS.ORDER_NUMBER</columns>
+    <columns>SALES.ACCOUNT.NAME</columns>
+    <columns>ORDERS.STATUS</columns>
+    <columns>Supplier_Price__c</columns>
+    <columns>Supplier_Invoice_Amount__c</columns>
+    <columns>Supplier_Invoice_Difference__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Clearance_Order__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Supplier_Invoice_Flagged__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Flagged Supplier Invoices</label>
+</ListView>

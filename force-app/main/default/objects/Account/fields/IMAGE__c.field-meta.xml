@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IMAGE__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(RecordType.DeveloperName = &quot;Partner&quot;), IMAGE(&quot;/resource/Account/Type/Partner.jpg&quot;, &quot;Partner&quot;),
+IF(AND(RecordType.DeveloperName = &quot;Account&quot;, TEXT(Enqix_Dead_Live__c) = &quot;Live&quot;), IMAGE(&quot;/resource/Account/Type/Account.jpg&quot;,&quot;Account&quot;),
+IF(AND(RecordType.DeveloperName = &quot;Account&quot;, TEXT(Enqix_Dead_Live__c) = &quot;Dead&quot;), IMAGE(&quot;/resource/Account/Type/Dead.jpg&quot;, &quot;Dead&quot;),
+IF(AND(RecordType.DeveloperName = &quot;Account&quot;, TEXT(Enqix_Dead_Live__c) = &quot;&quot;), IMAGE(&quot;/resource/Account/Type/ProspectAccount.jpg&quot;,&quot;PAccount&quot;),
+IF(AND(RecordType.DeveloperName &lt;&gt; &quot;Account&quot;, TEXT(Enqix_Dead_Live__c) = &quot;Live&quot;, CONTAINS(Parent_Enqix_Classification__c, &apos;Indirect&apos;)), IMAGE(&quot;/resource/Account/Type/ResellerLocation.jpg&quot;,&quot;Reseller Location&quot;),
+IF(AND(RecordType.DeveloperName &lt;&gt; &quot;Account&quot;, TEXT(Enqix_Dead_Live__c) = &quot;Live&quot;), IMAGE(&quot;/resource/Account/Type/Location.jpg&quot;,&quot;Location&quot;),
+IF(AND(RecordType.DeveloperName &lt;&gt; &quot;Account&quot;, TEXT(Enqix_Dead_Live__c) = &quot;Dead&quot;), IMAGE ( &quot;/resource/Account/Type/Dead.jpg&quot;,&quot;Dead&quot;), IMAGE (&quot;/resource/Account/Type/ProspectLocation.jpg&quot;,&quot;Prospect&quot;))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Customer ?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

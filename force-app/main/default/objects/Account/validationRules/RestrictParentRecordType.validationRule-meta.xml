@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictParentRecordType</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(ParentId)), Parent.RecordType.DeveloperName != &apos;Account&apos;, Parent.RecordType.DeveloperName != &apos;Partner&apos;)</errorConditionFormula>
+    <errorDisplayField>ParentId</errorDisplayField>
+    <errorMessage>Parent must be either Account or Partner record type.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Card_Payments_to_Allocate</fullName>
+    <columns>NAME</columns>
+    <columns>Unallocated_Amount__c</columns>
+    <columns>Account__c</columns>
+    <columns>Customer_Reference__c</columns>
+    <columns>Entry_Date__c</columns>
+    <columns>Transaction_Details__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>Order__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Receipt_Amount__c</field>
+        <operation>equals</operation>
+        <value>998.77</value>
+    </filters>
+    <label>Card Payments to Allocate</label>
+</ListView>

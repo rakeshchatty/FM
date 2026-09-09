@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All_Rounds_Waiting_to_Start</fullName>
+    <columns>NAME</columns>
+    <columns>RoundId__c</columns>
+    <columns>DriverArrived__c</columns>
+    <columns>Default_Vehicle__c</columns>
+    <columns>Vehicle__c</columns>
+    <columns>Default_Driver__c</columns>
+    <columns>DriverId__c</columns>
+    <columns>Loader__c</columns>
+    <columns>Ops_Start_Time__c</columns>
+    <columns>Ops_End_Time__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Already_Created__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RoundId__c</field>
+        <operation>contains</operation>
+        <value>CHRISTMAS</value>
+    </filters>
+    <label>Christmas &amp; New Year 2021</label>
+</ListView>

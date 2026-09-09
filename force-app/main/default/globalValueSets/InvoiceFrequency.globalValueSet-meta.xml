@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Per Order</fullName>
+        <default>false</default>
+        <label>Invoice Every Order</label>
+    </customValue>
+    <customValue>
+        <fullName>Weekly</fullName>
+        <default>false</default>
+        <label>Consolidate All Weekly (Monday)</label>
+    </customValue>
+    <customValue>
+        <fullName>Twice Monthly</fullName>
+        <default>false</default>
+        <label>Consolidate All Twice Monthly (1st, 16th)</label>
+    </customValue>
+    <customValue>
+        <fullName>Monthly</fullName>
+        <default>false</default>
+        <label>Consolidate All Monthly</label>
+    </customValue>
+    <customValue>
+        <fullName>Quarterly - Advance</fullName>
+        <default>false</default>
+        <label>Quarterly - Advance</label>
+    </customValue>
+    <customValue>
+        <fullName>Monthly - Scheduled</fullName>
+        <default>false</default>
+        <label>Monthly - Consolidate Scheduled Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Monthly - Separated</fullName>
+        <default>false</default>
+        <label>Monthly - Consolidate Scheduled, Consolidate Ad-Hoc</label>
+    </customValue>
+    <masterLabel>Invoice Frequency</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

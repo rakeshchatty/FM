@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Price_Book_ID__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( Zone__c ,
+&quot;London&quot;, $Label.Price_Book_Tier_2_ID ,
+&quot;Inner London&quot;, $Label.Price_Book_Tier_1_ID ,
+&quot;Westminster&quot;, $Label.Price_Book_Tier_0_ID ,
+&quot;Outer London&quot;,$Label.Price_Book_Tier_4_ID ,
+&quot;Birmingham&quot;, $Label.Price_Book_Tier_4_ID ,
+&quot;National 1&quot;,$Label.Price_Book_Tier_4_ID ,
+&quot;National 2&quot;,$Label.Price_Book_Tier_4_ID ,
+&quot;National 3&quot;,$Label.Price_Book_Tier_4_ID ,
+$Label.Price_Book_Tier_0_ID)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Price Book ID</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

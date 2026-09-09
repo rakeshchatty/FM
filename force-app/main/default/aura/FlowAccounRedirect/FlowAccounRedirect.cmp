@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:availableForFlowScreens">
+    <aura:attribute name="object" type="String" default="Account" access="public"></aura:attribute>
+    <aura:attribute name="Id" type="String" default="Id" access="public"></aura:attribute>
+    <aura:attribute name="selectedRecordId" type="String" access="public"></aura:attribute>
+    
+    <div width="100%" style="margin-top: 30px; text-align: right; height:50px;">
+    	<lightning:button variant="brand" label="Finish" onclick="{! c.handleOnChange }"/>
+    </div>
+  
+</aura:component>

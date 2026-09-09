@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FPN_PCNnumber_required_for_councilf</fullName>
+    <active>false</active>
+    <description>fires when a council fine is lacking a FPN,PCN reference.  19/10/20 deactivated as requested by Melissa.  RV</description>
+    <errorConditionFormula>AND(
+DATEVALUE (CreatedDate) &gt; DATE(2020,04,01),
+$User.LastName &lt;&gt; &apos;Loader&apos;,$User.LastName &lt;&gt; &apos;Portal&apos;, $User.LastName &lt;&gt; &apos;Allen&apos;,
+ISPICKVAL( Type ,&apos;Council Fine&apos;),
+ISBLANK( FPN_PCN_Reference__c ))</errorConditionFormula>
+    <errorMessage>FPN/PCN Reference must be completed for council fines.</errorMessage>
+</ValidationRule>

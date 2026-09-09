@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Bromley BID</fullName>
+        <default>false</default>
+        <label>Bromley BID</label>
+    </customValue>
+    <customValue>
+        <fullName>Cadogan Estate – Hotels</fullName>
+        <default>false</default>
+        <label>Cadogan Estate – Hotels</label>
+    </customValue>
+    <customValue>
+        <fullName>Cadogan Estate - Kings Road</fullName>
+        <default>false</default>
+        <label>Cadogan Estate - Kings Road</label>
+    </customValue>
+    <customValue>
+        <fullName>Cadogan Estate - Landlord</fullName>
+        <default>false</default>
+        <label>Cadogan Estate - Landlord</label>
+    </customValue>
+    <customValue>
+        <fullName>Cadogan Estate - Pavilion Road</fullName>
+        <default>false</default>
+        <label>Cadogan Estate - Pavilion Road</label>
+    </customValue>
+    <customValue>
+        <fullName>Cadogan Estate - Pont Street</fullName>
+        <default>false</default>
+        <label>Cadogan Estate - Pont Street</label>
+    </customValue>
+    <customValue>
+        <fullName>Cadogan Estate - Sloane St &amp; Square</fullName>
+        <default>false</default>
+        <label>Cadogan Estate - Sloane St &amp; Square</label>
+    </customValue>
+    <customValue>
+        <fullName>Clarence Street</fullName>
+        <default>false</default>
+        <label>Clarence Street</label>
+    </customValue>
+    <customValue>
+        <fullName>Grosvenor - Directly Managed</fullName>
+        <default>false</default>
+        <label>Grosvenor - Directly Managed</label>
+    </customValue>
+    <customValue>
+        <fullName>Grosvenor - Green Leases</fullName>
+        <default>false</default>
+        <label>Grosvenor - Green Leases</label>
+    </customValue>
+    <customValue>
+        <fullName>Grosvenor - Indirectly Managed</fullName>
+        <default>false</default>
+        <label>Grosvenor - Indirectly Managed</label>
+    </customValue>
+    <customValue>
+        <fullName>Hampstead - Heath Street</fullName>
+        <default>false</default>
+        <label>Hampstead - Heath Street</label>
+    </customValue>
+    <customValue>
+        <fullName>King’s Road Partnership</fullName>
+        <default>false</default>
+        <label>King’s Road Partnership</label>
+    </customValue>
+    <customValue>
+        <fullName>Muswell Hill Broadway</fullName>
+        <default>false</default>
+        <label>Muswell Hill Broadway</label>
+    </customValue>
+    <customValue>
+        <fullName>Northcoate Road</fullName>
+        <default>false</default>
+        <label>Northcoate Road</label>
+    </customValue>
+    <customValue>
+        <fullName>Penge SE20</fullName>
+        <default>false</default>
+        <label>Penge SE20</label>
+    </customValue>
+    <customValue>
+        <fullName>Pop Brixton</fullName>
+        <default>false</default>
+        <label>Pop Brixton</label>
+    </customValue>
+    <customValue>
+        <fullName>Rye Lane</fullName>
+        <default>false</default>
+        <label>Rye Lane</label>
+    </customValue>
+    <customValue>
+        <fullName>Shaftesbury – Carnaby</fullName>
+        <default>false</default>
+        <label>Shaftesbury – Carnaby</label>
+    </customValue>
+    <customValue>
+        <fullName>Shaftesbury – Chinatown London</fullName>
+        <default>false</default>
+        <label>Shaftesbury – Chinatown London</label>
+    </customValue>
+    <customValue>
+        <fullName>Shaftesbury – Fitzrovia &amp; Opera Quarter</fullName>
+        <default>false</default>
+        <label>Shaftesbury – Fitzrovia &amp; Opera Quarter</label>
+    </customValue>
+    <customValue>
+        <fullName>Shaftesbury – Seven Dials</fullName>
+        <default>false</default>
+        <label>Shaftesbury – Seven Dials</label>
+    </customValue>
+    <customValue>
+        <fullName>Shaftesbury – Soho</fullName>
+        <default>false</default>
+        <label>Shaftesbury – Soho</label>
+    </customValue>
+    <customValue>
+        <fullName>TCR – West End Project</fullName>
+        <default>false</default>
+        <label>TCR – West End Project</label>
+    </customValue>
+    <customValue>
+        <fullName>The Quadrant</fullName>
+        <default>false</default>
+        <label>The Quadrant</label>
+    </customValue>
+    <customValue>
+        <fullName>Uxbridge Road</fullName>
+        <default>false</default>
+        <label>Uxbridge Road</label>
+    </customValue>
+    <masterLabel>Estate</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

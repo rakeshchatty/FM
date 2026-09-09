@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Aged_Debtor_View</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>InvoiceNo__c</columns>
+    <columns>AmountOutstanding__c</columns>
+    <columns>DaysOutstanding__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>AmountOutstanding__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Aged Debtor View</label>
+</ListView>

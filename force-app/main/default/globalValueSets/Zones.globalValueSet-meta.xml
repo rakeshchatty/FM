@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>London</fullName>
+        <default>false</default>
+        <label>London</label>
+    </customValue>
+    <customValue>
+        <fullName>Birmingham</fullName>
+        <default>false</default>
+        <label>Birmingham</label>
+    </customValue>
+    <customValue>
+        <fullName>National 1</fullName>
+        <default>false</default>
+        <label>National 1</label>
+    </customValue>
+    <customValue>
+        <fullName>National 2</fullName>
+        <default>false</default>
+        <label>National 2</label>
+    </customValue>
+    <customValue>
+        <fullName>National 3</fullName>
+        <default>false</default>
+        <label>National 3</label>
+    </customValue>
+    <customValue>
+        <fullName>Inner London</fullName>
+        <default>false</default>
+        <label>Inner London</label>
+    </customValue>
+    <customValue>
+        <fullName>Outer London</fullName>
+        <default>false</default>
+        <label>Outer London</label>
+    </customValue>
+    <customValue>
+        <fullName>Westminster</fullName>
+        <default>false</default>
+        <label>Westminster</label>
+    </customValue>
+    <description>These Zones are linked to the availability on the eCommerce platform.</description>
+    <masterLabel>Zones</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

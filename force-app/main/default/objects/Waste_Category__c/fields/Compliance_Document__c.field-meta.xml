@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compliance_Document__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Compliance Document</label>
+    <referenceTo>Compliance_Doc__c</referenceTo>
+    <relationshipLabel>Waste Categories</relationshipLabel>
+    <relationshipName>Waste_Categories</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

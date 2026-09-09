@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Product_for_3rd_Party_Suppliers</fullName>
+    <active>true</active>
+    <description>You must attach a partner product if the Supplier is not First Mile Ltd</description>
+    <errorConditionFormula>IF
+( Supplier__r.Name &lt;&gt; &quot;First Mile Ltd&quot;,
+AND
+( NOT( CONTAINS( Supplier_Product__r.Product__r.Name , &quot;(P)&quot; ))
+), FALSE)</errorConditionFormula>
+    <errorMessage>You must attach a partner product if the Supplier is not First Mile Ltd</errorMessage>
+</ValidationRule>

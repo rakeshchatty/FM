@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Feedback_type__c</fullName>
+    <label>Feedback type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Additional fields</fullName>
+                <default>false</default>
+                <label>Additional fields</label>
+            </value>
+            <value>
+                <fullName>Bug</fullName>
+                <default>false</default>
+                <label>Bug</label>
+            </value>
+            <value>
+                <fullName>Critical Update</fullName>
+                <default>false</default>
+                <label>Critical Update</label>
+            </value>
+            <value>
+                <fullName>Data Fix - Known Issue</fullName>
+                <default>false</default>
+                <label>Data Fix - Known Issue</label>
+            </value>
+            <value>
+                <fullName>Data Fix - New Issue</fullName>
+                <default>false</default>
+                <label>Data Fix - New Issue</label>
+            </value>
+            <value>
+                <fullName>Data Improvement</fullName>
+                <default>false</default>
+                <label>Data Improvement</label>
+            </value>
+            <value>
+                <fullName>Data load request</fullName>
+                <default>false</default>
+                <label>Data load request</label>
+            </value>
+            <value>
+                <fullName>Feature request</fullName>
+                <default>false</default>
+                <label>Feature request</label>
+            </value>
+            <value>
+                <fullName>Field Security and Page Layouts</fullName>
+                <default>false</default>
+                <label>Field Security and Page Layouts</label>
+            </value>
+            <value>
+                <fullName>Improvement</fullName>
+                <default>false</default>
+                <label>Improvement</label>
+            </value>
+            <value>
+                <fullName>Jira Record</fullName>
+                <default>false</default>
+                <label>Jira Record</label>
+            </value>
+            <value>
+                <fullName>Minor Request</fullName>
+                <default>false</default>
+                <label>Minor Request</label>
+            </value>
+            <value>
+                <fullName>New Product</fullName>
+                <default>false</default>
+                <label>New Product</label>
+            </value>
+            <value>
+                <fullName>Portal tokens</fullName>
+                <default>false</default>
+                <label>Portal tokens</label>
+            </value>
+            <value>
+                <fullName>Query</fullName>
+                <default>false</default>
+                <label>Query</label>
+            </value>
+            <value>
+                <fullName>Report</fullName>
+                <default>false</default>
+                <label>Report</label>
+            </value>
+            <value>
+                <fullName>Reports/Dashboard</fullName>
+                <default>false</default>
+                <label>Reports/Dashboard</label>
+            </value>
+            <value>
+                <fullName>Security/Profile/User Settings</fullName>
+                <default>false</default>
+                <label>Security/Profile/User Settings</label>
+            </value>
+            <value>
+                <fullName>Security Alert Update</fullName>
+                <default>false</default>
+                <label>Security Alert Update</label>
+            </value>
+            <value>
+                <fullName>Training</fullName>
+                <default>false</default>
+                <label>Training</label>
+            </value>
+            <value>
+                <fullName>Validation Rule</fullName>
+                <default>false</default>
+                <label>Validation Rule</label>
+            </value>
+            <value>
+                <fullName>Feature added</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Feature added</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

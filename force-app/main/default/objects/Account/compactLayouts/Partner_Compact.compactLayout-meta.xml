@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Compact</fullName>
+    <fields>Name</fields>
+    <fields>IMAGE__c</fields>
+    <fields>OwnerId</fields>
+    <fields>Live_Partner_Locations__c</fields>
+    <fields>Recycling_Rate_L12M__c</fields>
+    <label>Partner Compact</label>
+</CompactLayout>

@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retention_Call</fullName>
+    <active>false</active>
+    <businessProcess>Email</businessProcess>
+    <label>Retention Call</label>
+    <picklistValues>
+        <picklist>Action__c</picklist>
+        <values>
+            <fullName>Credit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gift</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refund</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fine_Paid__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fine_Reason_for_Fine__c</picklist>
+        <values>
+            <fullName>Agree to pay despite evidence</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Invoice_Query_Reason__c</picklist>
+        <values>
+            <fullName>Dead Location</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incorrect Order Quantity or Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incorrect Pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incorrect payment allocation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Collections%2FService Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wrong PO%2FNo PO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wrong Parent Account</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Operations_Case_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dispatched</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Open</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ops_Issue_Type__c</picklist>
+        <values>
+            <fullName>Cardboard presented incorrectly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contamination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excess Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extra Job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loose Waste in Bin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Collection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Collection Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Access to Collection Point</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Over Weight Limit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Priority Collection Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unbranded Bags</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ops_Status_Kanban__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Queue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Round Allocated</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Return_Method__c</picklist>
+        <values>
+            <fullName>Collected by FM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not returned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned by Customer</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Quality_check_result__c</picklist>
+        <values>
+            <fullName>Fail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pass</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Change of contact details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clearance issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Council Fine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Driver App Feedback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extra Job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health and Safety Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Collection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ops Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment %2F finance query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request for Recycling Reports</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request for WTN or other documents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Complaint</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Spam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subcontractor Issue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_Credit__c</picklist>
+        <values>
+            <fullName>Council Fine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Refund_Processed__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refund Processed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting for Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Requested_Collection_Time__c</picklist>
+        <values>
+            <fullName>AM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Type__c</picklist>
+        <values>
+            <fullName>Access issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change of name%2C address%2C or contact details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chasing delivery or collection ETA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Check or Change Schedule or Recurring Orders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clearance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collection Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collection Round Service Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contamination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Courier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Note</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery Round Service Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feedback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health and Safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Location or Account is leaving First Mile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing%2FSales Enquiry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Service Quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Noise Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nothing to collect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overweight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pallets or Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price check%2Fquery or competitor comparison</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refund%2FReturn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report a customer portal bug</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request Time%2FSchedule Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPAM%2FAuto-Responder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sacks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subcontractor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unmarked Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wheelie Bin</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subcontracted_Operations_Status__c</picklist>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Billing%2FPricing Query</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Driver App Alert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Driver Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extra Job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JobCompletedByDriverApp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Collection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Quote or Location</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subcontractor Report</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

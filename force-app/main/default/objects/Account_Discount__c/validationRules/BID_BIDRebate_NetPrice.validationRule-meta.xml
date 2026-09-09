@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BID_BIDRebate_NetPrice</fullName>
+    <active>true</active>
+    <description>BID Rebate Cannot Be Greater Than Net Price</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;PartnerDiscount&apos;) &amp;&amp; NOT(ISBLANK(Net_Price__c)) &amp;&amp;
+(BID_Rebate__c&gt;Net_Price__c) &amp;&amp; 
+NOT($User.Username = &apos;integration@thefirstmile.co.uk&apos;) &amp;&amp; NOT($User.Username = &apos;firstmile.support@xpand-it.com&apos;)</errorConditionFormula>
+    <errorDisplayField>BID_Rebate__c</errorDisplayField>
+    <errorMessage>BID Rebate Cannot Be Greater Than Net Price</errorMessage>
+</ValidationRule>

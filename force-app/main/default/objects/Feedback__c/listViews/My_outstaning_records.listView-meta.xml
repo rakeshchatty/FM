@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_outstaning_records</fullName>
+    <columns>NAME</columns>
+    <columns>Platform_type__c</columns>
+    <columns>Feedback_type__c</columns>
+    <columns>Status__c</columns>
+    <columns>Description__c</columns>
+    <columns>Is_complete__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2021 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Waiting for code freeze to end,On hold waiting for feedback,Closed no action required,Completed</value>
+    </filters>
+    <label>My outstanding records</label>
+</ListView>

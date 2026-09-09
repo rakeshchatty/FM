@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>weighbridge_tonnage</fullName>
+    <columns>NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Weightbridge_Id__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>weighbridge tonnage</label>
+</ListView>

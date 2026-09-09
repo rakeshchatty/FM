@@ -1,0 +1,90 @@
+<aura:component controller="SearchEmailController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:attribute name="searchResult" type="List" description="use for store and display email messages list return from server"/>
+    <aura:attribute name="searchKeyword" type="String" description="use for user search input"/>
+    <aura:attribute name="Message" type="boolean" default="false" description="use for display no record found message"/>
+    <aura:attribute name="numberOfRecord" type="integer" default="0" description="use for display Number of records"/>
+    <aura:attribute name="fieldName" type="String" description="use to hold the selected field name"/>
+    <aura:attribute name="fieldFilterValue" type="String" description="use for hold the field filter value"/>
+    <aura:attribute name="showLoading" type="Boolean" default="true" description="Boolean variable for showing loader" />
+    <div class="slds-m-around--small">
+        <aura:renderIf isTrue="{!v.showLoading}">
+            <div class="slds-spinner_container">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:renderIf>
+        
+        <form class="slds-form--compound">
+            <div class="slds-form-element__group">
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size--1-of-2">
+                        <label class="slds-form-element__label" for="input-01">Search In:</label>
+                        <div class="slds-select_container">
+                            <ui:inputSelect aura:id="accountFieldOption" class="slds-select"  change="{!c.onPicklistChange}"/>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-size--1-of-2">
+                        <label class="slds-form-element__label" for="input-02">Search By:</label>
+                        <div class="slds-select_container">
+                            <ui:inputSelect aura:id="accountFieldFilterOption" class="slds-select"  change="{!c.onFieldFilterChange}" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size--2-of-3">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <ui:inputText aura:id="searchId" class="slds-input" value="{!v.searchKeyword}" required="true" placeholder="Type here..."/>
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="slds-form-element slds-size--1-of-3">                    
+                        <div class="slds-form-element">
+                            <button type="button" onclick="{!c.Search}" class="slds-button slds-button--brand">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div>
+        	Email Messages <span class="slds-badge">{!v.numberOfRecord}</span>
+        </div>
+
+        <table class="slds-table slds-table--bordered">
+            <tbody>
+                <aura:if isTrue="{!v.Message}">
+                    <div class="slds-text-color--error"> <br />No Result Found... <br /></div>
+                    <div><p>&nbsp;</p></div>
+                </aura:if>
+                
+                <aura:if isTrue="{!greaterthan(v.numberOfRecord,0)}">
+                    <aura:iteration items="{!v.searchResult}" var="msg">
+                        <tr>
+                            <td><div class="tooltip slds-truncate">{!msg.emailMessageRecord.Subject}
+                                <span class="tooltiptext">
+                                    <section class="slds-popover slds-nubbin_left" role="dialog" aria-label="Dialog Title" aria-describedby="dialog-body-id-25">
+                                        <div class="slds-popover__body" id="dialog-body-id-25">
+                                            <p><b>Subject</b> : {!msg.emailMessageRecord.Subject} </p> 
+                                            <p><b>From</b> : {!msg.emailMessageRecord.FromName} </p>
+                                            <p><b>Email</b> : {!msg.emailMessageRecord.FromAddress}</p>
+                                            <p><b>Date </b>:<lightning:formattedDateTime value="{!msg.emailMessageRecord.MessageDate }" year="numeric" month="numeric" day="numeric"  hour="2-digit" minute="2-digit" /></p>
+                                            <p><a href="{!'/one/one.app?#/sObject/'+ msg.emailMessageRecord.Id + '/view'}" target="_blank">View Message</a></p>
+                                        </div>
+                                    </section>
+                                </span>
+                                </div>
+                            </td>
+                            
+                        </tr>
+                    </aura:iteration>                
+                </aura:if> 
+            </tbody>
+        </table>
+
+    </div>
+</aura:component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Error_message__c</fullName>
+    <description>User will post error message in here to help with identifying the issues</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Copy and paste any error messages you have received in here.</inlineHelpText>
+    <label>Error message (if applicable)</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

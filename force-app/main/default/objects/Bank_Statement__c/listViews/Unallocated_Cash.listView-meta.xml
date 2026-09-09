@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unallocated_Cash</fullName>
+    <columns>NAME</columns>
+    <columns>Unallocated_Amount__c</columns>
+    <columns>Receipt_Amount__c</columns>
+    <columns>Payment_Amount__c</columns>
+    <columns>Account__c</columns>
+    <columns>Bank_Account_Number__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Document_name__c</columns>
+    <columns>OutstandingAmount__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Payment_Amount__c</field>
+        <operation>greaterThan</operation>
+        <value>1</value>
+    </filters>
+    <label>Unallocated Cash - Account Identified</label>
+</ListView>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireNominalCode</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(IsActive, ISBLANK(Nl_accode__c))</errorConditionFormula>
+    <errorDisplayField>Nl_accode__c</errorDisplayField>
+    <errorMessage>Active products cannot have an empty Nominal code.</errorMessage>
+</ValidationRule>

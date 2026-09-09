@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prospecting_Project__c</fullName>
+    <label>Prospecting Project</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>PR Company</fullName>
+                <default>false</default>
+                <label>PR Company</label>
+            </value>
+            <value>
+                <fullName>Bond Street Association</fullName>
+                <default>false</default>
+                <label>Bond Street Association</label>
+            </value>
+            <value>
+                <fullName>V. Large Prospects</fullName>
+                <default>false</default>
+                <label>V. Large Prospects</label>
+            </value>
+            <value>
+                <fullName>Serviced Office Buildings</fullName>
+                <default>false</default>
+                <label>Serviced Office Buildings</label>
+            </value>
+            <value>
+                <fullName>National Retailers</fullName>
+                <default>false</default>
+                <label>National Retailers</label>
+            </value>
+            <value>
+                <fullName>Chancery Lane Association</fullName>
+                <default>false</default>
+                <label>Chancery Lane Association</label>
+            </value>
+            <value>
+                <fullName>Bio Bean</fullName>
+                <default>false</default>
+                <label>Bio Bean</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

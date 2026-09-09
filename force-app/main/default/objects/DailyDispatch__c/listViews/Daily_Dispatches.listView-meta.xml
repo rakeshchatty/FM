@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Daily_Dispatches</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>RoundId__c</columns>
+    <columns>Ops_Start_Time__c</columns>
+    <columns>Ops_End_Time__c</columns>
+    <columns>Round_number__c</columns>
+    <columns>RoundStartTime__c</columns>
+    <columns>EndTime__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Daily Dispatches Created Today</label>
+</ListView>

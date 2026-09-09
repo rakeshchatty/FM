@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictAdvanceBinSchedules</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Location__r.Parent.IsBinCollectionAdvanceInvoiced__c,  Is_bin_collection__c,
+ISCHANGED(Supplier__c), ISCHANGED(Supplier_Product__c),
+ISCHANGED(Price_Book__c), ISCHANGED(Discount_Type__c), ISCHANGED(Enqix_Price__c))</errorConditionFormula>
+    <errorMessage>Supplier, product &amp; price changes on bin schedules are not not allowed.</errorMessage>
+</ValidationRule>

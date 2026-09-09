@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EndRound</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>EndRound</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/31.0/connection.js&quot;)} 
+
+var sr = new sforce.SObject(&quot;DailyDispatch__c&quot;); 
+sr.id ={!GETRECORDIDS(DailyDispatch__c.Id)};
+sr.EndTime__c = new Date();
+ 
+result = sforce.connection.update([sr]); 
+
+window.location.reload();</url>
+</WebLink>

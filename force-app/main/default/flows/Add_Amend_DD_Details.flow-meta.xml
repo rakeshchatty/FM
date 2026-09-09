@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <description>Has this flow been used on the correct record type and do we have DD details for this customer?</description>
+        <name>Main_Decision</name>
+        <label>Main Decision</label>
+        <locationX>314</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>AddDDDetails</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>New DD Details</defaultConnectorLabel>
+        <rules>
+            <name>IncorrectRecordType</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetAccountDetails.RecordType.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Account</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>GetAccountDetails.RecordType.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IncorrectRecordTypeScreen</targetReference>
+            </connector>
+            <label>IncorrectRecordType</label>
+        </rules>
+        <rules>
+            <name>DD_Details_Already_Exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetAccountDetails.dd_account_number__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CustomerAlreadyHasDDDetails</targetReference>
+            </connector>
+            <label>DD Details Already Exist</label>
+        </rules>
+    </decisions>
+    <description>The &quot;Add/Amend DD&quot; button won&apos;t let you add an account number or sort code that starts with zero, it gets removed when the record is updated.    In this version I have changed the number fields to text.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ChangeByNameFormula</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName}&amp;&quot; &quot;&amp;{!$User.LastName}</expression>
+    </formulas>
+    <formulas>
+        <name>ProvideByName</name>
+        <dataType>String</dataType>
+        <expression>{!FirstName}&amp;&quot; &quot;&amp;{!LastName}</expression>
+    </formulas>
+    <interviewLabel>Add/Amend DD Details {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Add/Amend DD Details</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>GetAccountDetails</name>
+        <label>GetAccountDetails</label>
+        <locationX>314</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Main_Decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>UpdateDDDeatils</name>
+        <label>UpdateDDDeatils</label>
+        <locationX>314</locationX>
+        <locationY>854</locationY>
+        <connector>
+            <targetReference>AccountUpdated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Direct_Debit_Changed_By__c</field>
+            <value>
+                <elementReference>ChangeByNameFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Direct_Debit_Details_Entry_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Direct_Debit_Provided_By__c</field>
+            <value>
+                <elementReference>ProvideByName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Enqix_Payment_Method__c</field>
+            <value>
+                <stringValue>Direct Debit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>dd_account_holder__c</field>
+            <value>
+                <elementReference>GetAccountDetails.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>dd_account_number__c</field>
+            <value>
+                <elementReference>DD_Account_Number_Text</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>dd_sort_code__c</field>
+            <value>
+                <elementReference>DD_Sort_Code_Text</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <screens>
+        <name>AccountUpdated</name>
+        <label>Account Updated</label>
+        <locationX>314</locationX>
+        <locationY>974</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>DisplayText3</name>
+            <fieldText>&lt;p&gt;Thanks, we have updated the Direct Debit details.  Once Authorised by the Finance Team it will take at least 10 days before any money is taken from the account.  &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>AddDDDetails</name>
+        <label>AddDDDetails</label>
+        <locationX>314</locationX>
+        <locationY>734</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>UpdateDDDeatils</targetReference>
+        </connector>
+        <fields>
+            <name>DisplayText2</name>
+            <fieldText>&lt;p&gt;Who at this company is giving you the direct debit details?  &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>FirstName</name>
+            <dataType>String</dataType>
+            <fieldText>First Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>LastName</name>
+            <dataType>String</dataType>
+            <fieldText>Last Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>DD_Sort_Code_Text</name>
+            <dataType>String</dataType>
+            <fieldText>DD Sort Code</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;The sort code need to be 6 digits.  &lt;/span&gt;&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND(ISNUMBER({!DD_Sort_Code_Text}), 
+OR(LEN({!DD_Sort_Code_Text})=6,
+OR(CONTAINS({!DD_Sort_Code_Text},&quot;-&quot;),
+OR(CONTAINS({!DD_Sort_Code_Text},&quot;,&quot;)))))</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>DD_Account_Number_Text</name>
+            <dataType>String</dataType>
+            <fieldText>DD Account Number</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;The account number need to be 8 digits.  &lt;/span&gt;&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND(ISNUMBER({!DD_Account_Number_Text}), 
+OR(LEN({!DD_Account_Number_Text})=8,
+OR(CONTAINS({!DD_Account_Number_Text},&quot;-&quot;),
+OR(CONTAINS({!DD_Account_Number_Text},&quot;,&quot;)))))</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>CustomerAlreadyHasDDDetails</name>
+        <label>CustomerAlreadyHasDDDetails</label>
+        <locationX>314</locationX>
+        <locationY>398</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>AddDDDetails</targetReference>
+        </connector>
+        <fields>
+            <name>CustomerDDDetails</name>
+            <fieldText>&lt;p&gt;We have the following DD Details for this customer: &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;DD Sort Code:{!GetAccountDetails.dd_sort_code__c}&lt;/p&gt;&lt;p&gt;DD Account Number:  {!GetAccountDetails.dd_account_number__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Are you sure these details need to be overwritten?  &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Yes change the details</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>IncorrectRecordTypeScreen</name>
+        <label>IncorrectRecordType</label>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>DisplayText</name>
+            <fieldText>&lt;p&gt;This flow can only be used on a Partner or Partner account. &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetAccountDetails</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentRecord</elementReference>
+        </value>
+    </variables>
+</Flow>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ShippingLatitude__c</fullName>
+    <description>The latitude from the shipping address.</description>
+    <externalId>false</externalId>
+    <formula>ShippingLatitude</formula>
+    <inlineHelpText>The latitude from the shipping address.</inlineHelpText>
+    <label>ShippingLatitude</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

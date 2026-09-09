@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsActiveToday__c</fullName>
+    <formula>CASE(WEEKDAY(TODAY()),
+    1, IF(Sun__c, 1, 0),
+    2, IF(Mon__c, 1, 0),
+    3, IF(Tue__c, 1, 0),
+    4, IF(Wed__c, 1, 0),
+    5, IF(Thu__c, 1, 0),
+    6, IF(Fri__c, 1, 0),
+    IF(Sat__c, 1, 0)) == 1</formula>
+    <label>Active Today</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

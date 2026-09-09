@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complete_partnership_referral</fullName>
+    <active>true</active>
+    <description>Partnership referred by should not be blank if lead source = partnership referral</description>
+    <errorConditionFormula>AND( ISPICKVAL(LeadSource, &quot;Partnership Referral&quot;),  ISPICKVAL(Partnership_referred_by__c, &quot;&quot; ))</errorConditionFormula>
+    <errorMessage>&quot;Partnership referred by&quot; is required if lead source = &quot;partnership referral&quot;</errorMessage>
+</ValidationRule>

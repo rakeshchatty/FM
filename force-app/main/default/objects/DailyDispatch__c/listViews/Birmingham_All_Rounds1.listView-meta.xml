@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Birmingham_All_Rounds1</fullName>
+    <columns>NAME</columns>
+    <columns>RoundId__c</columns>
+    <columns>Ops_Start_Time__c</columns>
+    <columns>Ops_End_Time__c</columns>
+    <columns>Default_Driver__c</columns>
+    <columns>Vehicle__c</columns>
+    <columns>DriverId__c</columns>
+    <columns>Total_Tonnage__c</columns>
+    <columns>Already_Created__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RoundId__c</field>
+        <operation>contains</operation>
+        <value>4</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>THIS_MONTH</value>
+    </filters>
+    <label>Birmingham All Rounds</label>
+</ListView>

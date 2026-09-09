@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Account Development</fullName>
+        <default>false</default>
+        <label>Account Development</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Manager</fullName>
+        <default>false</default>
+        <label>Account Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Broker</fullName>
+        <default>false</default>
+        <label>Broker</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitor Acquisition</fullName>
+        <default>false</default>
+        <label>Competitor Acquisition</label>
+    </customValue>
+    <customValue>
+        <fullName>Council Referral</fullName>
+        <default>false</default>
+        <label>Council Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Referral</fullName>
+        <default>false</default>
+        <label>Customer Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Dead Account Outbound Call</fullName>
+        <default>false</default>
+        <label>Dead Account Outbound Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Event or Networking</fullName>
+        <default>false</default>
+        <label>Event or Networking</label>
+    </customValue>
+    <customValue>
+        <fullName>Field BD Visit</fullName>
+        <default>false</default>
+        <label>Field BD Visit</label>
+    </customValue>
+    <customValue>
+        <fullName>FM Energy Outbound Call</fullName>
+        <default>false</default>
+        <label>FM Energy Outbound Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Lost Opportunity Outbound Call</fullName>
+        <default>false</default>
+        <label>Lost Opportunity Outbound Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Search</fullName>
+        <default>false</default>
+        <label>Paid Search</label>
+    </customValue>
+    <customValue>
+        <fullName>Partnership or BID</fullName>
+        <default>false</default>
+        <label>Partnership or BID</label>
+    </customValue>
+    <customValue>
+        <fullName>Prospecting</fullName>
+        <default>false</default>
+        <label>Prospecting</label>
+    </customValue>
+    <customValue>
+        <fullName>Received direct mailing or leaflet</fullName>
+        <default>false</default>
+        <label>Received Direct Mailing or Leaflet</label>
+    </customValue>
+    <customValue>
+        <fullName>Received Marketing Email</fullName>
+        <default>false</default>
+        <label>Received Marketing Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Saw trucks or sacks on street</fullName>
+        <default>false</default>
+        <label>Saw trucks or sacks on street</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine</fullName>
+        <default>false</default>
+        <label>Search Engine</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Media</fullName>
+        <default>false</default>
+        <label>Social Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Used to use us</fullName>
+        <default>false</default>
+        <label>Used to use us</label>
+    </customValue>
+    <customValue>
+        <fullName>Networking</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Networking</label>
+    </customValue>
+    <customValue>
+        <fullName>Online Networking</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Online Networking</label>
+    </customValue>
+    <customValue>
+        <fullName>Organic - Bing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Organic - Bing</label>
+    </customValue>
+    <customValue>
+        <fullName>Organic - Google</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Organic - Google</label>
+    </customValue>
+    <customValue>
+        <fullName>Organic - Yahoo</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Organic - Yahoo</label>
+    </customValue>
+    <customValue>
+        <fullName>Pardot</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Pardot</label>
+    </customValue>
+    <customValue>
+        <fullName>Partnership</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Partnership</label>
+    </customValue>
+    <customValue>
+        <fullName>Partnership Referral</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Partnership Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>PPC</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>PPC</label>
+    </customValue>
+    <customValue>
+        <fullName>received direct mailing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>received direct mailing</label>
+    </customValue>
+    <customValue>
+        <fullName>Research</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Research</label>
+    </customValue>
+    <customValue>
+        <fullName>Webchat</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Webchat</label>
+    </customValue>
+    <customValue>
+        <fullName>Web Direct</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Web Direct</label>
+    </customValue>
+    <customValue>
+        <fullName>500 offices project</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>500 offices project</label>
+    </customValue>
+    <customValue>
+        <fullName>Website</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Website</label>
+    </customValue>
+    <customValue>
+        <fullName>Web Referral</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Web Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Activation</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Activation</label>
+    </customValue>
+    <customValue>
+        <fullName>BID Free Trial</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BID Free Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>BID Project</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BID Project</label>
+    </customValue>
+    <customValue>
+        <fullName>Chatter Picture</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Chatter Picture</label>
+    </customValue>
+    <customValue>
+        <fullName>CS Secondment Opportunity</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CS Secondment Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Opportunity</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>Data.com</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Data.com</label>
+    </customValue>
+    <customValue>
+        <fullName>Dead lead</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Dead lead</label>
+    </customValue>
+    <customValue>
+        <fullName>Don&apos;t know</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Don&apos;t know</label>
+    </customValue>
+    <customValue>
+        <fullName>e-Commerce</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>e-Commerce</label>
+    </customValue>
+    <customValue>
+        <fullName>Field Referral</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Field Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>FOI Fines Request</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FOI Fines Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Free Trial</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Free Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>Google</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Google</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Adwords</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Google Adwords</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Natural Search</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Google Natural Search</label>
+    </customValue>
+    <customValue>
+        <fullName>Got a leaflet</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Got a leaflet</label>
+    </customValue>
+    <customValue>
+        <fullName>List Import</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>List Import</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketscan</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Marketscan</label>
+    </customValue>
+    <masterLabel>Source Detail</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

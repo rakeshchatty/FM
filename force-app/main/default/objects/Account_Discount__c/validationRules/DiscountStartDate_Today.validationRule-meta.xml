@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DiscountStartDate_Today</fullName>
+    <active>false</active>
+    <description>Cannot Enter a Discount Start Date Before Today</description>
+    <errorConditionFormula>RecordType.DeveloperName != &apos;PartnerDiscount&apos; &amp;&amp; 
+DiscountSupStartDate__c - TODAY() &lt; 0 &amp;&amp;
+NOT($User.Username = &apos;integration@thefirstmile.co.uk&apos;)</errorConditionFormula>
+    <errorDisplayField>DiscountSupStartDate__c</errorDisplayField>
+    <errorMessage>Cannot Enter a Discount Start Date Before Today</errorMessage>
+</ValidationRule>

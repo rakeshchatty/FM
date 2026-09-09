@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SF_to_Enqix</fullName>
+    <columns>Process_Name__c</columns>
+    <columns>Table_Name__c</columns>
+    <columns>sf_link__c</columns>
+    <columns>Error_Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Process_Name__c</field>
+        <operation>equals</operation>
+        <value>sf_to_enqix</value>
+    </filters>
+    <filters>
+        <field>Error_Description__c</field>
+        <operation>contains</operation>
+        <value>BID Location Limit</value>
+    </filters>
+    <label>SF to Enqix</label>
+</ListView>

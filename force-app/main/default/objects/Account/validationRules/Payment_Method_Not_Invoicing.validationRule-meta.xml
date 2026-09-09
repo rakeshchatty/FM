@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Method_Not_Invoicing</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(TEXT(Enqix_Payment_Method__c) = &quot;Invoice&quot;,
+
+NOT(OR(
+
+$Profile.Id =  $Label.Admin_User_ID,
+
+$Profile.Id =  $Label.Superuser_User_ID,
+
+ISPICKVAL(PRIORVALUE(Enqix_Payment_Method__c),&quot;Invoice&quot;))))</errorConditionFormula>
+    <errorMessage>Please contact a senior member of staff to verify that this customer can be placed on &quot;Invoicing&quot;</errorMessage>
+</ValidationRule>

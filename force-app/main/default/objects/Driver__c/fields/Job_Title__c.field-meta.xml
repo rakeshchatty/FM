@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Title__c</fullName>
+    <label>Job Title</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Academy</fullName>
+                <default>false</default>
+                <label>Academy</label>
+            </value>
+            <value>
+                <fullName>CAT C Driver</fullName>
+                <default>false</default>
+                <label>CAT C Driver</label>
+            </value>
+            <value>
+                <fullName>Cyclist</fullName>
+                <default>false</default>
+                <label>Cyclist</label>
+            </value>
+            <value>
+                <fullName>Delivery</fullName>
+                <default>false</default>
+                <label>Delivery</label>
+            </value>
+            <value>
+                <fullName>Loader</fullName>
+                <default>false</default>
+                <label>Loader</label>
+            </value>
+            <value>
+                <fullName>Spare Collections</fullName>
+                <default>false</default>
+                <label>Spare</label>
+            </value>
+            <value>
+                <fullName>Trainer</fullName>
+                <default>false</default>
+                <label>Trainer</label>
+            </value>
+            <value>
+                <fullName>Yard Assistant</fullName>
+                <default>false</default>
+                <label>Yard Assistant</label>
+            </value>
+            <value>
+                <fullName>Collection PM Driver</fullName>
+                <default>false</default>
+                <label>Collection PM Driver</label>
+            </value>
+            <value>
+                <fullName>Collection AM Driver</fullName>
+                <default>false</default>
+                <label>Collection AM Driver</label>
+            </value>
+            <value>
+                <fullName>Delivery Driver</fullName>
+                <default>false</default>
+                <label>Delivery Driver</label>
+            </value>
+            <value>
+                <fullName>Spare Driver</fullName>
+                <default>false</default>
+                <label>Spare Driver</label>
+            </value>
+            <value>
+                <fullName>Academy Trainer</fullName>
+                <default>false</default>
+                <label>Academy Trainer</label>
+            </value>
+            <value>
+                <fullName>Academy Driver</fullName>
+                <default>false</default>
+                <label>Academy Driver</label>
+            </value>
+            <value>
+                <fullName>Academy Collection AM</fullName>
+                <default>false</default>
+                <label>Academy Collection AM</label>
+            </value>
+            <value>
+                <fullName>Spare (CAT B)</fullName>
+                <default>false</default>
+                <label>Spare (CAT B)</label>
+            </value>
+            <value>
+                <fullName>Cyclist AM</fullName>
+                <default>false</default>
+                <label>Cyclist AM</label>
+            </value>
+            <value>
+                <fullName>Waste and Education Officer</fullName>
+                <default>false</default>
+                <label>Waste and Education Officer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

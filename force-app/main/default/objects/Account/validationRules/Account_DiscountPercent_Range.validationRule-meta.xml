@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_DiscountPercent_Range</fullName>
+    <active>true</active>
+    <description>Discount PerCent Out of Range</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;Account&apos; || RecordType.DeveloperName = &apos;Partner&apos;)
+&amp;&amp; (Account_Discount__c &lt;=0 || Account_Discount__c &gt;= 0.8)</errorConditionFormula>
+    <errorDisplayField>Account_Discount__c</errorDisplayField>
+    <errorMessage>Discount PerCent Out of Range</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sent_DD_Remittance_Email__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field identifies if Direct Debit email remittance was sent or not. Useful to pick up Bank Statements for Direct Debit email remittance process.</description>
+    <label>Sent DD Remittance Email</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

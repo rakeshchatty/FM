@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Case_related</fullName>
+    <active>true</active>
+    <description>If the Missed Collection has a Case associated on CP but that case is not on Salesforce, do not let the record be inserted.</description>
+    <errorConditionFormula>IF(ISBLANK(Case__c), 
+true, false)</errorConditionFormula>
+    <errorMessage>The missed collection being inserted has a Case related on CP, but that case is not on Salesforce.</errorMessage>
+</ValidationRule>

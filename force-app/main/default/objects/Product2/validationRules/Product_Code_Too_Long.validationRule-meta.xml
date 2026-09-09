@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Code_Too_Long</fullName>
+    <active>true</active>
+    <description>The product code cannot be more than 10 characters long. It causes issues with Order/Invoicing triggers.</description>
+    <errorConditionFormula>LEN(ProductCode ) &gt; 10</errorConditionFormula>
+    <errorMessage>The product code cannot be more than 10 characters long.</errorMessage>
+</ValidationRule>

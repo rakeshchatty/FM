@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoices_by_Account</fullName>
+    <columns>Invoiced_Date__c</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>AmountOutstanding__c</columns>
+    <columns>InvoiceNo__c</columns>
+    <columns>Query__c</columns>
+    <columns>DaysOutstanding__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account__c</field>
+        <operation>contains</operation>
+        <value>Legal and General UK Property Fund (PAIF) C/O Bellrock</value>
+    </filters>
+    <filters>
+        <field>AmountOutstanding__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Outstanding Invoices by Account</label>
+</ListView>

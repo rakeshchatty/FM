@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Placed_Date__c</fullName>
+    <defaultValue>IF(
+WEEKDAY(TODAY())&gt;1 &amp;&amp; WEEKDAY(TODAY())&lt;7, TODAY(), IF(WEEKDAY(TODAY())=1, TODAY()+1, TODAY()+2)      
+)</defaultValue>
+    <label>Order Placed Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

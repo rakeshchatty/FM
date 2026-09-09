@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_query_instructions__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Delivery_Query_Reason__c = &quot;Customer closed&quot;, &quot;Ops to google opening times and deliver within opening hours. If there are multiple failed attempts then raise this with CS to contact the customer for more information.&quot;,
+
+IF(Delivery_Query_Reason__c = &quot;Wrong product&quot;, &quot;CS to Cancel the order contact the customer to apologise and confirm the correct product - re-order correct product and arrange delivery.&quot;,
+
+IF(Delivery_Query_Reason__c =&quot;Wrong Address&quot;,&quot;CS Google the customer, if it’s clear that the address is correct: -provide a map/pictures of where the customer is on this delivery query - if it is unclear where the customer is, contact them for more information and update their delivery address and notes as appropriate. When you are confident that ops have enough info for the delivery to success then untick ‘CS issue fixed’ on the order, provide a map/pictures of where the customer is. Ops will reattempt delivery the day after you untick this box.&quot;,
+
+IF(Delivery_Query_Reason__c =&quot;Moved Out&quot;,&quot;Check the order/location and speak to the person who placed it if needed. Google the business and try to contact the customer. If uncontactable, if google has no other contact details or says it’s closed down - cancel the order and dead the customer as ‘closed down’. If you get through to the customer apologise and confirm the location and rearrange the delivery, provide a map/pictures of where the customer is.&quot;,
+
+IF(Delivery_Query_Reason__c=&quot;Can’t Find Location&quot;,&quot;Check the order/location and speak to the person who placed it if needed. Google the customer, if the address is correct and the business seems easy to find then on streetview ask the driver to go again, provide a map/pictures of where the customer is. IF you’re unsure, call the customer to get further information/directions and apologise that the order wasn’t delivered.&quot;, 
+
+IF(Delivery_Query_Reason__c=&quot;Order Rejected&quot;,&quot;Check the order/location and speak to the person who placed it if needed. Cancel the order, contact the customer to find out what the problem was. Rearrange a delivery if needed. &quot;,
+ 
+IF(Delivery_Query_Reason__c=&quot;Ran out of Time&quot;,&quot;Priority sites shouldn’t be cancelled by driver where possible&quot;,&quot;&quot;)
+))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Delivery query instructions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

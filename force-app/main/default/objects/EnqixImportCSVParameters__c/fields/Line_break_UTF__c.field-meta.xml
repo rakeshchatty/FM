@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Line_break_UTF__c</fullName>
+    <defaultValue>&apos;\r&apos;</defaultValue>
+    <description>This field contains the UTF escaped value for the CSV file line break format. Values are: \r for Mac and Linux, \r\n for Windows generated files.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field contains the UTF escaped value for the CSV file line break format. Values are: \r for Mac and Linux, \r\n for Windows generated files.</inlineHelpText>
+    <label>Line break UTF</label>
+    <length>255</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

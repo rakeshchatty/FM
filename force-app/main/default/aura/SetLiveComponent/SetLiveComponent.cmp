@@ -1,0 +1,39 @@
+<aura:component controller="SetLiveController" implements="force:hasRecordId,force:lightningQuickAction">
+    <aura:attribute name="isOpen" type="boolean" default="false" />
+    <aura:attribute name="errormsg" type="string" />
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}" />
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}" />
+    <aura:attribute name="spinner" type="boolean" default="false" />
+
+
+    <aura:renderIf isTrue="{!v.errormsg != null}">
+        <div aura:id="div1">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.errormsg}
+            </ui:message>
+        </div>
+    </aura:renderIf>
+
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+    <div style="margin-bottom: 10px">
+        <p>You are setting this location live, are you sure?</p>
+    </div>
+    <lightning:layout>
+        <lightning:layoutItem size="1">
+            <lightning:button label="Yes" variant="neutral" class="slds-button" onclick="{!c.setLive}" />
+        </lightning:layoutItem>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <lightning:layoutItem size="1">
+            <lightning:button label="No" variant="neutral" class="slds-button" onclick="{!c.cancel}" />
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AccountTypeAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountTypeAccount</shortDescription>
+        <value>012w00000002cMrAAI</value>
+    </labels>
+    <labels>
+        <fullName>AccountTypePartner</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountTypePartner</shortDescription>
+        <value>012w0000000AptrAAC</value>
+    </labels>
+    <labels>
+        <fullName>AccountTypeProspect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AccountTypeProspect</shortDescription>
+        <value>012w0000000AqqKAAS</value>
+    </labels>
+    <labels>
+        <fullName>Admin_User_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Admin User ID</shortDescription>
+        <value>00e20000000vDnL</value>
+    </labels>
+    <labels>
+        <fullName>Default_Price_Book</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default Price Book</shortDescription>
+        <value>01s4L000003aVKiQAM</value>
+    </labels>
+    <labels>
+        <fullName>Foreign_Round_Cardboard</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Foreign Round Cardboard</shortDescription>
+        <value>a1z2X000003XFK2QAO</value>
+    </labels>
+    <labels>
+        <fullName>Foreign_Round_Default</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Foreign Round Default</shortDescription>
+        <value>a1z2X000003XFKCQA4</value>
+    </labels>
+    <labels>
+        <fullName>Foreign_Round_Food</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Foreign Round Food</shortDescription>
+        <value>a1z2X000003XFJxQAO</value>
+    </labels>
+    <labels>
+        <fullName>Foreign_Round_General_Waste</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Foreign Round General Waste</shortDescription>
+        <value>a1z2X000003XFJsQAO</value>
+    </labels>
+    <labels>
+        <fullName>Foreign_Round_Glass</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Foreign Round Glass</shortDescription>
+        <value>a1z2X000003XFK7QAO</value>
+    </labels>
+    <labels>
+        <fullName>Foreign_Round_Mixed_Recycling</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Foreign Round Mixed Recycling</shortDescription>
+        <value>a1z2X000003X5YXQA0</value>
+    </labels>
+    <labels>
+        <fullName>MsgDuplicateCollectionSchedule</fullName>
+        <categories>Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Duplicate collection schedule</shortDescription>
+        <value>Duplicate collection schedule exist for one or more selected days.</value>
+    </labels>
+    <labels>
+        <fullName>NoPermissionToDeleteOrderItem</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Prevent OrderProduct deletion</shortDescription>
+        <value>User doesn&apos;t have permission to delete order product.</value>
+    </labels>
+    <labels>
+        <fullName>OrderNotifiactionURL</fullName>
+        <categories>This label is used to send Order Notifiaction URL</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrderNotifiactionURL</shortDescription>
+        <value>https://fmdriverapp.azurewebsites.net/api/supply-chain/v2/production/supplychain/sendNotification?SupplierID=SUPPLIER_ID&amp;OrderID=ORDER_ID&amp;Status=SUPPLIER_STATUS</value>
+    </labels>
+    <labels>
+        <fullName>PopupMsg</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PopupMsg</shortDescription>
+        <value>Tell us how we can help</value>
+    </labels>
+    <labels>
+        <fullName>Price_Book_Tier_0_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Price Book Tier 0 ID</shortDescription>
+        <value>01sPy0000005dC1IAI</value>
+    </labels>
+    <labels>
+        <fullName>Price_Book_Tier_1_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Price Book Tier 1 ID</shortDescription>
+        <value>01sPy0000005dDdIAI</value>
+    </labels>
+    <labels>
+        <fullName>Price_Book_Tier_2_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Price Book Tier 2 ID</shortDescription>
+        <value>01sPy0000005dFFIAY</value>
+    </labels>
+    <labels>
+        <fullName>Price_Book_Tier_3_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Price Book Tier 3 ID</shortDescription>
+        <value>01sPy0000005dGrIAI</value>
+    </labels>
+    <labels>
+        <fullName>Price_Book_Tier_4_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Price Book Tier 4 ID</shortDescription>
+        <value>01sPy0000005dITIAY</value>
+    </labels>
+    <labels>
+        <fullName>Salesforce_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Salesforce URL</shortDescription>
+        <value>https://thefirstmile.lightning.force.com/lightning/</value>
+    </labels>
+    <labels>
+        <fullName>SuccessMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SuccessMessage</shortDescription>
+        <value>Thanks for submitting your Query. Your Case number is</value>
+    </labels>
+    <labels>
+        <fullName>Superuser_User_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Superuser User ID</shortDescription>
+        <value>00ew00000015v7v</value>
+    </labels>
+</CustomLabels>

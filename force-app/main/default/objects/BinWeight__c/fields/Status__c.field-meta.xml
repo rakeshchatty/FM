@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Matched</fullName>
+                <default>false</default>
+                <label>Matched</label>
+            </value>
+            <value>
+                <fullName>No match</fullName>
+                <default>false</default>
+                <label>No match</label>
+            </value>
+            <value>
+                <fullName>No unique match</fullName>
+                <default>false</default>
+                <label>No unique match</label>
+            </value>
+            <value>
+                <fullName>Weight already present</fullName>
+                <default>false</default>
+                <label>Weight already present</label>
+            </value>
+            <value>
+                <fullName>Manually matched</fullName>
+                <default>false</default>
+                <label>Manually matched</label>
+            </value>
+            <value>
+                <fullName>Match removed</fullName>
+                <default>false</default>
+                <label>Match removed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ParcelforceEvent__c</fullName>
+    <label>Parcelforce Event</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I101</fullName>
+                <default>false</default>
+                <label>Parcel tracked in</label>
+            </value>
+            <value>
+                <fullName>I102</fullName>
+                <default>false</default>
+                <label>Parcel delivered</label>
+            </value>
+            <value>
+                <fullName>I103</fullName>
+                <default>false</default>
+                <label>Received but not advised</label>
+            </value>
+            <value>
+                <fullName>I104</fullName>
+                <default>false</default>
+                <label>Advised but not received</label>
+            </value>
+            <value>
+                <fullName>I105</fullName>
+                <default>false</default>
+                <label>Parcel matched to advice</label>
+            </value>
+            <value>
+                <fullName>I106</fullName>
+                <default>false</default>
+                <label>Advice received too late</label>
+            </value>
+            <value>
+                <fullName>I107</fullName>
+                <default>false</default>
+                <label>Redirection requested</label>
+            </value>
+            <value>
+                <fullName>I108</fullName>
+                <default>false</default>
+                <label>Addressee refused</label>
+            </value>
+            <value>
+                <fullName>I109</fullName>
+                <default>false</default>
+                <label>Addressee will collect</label>
+            </value>
+            <value>
+                <fullName>I110</fullName>
+                <default>false</default>
+                <label>Redelivery arranged</label>
+            </value>
+            <value>
+                <fullName>I111</fullName>
+                <default>false</default>
+                <label>Delivery arranged</label>
+            </value>
+            <value>
+                <fullName>I112</fullName>
+                <default>false</default>
+                <label>Depot cannot find parcel</label>
+            </value>
+            <value>
+                <fullName>I113</fullName>
+                <default>false</default>
+                <label>Local redirection</label>
+            </value>
+            <value>
+                <fullName>I114</fullName>
+                <default>false</default>
+                <label>Out for redelivery</label>
+            </value>
+            <value>
+                <fullName>I115</fullName>
+                <default>false</default>
+                <label>Out for first delivery</label>
+            </value>
+            <value>
+                <fullName>I116</fullName>
+                <default>false</default>
+                <label>Out for arranged delivery</label>
+            </value>
+            <value>
+                <fullName>I117</fullName>
+                <default>false</default>
+                <label>Found during stocktake</label>
+            </value>
+            <value>
+                <fullName>I118</fullName>
+                <default>false</default>
+                <label>Held - no time to deliver</label>
+            </value>
+            <value>
+                <fullName>I119</fullName>
+                <default>false</default>
+                <label>Held - incorrect address</label>
+            </value>
+            <value>
+                <fullName>I120</fullName>
+                <default>false</default>
+                <label>Held - gone away</label>
+            </value>
+            <value>
+                <fullName>I121</fullName>
+                <default>false</default>
+                <label>Held - parcel damaged</label>
+            </value>
+            <value>
+                <fullName>I122</fullName>
+                <default>false</default>
+                <label>Held - addressee refused</label>
+            </value>
+            <value>
+                <fullName>I123</fullName>
+                <default>false</default>
+                <label>Held - depot discretion</label>
+            </value>
+            <value>
+                <fullName>I124</fullName>
+                <default>false</default>
+                <label>Held - scheduled delivery</label>
+            </value>
+            <value>
+                <fullName>I125</fullName>
+                <default>false</default>
+                <label>Held - addressee request</label>
+            </value>
+            <value>
+                <fullName>I126</fullName>
+                <default>false</default>
+                <label>Held - attempted COD</label>
+            </value>
+            <value>
+                <fullName>I127</fullName>
+                <default>false</default>
+                <label>Held - for collection</label>
+            </value>
+            <value>
+                <fullName>I128</fullName>
+                <default>false</default>
+                <label>Held - attempted delivery</label>
+            </value>
+            <value>
+                <fullName>I129</fullName>
+                <default>false</default>
+                <label>Parcel relabelled</label>
+            </value>
+            <value>
+                <fullName>I130</fullName>
+                <default>false</default>
+                <label>Delivery not attempted</label>
+            </value>
+            <value>
+                <fullName>I131</fullName>
+                <default>false</default>
+                <label>Missorted</label>
+            </value>
+            <value>
+                <fullName>I132</fullName>
+                <default>false</default>
+                <label>Redirected</label>
+            </value>
+            <value>
+                <fullName>I133</fullName>
+                <default>false</default>
+                <label>Customs dispute</label>
+            </value>
+            <value>
+                <fullName>I134</fullName>
+                <default>false</default>
+                <label>Sent to recovery</label>
+            </value>
+            <value>
+                <fullName>I135</fullName>
+                <default>false</default>
+                <label>Returned to sender</label>
+            </value>
+            <value>
+                <fullName>I136</fullName>
+                <default>false</default>
+                <label>Addressee collected</label>
+            </value>
+            <value>
+                <fullName>I137</fullName>
+                <default>false</default>
+                <label>Handed over to Agent</label>
+            </value>
+            <value>
+                <fullName>I138</fullName>
+                <default>false</default>
+                <label>Parcel accepted/correlated</label>
+            </value>
+            <value>
+                <fullName>I139</fullName>
+                <default>false</default>
+                <label>Parcel accepted</label>
+            </value>
+            <value>
+                <fullName>I140</fullName>
+                <default>false</default>
+                <label>Advice received</label>
+            </value>
+            <value>
+                <fullName>I141</fullName>
+                <default>false</default>
+                <label>Handed to International</label>
+            </value>
+            <value>
+                <fullName>I142</fullName>
+                <default>false</default>
+                <label>Accepted from RM</label>
+            </value>
+            <value>
+                <fullName>I143</fullName>
+                <default>false</default>
+                <label>Parcel into Customs</label>
+            </value>
+            <value>
+                <fullName>I144</fullName>
+                <default>false</default>
+                <label>Parcel out of Customs</label>
+            </value>
+            <value>
+                <fullName>I147</fullName>
+                <default>false</default>
+                <label>Formal Entry complete</label>
+            </value>
+            <value>
+                <fullName>I148</fullName>
+                <default>false</default>
+                <label>Late arrival</label>
+            </value>
+            <value>
+                <fullName>I153</fullName>
+                <default>false</default>
+                <label>Return from RM timed out</label>
+            </value>
+            <value>
+                <fullName>I154</fullName>
+                <default>false</default>
+                <label>Return from RM damaged</label>
+            </value>
+            <value>
+                <fullName>I155</fullName>
+                <default>false</default>
+                <label>Parcel tracked out</label>
+            </value>
+            <value>
+                <fullName>I156</fullName>
+                <default>false</default>
+                <label>Tracked out for delivery</label>
+            </value>
+            <value>
+                <fullName>I159</fullName>
+                <default>false</default>
+                <label>Refused - Weight</label>
+            </value>
+            <value>
+                <fullName>I160</fullName>
+                <default>false</default>
+                <label>Refused - size</label>
+            </value>
+            <value>
+                <fullName>I161</fullName>
+                <default>false</default>
+                <label>Refused - Packing</label>
+            </value>
+            <value>
+                <fullName>I162</fullName>
+                <default>false</default>
+                <label>Refused - Hazard</label>
+            </value>
+            <value>
+                <fullName>I163</fullName>
+                <default>false</default>
+                <label>Podium attempted delivery</label>
+            </value>
+            <value>
+                <fullName>I164</fullName>
+                <default>false</default>
+                <label>In Local Coll PO</label>
+            </value>
+            <value>
+                <fullName>I165</fullName>
+                <default>false</default>
+                <label>Local Collect PO</label>
+            </value>
+            <value>
+                <fullName>I166</fullName>
+                <default>false</default>
+                <label>Refused - Damaged</label>
+            </value>
+            <value>
+                <fullName>I167</fullName>
+                <default>false</default>
+                <label>Refused - No Answer</label>
+            </value>
+            <value>
+                <fullName>I168</fullName>
+                <default>false</default>
+                <label>Refused - Parcel Not Ready</label>
+            </value>
+            <value>
+                <fullName>I169</fullName>
+                <default>false</default>
+                <label>Refused - Nothing To Collect</label>
+            </value>
+            <value>
+                <fullName>I170</fullName>
+                <default>false</default>
+                <label>Failed at Hub</label>
+            </value>
+            <value>
+                <fullName>I171</fullName>
+                <default>false</default>
+                <label>Out of Spec</label>
+            </value>
+            <value>
+                <fullName>I172</fullName>
+                <default>false</default>
+                <label>Diverted via Alternate Network</label>
+            </value>
+            <value>
+                <fullName>I176</fullName>
+                <default>false</default>
+                <label>Unacceptable goods</label>
+            </value>
+            <value>
+                <fullName>I177</fullName>
+                <default>false</default>
+                <label>Addressee contacted</label>
+            </value>
+            <value>
+                <fullName>I178</fullName>
+                <default>false</default>
+                <label>Destroyed</label>
+            </value>
+            <value>
+                <fullName>I179</fullName>
+                <default>false</default>
+                <label>Delay caused beyond our control</label>
+            </value>
+            <value>
+                <fullName>I181</fullName>
+                <default>false</default>
+                <label>Customer delay - package delivered</label>
+            </value>
+            <value>
+                <fullName>I182</fullName>
+                <default>false</default>
+                <label>Delivered (exceptions)</label>
+            </value>
+            <value>
+                <fullName>I183</fullName>
+                <default>false</default>
+                <label>Held - addressee on strike</label>
+            </value>
+            <value>
+                <fullName>I184</fullName>
+                <default>false</default>
+                <label>Delivered - damaged</label>
+            </value>
+            <value>
+                <fullName>I185</fullName>
+                <default>false</default>
+                <label>Leave at local Post Office requested via SMS</label>
+            </value>
+            <value>
+                <fullName>I186</fullName>
+                <default>false</default>
+                <label>Leave with neighbour requested via SMS</label>
+            </value>
+            <value>
+                <fullName>I187</fullName>
+                <default>false</default>
+                <label>Delivery 2 working days request via SMS</label>
+            </value>
+            <value>
+                <fullName>I188</fullName>
+                <default>false</default>
+                <label>Next working day deliver request via SMS</label>
+            </value>
+            <value>
+                <fullName>I189</fullName>
+                <default>false</default>
+                <label>Leave at local Post Office requested via E-mail</label>
+            </value>
+            <value>
+                <fullName>I190</fullName>
+                <default>false</default>
+                <label>Leave with neighbour request via E-mail</label>
+            </value>
+            <value>
+                <fullName>I191</fullName>
+                <default>false</default>
+                <label>Deliver 2 working days request via Email</label>
+            </value>
+            <value>
+                <fullName>I192</fullName>
+                <default>false</default>
+                <label>Next working day delivery request via E-mail</label>
+            </value>
+            <value>
+                <fullName>I193</fullName>
+                <default>false</default>
+                <label>Start of delivery day interactive SMS sent</label>
+            </value>
+            <value>
+                <fullName>I194</fullName>
+                <default>false</default>
+                <label>Start of delivery day notification SMS sent</label>
+            </value>
+            <value>
+                <fullName>I195</fullName>
+                <default>false</default>
+                <label>Pre delivery notification SMS sent</label>
+            </value>
+            <value>
+                <fullName>I198</fullName>
+                <default>false</default>
+                <label>Email shipper - collection confirmation</label>
+            </value>
+            <value>
+                <fullName>I199</fullName>
+                <default>false</default>
+                <label>SMS recipient - collection confirmation</label>
+            </value>
+            <value>
+                <fullName>I200</fullName>
+                <default>false</default>
+                <label>Email shipper - collection failed</label>
+            </value>
+            <value>
+                <fullName>I201</fullName>
+                <default>false</default>
+                <label>Email Shipper - attempted delivery, not at home</label>
+            </value>
+            <value>
+                <fullName>I202</fullName>
+                <default>false</default>
+                <label>Email Shipper - attempted delivery, other</label>
+            </value>
+            <value>
+                <fullName>I203</fullName>
+                <default>false</default>
+                <label>SMS Recipient-attempted delivery, not at home</label>
+            </value>
+            <value>
+                <fullName>I204</fullName>
+                <default>false</default>
+                <label>SMS Recipient - attempted delivery, other</label>
+            </value>
+            <value>
+                <fullName>I205</fullName>
+                <default>false</default>
+                <label>Email Recipient-attempt delivery, not at home</label>
+            </value>
+            <value>
+                <fullName>I206</fullName>
+                <default>false</default>
+                <label>Email Recipient - attempted delivery, other</label>
+            </value>
+            <value>
+                <fullName>I207</fullName>
+                <default>false</default>
+                <label>Email Shipper - Handed over to Post Office</label>
+            </value>
+            <value>
+                <fullName>I208</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Handed over to Post Office</label>
+            </value>
+            <value>
+                <fullName>I209</fullName>
+                <default>false</default>
+                <label>Email Recipient - Handed over to Post Office</label>
+            </value>
+            <value>
+                <fullName>I210</fullName>
+                <default>false</default>
+                <label>Email Shipper - Delivered to neighbour</label>
+            </value>
+            <value>
+                <fullName>I211</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Delivered to neighbour</label>
+            </value>
+            <value>
+                <fullName>I212</fullName>
+                <default>false</default>
+                <label>Email Recipient - Delivered to neighbour</label>
+            </value>
+            <value>
+                <fullName>I213</fullName>
+                <default>false</default>
+                <label>Email Shipper - Delivered to safe place</label>
+            </value>
+            <value>
+                <fullName>I214</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Delivered to safe place</label>
+            </value>
+            <value>
+                <fullName>I215</fullName>
+                <default>false</default>
+                <label>Email Recipient - Delivered safe place</label>
+            </value>
+            <value>
+                <fullName>I216</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Scan to Route</label>
+            </value>
+            <value>
+                <fullName>I217</fullName>
+                <default>false</default>
+                <label>Email Recipient - Scan to Route</label>
+            </value>
+            <value>
+                <fullName>I218</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Scan into Depot</label>
+            </value>
+            <value>
+                <fullName>I219</fullName>
+                <default>false</default>
+                <label>Email Recipient - Scan into Depot</label>
+            </value>
+            <value>
+                <fullName>I220</fullName>
+                <default>false</default>
+                <label>SMS Recipient-Hand over to Post Office for Convenient Collect</label>
+            </value>
+            <value>
+                <fullName>I221</fullName>
+                <default>false</default>
+                <label>Email Recipient-Hand over to Post Office for Convenient Collect</label>
+            </value>
+            <value>
+                <fullName>I222</fullName>
+                <default>false</default>
+                <label>SMS Recipient -  PF collected from Post Office</label>
+            </value>
+            <value>
+                <fullName>I223</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Dropped off at PFW Depot</label>
+            </value>
+            <value>
+                <fullName>I224</fullName>
+                <default>false</default>
+                <label>SMS Recipient - Refused at Post Office for Convenient Collect</label>
+            </value>
+            <value>
+                <fullName>I225</fullName>
+                <default>false</default>
+                <label>Email Recipient - Refused Post Office for Convenient Collect</label>
+            </value>
+            <value>
+                <fullName>I226</fullName>
+                <default>false</default>
+                <label>Passport ID Delivery Track</label>
+            </value>
+            <value>
+                <fullName>I227</fullName>
+                <default>false</default>
+                <label>Driving Licence ID Delivery Track</label>
+            </value>
+            <value>
+                <fullName>I228</fullName>
+                <default>false</default>
+                <label>Company ID Track</label>
+            </value>
+            <value>
+                <fullName>I229</fullName>
+                <default>false</default>
+                <label>Armed Forces / Police ID Delivery Track</label>
+            </value>
+            <value>
+                <fullName>I230</fullName>
+                <default>false</default>
+                <label>Citizen Card ID Delivery Track</label>
+            </value>
+            <value>
+                <fullName>I231</fullName>
+                <default>false</default>
+                <label>Disability Blue Badge ID Delivery Track</label>
+            </value>
+            <value>
+                <fullName>I232</fullName>
+                <default>false</default>
+                <label>Deliver to Safeplace Track-Contract NSR</label>
+            </value>
+            <value>
+                <fullName>I233</fullName>
+                <default>false</default>
+                <label>Deliver to Safeplace Track - Del Ops NSR</label>
+            </value>
+            <value>
+                <fullName>I234</fullName>
+                <default>false</default>
+                <label>Deliver to Neighbour Track</label>
+            </value>
+            <value>
+                <fullName>I235</fullName>
+                <default>false</default>
+                <label>PIN Validation Successful</label>
+            </value>
+            <value>
+                <fullName>I236</fullName>
+                <default>false</default>
+                <label>No PIN - Failed PIN Validation</label>
+            </value>
+            <value>
+                <fullName>I237</fullName>
+                <default>false</default>
+                <label>Failed Maximum No of PIN Validation Attempts</label>
+            </value>
+            <value>
+                <fullName>I238</fullName>
+                <default>false</default>
+                <label>No PreAdvice Failed PIN Validation Attempt</label>
+            </value>
+            <value>
+                <fullName>I239</fullName>
+                <default>false</default>
+                <label>Email Day of Despatch Asst del notif</label>
+            </value>
+            <value>
+                <fullName>I240</fullName>
+                <default>false</default>
+                <label>SMS Day of Despatch Ast del notification</label>
+            </value>
+            <value>
+                <fullName>I241</fullName>
+                <default>false</default>
+                <label>Email Start of Day Asst del notification</label>
+            </value>
+            <value>
+                <fullName>I242</fullName>
+                <default>false</default>
+                <label>SMS Start of Day Asst del notification</label>
+            </value>
+            <value>
+                <fullName>I243</fullName>
+                <default>false</default>
+                <label>Email day of delivery notification</label>
+            </value>
+            <value>
+                <fullName>I245</fullName>
+                <default>false</default>
+                <label>Depot delay notification</label>
+            </value>
+            <value>
+                <fullName>I246</fullName>
+                <default>false</default>
+                <label>Vehicle breakdown - Delayed delivery today</label>
+            </value>
+            <value>
+                <fullName>I247</fullName>
+                <default>false</default>
+                <label>Vehicle breakdown - Delivery next working day</label>
+            </value>
+            <value>
+                <fullName>I248</fullName>
+                <default>false</default>
+                <label>Congestion - Delayed delivery today</label>
+            </value>
+            <value>
+                <fullName>I249</fullName>
+                <default>false</default>
+                <label>Congestion - Delivery next working day</label>
+            </value>
+            <value>
+                <fullName>I250</fullName>
+                <default>false</default>
+                <label>Adverse weather - Delayed delivery today</label>
+            </value>
+            <value>
+                <fullName>I251</fullName>
+                <default>false</default>
+                <label>Adverse weather - Delivery next working day</label>
+            </value>
+            <value>
+                <fullName>I252</fullName>
+                <default>false</default>
+                <label>To be delivered later than notified timeslot</label>
+            </value>
+            <value>
+                <fullName>I253</fullName>
+                <default>false</default>
+                <label>Failed del - delivery to be next working day</label>
+            </value>
+            <value>
+                <fullName>I254</fullName>
+                <default>false</default>
+                <label>Parcel Despatch-SMS Sent to Recipient</label>
+            </value>
+            <value>
+                <fullName>I255</fullName>
+                <default>false</default>
+                <label>Parcel Despatch-Email Sent to Recipient</label>
+            </value>
+            <value>
+                <fullName>I256</fullName>
+                <default>false</default>
+                <label>Recipient email address - notification not requested</label>
+            </value>
+            <value>
+                <fullName>I257</fullName>
+                <default>false</default>
+                <label>Recipient mobile number - notification not requested</label>
+            </value>
+            <value>
+                <fullName>I258</fullName>
+                <default>false</default>
+                <label>Recipient email address - domestic traffic</label>
+            </value>
+            <value>
+                <fullName>I259</fullName>
+                <default>false</default>
+                <label>Recipient mobile number - domestic traffic</label>
+            </value>
+            <value>
+                <fullName>I260</fullName>
+                <default>false</default>
+                <label>Sender email address - domestic traffic</label>
+            </value>
+            <value>
+                <fullName>I261</fullName>
+                <default>false</default>
+                <label>Sender mobile number - domestic traffic</label>
+            </value>
+            <value>
+                <fullName>I262</fullName>
+                <default>false</default>
+                <label>Advised as despatched from Germany</label>
+            </value>
+            <value>
+                <fullName>I263</fullName>
+                <default>false</default>
+                <label>Return completed</label>
+            </value>
+            <value>
+                <fullName>I264</fullName>
+                <default>false</default>
+                <label>Export item despatched from Domestic OE</label>
+            </value>
+            <value>
+                <fullName>I265</fullName>
+                <default>false</default>
+                <label>No Exchange item to return</label>
+            </value>
+            <value>
+                <fullName>I266</fullName>
+                <default>false</default>
+                <label>No valid ID presented</label>
+            </value>
+            <value>
+                <fullName>I267</fullName>
+                <default>false</default>
+                <label>Delayed delivery - Network - Email</label>
+            </value>
+            <value>
+                <fullName>I268</fullName>
+                <default>false</default>
+                <label>Delayed delivery - Network - SMS</label>
+            </value>
+            <value>
+                <fullName>I279</fullName>
+                <default>false</default>
+                <label>Delayed delivery - Depot - SMS</label>
+            </value>
+            <value>
+                <fullName>I280</fullName>
+                <default>false</default>
+                <label>Delayed delivery - Depot - Email</label>
+            </value>
+            <value>
+                <fullName>I294</fullName>
+                <default>false</default>
+                <label>Delivered with Age Verification ID - Passport</label>
+            </value>
+            <value>
+                <fullName>I295</fullName>
+                <default>false</default>
+                <label>Delivered with Age Verification ID - Driving Licence</label>
+            </value>
+            <value>
+                <fullName>I296</fullName>
+                <default>false</default>
+                <label>Delivered - Customer looks over 25</label>
+            </value>
+            <value>
+                <fullName>I299</fullName>
+                <default>false</default>
+                <label>Manually Sorted</label>
+            </value>
+            <value>
+                <fullName>I500</fullName>
+                <default>false</default>
+                <label>Collection from Post Office</label>
+            </value>
+            <value>
+                <fullName>I510</fullName>
+                <default>false</default>
+                <label>Convenient delivery handover to Post Office</label>
+            </value>
+            <value>
+                <fullName>I520</fullName>
+                <default>false</default>
+                <label>Convenient delivery customer collected</label>
+            </value>
+            <value>
+                <fullName>I525</fullName>
+                <default>false</default>
+                <label>Local collect customer collect (with fee)</label>
+            </value>
+            <value>
+                <fullName>I531</fullName>
+                <default>false</default>
+                <label>Customer unknown at address</label>
+            </value>
+            <value>
+                <fullName>I532</fullName>
+                <default>false</default>
+                <label>Item refused by customer</label>
+            </value>
+            <value>
+                <fullName>I533</fullName>
+                <default>false</default>
+                <label>Return of item requested by sender</label>
+            </value>
+            <value>
+                <fullName>I534</fullName>
+                <default>false</default>
+                <label>Time expired - no collection</label>
+            </value>
+            <value>
+                <fullName>I540</fullName>
+                <default>false</default>
+                <label>Item returned to PFW</label>
+            </value>
+            <value>
+                <fullName>I633</fullName>
+                <default>false</default>
+                <label>SMS Day of despatch notification</label>
+            </value>
+            <value>
+                <fullName>I634</fullName>
+                <default>false</default>
+                <label>SMS start of delivery day to Post Office</label>
+            </value>
+            <value>
+                <fullName>I635</fullName>
+                <default>false</default>
+                <label>EMAIL start of delivery day to Post Office</label>
+            </value>
+            <value>
+                <fullName>I636</fullName>
+                <default>false</default>
+                <label>SMS start of delivery day to Depot</label>
+            </value>
+            <value>
+                <fullName>I637</fullName>
+                <default>false</default>
+                <label>EMAIL start of delivery day to Depot</label>
+            </value>
+            <value>
+                <fullName>I638</fullName>
+                <default>false</default>
+                <label>SMS Collect from Post Office, notification</label>
+            </value>
+            <value>
+                <fullName>I639</fullName>
+                <default>false</default>
+                <label>EMAIL Collect from Post Office, notification</label>
+            </value>
+            <value>
+                <fullName>I640</fullName>
+                <default>false</default>
+                <label>SMS Day of Despatch, drop off at Post Office</label>
+            </value>
+            <value>
+                <fullName>I641</fullName>
+                <default>false</default>
+                <label>SMS Day of Despatch drop off at Depot</label>
+            </value>
+            <value>
+                <fullName>I667</fullName>
+                <default>false</default>
+                <label>Drop off at Post Office</label>
+            </value>
+            <value>
+                <fullName>I668</fullName>
+                <default>false</default>
+                <label>Drop off at Depot</label>
+            </value>
+            <value>
+                <fullName>I686</fullName>
+                <default>false</default>
+                <label>RTS - Cannot be exported</label>
+            </value>
+            <value>
+                <fullName>I687</fullName>
+                <default>false</default>
+                <label>Held at Customs Broker</label>
+            </value>
+            <value>
+                <fullName>IAHR</fullName>
+                <default>false</default>
+                <label>COLLECT TO DEL</label>
+            </value>
+            <value>
+                <fullName>IAIC</fullName>
+                <default>false</default>
+                <label>AMEND ITEMS COLL</label>
+            </value>
+            <value>
+                <fullName>IASP</fullName>
+                <default>false</default>
+                <label>SPLIT DELIVERY</label>
+            </value>
+            <value>
+                <fullName>IAX</fullName>
+                <default>false</default>
+                <label>NON-DELIVERY</label>
+            </value>
+            <value>
+                <fullName>IBIL</fullName>
+                <default>false</default>
+                <label>Consignment billed</label>
+            </value>
+            <value>
+                <fullName>IBPD</fullName>
+                <default>false</default>
+                <label>Delivered - IBPD</label>
+            </value>
+            <value>
+                <fullName>ICAC</fullName>
+                <default>false</default>
+                <label>Attempted collection</label>
+            </value>
+            <value>
+                <fullName>ICAX</fullName>
+                <default>false</default>
+                <label>Wrong delivery address</label>
+            </value>
+            <value>
+                <fullName>ICCP</fullName>
+                <default>false</default>
+                <label>Delivered to customers collection point</label>
+            </value>
+            <value>
+                <fullName>ICON</fullName>
+                <default>false</default>
+                <label>Conv del at Post Office</label>
+            </value>
+            <value>
+                <fullName>ICP</fullName>
+                <default>false</default>
+                <label>INVALID POSTCODE</label>
+            </value>
+            <value>
+                <fullName>IDD</fullName>
+                <default>false</default>
+                <label>Damaged and not delivered</label>
+            </value>
+            <value>
+                <fullName>IEAD</fullName>
+                <default>false</default>
+                <label>Email recipient attempted delivery notification</label>
+            </value>
+            <value>
+                <fullName>IECR</fullName>
+                <default>false</default>
+                <label>Email collection contact – collection request received</label>
+            </value>
+            <value>
+                <fullName>IENH</fullName>
+                <default>false</default>
+                <label>Enhanced Returns</label>
+            </value>
+            <value>
+                <fullName>IESA</fullName>
+                <default>false</default>
+                <label>Email shipper – Attempted delivery</label>
+            </value>
+            <value>
+                <fullName>IESC</fullName>
+                <default>false</default>
+                <label>Email shipper – collection confirmation - IESC</label>
+            </value>
+            <value>
+                <fullName>IESF</fullName>
+                <default>false</default>
+                <label>Email shipper – collection confirmation - IESF</label>
+            </value>
+            <value>
+                <fullName>IESR</fullName>
+                <default>false</default>
+                <label>Email shipper – collection request received</label>
+            </value>
+            <value>
+                <fullName>IEX0</fullName>
+                <default>false</default>
+                <label>Exchange outbound/inbound indicator</label>
+            </value>
+            <value>
+                <fullName>IEX1</fullName>
+                <default>false</default>
+                <label>Exchange instructions 1</label>
+            </value>
+            <value>
+                <fullName>IEX2</fullName>
+                <default>false</default>
+                <label>Exchange instructions 2</label>
+            </value>
+            <value>
+                <fullName>IEX3</fullName>
+                <default>false</default>
+                <label>Exchange instructions 3</label>
+            </value>
+            <value>
+                <fullName>IEXI</fullName>
+                <default>false</default>
+                <label>Inbound exchange reference for outbound consignment</label>
+            </value>
+            <value>
+                <fullName>IEXO</fullName>
+                <default>false</default>
+                <label>Outbound exchange reference for inbound consignment</label>
+            </value>
+            <value>
+                <fullName>IFIR</fullName>
+                <default>false</default>
+                <label>LQDG Firearms indicator</label>
+            </value>
+            <value>
+                <fullName>IHRM</fullName>
+                <default>false</default>
+                <label>Handover to Royal Mail</label>
+            </value>
+            <value>
+                <fullName>IKIL</fullName>
+                <default>false</default>
+                <label>LQDG kilo value</label>
+            </value>
+            <value>
+                <fullName>IL</fullName>
+                <default>false</default>
+                <label>Consignment lost</label>
+            </value>
+            <value>
+                <fullName>ILDR</fullName>
+                <default>false</default>
+                <label>Lost, damaged or returned</label>
+            </value>
+            <value>
+                <fullName>ILIT</fullName>
+                <default>false</default>
+                <label>LQDG litre value</label>
+            </value>
+            <value>
+                <fullName>ILQD</fullName>
+                <default>false</default>
+                <label>LQDG user description</label>
+            </value>
+            <value>
+                <fullName>IPAX</fullName>
+                <default>false</default>
+                <label>Delivery address suspect</label>
+            </value>
+            <value>
+                <fullName>IPDF</fullName>
+                <default>false</default>
+                <label>Delivered - IPDF</label>
+            </value>
+            <value>
+                <fullName>IPDP</fullName>
+                <default>false</default>
+                <label>Delivered - IPDP</label>
+            </value>
+            <value>
+                <fullName>IPMD</fullName>
+                <default>false</default>
+                <label>Delivery confirmed</label>
+            </value>
+            <value>
+                <fullName>IPWI</fullName>
+                <default>false</default>
+                <label>COLL ITEMS CHNG</label>
+            </value>
+            <value>
+                <fullName>ISAD</fullName>
+                <default>false</default>
+                <label>SMS attempted delivery notification</label>
+            </value>
+            <value>
+                <fullName>ISCR</fullName>
+                <default>false</default>
+                <label>SMS request received notification</label>
+            </value>
+            <value>
+                <fullName>ISJ</fullName>
+                <default>false</default>
+                <label>Length + Girth 3.M+</label>
+            </value>
+            <value>
+                <fullName>IUNC</fullName>
+                <default>false</default>
+                <label>LQDG UN code</label>
+            </value>
+            <value>
+                <fullName>IX</fullName>
+                <default>false</default>
+                <label>Miscellaneous</label>
+            </value>
+            <value>
+                <fullName>IXPC</fullName>
+                <default>false</default>
+                <label>Wrong Delivery Depot based on postcode</label>
+            </value>
+            <value>
+                <fullName>ICRR</fullName>
+                <default>false</default>
+                <label>Receipt of PreAdvice</label>
+            </value>
+            <value>
+                <fullName>IHPD</fullName>
+                <default>false</default>
+                <label>IHPD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

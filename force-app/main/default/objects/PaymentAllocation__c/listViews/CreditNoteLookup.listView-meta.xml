@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CreditNoteLookup</fullName>
+    <columns>Account__c</columns>
+    <columns>InvoiceNo__c</columns>
+    <columns>IsCreditNote__c</columns>
+    <columns>BankStatementEntryDate__c</columns>
+    <columns>BankstatementId__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>InvoiceNo__c</field>
+        <operation>equals</operation>
+        <value>LON000448545</value>
+    </filters>
+    <label>CreditNoteLookup</label>
+</ListView>

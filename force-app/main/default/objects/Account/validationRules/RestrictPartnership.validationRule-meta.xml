@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictPartnership</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(RecordType.DeveloperName != &apos;Location&apos;, RecordType.DeveloperName != &apos;Prospect&apos;, NOT(ISBLANK(Partnership__c)))</errorConditionFormula>
+    <errorDisplayField>Partnership__c</errorDisplayField>
+    <errorMessage>Partnership allowed only on Location or Prospect.</errorMessage>
+</ValidationRule>

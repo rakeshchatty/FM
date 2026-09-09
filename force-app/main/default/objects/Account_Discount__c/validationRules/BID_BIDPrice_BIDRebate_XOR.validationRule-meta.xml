@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BID_BIDPrice_BIDRebate_XOR</fullName>
+    <active>true</active>
+    <description>Cannot Have a BID Price and a BID Rebate</description>
+    <errorConditionFormula>BID_Price__c &gt; 0 &amp;&amp; BID_Rebate__c &gt; 0</errorConditionFormula>
+    <errorMessage>Cannot Have a BID Price and a BID Rebate</errorMessage>
+</ValidationRule>

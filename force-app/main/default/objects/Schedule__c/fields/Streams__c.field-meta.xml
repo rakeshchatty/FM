@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Streams__c</fullName>
+    <label>Streams</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mixed Recycling</fullName>
+                <default>false</default>
+                <label>Mixed Recycling</label>
+            </value>
+            <value>
+                <fullName>General Waste</fullName>
+                <default>false</default>
+                <label>General Waste</label>
+            </value>
+            <value>
+                <fullName>Food</fullName>
+                <default>false</default>
+                <label>Food</label>
+            </value>
+            <value>
+                <fullName>Cardboard</fullName>
+                <default>false</default>
+                <label>Cardboard</label>
+            </value>
+            <value>
+                <fullName>Coffee Grounds</fullName>
+                <default>false</default>
+                <label>Coffee Grounds</label>
+            </value>
+            <value>
+                <fullName>Glass</fullName>
+                <default>false</default>
+                <label>Glass</label>
+            </value>
+            <value>
+                <fullName>Food Recycling</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Food Recycling</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

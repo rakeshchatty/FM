@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Form_Builder__FT_Generate_Multiple_PDF</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>FT Generate Documents</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!requireScript(&quot;/soap/ajax/38.0/connection.js&quot;)}
+{!requireScript(&quot;/soap/ajax/38.0/apex.js&quot;)}
+var list = {!GETRECORDIDS($ObjectType.Lead)};
+if(list.length &gt; 0) {
+	try{
+		var url = sforce.apex.execute(&quot;Form_Builder.FormTitanUtils&quot;,&quot;getUrl&quot;,{recids : list.toString()});
+		if(url!=undefined){
+			var ftPopup = window.open(url, &quot;Generate PDF&quot;, &quot;width=950, height=700&quot;);
+			try{
+				if(!ftPopup || ftPopup.outerHeight === 0){
+					alert(&apos;{! $Label.form_builder__popup_error}&apos;);
+				}
+			}catch (err){
+				console.log(&apos;error&gt;&gt; &apos; + err);
+			}
+		}
+		else{
+			alert(&apos;{! $Label.form_builder__popup_error}&apos;);
+			console.log(&apos;&gt;&gt;&gt; &apos; + url);
+		}
+	}catch(err){
+		console.log(&apos;&gt;&gt;&gt; &apos; + err);
+		if(err!=null &amp;&amp; err.faultstring!=null){
+			alert(&apos;{! $Label.form_builder__error_has_occurred}&apos; +&apos;\n&apos; + err.faultstring);
+			if(err.faultstring.includes(&apos;NoUrlSettingException&apos;)){
+				var ftPopupSupport = window.open(&quot;https://support.formtitan.com/topics/Salesforce/Integration/Configure_your_custom_settings_URL_in_Salesforce&quot;, &quot;Generate PDF&quot;, &quot;width=950, height=700&quot;);
+				try{
+					if(!ftPopupSupport || ftPopupSupport.outerHeight === 0){
+						alert(&apos;{! $Label.form_builder__popup_error}&apos;);
+					}
+				}catch(e){
+					console.log(&apos;error&gt;&gt; &apos; + e);
+				}
+			}
+		}else{
+			
+		}
+		
+	}
+} else {
+	alert(&apos;{! $Label.form_builder__please_choose_at_least_1_record}&apos;);
+}</url>
+</WebLink>

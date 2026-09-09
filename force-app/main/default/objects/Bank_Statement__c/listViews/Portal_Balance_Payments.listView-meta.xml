@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Portal_Balance_Payments</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>Entry_Date__c</columns>
+    <columns>Account__c</columns>
+    <columns>Payment_Amount__c</columns>
+    <columns>Receipt_Amount__c</columns>
+    <columns>Transaction_Type__c</columns>
+    <columns>TransactionAmount__c</columns>
+    <columns>Unallocated_Amount__c</columns>
+    <columns>Document_name__c</columns>
+    <columns>CP_Transactional_Info__c</columns>
+    <columns>Customer_Reference__c</columns>
+    <columns>Transaction_Details__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Transaction_Type__c</field>
+        <operation>equals</operation>
+        <value>Credit Card</value>
+    </filters>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>notContain</operation>
+        <value>portal</value>
+    </filters>
+    <filters>
+        <field>Document_name__c</field>
+        <operation>notContain</operation>
+        <value>Account Payment,First Mile Payment</value>
+    </filters>
+    <label>Portal Balance &amp; Invoice Payments</label>
+</ListView>

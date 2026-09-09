@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>partner_products_with_3rd_party_supp</fullName>
+    <active>false</active>
+    <description>Only 3rd party products can be inserted on recurrings with 3rd party suppliers</description>
+    <errorConditionFormula>AND(CONTAINS(Product__r.Name , &quot;(P)&quot;),Supplier__r.Name = &quot;First Mile Ltd&quot;,
+OR(NOT(CONTAINS(Product__r.Name , &quot;(P)&quot;)),Supplier__r.Name &lt;&gt; &quot;First Mile Ltd&quot;,
+NOT(CONTAINS(Product__r.Name , &quot;Clearance&quot;))))</errorConditionFormula>
+    <errorDisplayField>Product__c</errorDisplayField>
+    <errorMessage>You must attach a partner product if the Supplier is not First Mile Ltd.</errorMessage>
+</ValidationRule>

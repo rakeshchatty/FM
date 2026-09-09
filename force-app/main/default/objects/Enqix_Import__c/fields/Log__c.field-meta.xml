@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Log__c</fullName>
+    <description>Log data for the operation, if number of statements falls out of Length, log attachment is generated and attached to the record.</description>
+    <inlineHelpText>Log data for the operation, if number of statements falls out of Length, log attachment is generated and attached to the record.</inlineHelpText>
+    <label>Log</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>7</visibleLines>
+</CustomField>

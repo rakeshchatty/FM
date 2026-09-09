@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireSuspendAndReactivateDatesTogether</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(AND((NOT(ISBLANK(Suspension_Start_Date__c))), ISBLANK(Reactivation_Start_Date__c )),AND((NOT(ISBLANK( Reactivation_Start_Date__c ))), ISBLANK( Suspension_Start_Date__c )))</errorConditionFormula>
+    <errorMessage>Both Suspension date &amp; Reactivation date should be provided together or empty.</errorMessage>
+</ValidationRule>

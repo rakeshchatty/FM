@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <label>Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accellor Improvements</fullName>
+                <default>false</default>
+                <label>Accellor Improvements</label>
+            </value>
+            <value>
+                <fullName>Ad-Hoc Portal request</fullName>
+                <default>false</default>
+                <label>Ad-Hoc Portal Request</label>
+            </value>
+            <value>
+                <fullName>Ad-Hoc Salesforce Request</fullName>
+                <default>false</default>
+                <label>Ad-Hoc Salesforce Request</label>
+            </value>
+            <value>
+                <fullName>CS Consultancy</fullName>
+                <default>false</default>
+                <label>CS Consultancy</label>
+            </value>
+            <value>
+                <fullName>CS Improvements</fullName>
+                <default>false</default>
+                <label>CS Improvements</label>
+            </value>
+            <value>
+                <fullName>Finance Improvements</fullName>
+                <default>false</default>
+                <label>Finance Improvements</label>
+            </value>
+            <value>
+                <fullName>Major Project</fullName>
+                <default>false</default>
+                <label>Major Project</label>
+            </value>
+            <value>
+                <fullName>Operations Improvements</fullName>
+                <default>false</default>
+                <label>Operations Improvements</label>
+            </value>
+            <value>
+                <fullName>Xpand Improvements</fullName>
+                <default>false</default>
+                <label>Xpand Improvements</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

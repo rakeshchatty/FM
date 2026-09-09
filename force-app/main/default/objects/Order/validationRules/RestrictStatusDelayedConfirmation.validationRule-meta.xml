@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictStatusDelayedConfirmation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(Status), TEXT(Status) = &apos;Delayed Confirmation&apos;)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Delayed Confirmation status is not allowed to be set manually.</errorMessage>
+</ValidationRule>

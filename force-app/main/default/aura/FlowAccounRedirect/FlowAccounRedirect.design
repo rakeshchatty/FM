@@ -1,0 +1,4 @@
+<design:component>
+    	<design:attribute name="Id" label="Id field" />
+    	<design:attribute name="selectedRecordId" label="Redirect to" />
+</design:component>

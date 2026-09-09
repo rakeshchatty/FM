@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Streams__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(CONTAINS( Collection_Schedule__r.Collection_Stream__c  , &quot;Mixed Recycling&quot;), &quot;Mixed Recycling&quot;+ &quot;;&quot;, NULL) + 
+IF(CONTAINS( Collection_Schedule__r.Collection_Stream__c , &quot;General Waste&quot;), &quot;General Waste&quot;+ &quot;;&quot;, NULL) + 
+IF(CONTAINS( Collection_Schedule__r.Collection_Stream__c, &quot;Food&quot;), &quot;Food&quot;+ &quot;;&quot;, NULL) +
+IF(CONTAINS( Collection_Schedule__r.Collection_Stream__c , &quot;Cardboard&quot;), &quot;Cardboard&quot;+ &quot;;&quot;, NULL) + IF(CONTAINS( Collection_Schedule__r.Collection_Stream__c , &quot;Coffee Grounds&quot;), &quot;Coffee Grounds&quot;+ &quot;;&quot;, NULL) + 
+IF(INCLUDES( Collection_Schedule__r.Days__c , &quot;Glass&quot;), &quot;Glass&quot;+ &quot;;&quot;, NULL)</formula>
+    <label>Streams</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

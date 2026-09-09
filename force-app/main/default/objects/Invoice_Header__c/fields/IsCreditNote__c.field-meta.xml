@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsCreditNote__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Field created to check for negative value invoices that must generate a bank statement and correspondent payment allocation</description>
+    <inlineHelpText>Field created to check for negative value invoices that must generate a bank statement and correspondent payment allocation</inlineHelpText>
+    <label>IsCreditNote</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

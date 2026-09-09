@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DiscountStartDate_FutureForSameDiscount</fullName>
+    <active>true</active>
+    <description>New Future Discount Start Date But Same Discount</description>
+    <errorConditionFormula>RecordType.DeveloperName != &apos;PartnerDiscount&apos; &amp;&amp; 
+PRIORVALUE( Product_Discount__c )  = Product_Discount__c &amp;&amp; 
+PRIORVALUE(  DiscountSupStartDate__c ) != DiscountSupStartDate__c &amp;&amp; $User.Username != &apos;integration@thefirstmile.co.uk&apos;</errorConditionFormula>
+    <errorMessage>New Future Discount Start Date But Same Discount</errorMessage>
+</ValidationRule>

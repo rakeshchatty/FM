@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>BID</fullName>
+        <default>false</default>
+        <label>BID</label>
+    </customValue>
+    <customValue>
+        <fullName>Bio-bean</fullName>
+        <default>false</default>
+        <label>Bio-bean</label>
+    </customValue>
+    <customValue>
+        <fullName>Decent Packaging</fullName>
+        <default>false</default>
+        <label>Decent Packaging</label>
+    </customValue>
+    <customValue>
+        <fullName>Estate</fullName>
+        <default>false</default>
+        <label>Estate</label>
+    </customValue>
+    <customValue>
+        <fullName>Fashion For Good - Polybags</fullName>
+        <default>false</default>
+        <label>Fashion For Good - Polybags</label>
+    </customValue>
+    <customValue>
+        <fullName>GSC</fullName>
+        <default>false</default>
+        <label>GSC</label>
+    </customValue>
+    <customValue>
+        <fullName>Huhtamaki</fullName>
+        <default>false</default>
+        <label>Huhtamaki</label>
+    </customValue>
+    <customValue>
+        <fullName>Julie&apos;s Bicycle</fullName>
+        <default>false</default>
+        <label>Julie&apos;s Bicycle</label>
+    </customValue>
+    <customValue>
+        <fullName>KeyKegs</fullName>
+        <default>false</default>
+        <label>KeyKegs</label>
+    </customValue>
+    <customValue>
+        <fullName>Kimberley Clark</fullName>
+        <default>false</default>
+        <label>Kimberley Clark</label>
+    </customValue>
+    <customValue>
+        <fullName>Midtown Business Club</fullName>
+        <default>false</default>
+        <label>Midtown Business Club</label>
+    </customValue>
+    <customValue>
+        <fullName>Oceanic Standard</fullName>
+        <default>false</default>
+        <label>Oceanic Standard</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>RecycleBox</fullName>
+        <default>false</default>
+        <label>RecycleBox</label>
+    </customValue>
+    <customValue>
+        <fullName>RecycleLab</fullName>
+        <default>false</default>
+        <label>RecycleLab</label>
+    </customValue>
+    <customValue>
+        <fullName>Street Association</fullName>
+        <default>false</default>
+        <label>Street Association</label>
+    </customValue>
+    <customValue>
+        <fullName>Sustainable Restaurant Association</fullName>
+        <default>false</default>
+        <label>Sustainable Restaurant Association</label>
+    </customValue>
+    <customValue>
+        <fullName>Tipa</fullName>
+        <default>false</default>
+        <label>Tipa</label>
+    </customValue>
+    <customValue>
+        <fullName>Tork</fullName>
+        <default>false</default>
+        <label>Tork</label>
+    </customValue>
+    <customValue>
+        <fullName>Vegware</fullName>
+        <default>false</default>
+        <label>Vegware</label>
+    </customValue>
+    <masterLabel>Partnership referred by</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

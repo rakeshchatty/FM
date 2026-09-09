@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:availableForFlowScreens,lightning:availableForFlowActions">
+    <aura:attribute name="object" type="String" default="Account" access="public"></aura:attribute>
+    <aura:attribute name="lookupField" type="String" default="ParentId" access="public"></aura:attribute>
+    <aura:attribute name="selectedRecordId" type="String" access="public"></aura:attribute>
+    
+    <lightning:recordEditForm objectApiName="{! v.object }">
+    	<lightning:inputField fieldName="{! v.lookupField }" onchange="{! c.handleOnChange }"/>
+    </lightning:recordEditForm>
+    
+</aura:component>

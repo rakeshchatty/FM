@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_DDDiscountDate_NewFuture</fullName>
+    <active>true</active>
+    <description>New Future Direct Debit Discount Start Date But Same Discount PerCent</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;Account&apos; || RecordType.DeveloperName = &apos;Partner&apos;)
+&amp;&amp; PRIORVALUE(Direct_Debit_Discount_Start_Date__c)
+!=
+Direct_Debit_Discount_Start_Date__c
+&amp;&amp; PRIORVALUE(Direct_Debit_Discount__c)=Direct_Debit_Discount__c</errorConditionFormula>
+    <errorDisplayField>Direct_Debit_Discount_Start_Date__c</errorDisplayField>
+    <errorMessage>New Future Direct Debit Discount Start Date But Same Discount PerCent</errorMessage>
+</ValidationRule>

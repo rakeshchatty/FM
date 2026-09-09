@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completed_by_DriverApp__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Marked as true if driver presses &quot;complete&quot; on the DriverApp job.</description>
+    <label>Completed by DriverApp</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

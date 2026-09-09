@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Rounds_Waiting_To_End</fullName>
+    <columns>NAME</columns>
+    <columns>RoundId__c</columns>
+    <columns>DriverId__c</columns>
+    <columns>Vehicle__c</columns>
+    <columns>Ops_Start_Time__c</columns>
+    <columns>Ops_End_Time__c</columns>
+    <columns>DieselPumped__c</columns>
+    <columns>Issues__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <filters>
+        <field>Vehicle__c</field>
+        <operation>equals</operation>
+        <value>LT72HGG</value>
+    </filters>
+    <label>All Rounds Waiting to zEnd</label>
+</ListView>

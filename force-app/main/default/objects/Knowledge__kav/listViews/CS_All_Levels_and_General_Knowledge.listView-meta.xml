@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_All_Levels_and_General_Knowledge</fullName>
+    <columns>ARTICLE_NUMBER</columns>
+    <columns>TITLE</columns>
+    <columns>VALIDATION_STATUS_ENUM</columns>
+    <columns>Category__c</columns>
+    <columns>PUBLISH_STATUS</columns>
+    <columns>LANGUAGE</columns>
+    <columns>LAST_PUBLISHED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>PUBLISH_STATUS</field>
+        <operation>equals</operation>
+        <value>2</value>
+    </filters>
+    <label>CS - All Levels and General Knowledge</label>
+</ListView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Blank_Addresses</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+ISBLANK(BillingStreet),
+ISBLANK(BillingCity), 
+ISBLANK(BillingState), 
+ISBLANK(BillingPostalCode),
+ISBLANK(BillingCountry),
+ISBLANK(ShippingStreet),
+ISBLANK(ShippingCity),
+ISBLANK(ShippingState),
+ISBLANK(ShippingCountry__c)
+)</errorConditionFormula>
+    <errorMessage>Street, City, State, Postcode or Country cannot be blank for Address/Delivery Address</errorMessage>
+</ValidationRule>

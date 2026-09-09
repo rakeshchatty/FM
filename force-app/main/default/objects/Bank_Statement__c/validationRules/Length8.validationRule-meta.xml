@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Length8</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(LEN(Bank_Account_Number__c) &lt;&gt; 8, NOT(ISBLANK(Bank_Account_Number__c )))</errorConditionFormula>
+    <errorDisplayField>Bank_Account_Number__c</errorDisplayField>
+    <errorMessage>Account Number needs to have a length of 8 characters.</errorMessage>
+</ValidationRule>

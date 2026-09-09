@@ -1,0 +1,9 @@
+<aura:component controller="CloseCaseController" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="record" type="Case"/>
+    <aura:attribute name="caseStatus" type="String"/>
+    <aura:attribute name="caseId" type="String" default="{!v.recordId}"/>
+    
+   <ui:button aura:id="mybtn" class="slds-button slds-button_success" label="Close Case" press="{!c.closeCase}" disabled="{!v.record.IsClosed == true ? 'true' : 'false'}"/>
+   
+</aura:component>

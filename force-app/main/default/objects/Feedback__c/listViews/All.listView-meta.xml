@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Category__c</columns>
+    <columns>Requested_by__c</columns>
+    <columns>Description__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Platform_type__c</columns>
+    <columns>Feedback_type__c</columns>
+    <columns>Supporting_Team__c</columns>
+    <columns>Priority_level__c</columns>
+    <columns>Project_Size__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Closed no action required,Completed</value>
+    </filters>
+    <label>All</label>
+</ListView>

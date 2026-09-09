@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Garage__c</fullName>
+    <label>Garage</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Double4</fullName>
+                <default>false</default>
+                <label>Double4</label>
+            </value>
+            <value>
+                <fullName>Dustsweep Repairs</fullName>
+                <default>false</default>
+                <label>Dustsweep Repairs</label>
+            </value>
+            <value>
+                <fullName>Endurance Vehicle Solutions</fullName>
+                <default>false</default>
+                <label>Endurance Vehicle Solutions</label>
+            </value>
+            <value>
+                <fullName>HTC Park Royal</fullName>
+                <default>false</default>
+                <label>HTC Park Royal</label>
+            </value>
+            <value>
+                <fullName>Motus Trucks &amp; Vans</fullName>
+                <default>false</default>
+                <label>Motus Trucks &amp; Vans</label>
+            </value>
+            <value>
+                <fullName>NRG Riverside</fullName>
+                <default>false</default>
+                <label>NRG Riverside</label>
+            </value>
+            <value>
+                <fullName>NTM-GB Ltd</fullName>
+                <default>false</default>
+                <label>NTM-GB Ltd</label>
+            </value>
+            <value>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+                <label>OTHER</label>
+            </value>
+            <value>
+                <fullName>PR Fleet</fullName>
+                <default>false</default>
+                <label>PR Fleet</label>
+            </value>
+            <value>
+                <fullName>Q Metals</fullName>
+                <default>false</default>
+                <label>Q Metals</label>
+            </value>
+            <value>
+                <fullName>RVS</fullName>
+                <default>false</default>
+                <label>RVS</label>
+            </value>
+            <value>
+                <fullName>Rygor Truck center</fullName>
+                <default>false</default>
+                <label>Rygor Truck center</label>
+            </value>
+            <value>
+                <fullName>UPK RMB</fullName>
+                <default>false</default>
+                <label>UPK RMB</label>
+            </value>
+            <value>
+                <fullName>Wilsway Motors</fullName>
+                <default>false</default>
+                <label>Wilsway Motors</label>
+            </value>
+            <value>
+                <fullName>YARD OFF ROAD AWAITING ENGINEER</fullName>
+                <default>false</default>
+                <label>YARD OFF ROAD AWAITING ENGINEER</label>
+            </value>
+            <value>
+                <fullName>YARD OFF ROAD LONG TERM</fullName>
+                <default>false</default>
+                <label>YARD OFF ROAD LONG TERM</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireWasteCategory</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISPICKVAL(WTN_Product__c, &apos;Season Ticket&apos;), ISPICKVAL(WTN_Product__c, &apos;Ad-Hoc&apos;)), ISBLANK(Waste_Category__c))</errorConditionFormula>
+    <errorDisplayField>Waste_Category__c</errorDisplayField>
+    <errorMessage>Waste Category is required for selected WTN Product.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marylebone_High_Street</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Notes__c</columns>
+    <columns>fine_status__c</columns>
+    <columns>Field_Sales_Visited__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.STREET</field>
+        <operation>contains</operation>
+        <value>marylebone</value>
+    </filters>
+    <label>Marylebone High Street</label>
+</ListView>

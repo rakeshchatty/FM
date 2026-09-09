@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credited_Invoices</fullName>
+    <columns>Account__c</columns>
+    <columns>AmountOutstanding__c</columns>
+    <columns>DueOutstandingAmount__c</columns>
+    <columns>Original_Invoice_Number_to_Credit__c</columns>
+    <columns>Original_Invoice_to_Credit__c</columns>
+    <columns>InvoiceNo__c</columns>
+    <columns>NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>AmountOutstanding__c</field>
+        <operation>greaterThan</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>DueOutstandingAmount__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Credited Invoices</label>
+</ListView>

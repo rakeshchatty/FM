@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictInvoiceFrequencyOverride</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  OR(
+    RecordType.DeveloperName = &apos;Account&apos;,
+    RecordType.DeveloperName = &apos;Partner&apos;,
+    ISBLANK(ParentId)
+  ),
+  IsInvoiceFrequencyOverride__c
+)</errorConditionFormula>
+    <errorDisplayField>IsInvoiceFrequencyOverride__c</errorDisplayField>
+    <errorMessage>Invoice Frequency Override must be false for Account, Partner or Location, Prospect without Account.</errorMessage>
+</ValidationRule>

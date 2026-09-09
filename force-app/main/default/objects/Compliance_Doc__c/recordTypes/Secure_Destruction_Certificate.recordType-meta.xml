@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secure_Destruction_Certificate</fullName>
+    <active>true</active>
+    <label>Secure Destruction Certificate</label>
+    <picklistValues>
+        <picklist>EWC_Categories__c</picklist>
+        <values>
+            <fullName>Batteries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulky Items</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulky Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cardboard Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cooking Oil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dry Mixed Recycling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fluorescent Tube %26 Bulbs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kitchen and canteen food waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mixed commercial waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mixed glass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mixed office paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paint containing dangerous substances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paint not containing dangerous substances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perspex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plasterboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer toner and cartridges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Textiles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WOOD PANELS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste CD and media tapes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste electronics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste stationery equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wifgets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wooden Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>sausage and mach</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Confirmed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

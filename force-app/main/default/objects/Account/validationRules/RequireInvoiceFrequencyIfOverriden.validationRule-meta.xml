@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireInvoiceFrequencyIfOverriden</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  OR(RecordType.DeveloperName = &apos;Location&apos;, RecordType.DeveloperName = &apos;Prospect&apos;),
+  IsInvoiceFrequencyOverride__c, ISBLANK(TEXT(InvoiceFrequency__c))
+)</errorConditionFormula>
+    <errorDisplayField>InvoiceFrequency__c</errorDisplayField>
+    <errorMessage>Invoice Frequency is required when Frequency Override is true.</errorMessage>
+</ValidationRule>

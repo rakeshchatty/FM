@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Scheduled Waste and Recycling Collections</fullName>
+        <default>false</default>
+        <label>Scheduled Waste and Recycling Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Waste/Recycling Collections</fullName>
+        <default>false</default>
+        <label>Other Waste/Recycling Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Secure Shredding</fullName>
+        <default>false</default>
+        <label>Secure Shredding</label>
+    </customValue>
+    <customValue>
+        <fullName>Clearance/Junk Removal</fullName>
+        <default>false</default>
+        <label>Clearance/Junk Removal</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Energy</fullName>
+        <default>false</default>
+        <label>Business Energy</label>
+    </customValue>
+    <customValue>
+        <fullName>Reporting and Data</fullName>
+        <default>false</default>
+        <label>Reporting and Data</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Partnership</fullName>
+        <default>false</default>
+        <label>Product Partnership</label>
+    </customValue>
+    <masterLabel>Services</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

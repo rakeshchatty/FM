@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Location</fullName>
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Location</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&apos;/soap/ajax/27.0/connection.js&apos;)}
+ 
+getDate = function(dateObj){
+var day = dateObj.getDay() &lt; 9 ? &apos;0&apos;+dateObj.getDay() : dateObj.getDay();
+var month = dateObj.getMonth() &lt; 9 ? &apos;0&apos;+dateObj.getMonth() : dateObj.getMonth();
+ 
+return dateObj.getFullYear()+&apos;-&apos;+month+&apos;-&apos;+day;
+}
+ 
+var oppty = new sforce.SObject(&apos;Account&apos;);
+ 
+Account.Parent = &apos;{!Account.Name};
+ 
+result = sforce.connection.create([oppty]);
+ 
+if(result[0].success == &apos;true&apos;){
+    alert(&apos;An New Opportunity with Name - &apos; + oppty.Name + &apos; was Created Successfully.&apos;);
+}</url>
+</WebLink>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Bank</fullName>
+        <default>false</default>
+        <label>Bank</label>
+    </customValue>
+    <customValue>
+        <fullName>Cáfe/Restaurant</fullName>
+        <default>false</default>
+        <label>Cáfe/Restaurant</label>
+    </customValue>
+    <customValue>
+        <fullName>Hair/Beauty Salon</fullName>
+        <default>false</default>
+        <label>Hair/Beauty Salon</label>
+    </customValue>
+    <customValue>
+        <fullName>Hotel</fullName>
+        <default>false</default>
+        <label>Hotel</label>
+    </customValue>
+    <customValue>
+        <fullName>Medical/Dentist/Vet Clinic</fullName>
+        <default>false</default>
+        <label>Medical/Dentist/Vet Clinic</label>
+    </customValue>
+    <customValue>
+        <fullName>Office</fullName>
+        <default>false</default>
+        <label>Office</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Pub</fullName>
+        <default>false</default>
+        <label>Pub</label>
+    </customValue>
+    <customValue>
+        <fullName>Residential Property</fullName>
+        <default>false</default>
+        <label>Residential Property</label>
+    </customValue>
+    <customValue>
+        <fullName>Retailer/Shop</fullName>
+        <default>false</default>
+        <label>Retailer/Shop</label>
+    </customValue>
+    <customValue>
+        <fullName>School/College/University</fullName>
+        <default>false</default>
+        <label>School/College/University</label>
+    </customValue>
+    <customValue>
+        <fullName>Theatre/Venue</fullName>
+        <default>false</default>
+        <label>Theatre/Venue</label>
+    </customValue>
+    <customValue>
+        <fullName>Restaurant</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Restaurant</label>
+    </customValue>
+    <customValue>
+        <fullName>Cafe</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cafe</label>
+    </customValue>
+    <customValue>
+        <fullName>Hospitality</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Hospitality</label>
+    </customValue>
+    <customValue>
+        <fullName>Retail</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Retail</label>
+    </customValue>
+    <masterLabel>Industry</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

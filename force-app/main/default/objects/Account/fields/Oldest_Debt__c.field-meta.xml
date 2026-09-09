@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Oldest_Debt__c</fullName>
+    <label>Oldest Debt</label>
+    <summarizedField>Invoice_Header__c.CreatedDate__c</summarizedField>
+    <summaryFilterItems>
+        <field>Invoice_Header__c.AmountOutstanding__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Invoice_Header__c.Account__c</summaryForeignKey>
+    <summaryOperation>min</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

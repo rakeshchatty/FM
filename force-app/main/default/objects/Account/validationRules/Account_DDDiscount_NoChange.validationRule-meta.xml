@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_DDDiscount_NoChange</fullName>
+    <active>true</active>
+    <description>Cannot Enter a Change in Direct Debit Discount PerCent Without a Start Date of Today or Later</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;Account&apos; || RecordType.DeveloperName = &apos;Partner&apos;)
+&amp;&amp; PRIORVALUE(Direct_Debit_Discount_Start_Date__c)=
+Direct_Debit_Discount_Start_Date__c
+&amp;&amp; PRIORVALUE( Enqix_DDDiscount__c )!= Enqix_DDDiscount__c</errorConditionFormula>
+    <errorDisplayField>Enqix_DDDiscount__c</errorDisplayField>
+    <errorMessage>Cannot Enter a Change in Direct Debit Discount PerCent Without a Start Date of Today or Later</errorMessage>
+</ValidationRule>

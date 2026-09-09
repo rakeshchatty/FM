@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoice_Query_Reason__c</fullName>
+    <label>Invoice Query Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Incorrect Pricing</fullName>
+                <default>false</default>
+                <label>Incorrect Pricing</label>
+            </value>
+            <value>
+                <fullName>Missed Collections/Service Issues</fullName>
+                <default>false</default>
+                <label>Missed Collections/Service Issues</label>
+            </value>
+            <value>
+                <fullName>Incorrect payment allocation</fullName>
+                <default>false</default>
+                <label>Incorrect payment allocation</label>
+            </value>
+            <value>
+                <fullName>Incorrect Order Quantity or Product</fullName>
+                <default>false</default>
+                <label>Incorrect Order Quantity or Product</label>
+            </value>
+            <value>
+                <fullName>Wrong PO/No PO</fullName>
+                <default>false</default>
+                <label>Wrong PO/No PO</label>
+            </value>
+            <value>
+                <fullName>Dead Location</fullName>
+                <default>false</default>
+                <label>Dead Location</label>
+            </value>
+            <value>
+                <fullName>Wrong Parent Account</fullName>
+                <default>false</default>
+                <label>Wrong Parent Account</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+.THIS:hover { 
+  	background-color: #ecf7cd;
+}
+
+.THIS.selected { 
+  	background-color: #dceab4;
+}
+.THIS.exceedsAmount{
+    color: cornsilk;
+    background-color: lightgray;  
+}

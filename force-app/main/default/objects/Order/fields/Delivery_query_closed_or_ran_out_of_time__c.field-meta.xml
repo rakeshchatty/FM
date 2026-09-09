@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_query_closed_or_ran_out_of_time__c</fullName>
+    <formula>OR( reason__c = &quot;Customer Closed&quot;,reason__c = &quot;Ran out of Time&quot;)</formula>
+    <label>Delivery query closed or ran out of time</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

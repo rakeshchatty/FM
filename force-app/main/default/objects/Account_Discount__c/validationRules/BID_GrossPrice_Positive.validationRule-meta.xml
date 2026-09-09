@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BID_GrossPrice_Positive</fullName>
+    <active>true</active>
+    <description>Gross Price Cannot Be Negative</description>
+    <errorConditionFormula>RecordType.DeveloperName = &apos;PartnerDiscount&apos; &amp;&amp; 
+(ISBLANK(Gross_Price__c) || Gross_Price__c &lt; 0)</errorConditionFormula>
+    <errorDisplayField>Gross_Price__c</errorDisplayField>
+    <errorMessage>Gross Price Cannot Be Negative</errorMessage>
+</ValidationRule>

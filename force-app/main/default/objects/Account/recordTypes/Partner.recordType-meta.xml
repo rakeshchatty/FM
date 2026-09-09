@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Partner_Compact</compactLayoutAssignment>
+    <description>BIDS and Partnerships</description>
+    <label>Partner</label>
+    <picklistValues>
+        <picklist>AccountSource</picklist>
+        <values>
+            <fullName>Account Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brokers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Don%27t know</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid Lead Generation Lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procurement Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospecting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RWM Exhibition 2024</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommended by another customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saw our trucks%2Fsacks%2Fbins</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search Engine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sopro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Used to use First Mile</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Account_Service_Status__c</picklist>
+        <values>
+            <fullName>Credit Card Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suspended</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>At_risk_2020_Price_Change__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unclear from response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BID__c</picklist>
+        <values>
+            <fullName>Better Bankside</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bond Street Association</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brixton BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Camden Town Unlimited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chancery Lane Association</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clapham BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colmore BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ealing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euston Town BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fitzrovia Partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grosvenor Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hammersmith</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heart of London</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ilford BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>InStreatham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kingston First</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lambeth Borough</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Love Wimbledon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New West End Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paddington</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stratford BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Successful Sutton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Team London Bridge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twickenham BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vauxhall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waterloo Quarter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>West Ealing BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>West London Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Collection_Frequency__c</picklist>
+        <values>
+            <fullName>Fortnightly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract_Under_Review__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contract under review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dormant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upcoming tender</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Council__c</picklist>
+        <values>
+            <fullName>Barking %26 Dagenham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barnet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bexley</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Birmingham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Camden</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>City of London</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Croydon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ealing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enfield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greenwich</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hackney</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Haringey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Harrow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Havering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hillingdon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hounslow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Islington</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kensington and Chelsea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kingston upon Thames</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lambeth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lewisham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More than one</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Newham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Redbridge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Richmond upon Thames</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solihull</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Southwark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surrey County Council</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sutton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tower Hamlets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waltham Forest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wandsworth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Westminster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>hammersmith and fulham</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CreditDays__c</picklist>
+        <values>
+            <fullName>0</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>45</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>90</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Credit_Control_Status__c</picklist>
+        <values>
+            <fullName>Internal Chase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Write-Off</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Credit_risk__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moderate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Rated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Very Low</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Dashboard_Report__c</picklist>
+        <values>
+            <fullName>Daily</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Enqix_Classification__c</picklist>
+        <values>
+            <fullName>BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indirect Large</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indirect Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Small</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Enqix_Payment_Method__c</picklist>
+        <values>
+            <fullName>Direct Debit</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Enqix_ReasonMarkedDead__c</picklist>
+        <values>
+            <fullName>Data Clean Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dormant Process</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Estate__c</picklist>
+        <values>
+            <fullName>Bromley BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate %E2%80%93 Hotels</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate - Kings Road</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate - Landlord</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate - Pavilion Road</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate - Pont Street</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadogan Estate - Sloane St %26 Square</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clarence Street</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grosvenor - Directly Managed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grosvenor - Green Leases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grosvenor - Indirectly Managed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hampstead - Heath Street</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>King%E2%80%99s Road Partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Muswell Hill Broadway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Northcoate Road</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Penge SE20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rye Lane</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shaftesbury %E2%80%93 Carnaby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shaftesbury %E2%80%93 Chinatown London</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shaftesbury %E2%80%93 Seven Dials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The Quadrant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uxbridge Road</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Expected_Sales_Category__c</picklist>
+        <values>
+            <fullName>Indirect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Micro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Small</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fall_Back_Weight_Type__c</picklist>
+        <values>
+            <fullName>Company Average Weight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Weight</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Financial_Year_End__c</picklist>
+        <values>
+            <fullName>April</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>August</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>December</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>February</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>January</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>July</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>June</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>March</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>May</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>November</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>October</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>September</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry</picklist>
+        <values>
+            <fullName>Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Café%2FRestaurant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hair%2FBeauty Salon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hotel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical%2FDentist%2FVet Clinic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pub</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Residential Property</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retailer%2FShop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School%2FCollege%2FUniversity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Theatre%2FVenue</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>InvoiceFrequency__c</picklist>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MarketingCat__c</picklist>
+        <values>
+            <fullName>Existing Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Indirect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Member_Report__c</picklist>
+        <values>
+            <fullName>Daily</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Open_during_Covid__c</picklist>
+        <values>
+            <fullName>Confirmed Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confirmed Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Orders_Report__c</picklist>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ownership</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidiary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Parter_type__c</picklist>
+        <values>
+            <fullName>BID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply chain product</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payment_Method__c</picklist>
+        <values>
+            <fullName>Credit Card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Debit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Preferred_Collection_Time__c</picklist>
+        <values>
+            <fullName>AM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Prospecting_Project__c</picklist>
+        <values>
+            <fullName>Bio Bean</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bond Street Association</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chancery Lane Association</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Retailers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>PR Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serviced Office Buildings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>V%2E Large Prospects</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rating</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unqualified</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Urgent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Recycling_Report__c</picklist>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Report_Type__c</picklist>
+        <values>
+            <fullName>CO2 Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dashboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enqix Spreadsheet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Group Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Linked Account CO2 Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Partnership CO2 Report</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Service_Issue_Report__c</picklist>
+        <values>
+            <fullName>Daily</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quartery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Source__c</picklist>
+        <values>
+            <fullName>500 offices project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Broker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chatter Picture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Council website referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Don%27t know</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Got a leaflet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Networking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office* Exhibition %282012%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saw trucks or sacks on street%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Used us before</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Business Improvement District</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cleaning Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facility Management Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hotel Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-Tenanted Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office %28Single Site%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Sector Building</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Restaurant%2FPub Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retailer %28Food%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retailer %28Other%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School%2FCollege%2FUniversity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Venue%2FTheatre Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste Broker</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>X2024_Price_Trial__c</picklist>
+        <values>
+            <fullName>Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Higher Price</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lower Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>contaminationRule__c</picklist>
+        <values>
+            <fullName>Charge</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>No Charge</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

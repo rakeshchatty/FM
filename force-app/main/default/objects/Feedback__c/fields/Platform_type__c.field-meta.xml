@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platform_type__c</fullName>
+    <label>Platform type</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Azure</fullName>
+                <default>false</default>
+                <label>Azure</label>
+            </value>
+            <value>
+                <fullName>Customer portal</fullName>
+                <default>false</default>
+                <label>Customer portal</label>
+            </value>
+            <value>
+                <fullName>Detrack</fullName>
+                <default>false</default>
+                <label>Detrack</label>
+            </value>
+            <value>
+                <fullName>Drivers App</fullName>
+                <default>false</default>
+                <label>Drivers App</label>
+            </value>
+            <value>
+                <fullName>Integration</fullName>
+                <default>false</default>
+                <label>Integration</label>
+            </value>
+            <value>
+                <fullName>Salesforce</fullName>
+                <default>true</default>
+                <label>Salesforce</label>
+            </value>
+            <value>
+                <fullName>Sendgrid</fullName>
+                <default>false</default>
+                <label>Sendgrid</label>
+            </value>
+            <value>
+                <fullName>Supplier App</fullName>
+                <default>false</default>
+                <label>Supplier App</label>
+            </value>
+            <value>
+                <fullName>Enqix</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Enqix</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

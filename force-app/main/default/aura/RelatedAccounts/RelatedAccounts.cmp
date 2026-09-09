@@ -1,0 +1,91 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+                access="global"
+                controller="RelatedAccountsController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="acccountList" type="Account[]"/>
+    <aura:attribute name="paginationList" type="Account[]"/>    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="pageSize" type="Integer" default="5"/>
+    <aura:attribute name="totalSize" type="Integer"/>
+    <aura:attribute name="start" type="Integer" />
+    <aura:attribute name="end" type="Integer"/>
+    <aura:attribute name="showLoader" type="Boolean" default="false" />
+    <aura:attribute name="showPagination" type="Boolean" default="false" />
+    
+    <div class="slds">
+        <div class="accounts-wrapper">
+            <span class="slds-text-heading--small slds-truncate slds-accounts-heading">Child Accounts
+            	&nbsp;({!v.totalSize})
+            </span>
+            
+            <aura:if isTrue="{!v.totalSize > 0}">
+            <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                <thead> 
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Account Name">Account Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Customer ?">Customer ?</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Partnetship">Partnetship</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.paginationList}" var="account">
+                        <aura:if isTrue="{!account.Id}">
+                            <tr class="slds-hint-parent">
+                                <th scope="row" data-label="Account Name">
+                                    <div class="slds-truncate" title="{!account.Name}"> 
+                                        <button type="button" id="{!account.Id}" class="slds-link" onclick="{!c.goToDetailsPage}">
+                                            {!account.Name}
+                                        </button>
+                                    </div>
+                                </th>
+                                <td data-label="Customer ?">
+                                    <div class="slds-truncate" title="{!account.IMAGE__c}">
+                                        <aura:unescapedHtml value="{!account.IMAGE__c}" />
+                                    </div>
+                                </td>
+                                <td data-label="Partnetship">
+                                    <div class="slds-truncate" title="Partnership">
+                                        <button type="button" id="{!account.Partnership__r.Id}" class="slds-link" onclick="{!c.goToDetailsPage}">
+                                            {!account.Partnership__r.Name}
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </aura:if>
+                    </aura:iteration>
+                </tbody>
+                <aura:if isTrue="{!v.showPagination}">
+                <tfoot>
+                    <tr>
+                        <td colspan="3" align="center" class="pagination">
+                            <lightning:button label="Previous" disabled="{!v.start == 0}"  onclick="{!c.previous}" />
+                            <lightning:button label="Next" disabled="{!v.end >= v.totalSize}" onclick="{!c.next}" />
+                        </td>
+                    </tr>
+                </tfoot>
+                </aura:if>
+            </table>
+                <aura:set attribute="else">
+                    No Record Exist
+                </aura:set>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.showLoader}">
+                <div class="slds-spinner_container">
+                    <div role="status" class="slds-spinner slds-spinner_brand slds-spinner_medium">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

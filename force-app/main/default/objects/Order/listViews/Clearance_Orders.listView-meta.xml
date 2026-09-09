@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clearance_Orders</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>ORDERS.ORDER_NUMBER</columns>
+    <columns>SALES.ACCOUNT.NAME</columns>
+    <columns>ORDERS.EFFECTIVE_DATE</columns>
+    <columns>ORDERS.TOTAL_AMOUNT</columns>
+    <columns>Delivery_Date__c</columns>
+    <columns>ORDERS.STATUS</columns>
+    <columns>Invoice_Created__c</columns>
+    <columns>is_Salesforce__c</columns>
+    <columns>PO_for_Supplier__c</columns>
+    <columns>Supplier_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ORDERS.STATUS</field>
+        <operation>equals</operation>
+        <value>Invoiced</value>
+    </filters>
+    <filters>
+        <field>Clearance_Order__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Supplier_Status__c</field>
+        <operation>equals</operation>
+        <value>Completed</value>
+    </filters>
+    <label>Clearance Orders Not Invoiced</label>
+</ListView>

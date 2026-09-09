@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Priority__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Sub_Type__c),
+&quot;Access issue&quot;, 1,
+&quot;Chasing delivery or collection ETA&quot;, 1,
+&quot;Clearance&quot;, 1,
+&quot;Collection Complete&quot;, 3,
+&quot;Collection Round Service Missed&quot;, 1,
+&quot;Contamination&quot;,3,&quot;Courier&quot;, 1,
+&quot;Credit Note&quot;, 3,
+&quot;Delivery Round Service Missed&quot;, 1,
+&quot;Health and Safety&quot;, 1,
+&quot;Invoice Query&quot;, 1,
+&quot;Marketing/Sales Enquiry&quot;, 3,
+&quot;Nothing to collect&quot;, 3,
+&quot;Other query&quot;, 1,
+&quot;Overweight&quot;, 3,
+&quot;Pallets or Other&quot;, 1,
+&quot;Received a Fine&quot;, 1,
+&quot;Report a customer portal bug&quot;, 1,
+&quot;Sacks&quot;, 1, &quot;SPAM/Auto-Responder&quot;, 3,
+&quot;Standard&quot;, 1,
+&quot;Subcontractor&quot;, 1,
+&quot;Unmarked Waste&quot;, 3,
+&quot;Wheelie Bin&quot;, 1,
+&quot;Formal Complaint&quot;, 3,
+&quot;Making payment&quot;, 1,
+2)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Case Priority</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

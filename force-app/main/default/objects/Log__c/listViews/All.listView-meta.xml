@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Record_ID__c</columns>
+    <columns>Object_Type__c</columns>
+    <columns>Process__c</columns>
+    <columns>Action__c</columns>
+    <columns>Error_Message__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Process__c</field>
+        <operation>contains</operation>
+        <value>InvoiceStatusBatch</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>7/31/2020 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Action__c</field>
+        <operation>equals</operation>
+        <value>INSERT</value>
+    </filters>
+    <filters>
+        <field>Is_Error__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Invoice Status job logs april 2019</label>
+</ListView>

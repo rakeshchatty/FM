@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictWheelieBin</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(RecordType.DeveloperName != &apos;Location&apos;, RecordType.DeveloperName != &apos;Prospect&apos;, Wheelie_bin_customer__c)</errorConditionFormula>
+    <errorDisplayField>Wheelie_bin_customer__c</errorDisplayField>
+    <errorMessage>Wheelie Bin can only be enabled on Location or Prospect.</errorMessage>
+</ValidationRule>

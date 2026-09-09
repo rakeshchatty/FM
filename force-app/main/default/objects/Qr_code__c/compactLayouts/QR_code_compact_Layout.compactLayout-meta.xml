@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QR_code_compact_Layout</fullName>
+    <fields>Account__c</fields>
+    <fields>Driver_app_QR_code__c</fields>
+    <label>QR code compact Layout</label>
+</CompactLayout>

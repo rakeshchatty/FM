@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>In_CS_Care__c</fullName>
+    <formula>IF(reason__c=&quot;Customer Closed&quot;,FALSE, 
+IF(reason__c=&quot;Wrong Product&quot;,TRUE, 
+IF(reason__c=&quot;Wrong Address&quot;,TRUE, 
+IF(reason__c=&quot;Moved Out&quot;,TRUE, 
+IF(reason__c=&quot;Can’t Find Location&quot;,TRUE, 
+IF(reason__c=&quot;Order Rejected&quot;,TRUE, 
+IF(reason__c=&quot;Ran out of Time&quot;,FALSE,FALSE
+)))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>In CS Care?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

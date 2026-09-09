@@ -1,0 +1,5 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+	<h1>Account Search</h1>
+    <c:SearchBar />
+    <c:ContactList />
+</aura:component>

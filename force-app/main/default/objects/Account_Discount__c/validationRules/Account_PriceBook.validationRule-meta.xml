@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_PriceBook</fullName>
+    <active>false</active>
+    <description>The account needs the Pricebook to calculate product gross price</description>
+    <errorConditionFormula>RecordType.DeveloperName = &apos;PartnerDiscount&apos; &amp;&amp; ISBLANK(Account__r.Price_Book__c)</errorConditionFormula>
+    <errorMessage>Account without Pricebook</errorMessage>
+</ValidationRule>

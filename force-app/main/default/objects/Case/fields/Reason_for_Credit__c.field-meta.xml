@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_Credit__c</fullName>
+    <inlineHelpText>Is the credit due to a First Mile Error or a Customer Error?</inlineHelpText>
+    <label>Reason for Credit</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Council Fine</fullName>
+                <default>false</default>
+                <label>Council Fine</label>
+            </value>
+            <value>
+                <fullName>Compensation</fullName>
+                <default>false</default>
+                <label>Compensation</label>
+            </value>
+            <value>
+                <fullName>Product Return</fullName>
+                <default>false</default>
+                <label>Product Return</label>
+            </value>
+            <value>
+                <fullName>Invoice Error</fullName>
+                <default>false</default>
+                <label>Invoice Error</label>
+            </value>
+            <value>
+                <fullName>Goodwill</fullName>
+                <default>false</default>
+                <label>Goodwill</label>
+            </value>
+            <value>
+                <fullName>Customer Error</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Customer Error</label>
+            </value>
+            <value>
+                <fullName>First Mile Error</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>First Mile Error</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

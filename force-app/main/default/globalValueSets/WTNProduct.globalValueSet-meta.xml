@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Season Ticket</fullName>
+        <default>false</default>
+        <label>Season Ticket</label>
+    </customValue>
+    <customValue>
+        <fullName>Ad-Hoc</fullName>
+        <default>false</default>
+        <label>Ad-Hoc</label>
+    </customValue>
+    <customValue>
+        <fullName>No WTN</fullName>
+        <default>false</default>
+        <label>No WTN</label>
+    </customValue>
+    <masterLabel>WTN Product</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

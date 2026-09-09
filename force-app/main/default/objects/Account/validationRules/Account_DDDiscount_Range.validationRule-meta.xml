@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_DDDiscount_Range</fullName>
+    <active>true</active>
+    <description>Direct Debit Discount PerCent Out of Range</description>
+    <errorConditionFormula>(RecordType.DeveloperName = &apos;Account&apos; || RecordType.DeveloperName = &apos;Partner&apos;)
+&amp;&amp; NOT(ISBLANK( Enqix_DDDiscount__c ))
+&amp;&amp; Enqix_DDDiscount__c &lt; 0
+&amp;&amp; Enqix_DDDiscount__c &gt; 80</errorConditionFormula>
+    <errorDisplayField>Enqix_DDDiscount__c</errorDisplayField>
+    <errorMessage>Direct Debit Discount PerCent Out of Range</errorMessage>
+</ValidationRule>

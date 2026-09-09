@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fine_Paid_Required_for_Council_Fine</fullName>
+    <active>false</active>
+    <description>If the case type is &quot;Council Fine&quot; Fine Paid field will be required.</description>
+    <errorConditionFormula>AND( ISPICKVAL(Type, &quot;Council Fine&quot;) , ISPICKVAL( Fine_Paid__c,&quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>Fine_Paid__c</errorDisplayField>
+    <errorMessage>This field is required.</errorMessage>
+</ValidationRule>

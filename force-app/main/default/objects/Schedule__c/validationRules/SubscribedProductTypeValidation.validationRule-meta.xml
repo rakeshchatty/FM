@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SubscribedProductTypeValidation</fullName>
+    <active>true</active>
+    <description>Product Isn&apos;&apos;t a Collection Product</description>
+    <errorConditionFormula>NOT(ISPICKVAL(Supplier_Product__r.Product__r.Product_Type__c, &quot;Collection&quot;))</errorConditionFormula>
+    <errorMessage>Product Isn&apos;&apos;t a Collection Product</errorMessage>
+</ValidationRule>

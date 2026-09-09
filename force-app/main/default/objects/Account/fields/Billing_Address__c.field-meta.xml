@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ParentId &lt;&gt; &quot;&quot;,  Parent.Name &amp; &quot; &quot; &amp; Parent.BillingStreet &amp; &quot; &quot; &amp; Parent.BillingCity &amp; &quot; &quot; &amp; Parent.BillingPostalCode ,  Name &amp; &quot; &quot; &amp; BillingStreet &amp; &quot; &quot; &amp; BillingCity &amp; &quot; &quot; &amp; BillingPostalCode )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Pulls in billing details from parent account</inlineHelpText>
+    <label>Billing Address Loc</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

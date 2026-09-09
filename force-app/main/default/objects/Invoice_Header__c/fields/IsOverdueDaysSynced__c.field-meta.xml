@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsOverdueDaysSynced__c</fullName>
+    <formula>NOT(AND(OverdueDays__c != DaysOutstanding__c,
+CASE(DaysOutstanding__c, 7, 1, 14, 1, 30, 1, 60, 1, 90, 1, 0) = 1))</formula>
+    <label>Overdue Days Synced?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

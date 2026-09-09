@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Services_Offered__c</fullName>
+    <label>Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Recycling/Waste Company</fullName>
+                <default>false</default>
+                <label>Recycling/Waste Company</label>
+            </value>
+            <value>
+                <fullName>Specialist Recycling Company</fullName>
+                <default>false</default>
+                <label>Specialist Recycling Company</label>
+            </value>
+            <value>
+                <fullName>Broker</fullName>
+                <default>false</default>
+                <label>Broker</label>
+            </value>
+            <value>
+                <fullName>Local Council</fullName>
+                <default>false</default>
+                <label>Local Council</label>
+            </value>
+            <value>
+                <fullName>Cleaning Company</fullName>
+                <default>false</default>
+                <label>Cleaning Company</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

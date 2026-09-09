@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BID_DiscountEndDate_Null</fullName>
+    <active>true</active>
+    <description>Cannot Enter a Discount Without a End Date</description>
+    <errorConditionFormula>RecordType.DeveloperName = &apos;PartnerDiscount&apos; &amp;&amp;
+ISBLANK( DiscountSupEndDate__c )</errorConditionFormula>
+    <errorDisplayField>DiscountSupEndDate__c</errorDisplayField>
+    <errorMessage>Cannot Enter a Discount Without a End Date</errorMessage>
+</ValidationRule>

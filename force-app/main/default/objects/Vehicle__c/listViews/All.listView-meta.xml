@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Depot__c</columns>
+    <columns>Inuse__c</columns>
+    <columns>Chas__c</columns>
+    <columns>Body__c</columns>
+    <columns>Bin_Weighing__c</columns>
+    <columns>Food_POC__c</columns>
+    <columns>Active__c</columns>
+    <columns>Notes__c</columns>
+    <columns>Used_Today__c</columns>
+    <columns>Issue__c</columns>
+    <columns>Garage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Bin_Weighing__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All_active_recurrings</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Product__c</columns>
+    <columns>Quantity__c</columns>
+    <columns>Next_Date__c</columns>
+    <columns>Price_Book__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Next_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Recurrings Overdue to Generate</label>
+</ListView>

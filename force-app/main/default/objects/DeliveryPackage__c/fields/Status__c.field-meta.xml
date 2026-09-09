@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Error</fullName>
+                <default>false</default>
+                <label>Error</label>
+            </value>
+            <value>
+                <fullName>Retry</fullName>
+                <default>false</default>
+                <label>Retry</label>
+            </value>
+            <value>
+                <fullName>Advised</fullName>
+                <default>false</default>
+                <label>Advised</label>
+            </value>
+            <value>
+                <fullName>Labelled</fullName>
+                <default>false</default>
+                <label>Labelled</label>
+            </value>
+            <value>
+                <fullName>Lock</fullName>
+                <default>false</default>
+                <label>Lock</label>
+            </value>
+            <value>
+                <fullName>Packaged</fullName>
+                <default>false</default>
+                <label>Packaged</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Request Cancellation</fullName>
+                <default>false</default>
+                <label>Request Cancellation</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+            <value>
+                <fullName>Redeliver</fullName>
+                <default>false</default>
+                <label>Redeliver</label>
+            </value>
+            <value>
+                <fullName>Delivered</fullName>
+                <default>false</default>
+                <label>Delivered</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

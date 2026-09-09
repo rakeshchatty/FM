@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bins</fullName>
+    <active>true</active>
+    <label>Bins</label>
+    <picklistValues>
+        <picklist>Equipment_Owner__c</picklist>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>First Mile</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Baler</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compactor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RORO</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

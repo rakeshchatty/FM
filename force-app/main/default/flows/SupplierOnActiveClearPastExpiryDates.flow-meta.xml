@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>ClearPastExpiryDates</name>
+        <label>Clear Past Expiry Dates</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CarrierRegNo_Expiry_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CarrierRegNoExpiryDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Employee_Liability_Expiry_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>EmployeeLiabilityExpiry</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Public_Liability_Expiry_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PublicLiabilityExpiry</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>CarrierRegNoExpiryDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(DATEVALUE({!$Record.CarrierRegNo_Expiry_Date__c}) &gt; TODAY(), {!$Record.CarrierRegNo_Expiry_Date__c}, null)</expression>
+    </formulas>
+    <formulas>
+        <name>EmployeeLiabilityExpiry</name>
+        <dataType>Date</dataType>
+        <expression>IF({!$Record.Employee_Liability_Expiry_Date__c} &gt; TODAY(), {!$Record.Employee_Liability_Expiry_Date__c}, null)</expression>
+    </formulas>
+    <formulas>
+        <name>PublicLiabilityExpiry</name>
+        <dataType>Date</dataType>
+        <expression>IF({!$Record.Public_Liability_Expiry_Date__c} &gt; TODAY(), {!$Record.Public_Liability_Expiry_Date__c}, null)</expression>
+    </formulas>
+    <interviewLabel>Supplier - On Active - Clear Past Expiry Dates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Supplier - On Active - Clear Past Expiry Dates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ClearPastExpiryDates</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Supplier_Active__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Suppliers__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_Bank_Rec</fullName>
+    <columns>Entry_Date__c</columns>
+    <columns>Transaction_Details__c</columns>
+    <columns>Transaction_Type__c</columns>
+    <columns>Receipt_Amount__c</columns>
+    <columns>Document_name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Entry_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_MONTH</value>
+    </filters>
+    <filters>
+        <field>Document_name__c</field>
+        <operation>notEqual</operation>
+        <value>Loaded from Enqix</value>
+    </filters>
+    <filters>
+        <field>fromCustomerPortal__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Entry_Date__c</field>
+        <operation>equals</operation>
+        <value>3/5/2019</value>
+    </filters>
+    <filters>
+        <field>Document_name__c</field>
+        <operation>equals</operation>
+        <value>04.03.19load.xlsx</value>
+    </filters>
+    <label>Copy of Bank Rec</label>
+</ListView>

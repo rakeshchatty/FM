@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictCaseReopen</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOW() &gt;= (ClosedDate + $Setup.CaseSetting__c.ReopenDuration__c) &amp;&amp; NOT(ISPICKVAL(Status, &apos;Closed&apos;))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Case not allowed to reopen as beyond allowed duration.
+Check for latest case or open new case.</errorMessage>
+</ValidationRule>

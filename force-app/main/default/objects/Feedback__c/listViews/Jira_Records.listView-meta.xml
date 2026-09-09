@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jira_Records</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>Feedback_type__c</columns>
+    <columns>Requested_by__c</columns>
+    <columns>Status__c</columns>
+    <columns>Priority_level__c</columns>
+    <columns>Platform_type__c</columns>
+    <columns>Description__c</columns>
+    <columns>Jira_Link__c</columns>
+    <columns>NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>9/20/2021 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Jira_Link__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Closed no action required,Completed</value>
+    </filters>
+    <label>Jira Records</label>
+</ListView>

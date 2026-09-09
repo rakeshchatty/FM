@@ -1,0 +1,69 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable" access="global" controller="WebToCaseController" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>   
+    <aura:attribute name="TypePicklist" type="map"/>
+    <aura:attribute name="Type" type="String" />
+    <aura:attribute name="webEmail" type="String"/>
+    <aura:attribute name="businessName" type="String"/>
+    <aura:attribute name="businessCode" type="String"/>
+    <aura:attribute name="caseNumber" type="String"/>
+    <aura:attribute name="webName" type="String" default=""/>
+    <aura:attribute name="description" type="String" /><!--new change-->
+    <aura:attribute name="fileName" type="String" default="No File Selected.." /> 
+    <aura:attribute name="hidepopup" type="boolean" default="true"/> 
+    <aura:attribute name="isSuccess" type="boolean" default="false"/> 
+	<aura:attribute name="picklistMap" type="Map"  default="{}"/><!--new code-->
+    <lightning:button variant="brand"  label="Contact Support" onclick="{!c.openModalPopup}" class=" slds-align_absolute-center"/>             
+    <aura:if isTrue="{!!v.hidepopup}">
+        <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal">
+            <div class="slds-modal__container" style="width:100%;">
+                <div class="slds-modal__header">
+                    <h2 id="header43" class="slds-text-heading--medium">Contact Customer Support</h2>
+                    <aura:if isTrue="{!!v.isSuccess}">
+                        <p>{!$Label.c.PopupMsg}.</p>
+                    </aura:if>
+                </div>
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div>
+                        <div class="slds-p-around_medium">
+                            <aura:if isTrue="{!!v.isSuccess}">
+        					<lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large" class="slds-hide"/><!--new code-->
+                                <lightning:input aura:id="cName" label="Your Name" type="text" value="{!v.webName}"/>
+                                <lightning:input aura:id="cEmail" label="Your Email" type="email" value="{!v.webEmail}"  required="true"/>
+                                <lightning:input aura:id="cBusinessName" label="Business Name" type="text" value="{!v.businessName}" />
+                                <lightning:input aura:id="cBusinessCode" label="Business Post code" type="text" value="{!v.businessCode}" />
+                                <lightning:select  aura:id="selectType" label="Type" onchange="{!c.onPicklistChange}" required="true">       
+                                    <aura:iteration items="{!v.TypePicklist}" var="item" indexVar="index">
+                                        <option  value="{!item.key}">{!item.value}</option><!--new change-->
+                                    </aura:iteration>
+                                </lightning:select>
+                                <lightning:textarea aura:id="cDescription" label="Description" value="{!v.description}" required="true"/>
+                                <lightning:input aura:id="fuploader" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload File" multiple="false"/>
+                                <div class="slds-text-body_small slds-text-color_error">{!v.fileName} </div>     
+                                
+                                <p>{!v.message}</p>
+                                <aura:set attribute="else">
+                                    <p align="center"><lightning:icon iconName="action:approval" alternativeText="Approved" title="Approved" /></p><br></br><!--new code-->
+                                    <p align="center"> {!$Label.c.SuccessMessage} &nbsp; {!v.caseNumber}. </p><!--new changes-->
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-modal__footer">  
+                    <div class="slds-align_absolute-center">
+                        <aura:if isTrue="{!!v.isSuccess}">
+                            <lightning:button label="Submit" onclick="{!c.handleCreateCase}" variant="brand" />
+                            <lightning:button label="Cancel" onclick="{!c.closeModal}" variant="brand"  />
+                            <aura:set attribute="else">
+                                <lightning:button label="Close" onclick="{!c.closeModal}" variant="brand"  />
+                            </aura:set>
+                        </aura:if>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop " aura:id="Modalbackdrop"></div>
+        
+    </aura:if>
+</aura:component>

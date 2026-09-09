@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delimiter__c</fullName>
+    <defaultValue>&apos;,&apos;</defaultValue>
+    <description>The delimiter on the import file.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The delimiter on the import file.</inlineHelpText>
+    <label>Delimiter</label>
+    <length>15</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

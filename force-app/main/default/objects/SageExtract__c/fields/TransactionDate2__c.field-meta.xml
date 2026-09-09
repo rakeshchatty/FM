@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TransactionDate2__c</fullName>
+    <formula>If(mid(Name,1,1)=&apos;F&apos;,datevalue(CreatedDate),
+
+       If(AND (Bank_Statement__r.Cancelled__c =true ,datevalue(Bank_Statement__r.CreatedDate) &lt;&gt; datevalue(CreatedDate))   ,datevalue(CreatedDate),
+If(AND (Bank_Statement__r.Cancelled__c =true ,Bank_Statement__r.IsDirectDebit__c = false   )   ,datevalue(CreatedDate),
+
+       IF(left(Bank_Statement__r.Document_name__c,12) = &apos;Direct Debit&apos;,TransactionDate__c+2, TransactionDate__c))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TransactionDate2</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Original_Invoice_Payment_Credit_Notes__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to create a relationship between a credit note payment and an original invoice payment</description>
+    <label>Original Invoice Payment (Credit Notes)</label>
+    <referenceTo>PaymentAllocation__c</referenceTo>
+    <relationshipLabel>Original Invoice Payments</relationshipLabel>
+    <relationshipName>OriginalInvoicePayments</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

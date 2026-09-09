@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Same_Day_Recovery__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Ops can collect on the same day if Missed Collection logged before 10am</description>
+    <label>Same Day Recovery?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

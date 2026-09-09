@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stop_at_Limit__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Stop BID discount at the limit that was defined.</description>
+    <inlineHelpText>Stop BID discount at the limit that was defined.</inlineHelpText>
+    <label>Stop at Limit</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

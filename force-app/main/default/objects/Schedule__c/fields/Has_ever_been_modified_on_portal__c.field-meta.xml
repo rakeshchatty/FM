@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_ever_been_modified_on_portal__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked to true using a process if a portal user has ever modified this collection record.</description>
+    <label>Ever been modified on portal?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

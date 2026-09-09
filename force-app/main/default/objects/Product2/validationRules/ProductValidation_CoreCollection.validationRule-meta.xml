@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProductValidation_CoreCollection</fullName>
+    <active>false</active>
+    <description>Don&apos;t do anything with this 4 core collection products</description>
+    <errorConditionFormula>REGEX(Enqix_Id__c,&quot;264|265|266|267&quot;)</errorConditionFormula>
+    <errorMessage>Changes Disallowed to the 4 core collection products</errorMessage>
+</ValidationRule>

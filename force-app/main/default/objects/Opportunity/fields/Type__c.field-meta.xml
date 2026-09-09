@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <label>How did they contact us?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>eCommerce Sign-up</fullName>
+                <default>false</default>
+                <label>eCommerce Sign-up</label>
+            </value>
+            <value>
+                <fullName>Inbound Email</fullName>
+                <default>false</default>
+                <label>Inbound Email</label>
+            </value>
+            <value>
+                <fullName>Inbound Phone</fullName>
+                <default>false</default>
+                <label>Inbound Phone</label>
+            </value>
+            <value>
+                <fullName>Inbound Website Enquiry</fullName>
+                <default>false</default>
+                <label>Inbound Website Enquiry</label>
+            </value>
+            <value>
+                <fullName>Outbound Contact</fullName>
+                <default>false</default>
+                <label>Outbound Contact</label>
+            </value>
+            <value>
+                <fullName>Website Live-chat</fullName>
+                <default>false</default>
+                <label>Website Live-chat</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

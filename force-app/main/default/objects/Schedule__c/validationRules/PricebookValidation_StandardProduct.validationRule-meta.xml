@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PricebookValidation_StandardProduct</fullName>
+    <active>true</active>
+    <description>Price Book Must Be Null if standard product</description>
+    <errorConditionFormula>NOT(ISBLANK(Price_Book__c)) &amp;&amp; REGEX(Supplier_Product__r.Product__r.Enqix_Id__c,&quot;264|265|266|267&quot;)</errorConditionFormula>
+    <errorMessage>Price Book Must Be Null if standard product</errorMessage>
+</ValidationRule>

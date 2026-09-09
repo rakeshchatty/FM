@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bid_or_Partner__c</fullName>
+    <label>Bid or Partner</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Be Richmond</fullName>
+                <default>false</default>
+                <label>Be Richmond</label>
+            </value>
+            <value>
+                <fullName>Blue Bermondsey</fullName>
+                <default>false</default>
+                <label>Blue Bermondsey</label>
+            </value>
+            <value>
+                <fullName>Brixton BID</fullName>
+                <default>false</default>
+                <label>Brixton BID</label>
+            </value>
+            <value>
+                <fullName>Cadogan Estate</fullName>
+                <default>false</default>
+                <label>Cadogan Estate</label>
+            </value>
+            <value>
+                <fullName>Camden Town Unlimited</fullName>
+                <default>false</default>
+                <label>Camden Town Unlimited</label>
+            </value>
+            <value>
+                <fullName>Chancery Lane Association</fullName>
+                <default>false</default>
+                <label>Chancery Lane Association</label>
+            </value>
+            <value>
+                <fullName>Clapham BID</fullName>
+                <default>false</default>
+                <label>Clapham BID</label>
+            </value>
+            <value>
+                <fullName>Colmore BID</fullName>
+                <default>false</default>
+                <label>Colmore BID</label>
+            </value>
+            <value>
+                <fullName>Euston Town BID</fullName>
+                <default>false</default>
+                <label>Euston Town BID</label>
+            </value>
+            <value>
+                <fullName>Fitzrovia Partnership</fullName>
+                <default>false</default>
+                <label>Fitzrovia Partnership</label>
+            </value>
+            <value>
+                <fullName>Fulham Broadway</fullName>
+                <default>false</default>
+                <label>Fulham Broadway</label>
+            </value>
+            <value>
+                <fullName>Grosvenor Estate</fullName>
+                <default>false</default>
+                <label>Grosvenor Estate</label>
+            </value>
+            <value>
+                <fullName>Heart of London</fullName>
+                <default>false</default>
+                <label>Heart of London</label>
+            </value>
+            <value>
+                <fullName>Ilford BID</fullName>
+                <default>false</default>
+                <label>Ilford BID</label>
+            </value>
+            <value>
+                <fullName>InStreatham</fullName>
+                <default>false</default>
+                <label>InStreatham</label>
+            </value>
+            <value>
+                <fullName>Jewellery Quarter</fullName>
+                <default>false</default>
+                <label>Jewellery Quarter</label>
+            </value>
+            <value>
+                <fullName>Kingston First</fullName>
+                <default>false</default>
+                <label>Kingston First</label>
+            </value>
+            <value>
+                <fullName>Love Wimbledon</fullName>
+                <default>false</default>
+                <label>Love Wimbledon</label>
+            </value>
+            <value>
+                <fullName>Ealing</fullName>
+                <default>false</default>
+                <label>Make it Ealing</label>
+            </value>
+            <value>
+                <fullName>New West End Company</fullName>
+                <default>false</default>
+                <label>New West End Company</label>
+            </value>
+            <value>
+                <fullName>Paddington</fullName>
+                <default>false</default>
+                <label>Paddington</label>
+            </value>
+            <value>
+                <fullName>Pollen Estate</fullName>
+                <default>false</default>
+                <label>Pollen Estate</label>
+            </value>
+            <value>
+                <fullName>Southside BID</fullName>
+                <default>false</default>
+                <label>Southside BID</label>
+            </value>
+            <value>
+                <fullName>Station to Station</fullName>
+                <default>false</default>
+                <label>Station to Station</label>
+            </value>
+            <value>
+                <fullName>Stratford BID</fullName>
+                <default>false</default>
+                <label>Stratford Orriginal</label>
+            </value>
+            <value>
+                <fullName>Successful Sutton</fullName>
+                <default>false</default>
+                <label>Successful Sutton</label>
+            </value>
+            <value>
+                <fullName>Team London Bridge</fullName>
+                <default>false</default>
+                <label>Team London Bridge</label>
+            </value>
+            <value>
+                <fullName>Try Twickenham</fullName>
+                <default>false</default>
+                <label>Try Twickenham</label>
+            </value>
+            <value>
+                <fullName>Vauxhall</fullName>
+                <default>false</default>
+                <label>Vauxhall</label>
+            </value>
+            <value>
+                <fullName>Waterloo Quarter</fullName>
+                <default>false</default>
+                <label>We Are Waterloo</label>
+            </value>
+            <value>
+                <fullName>West Ealing BID</fullName>
+                <default>false</default>
+                <label>West Ealing BID</label>
+            </value>
+            <value>
+                <fullName>Your Bromley</fullName>
+                <default>false</default>
+                <label>Your Bromley</label>
+            </value>
+            <value>
+                <fullName>Better Bankside</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Better Bankside</label>
+            </value>
+            <value>
+                <fullName>Bond Street Association</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bond Street Association</label>
+            </value>
+            <value>
+                <fullName>Hammersmith</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hammersmith</label>
+            </value>
+            <value>
+                <fullName>Twickenham BID</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Twickenham BID</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

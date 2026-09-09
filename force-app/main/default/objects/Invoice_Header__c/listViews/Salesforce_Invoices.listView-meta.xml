@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesforce_Invoices</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Location__c</columns>
+    <columns>AmountExclVAT__c</columns>
+    <columns>AmountInclVAT__c</columns>
+    <columns>Salesforce__c</columns>
+    <columns>InvoiceNo__c</columns>
+    <columns>CreatedDate__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Query__c</columns>
+    <columns>OrderLookUp__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>AmountInclVAT_f__c</field>
+        <operation>equals</operation>
+        <value>225.9</value>
+    </filters>
+    <label>Salesforce Invoices</label>
+</ListView>

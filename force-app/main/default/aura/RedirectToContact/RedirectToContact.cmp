@@ -1,0 +1,6 @@
+<aura:component>
+    <aura:dependency resource="markup://force:navigateToSObject" type="EVENT"/>
+    <aura:attribute name="objSobject" type="Sobject" required="true" />
+    <a onclick="{!c.navigateToRecord}" style="width:0%;"> 
+    </a>
+</aura:component>

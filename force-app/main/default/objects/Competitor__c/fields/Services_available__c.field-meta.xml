@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Services_available__c</fullName>
+    <label>Services</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mixed Recycling</fullName>
+                <default>false</default>
+                <label>Mixed Recycling</label>
+            </value>
+            <value>
+                <fullName>General Waste</fullName>
+                <default>false</default>
+                <label>General Waste</label>
+            </value>
+            <value>
+                <fullName>Cardboard</fullName>
+                <default>false</default>
+                <label>Cardboard</label>
+            </value>
+            <value>
+                <fullName>Food Recycling</fullName>
+                <default>false</default>
+                <label>Food Recycling</label>
+            </value>
+            <value>
+                <fullName>Paper Shredding</fullName>
+                <default>false</default>
+                <label>Paper Shredding</label>
+            </value>
+            <value>
+                <fullName>WEEE</fullName>
+                <default>false</default>
+                <label>WEEE</label>
+            </value>
+            <value>
+                <fullName>Toner Cartridges</fullName>
+                <default>false</default>
+                <label>Toner Cartridges</label>
+            </value>
+            <value>
+                <fullName>Batteries</fullName>
+                <default>false</default>
+                <label>Batteries</label>
+            </value>
+            <value>
+                <fullName>Textiles</fullName>
+                <default>false</default>
+                <label>Textiles</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>7</visibleLines>
+</CustomField>

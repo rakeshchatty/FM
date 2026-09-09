@@ -1,0 +1,11 @@
+.THIS.div.container{
+    display: flex;
+}
+
+.THIS.div.left{
+    flex: 0 0 50%;
+}
+
+.THIS.div.right{
+    flex: 1;
+}

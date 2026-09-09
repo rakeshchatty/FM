@@ -1,0 +1,7 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+	<h1>Comeptitor Search</h1>
+    <c:SearchBar />
+    <c:CompetitorList />
+    
+
+</aura:component>

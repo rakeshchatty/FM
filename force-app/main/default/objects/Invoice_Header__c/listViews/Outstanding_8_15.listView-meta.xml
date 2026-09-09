@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outstanding_8_15</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>AmountExclVAT__c</columns>
+    <columns>AmountInclVAT__c</columns>
+    <columns>InvoiceNo__c</columns>
+    <columns>DueDate__c</columns>
+    <columns>AmountOutstanding__c</columns>
+    <columns>DaysOutstanding__c</columns>
+    <columns>Payment_Due_Date__c</columns>
+    <columns>CollectionNotes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>AmountOutstanding__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>DaysOutstanding__c</field>
+        <operation>greaterThan</operation>
+        <value>7</value>
+    </filters>
+    <filters>
+        <field>DaysOutstanding__c</field>
+        <operation>lessOrEqual</operation>
+        <value>15</value>
+    </filters>
+    <label>Outstanding 08-15 Days</label>
+</ListView>

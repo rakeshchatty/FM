@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictSupplierProductExceedingEndDate</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISNEW(), ISCHANGED(SupplierProduct__c)), NOT(OR(ISBLANK(EndDate__c), ISBLANK(SupplierProduct__r.End_Date__c), EndDate__c &lt;= SupplierProduct__r.End_Date__c)))</errorConditionFormula>
+    <errorDisplayField>EndDate__c</errorDisplayField>
+    <errorMessage>The End Date of the Subscribed Product cannot exceed the End Date of the Supplier Product.</errorMessage>
+</ValidationRule>

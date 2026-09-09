@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireLocation</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISPICKVAL(Type, &apos;Missed Collection&apos;) || ISPICKVAL(Type, &apos;Extra Job&apos;)) &amp;&amp; ISBLANK(Location__c)</errorConditionFormula>
+    <errorDisplayField>Location__c</errorDisplayField>
+    <errorMessage>Location is required for Missed Collection or Extra Job.</errorMessage>
+</ValidationRule>

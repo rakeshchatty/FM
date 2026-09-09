@@ -1,0 +1,15 @@
+.THIS .leftPaddingClass {
+    padding-left: 2rem;
+}
+
+.THIS .pillSize{
+    width:100%;
+}
+
+.THIS {
+    height: 150px;
+}
+
+.THIS.slds-spinner_container {  
+  z-index: 1000; 
+}

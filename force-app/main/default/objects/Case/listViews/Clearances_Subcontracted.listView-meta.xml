@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clearances_Subcontracted</fullName>
+    <booleanFilter>1 AND (2 AND 3)</booleanFilter>
+    <columns>CASES.TYPE</columns>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>From_Email__c</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
+    <columns>CASES.STATUS</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>Active,Pending,Active (Existing)</value>
+    </filters>
+    <filters>
+        <field>From_Email__c</field>
+        <operation>notEqual</operation>
+        <value>cs@recyclingservicesltd.co.uk</value>
+    </filters>
+    <filters>
+        <field>CASES.SUBJECT</field>
+        <operation>notEqual</operation>
+        <value>Job confirmation email</value>
+    </filters>
+    <label>Supply Chain Queue</label>
+    <queue>Clearances_Subcontracted</queue>
+    <sharedTo>
+        <group>Head_Office</group>
+    </sharedTo>
+</ListView>

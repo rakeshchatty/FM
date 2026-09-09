@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pricebook_Must_Be_Active</fullName>
+    <active>false</active>
+    <errorConditionFormula>NOT( Price_Book__r.IsActive )</errorConditionFormula>
+    <errorDisplayField>Price_Book__c</errorDisplayField>
+    <errorMessage>You must select an active pricebook.</errorMessage>
+</ValidationRule>

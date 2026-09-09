@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_wheelie_bin_order__c</fullName>
+    <formula>OR(IsBinCollection__c, PO_Number__c = &apos;WheelieBinOrder0&apos;)</formula>
+    <label>Is wheelie bin order?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

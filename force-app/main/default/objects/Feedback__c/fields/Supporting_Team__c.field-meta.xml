@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supporting_Team__c</fullName>
+    <label>Supporting Team</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accellor</fullName>
+                <default>false</default>
+                <label>Accellor</label>
+            </value>
+            <value>
+                <fullName>Xpand</fullName>
+                <default>false</default>
+                <label>Xpand</label>
+            </value>
+            <value>
+                <fullName>Equator</fullName>
+                <default>false</default>
+                <label>Equator</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

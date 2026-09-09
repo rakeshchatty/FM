@@ -1,0 +1,4 @@
+<design:component>
+    	<design:attribute name="lookupBookField" label="Default" />
+        <design:attribute name="selectedRecordId" label="LookupAccount" />
+</design:component>

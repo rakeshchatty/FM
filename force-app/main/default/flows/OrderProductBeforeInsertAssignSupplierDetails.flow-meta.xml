@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>SetSupplierFields</name>
+        <label>Supplier Fields</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Delivery_date_for_supplier__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Order.Requested_Delivery_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Post_code_for_supplier__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Order.ShippingPostalCode</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Supplier_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Supplier__r.Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Supplier_location_name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Order.Account.Name</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>AddressForOrderDelivery</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Order.ShippingStreet} &amp; &quot;,&quot; &amp; {!$Record.Order.ShippingCity} &amp; &quot;,&quot; &amp;{!$Record.Order.ShippingState} &amp; &quot;,&quot; &amp; {!$Record.Order.ShippingPostalCode}</expression>
+    </formulas>
+    <interviewLabel>Order Product - Before Save - Assign Supplier Details {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Order Product - Before Insert - Assign Supplier Details</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SetSupplierFields</targetReference>
+        </connector>
+        <filterFormula>AND(NOT({!$Record.Order.Clearance_Order__c}),
+NOT((ISBLANK({!$Record.Supplier__c}))),
+NOT(CONTAINS({!$Record.Supplier__r.Name}, &quot;First Mile&quot;)),
+ISBLANK({!$Record.Collection_Waypoint__c}),
+ISBLANK({!$Record.Order.RecurringId__c}),
+{!$Record.Quantity} &gt; 0)</filterFormula>
+        <object>OrderItem</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

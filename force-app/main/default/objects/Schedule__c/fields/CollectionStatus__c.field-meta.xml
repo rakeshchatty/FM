@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CollectionStatus__c</fullName>
+    <description>Displays image of active, suspended or inactive depending on status</description>
+    <externalId>false</externalId>
+    <formula>IF(AND(Round__c = null, Collection_Suspended__c = False), IMAGE(&quot;/resource/CollectionSchedule/CollectionStatus/Pending.jpg&quot;,&quot;Pending&quot;),
+IF(Week_Off__c, IMAGE(&quot;/resource/CollectionSchedule/CollectionStatus/WeekOff.jpg&quot;,&quot;Week Off&quot;),
+IF( Collection_Suspended__c = true, IMAGE(&quot;/resource/CollectionSchedule/CollectionStatus/Suspended.jpg&quot;,&quot;Suspended&quot;),
+IF(End_Date__c &lt; TODAY(), IMAGE(&quot;/resource/CollectionSchedule/CollectionStatus/Expired.jpg&quot;,&quot;Expired&quot;),
+IMAGE(&quot;/resource/CollectionSchedule/CollectionStatus/Active.jpg&quot;,&quot;Active&quot;)))))</formula>
+    <label>Collection Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

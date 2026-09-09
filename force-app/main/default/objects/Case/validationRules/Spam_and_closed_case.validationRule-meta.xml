@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spam_and_closed_case</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+DATEVALUE (CreatedDate) &gt; DATE(2020,04,01),
+AND(ISBLANK(TEXT(Type)),
+TEXT(Status) == &apos;Closed&apos;))</errorConditionFormula>
+    <errorDisplayField>Type</errorDisplayField>
+    <errorMessage>You cannot update a case to CLOSED unless you&apos;ve put a value in &quot;Type&quot;.</errorMessage>
+</ValidationRule>

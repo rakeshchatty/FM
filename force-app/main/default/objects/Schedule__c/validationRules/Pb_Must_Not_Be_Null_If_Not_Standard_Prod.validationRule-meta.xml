@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pb_Must_Not_Be_Null_If_Not_Standard_Prod</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISBLANK(Price_Book__c) &amp;&amp; NOT(REGEX(Supplier_Product__r.Product__r.Enqix_Id__c,&quot;264|265|266|267&quot;)) &amp;&amp; $User.Username != &apos;integration@thefirstmile.co.uk&apos;</errorConditionFormula>
+    <errorDisplayField>Price_Book__c</errorDisplayField>
+    <errorMessage>Pricebook must not be null if the product isn&apos;t standard</errorMessage>
+</ValidationRule>
