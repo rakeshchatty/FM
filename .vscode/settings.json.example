@@ -1,0 +1,16 @@
+// Copy this file to .vscode/settings.json to register the .myit framework with
+// GitHub Copilot Chat. (.vscode/settings.json is git-ignored in this repo — line 2426
+// of .gitignore — so this .example file is the committed, shareable copy.)
+//
+// After copying, reload the VS Code window.
+{
+  "chat.promptFiles": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".myit/instructions": true
+  },
+  "chat.promptFilesLocations": {
+    ".github/prompts": true,
+    ".myit/prompts": true
+  }
+}

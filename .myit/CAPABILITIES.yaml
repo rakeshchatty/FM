@@ -1,0 +1,106 @@
+# CAPABILITIES.yaml
+# Machine-readable registry of the .myit agentic framework for this workspace.
+
+meta:
+  framework: myit
+  consumed_by:
+    - VS Code Copilot Chat
+    - Claude Code
+  entrypoints:
+    copilot: .github/copilot-instructions.md   # thin pointer -> .myit/
+    claude: CLAUDE.md                          # thin pointer -> .myit/
+  registration:
+    copilot: .vscode/settings.json (chat.instructionsFilesLocations, chat.promptFilesLocations)
+    claude: .claude/commands/*.md (slash commands); CLAUDE.md auto-loaded at repo root
+  commands:
+    # same names in both tools
+    - name: salesforce-fm-develop
+      copilot: .myit/prompts/salesforce-fm-develop.prompt.md
+      claude: .claude/commands/salesforce-fm-develop.md
+    - name: salesforce-fm-review
+      copilot: .myit/prompts/salesforce-fm-review.prompt.md
+      claude: .claude/commands/salesforce-fm-review.md
+
+projects:
+  - id: salesforce-fm
+    name: FM
+    repository: rakeshchatty/FM
+    platform: salesforce
+    source_format: sfdx-source
+    metadata_root: force-app/main/default
+    default_branch: main
+    artifact_directory: docs/artifacts
+    instructions_dir: .myit/instructions/salesforce-fm
+    prompts:
+      - salesforce-fm-develop
+      - salesforce-fm-review
+
+guardrails:
+  - Never connect to, deploy to, or modify a production Salesforce org.
+  - Never run destructive Salesforce or Git commands.
+  - No commit / push / branch except when a workflow gate authorizes it.
+  - Do not edit force-app Apex/LWC/trigger/permission-set/profile/Named Credential/
+    Custom Metadata as a side effect of framework or tooling work.
+  - Never read, print, copy, or commit secrets (.jira-token, .sfdx/, .sf/, auth files).
+  - Honor every STOP marker and gate precondition in the workflows.
+  - Tests ship with every Apex change; 85%+ coverage (aim 95%) with real assertions.
+
+instructions:
+  salesforce-fm:
+    # Consolidated: architecture also covers Apex, triggers, LWC, Aura, metadata,
+    # naming, testing, CI/CD, and code-review standards.
+    - file: .myit/instructions/salesforce-fm/architecture.instructions.md
+      applyTo: "force-app/**"
+    - file: .myit/instructions/salesforce-fm/guardrails.instructions.md
+      applyTo: "**"
+    - file: .myit/instructions/salesforce-fm/tools.instructions.md
+      applyTo: "**"
+prompts:
+  - name: salesforce-fm-develop
+    file: .myit/prompts/salesforce-fm-develop.prompt.md
+    description: Gated development workflow (Gates 1-7, worklog, analysis flow).
+    base_workflow: .myit/workflow/develop.workflow.md
+  - name: salesforce-fm-review
+    file: .myit/prompts/salesforce-fm-review.prompt.md
+    description: Gated code review (scope -> automated -> deep review -> findings -> fixes).
+    base_workflow: .myit/workflow/review.workflow.md
+
+workflows:
+  - name: develop
+    file: .myit/workflow/develop.workflow.md
+    description: Project-agnostic base gated development workflow.
+  - name: review
+    file: .myit/workflow/review.workflow.md
+    description: Project-agnostic base gated code-review workflow.
+  - name: bugfix
+    file: .myit/workflow/bugfix.md
+    description: Lightweight bugfix playbook (reproduce, failing-test-first, fix, verify).
+  - name: metadata-change
+    file: .myit/workflow/metadata-change.md
+    description: Lightweight declarative / configuration change playbook.
+
+skills:
+  - name: apex-trigger-framework
+    file: .myit/skills/apex-trigger-framework.md
+  - name: soql-optimization
+    file: .myit/skills/soql-optimization.md
+  - name: lwc-component-design
+    file: .myit/skills/lwc-component-design.md
+  - name: salesforce-security-review
+    file: .myit/skills/salesforce-security-review.md
+  - name: tooling-and-mcp
+    file: .myit/skills/tooling-and-mcp.md
+
+templates:
+  - { name: requirements,      file: .myit/templates/requirements.md,      gate: 1 }
+  - { name: exploration,       file: .myit/templates/exploration.md,       gate: 2 }
+  - { name: technical-design,  file: .myit/templates/technical-design.md,  gate: 2 }
+  - { name: specs,             file: .myit/templates/specs.md,             gate: 3 }
+  - { name: worklog,           file: .myit/templates/worklog.md,           gate: "1 (create), all (update)" }
+  - { name: test-plan,         file: .myit/templates/test-plan.md,         gate: "3/6" }
+  - { name: pull-request,      file: .myit/templates/pull-request.md,      gate: 7 }
+
+mcp:
+  config_file: .vscode/mcp.json
+  status: not-committed
+  guidance: .myit/skills/tooling-and-mcp.md
