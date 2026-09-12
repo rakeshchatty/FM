@@ -2,12 +2,14 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All</fullName>
     <columns>NAME</columns>
+    <columns>Preference__c</columns>
     <columns>StartTime__c</columns>
-    <columns>MaximumRouteTime__c</columns>
+    <columns>MaxRouteTime__c</columns>
     <columns>VehicleCapacity__c</columns>
-    <columns>StartLocation__c</columns>
-    <columns>RtePref__c</columns>
+    <columns>StartDepot__c</columns>
+    <columns>EndDepot__c</columns>
     <columns>SkillSet__c</columns>
+    <columns>DeliveryRouteGroup__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

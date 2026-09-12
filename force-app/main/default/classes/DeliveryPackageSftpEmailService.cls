@@ -11,7 +11,7 @@ global without sharing class DeliveryPackageSftpEmailService implements Messagin
 
 		String fileName = sftpFileAttachment.fileName;
 
-		DeliveryPackageTrackingFile__c trackingFile = new DeliveryPackageTrackingFile__c(FileName__c = fileName);
+		DeliveryPackageTrackingFile__c trackingFile = new DeliveryPackageTrackingFile__c(FileName__c = fileName, Carrier__c = DeliveryPackage.CARRIER_PARCELFORCE);
 		INSERT trackingFile;
 
 		Attachment attachment = new Attachment(ParentId = trackingFile.Id, Name = fileName, Body = sftpFileAttachment.body);

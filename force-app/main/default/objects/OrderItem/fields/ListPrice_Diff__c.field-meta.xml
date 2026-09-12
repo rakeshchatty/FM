@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>ListPrice_Diff__c</fullName>
-    <formula>IF( ListPrice  &lt;&gt;  ListPrice__c , TRUE, FALSE)</formula>
-    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>ListPrice Diff</label>
-    <trackHistory>false</trackHistory>
-    <type>Checkbox</type>
-</CustomField>

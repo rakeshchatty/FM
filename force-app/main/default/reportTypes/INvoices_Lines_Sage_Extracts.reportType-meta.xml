@@ -5,10 +5,6 @@
     <deployed>true</deployed>
     <description>invoices with invoice lines and sage extracts</description>
     <join>
-        <join>
-            <outerJoin>true</outerJoin>
-            <relationship>SageExtracts__r</relationship>
-        </join>
         <outerJoin>false</outerJoin>
         <relationship>Invoice_Lines__r</relationship>
     </join>
@@ -133,11 +129,6 @@
             <checkedByDefault>false</checkedByDefault>
             <field>InvoiceNo__c</field>
             <table>Invoice_Header__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>sage_extract_case_safe_id__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
@@ -312,6 +303,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>of_Total_Outstanding__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Credit_Note_Reason__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Allocation_rollup__c</field>
             <table>Invoice_Header__c</table>
         </columns>
         <masterLabel>Invoice_Headers</masterLabel>
@@ -622,159 +623,11 @@
             <field>WorkingDays__c</field>
             <table>Invoice_Header__c.Invoice_Lines__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>NominalCode__c</field>
+            <table>Invoice_Header__c.Invoice_Lines__r</table>
+        </columns>
         <masterLabel>Invoice_Lines</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AccountCostCentre__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AccountDepartment__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AccountGroup__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AccountNumber__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AmountFix__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Bank_Statement__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>BankStatementId__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>DatePostedtoSage__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>GoodsAmount__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>InvoiceHeader__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>InvoiceNo__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>InvoiceProduct__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Narrative__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PostedtoSage__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Reference__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ReportAmount__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SageExtractFile__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SalesforceInvoice__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Source__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>TransactionDate__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>TransactionType__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>UniqueReferenceNumber__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>UserNumber__c</field>
-            <table>Invoice_Header__c.Invoice_Lines__r.SageExtracts__r</table>
-        </columns>
-        <masterLabel>SageExtracts</masterLabel>
     </sections>
 </ReportType>

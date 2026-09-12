@@ -3,8 +3,8 @@
     <actionCalls>
         <name>SendCardPaymentReceiptEmail</name>
         <label>Send Card Payment Receipt Email</label>
-        <locationX>248</locationX>
-        <locationY>923</locationY>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
         <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
@@ -12,6 +12,13 @@
             <typeValue>OrderItem</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>attribution</name>
+            <value>
+                <elementReference>Attribution</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
         <inputParameters>
             <name>greetingName</name>
             <value>
@@ -55,78 +62,18 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>60.0</apiVersion>
-    <assignments>
-        <name>SetRecipient</name>
-        <label>Recipient</label>
-        <locationX>50</locationX>
-        <locationY>539</locationY>
-        <assignmentItems>
-            <assignToReference>ToAddress</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>$Record.Order__r.Contact__r.Email</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>ToName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>FullName</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>GreetingName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Name</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>RecipientCount</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>1.0</numberValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>HasRecipients</targetReference>
-        </connector>
-    </assignments>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>HasContactOnOrder</name>
-        <label>Contact on Order?</label>
+        <name>CustomerToBeExcludedAndHasRecipients</name>
+        <label>Customer to be Excluded and Recipients?</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
-        <defaultConnector>
-            <targetReference>RetrieveServiceContacts</targetReference>
-        </defaultConnector>
+        <locationY>539</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
-            <name>YesHasContactOnOrder</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Order__r.Contact__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>SetRecipient</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>HasRecipients</name>
-        <label>Recipients?</label>
-        <locationX>380</locationX>
-        <locationY>815</locationY>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>YesHasRecepients</name>
+            <name>YesCustomerToBeExcludedAndHasRecepients</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>RecipientCount</leftValueReference>
@@ -135,38 +82,25 @@
                     <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>Attribution</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Greener Than Green</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>SendCardPaymentReceiptEmail</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>IsOrderPayment</name>
-        <label>Order Payment?</label>
-        <locationX>380</locationX>
-        <locationY>323</locationY>
-        <defaultConnector>
-            <targetReference>RetrieveFinanceContacts</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>YesOrderPayment</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Order__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>HasContactOnOrder</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>Attribution</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!$Record.Account__c}), {!$Record.Account__r.EffectiveAttribution__c}, {!$Record.Order__r.Account.EffectiveAttribution__c})</expression>
+    </formulas>
     <formulas>
         <name>FullName</name>
         <dataType>String</dataType>
@@ -198,13 +132,33 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetOrder</name>
+        <label>Order</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>RetrieveOrderContactOrParentFinanceContact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Order__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Order</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>254</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>IsOrderPayment</targetReference>
+            <targetReference>GetOrder</targetReference>
         </connector>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Transaction_Type__c</field>
@@ -219,14 +173,14 @@
     </start>
     <status>Active</status>
     <subflows>
-        <name>RetrieveFinanceContacts</name>
-        <label>Retrieve Finance Contacts</label>
-        <locationX>578</locationX>
+        <name>RetrieveOrderContactOrParentFinanceContact</name>
+        <label>Retrieve Order Contact or Parent Finance Contact</label>
+        <locationX>182</locationX>
         <locationY>431</locationY>
         <connector>
-            <targetReference>HasRecipients</targetReference>
+            <targetReference>CustomerToBeExcludedAndHasRecipients</targetReference>
         </connector>
-        <flowName>RetrieveAccountContactsToEmail</flowName>
+        <flowName>RetrieveOrderContactOrAccountContact</flowName>
         <inputAssignments>
             <name>AccountId</name>
             <value>
@@ -234,47 +188,15 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <name>Order</name>
+            <value>
+                <elementReference>GetOrder</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <name>Role</name>
             <value>
                 <stringValue>Finance Contact</stringValue>
-            </value>
-        </inputAssignments>
-        <outputAssignments>
-            <assignToReference>GreetingName</assignToReference>
-            <name>GreetingName</name>
-        </outputAssignments>
-        <outputAssignments>
-            <assignToReference>RecipientCount</assignToReference>
-            <name>RecipientCount</name>
-        </outputAssignments>
-        <outputAssignments>
-            <assignToReference>ToAddress</assignToReference>
-            <name>ToAddress</name>
-        </outputAssignments>
-        <outputAssignments>
-            <assignToReference>ToName</assignToReference>
-            <name>ToName</name>
-        </outputAssignments>
-    </subflows>
-    <subflows>
-        <name>RetrieveServiceContacts</name>
-        <label>Retrieve Service Contacts</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
-        <connector>
-            <targetReference>HasRecipients</targetReference>
-        </connector>
-        <flowName>RetrieveAccountContactsToEmail</flowName>
-        <inputAssignments>
-            <name>AccountId</name>
-            <value>
-                <elementReference>$Record.Order__r.AccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>Role</name>
-            <value>
-                <stringValue>Service Contact</stringValue>
             </value>
         </inputAssignments>
         <outputAssignments>

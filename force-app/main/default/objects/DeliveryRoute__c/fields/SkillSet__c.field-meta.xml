@@ -3,8 +3,8 @@
     <fullName>SkillSet__c</fullName>
     <externalId>false</externalId>
     <label>Skill Set</label>
-    <length>30</length>
-    <required>false</required>
+    <length>100</length>
+    <required>true</required>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>

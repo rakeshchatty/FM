@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LocationGroupMustMatchParentAccount</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    RecordType.DeveloperName = &quot;Location&quot;,
+    NOT(ISBLANK(LocationGroup__c)),
+    ParentId &lt;&gt; LocationGroup__r.Account__c
+)</errorConditionFormula>
+    <errorDisplayField>LocationGroup__c</errorDisplayField>
+    <errorMessage>The selected Location Group belongs to a different Parent Account.</errorMessage>
+</ValidationRule>

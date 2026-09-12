@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DeliveryDaysIndex__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES(DeliveryDays__c, &quot;Sunday&quot;), &quot;1,&quot;, &quot;&quot;) +
+IF(INCLUDES(DeliveryDays__c, &quot;Monday&quot;), &quot;2,&quot;, &quot;&quot;) +
+IF(INCLUDES(DeliveryDays__c, &quot;Tuesday&quot;), &quot;3,&quot;, &quot;&quot;) +
+IF(INCLUDES(DeliveryDays__c, &quot;Wednesday&quot;), &quot;4,&quot;, &quot;&quot;) +
+IF(INCLUDES(DeliveryDays__c, &quot;Thursday&quot;), &quot;5,&quot;, &quot;&quot;) +
+IF(INCLUDES(DeliveryDays__c, &quot;Friday&quot;), &quot;6,&quot;, &quot;&quot;) + 
+IF(INCLUDES(DeliveryDays__c, &quot;Saturday&quot;), &quot;7&quot;, &quot;&quot;)</formula>
+    <label>Delivery Days Index</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

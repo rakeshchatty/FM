@@ -21,6 +21,197 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>All_Queries_Addressed__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Close__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Correct_Information__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>16</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Efficient__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Empathy__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Fine_Paid__c</picklist>
         <values>
             <fullName>No</fullName>
@@ -43,6 +234,37 @@
         </values>
         <values>
             <fullName>Section 47 %28FPN - Time Bands%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Friendly_Greeting__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -148,17 +370,33 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Ops_Status_Kanban__c</picklist>
+        <picklist>Options_Promoted__c</picklist>
         <values>
-            <fullName>Complete</fullName>
+            <fullName>1</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>In Queue</fullName>
+            <fullName>2</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Round Allocated</fullName>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -210,6 +448,37 @@
         <values>
             <fullName>Medium</fullName>
             <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Process__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
@@ -300,23 +569,19 @@
     <picklistValues>
         <picklist>Reason_for_Credit__c</picklist>
         <values>
-            <fullName>Compensation</fullName>
+            <fullName>Admin Error</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Council Fine</fullName>
+            <fullName>Pricing Error</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Goodwill</fullName>
+            <fullName>Service</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Invoice Error</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Product Return</fullName>
+            <fullName>Undelivered%2FReturned</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -336,6 +601,68 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Relevant_Issues_Identified__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Relevant_Responses__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Requested_Collection_Time__c</picklist>
         <values>
             <fullName>AM</fullName>
@@ -343,6 +670,37 @@
         </values>
         <values>
             <fullName>PM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Spelling_Grammar__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -358,6 +716,10 @@
         </values>
         <values>
             <fullName>Bin Replacement Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bin Weighing Queries</fullName>
             <default>false</default>
         </values>
         <values>
@@ -425,6 +787,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Delivery Issues - Keys</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Delivery Round Service Missed</fullName>
             <default>false</default>
         </values>
@@ -489,7 +855,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Missed Collections</fullName>
+            <fullName>Mobilizations</fullName>
             <default>false</default>
         </values>
         <values>
@@ -526,10 +892,6 @@
         </values>
         <values>
             <fullName>One-Off Issue</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ops Question%2FQuery</fullName>
             <default>false</default>
         </values>
         <values>
@@ -585,7 +947,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Schedule Queries</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Skips</fullName>
             <default>false</default>
         </values>
         <values>
@@ -598,6 +972,10 @@
         </values>
         <values>
             <fullName>Subcontractor Missed Collection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subcontractor Missed Collection Rejected - Proof of service provided</fullName>
             <default>false</default>
         </values>
         <values>
@@ -630,6 +1008,119 @@
         <values>
             <fullName>New</fullName>
             <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Supply_Chain_Reason_for_Missed__c</picklist>
+        <values>
+            <fullName>Access issues - access code%2Fkey not working</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access issues - no response at buzzer%2Fsecurity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access issues - roadworks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access issues - vehicle blocking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arrived outside of access times</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bin contaminated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Driver illness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Driver running out of hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Round delays due to traffic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schedule misalignment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle breakdown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste not presented</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Test_Close__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tone__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
@@ -684,10 +1175,6 @@
         </values>
         <values>
             <fullName>New Quote or Location</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ops Question</fullName>
             <default>false</default>
         </values>
         <values>

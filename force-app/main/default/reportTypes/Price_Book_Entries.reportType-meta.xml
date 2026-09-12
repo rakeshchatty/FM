@@ -496,6 +496,11 @@
             <field>Case_Safe_Price_Book_Entry_ID__c</field>
             <table>PricebookEntry</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.DefaultWeightLimit__c</field>
+            <table>PricebookEntry</table>
+        </columns>
         <masterLabel>Price Book Entries</masterLabel>
     </sections>
 </ReportType>

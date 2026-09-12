@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pricing error</fullName>
+        <default>false</default>
+        <label>Pricing error</label>
+    </customValue>
+    <customValue>
+        <fullName>Admin Error</fullName>
+        <default>false</default>
+        <label>Admin Error</label>
+    </customValue>
+    <customValue>
+        <fullName>Undelivered/Returned</fullName>
+        <default>false</default>
+        <label>Undelivered/Returned</label>
+    </customValue>
+    <customValue>
+        <fullName>Service</fullName>
+        <default>false</default>
+        <label>Service</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Incorrect order quantity/MOQ</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Incorrect order quantity/MOQ</label>
+    </customValue>
+    <customValue>
+        <fullName>Incorrect schedule</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Incorrect schedule</label>
+    </customValue>
+    <customValue>
+        <fullName>Items not delivered</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Items not delivered</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Manager request</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Account Manager request</label>
+    </customValue>
+    <customValue>
+        <fullName>No/incorrect PO</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>No/incorrect PO</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Product return</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product return</label>
+    </customValue>
+    <customValue>
+        <fullName>Wrong account</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Wrong account</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed collection</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Missed collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Charged after termination</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Charged after termination</label>
+    </customValue>
+    <customValue>
+        <fullName>Charged before start date</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Charged before start date</label>
+    </customValue>
+    <customValue>
+        <fullName>Compensation</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Compensation</label>
+    </customValue>
+    <masterLabel>Credit Note Reasons</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -2,8 +2,8 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Sun__c</fullName>
     <defaultValue>false</defaultValue>
-    <label>Sun</label>
-    <trackHistory>false</trackHistory>
+    <label>Sunr</label>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

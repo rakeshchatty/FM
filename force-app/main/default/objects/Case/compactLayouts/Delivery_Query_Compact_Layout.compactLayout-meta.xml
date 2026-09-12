@@ -5,6 +5,7 @@
     <fields>Location__c</fields>
     <fields>Type</fields>
     <fields>Delivery_Query_Order__c</fields>
+    <fields>DeliveryRouteName__c</fields>
     <fields>Ops_Issue_Type__c</fields>
     <fields>Status</fields>
     <fields>CreatedDate</fields>

@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RestrictBinAdvanceInvoicedChanges</fullName>
     <active>true</active>
-    <errorConditionFormula>AND(!$Permission.AllowBinCollectionAdvanceInvoicedChanges, ISCHANGED(IsBinCollectionAdvanceInvoiced__c))</errorConditionFormula>
-    <errorDisplayField>IsBinCollectionAdvanceInvoiced__c</errorDisplayField>
-    <errorMessage>Bin Collection Advance Invoiced changes are not allowed.</errorMessage>
+    <errorConditionFormula>AND(ISPICKVAL(Enqix_Dead_Live__c, &apos;Live&apos;), !$Permission.AllowBinCollectionAdvanceInvoicedChanges, ISCHANGED(MonthsInvoicedInAdvance__c))</errorConditionFormula>
+    <errorDisplayField>MonthsInvoicedInAdvance__c</errorDisplayField>
+    <errorMessage>Months Invoiced In Advance changes are not allowed.</errorMessage>
 </ValidationRule>

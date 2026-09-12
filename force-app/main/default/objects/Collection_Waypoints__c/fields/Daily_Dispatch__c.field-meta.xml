@@ -3,6 +3,21 @@
     <fullName>Daily_Dispatch__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <label>Daily Dispatch</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <filterItems>
+            <field>DailyDispatch__c.Dispatch_Date__c</field>
+            <operation>equals</operation>
+            <valueField>DailyDispatch__c.TODAY__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>DailyDispatch__c.Dispatch_Date__c</field>
+            <operation>equals</operation>
+            <valueField>DailyDispatch__c.YESTERDAY__c</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
     <referenceTo>DailyDispatch__c</referenceTo>
     <relationshipLabel>Collection Waypoint</relationshipLabel>
     <relationshipName>Collection_Waypoint</relationshipName>

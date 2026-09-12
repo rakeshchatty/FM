@@ -3,6 +3,16 @@
     <fullName>Location__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <label>Location</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Location lookup must be of Location record type.</errorMessage>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Location</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Collection Waypoint</relationshipLabel>
     <relationshipName>Collection_Waypoint</relationshipName>

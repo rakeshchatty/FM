@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireLicenseType</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND
+( 
+ISPICKVAL( DocumentType__c, &apos;Waste Carrier Licence&apos;), ISPICKVAL( LicenceType__c,&apos;&apos;)
+)</errorConditionFormula>
+    <errorDisplayField>LicenceType__c</errorDisplayField>
+    <errorMessage>Licence Type is mandatory for this document type.</errorMessage>
+</ValidationRule>

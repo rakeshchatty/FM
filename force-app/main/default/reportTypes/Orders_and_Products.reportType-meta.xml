@@ -177,7 +177,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>IsBinCollection__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CustomerAuthorizedDate</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Clearance_Order__c</field>
             <table>Order</table>
         </columns>
         <columns>
@@ -1035,6 +1045,66 @@
             <field>Optimizely_Transaction_ID__c</field>
             <table>Order</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Order_Account_ID__c.Price_Book__c.Case_safe_id__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Order_Category__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cost_Number_inc_VAT__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Quantity__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Promo_Code__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ExpectedDeliveryDate__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ops_Priority__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VAT__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsVATExemptPartner__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Opportunity__c.Owner.Name</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Realstart__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleIdProducts__c</field>
+            <table>Order</table>
+        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
     <sections>
@@ -1416,6 +1486,71 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>PartnershipID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.Case_Safe_Id__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PricebookEntry.Id</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Supplier__c.Case_safe_ID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsQrCodeEnforced__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ExpectedQrCodeCount__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.IsVariableBilling__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.Estimated_Weight__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderRequestedDeliveryDate__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_ID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VATRate__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PartnerVATRate__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleIdProduct__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <masterLabel>Order Products</masterLabel>

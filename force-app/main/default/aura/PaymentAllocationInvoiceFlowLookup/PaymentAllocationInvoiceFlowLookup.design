@@ -1,4 +1,0 @@
-<design:component>
-	<design:attribute name="InvoiceToPay" label="Invoice To Pay"/>
-    <design:attribute name="AvailableInvoices" label="Available Invoices"/>
-</design:component>

@@ -4,6 +4,7 @@
     <label>Insurance Case Created Date</label>
     <required>false</required>
     <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Date</type>
 </CustomField>

@@ -11,6 +11,8 @@ public with sharing class InvoiceDoc_Test {
         //Products
         List<Product2> lstProds = new List<Product2>();
         
+        TestDataHelper.insertSupplier('First Mile Ltd');
+
         for (Integer i=0; i<11; i++) {
             lstProds.add(createTestProduct('Prod-' + (i+1), 10, (i+1)));
         }
@@ -34,7 +36,8 @@ public with sharing class InvoiceDoc_Test {
         parentMonthly = new Account(Name='Sample Monthly Parent Account', InvoiceFrequency__c='Monthly', recordtypeid=Schema.SObjectType.Account.getRecordTypeInfosByName().get('Account').getRecordTypeId());
         insert parentMonthly;
         
-        partner = new Account(Name='Sample Partner Account 12', InvoiceFrequency__c='Monthly', recordtypeid=Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner').getRecordTypeId());
+        partner = TestDatahelper.createPartner();
+        partner.InvoiceFrequency__c='Monthly';
         insert partner;
         
         //Insert Child Accounts
@@ -173,6 +176,9 @@ public with sharing class InvoiceDoc_Test {
         //Products
         List<Product2> lstProds = new List<Product2>();
         
+        //Suppliers
+        Suppliers__c testSupplier = TestDataHelper.insertSupplier('First Mile Ltd');
+        
         for (Integer i=0; i<11; i++) {
             lstProds.add(createTestProduct('Prod-' + (i+1), 10, (i+1)));
         }
@@ -197,7 +203,8 @@ public with sharing class InvoiceDoc_Test {
         parentPerOrder = new Account(Name='Sample Per Order Parent Account', InvoiceFrequency__c='Per Order', recordtypeid=Schema.SObjectType.Account.getRecordTypeInfosByName().get('Account').getRecordTypeId());
         insert parentPerOrder;
 
-        partner = new Account(Name='Sample Partner Account 12', InvoiceFrequency__c='Monthly', recordtypeid=Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner').getRecordTypeId());
+        partner = TestDatahelper.createPartner();
+        partner.InvoiceFrequency__c='Monthly';
         insert partner;
         
         //Insert Child Accounts

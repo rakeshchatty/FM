@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireDirectDebitFields</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(Enqix_Payment_Method__c), ISPICKVAL(Enqix_Payment_Method__c, &apos;Direct Debit&apos;), NOT(AND(REGEX(dd_account_number__c, &apos;^\\d{8}$&apos;), REGEX(dd_sort_code__c, &apos;^\\d{6}$&apos;))))</errorConditionFormula>
+    <errorDisplayField>dd_account_number__c</errorDisplayField>
+    <errorMessage>For &apos;Direct Debit&apos; payment method, valid Direct Debit account number and sort code is required.</errorMessage>
+</ValidationRule>

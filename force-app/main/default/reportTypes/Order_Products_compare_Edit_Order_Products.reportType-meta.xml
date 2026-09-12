@@ -556,6 +556,46 @@
             <field>PartnershipID__c</field>
             <table>OrderItem</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsQrCodeEnforced__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ExpectedQrCodeCount__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderRequestedDeliveryDate__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_ID__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VATRate__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PartnerVATRate__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleIdProduct__c</field>
+            <table>OrderItem</table>
+        </columns>
         <masterLabel>Order Products</masterLabel>
     </sections>
 </ReportType>

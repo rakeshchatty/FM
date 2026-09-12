@@ -206,6 +206,11 @@
             <field>Location_Id__c.Parent</field>
             <table>Invoice_Line__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>NominalCode__c</field>
+            <table>Invoice_Line__c</table>
+        </columns>
         <masterLabel>Invoice_Lines</masterLabel>
     </sections>
 </ReportType>

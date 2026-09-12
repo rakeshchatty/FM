@@ -23,7 +23,7 @@ public class SendInvoiceEmailTest {
 		Assert.isFalse(contentDocumentLinks.isEmpty());
 
 		List<ContentVersion> contentVersions = [SELECT Id FROM ContentVersion WHERE ContentDocumentId = :contentDocumentLinks[0].ContentDocumentId];
-		Assert.areEqual(2, contentVersions.size());
+		Assert.areEqual(1, contentVersions.size());
 	}
 
 	@isTest

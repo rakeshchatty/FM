@@ -2,12 +2,13 @@
     <aura:attribute name="ordProdInstance" type="OrderItem"/>
     <aura:attribute name="rowIndex" type="String"/>
     <aura:attribute name="maxQuantity" type="Integer"/>
+    <aura:attribute name="invoiceCurrencyIsoCode" type="String"/>
     <aura:registerEvent name="XpandIT_CreditNoteDeleteLine_Event" type="c:XpandIT_CreditNoteDeleteLine_Event"/>
     <tr class="slds-text-title_caps">
         <td>{!v.rowIndex+1}</td>
         <td><lightning:input value="{!v.ordProdInstance.Manual_Product_Name__c}" disabled="true"/></td>
         <td><lightning:input aura:id="{!quant+v.rowIndex}" type="number" step="1" min="0" max="{!v.maxQuantity}" value="{!v.ordProdInstance.Quantity}"/></td>
-        <td><lightning:input type="number" value="{!v.ordProdInstance.ListPrice__c}" formatter="currency" disabled="true"/></td>
+        <td><lightning:formattedNumber value="{!v.ordProdInstance.ListPrice__c}" style="currency" currencyCode="{!v.invoiceCurrencyIsoCode}" disabled="true"/></td>
         <td style="text-align: center"><lightning:button variant="error" iconName="utility:delete" class="slds-icon slds-icon_small slds-button" title="Remove product" onclick="{!c.removeRow}"/></td>
     </tr>
 </aura:component>

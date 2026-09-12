@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetAddress</name>
         <label>Address</label>
@@ -75,6 +76,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>GetDailyDispatch.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CollectionDate</elementReference>
             </value>
         </assignmentItems>
         <connector>

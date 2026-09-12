@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <apiVersion>49.0</apiVersion>
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <choices>
         <name>AccountPaymentMethod</name>
         <choiceText>Account</choiceText>
@@ -122,15 +123,67 @@
         </value>
     </constants>
     <decisions>
-        <description>This decision will guide to the correct account type screen</description>
-        <name>Which_Record_Type</name>
-        <label>Which Record Type?</label>
-        <locationX>314</locationX>
-        <locationY>458</locationY>
+        <name>WasAccountNameMatched</name>
+        <label>Matched?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>CreateNewProspect</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>Error_Screen</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>isProspect</defaultConnectorLabel>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>UniqueAccountName</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>NameMatchedAccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CreateAccount</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>WasProspectNameMatched</name>
+        <label>Matched?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Error_Screen_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>UniqueProspectName</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>NameMatchedAccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Prospect</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision will guide to the correct account type screen</description>
+        <name>WhichRecordType</name>
+        <label>Which Record Type?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>GetProspectRecordType</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Prospect</defaultConnectorLabel>
         <rules>
             <name>isAccount</name>
             <conditionLogic>and</conditionLogic>
@@ -142,11 +195,19 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Create_New_Account</targetReference>
+                <targetReference>GetAccountRecordType</targetReference>
             </connector>
-            <label>isAccount</label>
+            <label>Account</label>
         </rules>
     </decisions>
+    <dynamicChoiceSets>
+        <name>CurrencyCode</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>CurrencyIsoCode</picklistField>
+        <picklistObject>Account</picklistObject>
+    </dynamicChoiceSets>
     <dynamicChoiceSets>
         <name>Frequency</name>
         <dataType>Picklist</dataType>
@@ -180,6 +241,16 @@
         <picklistObject>Account</picklistObject>
     </dynamicChoiceSets>
     <environments>Default</environments>
+    <formulas>
+        <name>AccountNameTrimmed</name>
+        <dataType>String</dataType>
+        <expression>TRIM({!AccountName})</expression>
+    </formulas>
+    <formulas>
+        <name>ProspectNameTrimmed</name>
+        <dataType>String</dataType>
+        <expression>TRIM({!ProspectName})</expression>
+    </formulas>
     <interviewLabel>New Account Record Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>New Account Record Flow</label>
     <processMetadataValues>
@@ -204,8 +275,8 @@
     <recordCreates>
         <name>Create_Prospect</name>
         <label>Create Prospect</label>
-        <locationX>578</locationX>
-        <locationY>674</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignRecordIdToReference>NewAccountRecordId</assignRecordIdToReference>
         <connector>
             <targetReference>Record_created</targetReference>
@@ -264,7 +335,7 @@
         <inputAssignments>
             <field>Name</field>
             <value>
-                <elementReference>ProspectName</elementReference>
+                <elementReference>ProspectNameTrimmed</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -288,7 +359,7 @@
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>Get_Prospect_Record_Type.Id</elementReference>
+                <elementReference>GetProspectRecordType.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -326,8 +397,8 @@
     <recordCreates>
         <name>CreateAccount</name>
         <label>Create Account</label>
-        <locationX>50</locationX>
-        <locationY>674</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignRecordIdToReference>NewAccountRecordId</assignRecordIdToReference>
         <connector>
             <targetReference>Record_created</targetReference>
@@ -372,6 +443,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <elementReference>CurrencyIsoCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Direct_Debit_Discount__c</field>
             <value>
                 <elementReference>Direct_Debit_Discount</elementReference>
@@ -404,7 +481,7 @@
         <inputAssignments>
             <field>Name</field>
             <value>
-                <elementReference>Name</elementReference>
+                <elementReference>AccountNameTrimmed</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -422,19 +499,19 @@
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>Get_Account_Record_Types.Id</elementReference>
+                <elementReference>GetAccountRecordType.Id</elementReference>
             </value>
         </inputAssignments>
         <object>Account</object>
     </recordCreates>
     <recordLookups>
-        <name>Get_Account_Record_Types</name>
-        <label>Get Account Record Types</label>
-        <locationX>314</locationX>
-        <locationY>134</locationY>
+        <name>GetAccountRecordType</name>
+        <label>Account Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Prospect_Record_Type</targetReference>
+            <targetReference>Create_New_Account</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -457,13 +534,109 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_Prospect_Record_Type</name>
-        <label>Get Prospect Record Type</label>
-        <locationX>314</locationX>
-        <locationY>242</locationY>
+        <name>GetLocationRecordType</name>
+        <label>Location Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Select_Record_Type</targetReference>
+            <targetReference>CreateNewProspect</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Location</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetMatchingAccount</name>
+        <label>Match Account Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>WasAccountNameMatched</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetAccountRecordType.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>AccountNameTrimmed</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>NameMatchedAccountId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>GetMatchingProspect</name>
+        <label>Match Prospect Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>WasProspectNameMatched</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ProspectNameTrimmed</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetProspectRecordType.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetLocationRecordType.Id</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>NameMatchedAccountId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>GetProspectRecordType</name>
+        <label>Prospect Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetLocationRecordType</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -488,13 +661,13 @@
     <screens>
         <name>Create_New_Account</name>
         <label>Create New Account</label>
-        <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>CreateAccount</targetReference>
+            <targetReference>GetMatchingAccount</targetReference>
         </connector>
         <fields>
             <name>Account_Information</name>
@@ -504,18 +677,36 @@
                 <name>Account_Information_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
-                    <name>Name</name>
+                    <name>AccountName</name>
                     <dataType>String</dataType>
                     <fieldText>Name</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Account_Start_Date</name>
                     <dataType>Date</dataType>
                     <fieldText>Account Start Date</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Has_a_central_order_point</name>
@@ -525,7 +716,16 @@
                     </defaultValue>
                     <fieldText>Has a central order point</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -551,7 +751,16 @@
                     <defaultSelectedChoiceReference>Small</defaultSelectedChoiceReference>
                     <fieldText>Enqix Classification</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Industry</name>
@@ -559,7 +768,16 @@
                     <dataType>String</dataType>
                     <fieldText>Industry</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>PO_Required</name>
@@ -569,7 +787,16 @@
                     </defaultValue>
                     <fieldText>PO Required</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -581,6 +808,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Billing_Address</name>
@@ -594,14 +829,32 @@
                     <dataType>String</dataType>
                     <fieldText>Street</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Postal_Code</name>
                     <dataType>String</dataType>
                     <fieldText>Postal Code</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -619,14 +872,32 @@
                     <dataType>String</dataType>
                     <fieldText>City</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Country</name>
                     <dataType>String</dataType>
                     <fieldText>Country</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -638,6 +909,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Finance_Information</name>
@@ -650,9 +929,21 @@
                     <name>InvoiceFrequency</name>
                     <choiceReferences>Frequency</choiceReferences>
                     <dataType>String</dataType>
+                    <defaultValue>
+                        <stringValue>Monthly - Scheduled</stringValue>
+                    </defaultValue>
                     <fieldText>Invoice Frequency</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Enqix_Payment_Method</name>
@@ -662,7 +953,36 @@
                     <dataType>String</dataType>
                     <fieldText>Enqix Payment Method</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <name>CurrencyIsoCode</name>
+                    <choiceReferences>CurrencyCode</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <stringValue>GBP</stringValue>
+                    </defaultValue>
+                    <fieldText>Currency Code</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -680,7 +1000,16 @@
                     <dataType>String</dataType>
                     <fieldText>Business Registration #</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>Direct_Debit_Discount</name>
@@ -690,8 +1019,17 @@
                     </defaultValue>
                     <fieldText>Direct Debit Discount (%)</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <scale>2</scale>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -703,6 +1041,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -710,13 +1056,13 @@
     <screens>
         <name>CreateNewProspect</name>
         <label>Create New Prospect</label>
-        <locationX>578</locationX>
-        <locationY>566</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Create_Prospect</targetReference>
+            <targetReference>GetMatchingProspect</targetReference>
         </connector>
         <fields>
             <name>Prospect_Information</name>
@@ -730,7 +1076,16 @@
                     <dataType>String</dataType>
                     <fieldText>Name</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectPartner</name>
@@ -742,6 +1097,14 @@
                         <assignToReference>storePartnerId</assignToReference>
                         <name>selectedRecordId</name>
                     </outputParameters>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectCouncil</name>
@@ -749,7 +1112,16 @@
                     <dataType>String</dataType>
                     <fieldText>Council</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -772,6 +1144,14 @@
                         <assignToReference>storeId</assignToReference>
                         <name>selectedRecordId</name>
                     </outputParameters>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectPriceBook</name>
@@ -783,6 +1163,14 @@
                         <assignToReference>storePriceBookId</assignToReference>
                         <name>selectedRecordId</name>
                     </outputParameters>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectIndustry</name>
@@ -790,7 +1178,16 @@
                     <dataType>String</dataType>
                     <fieldText>Industry</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -802,6 +1199,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Prospect_Billing_Address</name>
@@ -815,14 +1220,32 @@
                     <dataType>String</dataType>
                     <fieldText>Billing Street</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectBillingPostalCode</name>
                     <dataType>String</dataType>
                     <fieldText>Billing Postal Code</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -840,14 +1263,32 @@
                     <dataType>String</dataType>
                     <fieldText>Billing City</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectBillingCountry</name>
                     <dataType>String</dataType>
                     <fieldText>Billing Country</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -859,6 +1300,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Prospect_Shipping_Address</name>
@@ -872,14 +1321,32 @@
                     <dataType>String</dataType>
                     <fieldText>Shipping Street</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectShippingPostal_Code</name>
                     <dataType>String</dataType>
                     <fieldText>Shipping Postal Code</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -897,14 +1364,32 @@
                     <dataType>String</dataType>
                     <fieldText>Shipping City</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectShippingCountry</name>
                     <dataType>String</dataType>
                     <fieldText>Shipping Country</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -916,6 +1401,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Prospect_Other_Information</name>
@@ -929,7 +1422,16 @@
                     <dataType>String</dataType>
                     <fieldText>Collection Notes</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <fields>
                     <name>ProspectReportType</name>
@@ -937,7 +1439,16 @@
                     <dataType>String</dataType>
                     <fieldText>Report Type</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -955,7 +1466,16 @@
                     <dataType>String</dataType>
                     <fieldText>Delivery Notes</fieldText>
                     <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -967,6 +1487,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -974,8 +1502,8 @@
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
-        <locationX>314</locationX>
-        <locationY>782</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -983,6 +1511,14 @@
             <name>ErrorScreen</name>
             <fieldText>&lt;p&gt;An error has occurred, this is probably because the Account Name already exists.  &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Try pressing the &quot;Previous&quot; button and changing the name.  If this message keeps appearing then speak to your System Admin. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Or press &quot;Finish&quot; to end this process without creating a record.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -990,8 +1526,8 @@
     <screens>
         <name>Error_Screen_0</name>
         <label>Error Screen</label>
-        <locationX>842</locationX>
-        <locationY>782</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -999,6 +1535,14 @@
             <name>ErrorScreen_0</name>
             <fieldText>&lt;p&gt;An error has occurred, this is probably because the Account Name already exists.  &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Try pressing the &quot;Previous&quot; button and changing the name.  If this message keeps appearing then speak to your System Admin. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Or press &quot;Finish&quot; to end this process without creating a record.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -1006,8 +1550,8 @@
     <screens>
         <name>Record_created</name>
         <label>Record created</label>
-        <locationX>314</locationX>
-        <locationY>1106</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1015,6 +1559,14 @@
             <name>InfoText</name>
             <fieldText>The creation process is has ended.</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Id_Field</name>
@@ -1032,20 +1584,28 @@
                 <assignToReference>NewAccountRecordId</assignToReference>
                 <name>Id</name>
             </outputParameters>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>false</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <screens>
-        <name>Select_Record_Type</name>
-        <label>Select a Record Type</label>
-        <locationX>314</locationX>
-        <locationY>350</locationY>
+        <name>SelectRecordType</name>
+        <label>Select Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Which_Record_Type</targetReference>
+            <targetReference>WhichRecordType</targetReference>
         </connector>
         <fields>
             <name>Select_a_record_type</name>
@@ -1055,19 +1615,35 @@
             <fieldText>Select a record type</fieldText>
             <fieldType>RadioButtons</fieldType>
             <helpText>Account - The group/parent account - i.e. a cleaning company or retail head office</helpText>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>188</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Account_Record_Types</targetReference>
+            <targetReference>SelectRecordType</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>NameMatchedAccountId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>NewAccountRecordId</name>
         <dataType>String</dataType>

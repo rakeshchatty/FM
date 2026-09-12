@@ -1,31 +1,59 @@
 @isTest
-public class InvoiceDocRedirectExtensionTest {
-    
-    @isTest
-    private static void testPerOrderPDF() {
-        Account parent = TestDataHelper.insertAccount();
-        Account location = TestDataHelper.insertLocation(parent.Id, null);
-        Contact contact = TestDataHelper.insertContact(location.Id, 'firstMile');
-        TestDataHelper.insertAccountContactRelation(parent.Id, contact.Id, 'Finance Contact');
-        Order order = TestDataHelper.insertOrder(location.Id);
-        Invoice_Header__c invoice = TestDataHelper.insertInvoice(location.Id, order.Id, Invoicing.FREQUENCY_IMMEDIATE);
-        Invoice_Line__c invoiceLine = TestDataHelper.insertInvoiceLine(invoice.Id);
-        
-        InvoiceDocRedirectExtension idre = new InvoiceDocRedirectExtension(invoice);
-        PageReference p = idre.redirect();
-    }
-    
-    @isTest
-    private static void testMonthlyPDF() {
-        Account parent = TestDataHelper.insertAccount();
-        Account location = TestDataHelper.insertLocation(parent.Id, null);
-        Contact contact = TestDataHelper.insertContact(location.Id, 'firstMile');
-        TestDataHelper.insertAccountContactRelation(parent.Id, contact.Id, 'Finance Contact');
-        Order order = TestDataHelper.insertOrder(location.Id);
-        Invoice_Header__c invoice = TestDataHelper.insertInvoice(location.Id, order.Id, Invoicing.FREQUENCY_MONTHLY);
-        Invoice_Line__c invoiceLine = TestDataHelper.insertInvoiceLine(invoice.Id);
-        
-        InvoiceDocRedirectExtension idre = new InvoiceDocRedirectExtension(invoice);
-        PageReference p = idre.redirect();
-    }
+private class InvoiceDocRedirectExtensionTest {
+
+    @testSetup
+    static void setup() {
+        TestDataHelper.insertVat();
+		TestDataHelper.insertDefaultLegalEntity('Test Entity');
+	}
+
+	@isTest
+	static void testPerOrderPDF() {
+		Account parent = TestDataHelper.createAccount();
+		parent.InvoiceFrequency__c = 'Per Order';
+		INSERT parent;
+		Account location = TestDataHelper.insertLocation(parent.Id, null);
+
+		Order order = TestDataHelper.insertOrder(location.Id);
+		Product2 product = TestDataHelper.insertProduct('Test Name', 'Test Code', 'Delivery');
+		PricebookEntry pbe = TestDataHelper.insertStandardPricebookEntry(product.Id, 65.00);
+		TestDataHelper.insertOrderItem(order.Id, product.Id, pbe.Id);
+
+		order.Delivery_Date__c = System.today();
+		order.Status = 'Delivered';
+		Test.startTest();
+		UPDATE order;
+		Test.stopTest();
+
+		Invoice_Header__c invoice = [SELECT Id FROM Invoice_Header__c];
+		new InvoiceExtensionPerOrder(new ApexPages.StandardController(invoice));
+		new InvoiceDocRedirectExtension(invoice).redirect();
+	}
+
+	@isTest
+	static void testMonthlyPDF() {
+		Account parent = TestDataHelper.createAccount();
+		parent.InvoiceFrequency__c = 'Monthly';
+		INSERT parent;
+		Account location = TestDataHelper.insertLocation(parent.Id, null);
+
+		Order order1 = TestDataHelper.createOrder(location.Id, null);
+		Order order2 = TestDataHelper.createOrder(location.Id, null);
+		order1.PO_Number__c = 'SomePoNumber';
+		INSERT new List<Order> { order1, order2 };
+		Product2 product = TestDataHelper.insertProduct('Test Name', 'Test Code', 'Delivery');
+		PricebookEntry pbe = TestDataHelper.insertStandardPricebookEntry(product.Id, 65.00);
+		TestDataHelper.insertOrderItem(order1.Id, product.Id, pbe.Id);
+		TestDataHelper.insertOrderItem(order2.Id, product.Id, pbe.Id);
+
+		order1.Delivery_Date__c = order2.Delivery_Date__c = System.today();
+		order1.Status = order2.Status = 'Delivered';
+		Test.startTest();
+		UPDATE new List<Order> { order1, order2 };
+		Test.stopTest();
+
+		Invoice_Header__c invoice = [SELECT Id FROM Invoice_Header__c];
+		new InvoiceExtension(new ApexPages.StandardController(invoice));
+		new InvoiceDocRedirectExtension(invoice).redirect();
+	}
 }

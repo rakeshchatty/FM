@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Fruit_Veg_Order__c</fullName>
-    <defaultValue>false</defaultValue>
-    <label>Fruit &amp; Veg Order</label>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
-    <type>Checkbox</type>
-</CustomField>

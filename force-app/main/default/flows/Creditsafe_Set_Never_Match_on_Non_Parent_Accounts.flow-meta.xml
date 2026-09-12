@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_Never_Match</name>
+        <label>Set Never Match</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CS_APP__Never_Match__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Sets Never Match to True on any Account record where the record type is not a parent Account, or where Enqix Dead Live is not Live. Prevents Creditsafe from attempting to match Location, Partner, Supplier, Dead, and Pending records. Fires on every create or update where Never Match is not already True.</description>
+    <environments>Default</environments>
+    <interviewLabel>Creditsafe - Set Never Match on Non-Parent Accounts {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Creditsafe - Set Never Match on Non-Parent Accounts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Set_Never_Match</targetReference>
+        </connector>
+        <filterFormula>AND(
+OR(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &apos;Account&apos;,
+NOT(ISPICKVAL({!$Record.Enqix_Dead_Live__c}, &apos;Live&apos;))
+),
+{!$Record.CS_APP__Never_Match__c} = false
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictChanges</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(PRIORVALUE(BusinessCentralId__c))), NOT($Permission.AllowInvoiceChanges))</errorConditionFormula>
+    <errorMessage>Update not allowed on Salesforce as this record has been sent to Business Central.</errorMessage>
+</ValidationRule>

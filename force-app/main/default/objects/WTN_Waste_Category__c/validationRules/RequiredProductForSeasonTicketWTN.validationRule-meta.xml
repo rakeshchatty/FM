@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>RequiredProductForSeasonTicketWTN</fullName>
-    <active>true</active>
-    <errorConditionFormula>AND(WTN__r.RecordType.DeveloperName = &apos;WTN&apos;, BEGINS(Name, &apos;Season Ticket WTN&apos;), OR(ISBLANK(Product__c), TEXT(Product__r.WTN_Product__c) = &apos;Season Ticket&apos;))</errorConditionFormula>
-    <errorDisplayField>Product__c</errorDisplayField>
-    <errorMessage>Product is required, and its WTN Product must be Season Ticket.</errorMessage>
-</ValidationRule>

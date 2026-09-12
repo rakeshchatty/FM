@@ -3,7 +3,7 @@
     <fullName>Ops_End_Time__c</fullName>
     <label>Ops End Time</label>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>DateTime</type>
 </CustomField>

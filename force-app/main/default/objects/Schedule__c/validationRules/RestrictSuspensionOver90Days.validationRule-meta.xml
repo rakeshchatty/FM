@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RestrictSuspensionOver90Days</fullName>
-    <active>true</active>
+    <active>false</active>
     <errorConditionFormula>(Reactivation_Start_Date__c - Suspension_Start_Date__c) &gt; 90</errorConditionFormula>
     <errorMessage>Suspension over 90 days not allowed, instead delete such collections.</errorMessage>
 </ValidationRule>

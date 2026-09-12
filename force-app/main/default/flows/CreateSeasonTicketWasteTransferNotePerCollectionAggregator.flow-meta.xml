@@ -30,6 +30,7 @@
             </value>
         </inputParameters>
         <nameSegment>CreateSeasonTicketWasteTransferNote</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
@@ -53,8 +54,10 @@
             </value>
         </inputParameters>
         <nameSegment>CreateWasteCategoryProduct</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetComplianceDocumentId</name>
         <label>Compliance Document Id</label>
@@ -251,7 +254,7 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
-        <isOutput>false</isOutput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <name>WTNWasteCategory</name>

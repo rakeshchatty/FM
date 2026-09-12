@@ -10,11 +10,8 @@
 			</div>
 			<div style="float: right; margin: 10px">
 				<div style="float: left; margin: 10px">
-					<lightning:button label="Clear All" onclick="{!c.deleteAll}" type="submit"/>&nbsp;&nbsp;&nbsp;&nbsp;
-					<lightning:button label="View All" onclick="{!c.navigateToRelatedList}" />
-				</div>
-				<div style="float: right; margin: 10px">
-					<lightning:button label="New" onclick="{!c.openModal}" />
+                    <lightning:button label="Add, Amend, Delete, Suspend" onclick="{!c.launchFlow}"/>
+                    <lightning:flow aura:id="flowData" />
 				</div>
 			</div>
         </div>
@@ -92,33 +89,19 @@
 
 							<td> {!allCollections.Quantity__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.MondayURL}"> <aura:unescapedHtml value="{!allCollections.Monday__c}" /> </a>
-							</td>
+							<td>{!allCollections.Monday__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.TuesdayURL}"> <aura:unescapedHtml value="{!allCollections.Tuesday__c}" /> </a>
-							</td>
+							<td>{!allCollections.Tuesday__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.WednesdayURL}"> <aura:unescapedHtml value="{!allCollections.Wednesday__c}"  /></a>
-							</td>
+							<td>{!allCollections.Wednesday__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.ThursdayURL}"> <aura:unescapedHtml value="{!allCollections.Thursday__c}"  /></a>
-							</td>
+							<td>{!allCollections.Thursday__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.FridayURL}"> <aura:unescapedHtml value="{!allCollections.Friday__c}" /></a>
-							</td>
+							<td>{!allCollections.Friday__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.SaturdayURL}"> <aura:unescapedHtml value="{!allCollections.Saturday__c}"  /></a>
-							</td>
+							<td>{!allCollections.Saturday__c}</td>
 
-							<td>
-								<a href="{!'/'+allCollections.SundayURL}"> <aura:unescapedHtml value="{!allCollections.Sunday__c}" /> </a>
-							</td>
+							<td>{!allCollections.Sunday__c}</td>
 						</tr>
 					</aura:iteration>
 				</tbody>

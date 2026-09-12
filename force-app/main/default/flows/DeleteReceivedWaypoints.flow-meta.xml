@@ -11,6 +11,7 @@
         <nameSegment>ReceivedWaypointDeleteBatch</nameSegment>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Delete Received Waypoints {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Delete Received Waypoints</label>

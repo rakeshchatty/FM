@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>59.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>SetLocationAndDailyDispatch</name>
+        <name>SetLocationAndDailyDispatchFromDispatchLocation</name>
         <label>Location &amp; Daily Dispatch</label>
-        <locationX>176</locationX>
-        <locationY>395</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Location__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>GetCollectionWaypoint.Location__c</elementReference>
+                <elementReference>$Record.DispatchLocation__r.Location__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>$Record.DailyDispatch__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>GetCollectionWaypoint.Daily_Dispatch__c</elementReference>
+                <elementReference>$Record.DispatchLocation__r.Dispatch__c</elementReference>
             </value>
         </assignmentItems>
     </assignments>
     <environments>Default</environments>
-    <formulas>
-        <name>DriverId</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!GetCollectionWaypoint.Daily_Dispatch__r.DriverId__c}), {!$Record.DailyDispatch__r.RoundId__r.Default_Driver__c}, {!GetCollectionWaypoint.Daily_Dispatch__r.DriverId__c})</expression>
-    </formulas>
     <interviewLabel>Collection Exception - Before Insert {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Collection Exception - Before Insert</label>
     <processMetadataValues>
@@ -48,32 +44,11 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>GetCollectionWaypoint</name>
-        <label>Collection Waypoint</label>
-        <locationX>176</locationX>
-        <locationY>287</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>SetLocationAndDailyDispatch</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.CollectionWaypointId__c</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Collection_Waypoints__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>GetCollectionWaypoint</targetReference>
+            <targetReference>SetLocationAndDailyDispatchFromDispatchLocation</targetReference>
         </connector>
         <object>CollectionException__c</object>
         <recordTriggerType>Create</recordTriggerType>

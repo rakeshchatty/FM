@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>First Mile</fullName>
+        <default>false</default>
+        <label>First Mile</label>
+    </customValue>
+    <customValue>
+        <fullName>FM GZ Legacy</fullName>
+        <default>false</default>
+        <label>FM GZ Legacy</label>
+    </customValue>
+    <customValue>
+        <fullName>GZFML</fullName>
+        <default>false</default>
+        <label>GZFML</label>
+    </customValue>
+    <customValue>
+        <fullName>Greenzone</fullName>
+        <default>false</default>
+        <label>Greenzone</label>
+    </customValue>
+    <customValue>
+        <fullName>GtG</fullName>
+        <default>false</default>
+        <label>GtG</label>
+    </customValue>
+    <masterLabel>Branch</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

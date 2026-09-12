@@ -15,7 +15,7 @@
     <filters>
         <field>Receipt_Amount__c</field>
         <operation>equals</operation>
-        <value>0</value>
+        <value>692.4</value>
     </filters>
     <filters>
         <field>Transaction_Type__c</field>

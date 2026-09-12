@@ -3,8 +3,8 @@
     <actionCalls>
         <name>SendDeliveryDueEmail</name>
         <label>Send Delivery Due Email</label>
-        <locationX>50</locationX>
-        <locationY>576</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
@@ -57,47 +57,47 @@
         <inputParameters>
             <name>var03</name>
             <value>
-                <elementReference>$Record.Requested_Delivery_Date__c</elementReference>
+                <elementReference>$Record.ExpectedDeliveryDate__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var04</name>
+            <value>
+                <elementReference>GetDeliveryPackage.TrackingId__c</elementReference>
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>60.0</apiVersion>
-    <assignments>
-        <name>SetRecipient</name>
-        <label>Recipient</label>
-        <locationX>50</locationX>
-        <locationY>468</locationY>
-        <assignmentItems>
-            <assignToReference>ToAddress</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>$Record.Contact__r.Email</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>ToName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>FullName</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>GreetingName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Name</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>SendDeliveryDueEmail</targetReference>
-        </connector>
-    </assignments>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>HasContactRecipients</name>
+        <label>Recipients?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesContactRecipients</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetDeliveryPackage</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>HasOrderItems</name>
         <label>Order Items?</label>
-        <locationX>182</locationX>
-        <locationY>360</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesHasOrderItems</name>
@@ -110,22 +110,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>SetRecipient</targetReference>
+                <targetReference>RetrieveOrderContactOrServiceContact</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>IsCustomerToBeExcluded</name>
+        <label>Customer to be Excluded?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>GetOrderItems</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcluded</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Greenzone</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Greener Than Green</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
-    <formulas>
-        <name>FullName</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!$Record.Contact__r.FirstName}), {!$Record.Contact__r.LastName}, {!$Record.Contact__r.FirstName} + &apos; &apos; + {!$Record.Contact__r.LastName})</expression>
-    </formulas>
-    <formulas>
-        <name>Name</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!$Record.Contact__r.FirstName}), {!$Record.Contact__r.LastName}, {!$Record.Contact__r.FirstName})</expression>
-    </formulas>
     <formulas>
         <name>ShippingAddress</name>
         <dataType>String</dataType>
@@ -153,6 +172,36 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>GetDeliveryPackage</name>
+        <label>Delivery Package</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendDeliveryDueEmail</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>DeliveryPackage__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <description>Avoid below Products:
 Bin rental: 01tw0000005ZwloAAC
 Mixed Recycling Overweight Charge (P): 01t4L000001yuRoQAI
@@ -164,8 +213,8 @@ Exchange 2 x Coffee Tote: 01t4L000000wJnMQAU
 Exchange 3 x Coffee Tote: 01t4L000000wJnRQAU</description>
         <name>GetOrderItems</name>
         <label>Order Items</label>
-        <locationX>182</locationX>
-        <locationY>252</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>HasOrderItems</targetReference>
@@ -243,10 +292,10 @@ Exchange 3 x Coffee Tote: 01t4L000000wJnRQAU</description>
         <sortOrder>Asc</sortOrder>
     </recordLookups>
     <start>
-        <locationX>56</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>GetOrderItems</targetReference>
+            <targetReference>IsCustomerToBeExcluded</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -286,13 +335,59 @@ Exchange 3 x Coffee Tote: 01t4L000000wJnRQAU</description>
         </filters>
         <object>Order</object>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2024-04-11</startDate>
             <startTime>06:00:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>RetrieveOrderContactOrServiceContact</name>
+        <label>Retrieve Order Contact or Service Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>HasContactRecipients</targetReference>
+        </connector>
+        <flowName>RetrieveOrderContactOrAccountContact</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Order</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Role</name>
+            <value>
+                <stringValue>Service Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>GreetingName</assignToReference>
+            <name>GreetingName</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>RecipientCount</assignToReference>
+            <name>RecipientCount</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToAddress</assignToReference>
+            <name>ToAddress</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToName</assignToReference>
+            <name>ToName</name>
+        </outputAssignments>
+    </subflows>
     <variables>
         <name>GreetingName</name>
         <dataType>String</dataType>
@@ -307,6 +402,14 @@ Exchange 3 x Coffee Tote: 01t4L000000wJnRQAU</description>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
+        <name>RecipientCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
     </variables>
     <variables>
         <name>ToAddress</name>

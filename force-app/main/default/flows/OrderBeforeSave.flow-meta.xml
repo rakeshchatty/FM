@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>58.0</apiVersion>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>ClearRouteNameAndPODDeliveryDate</name>
         <label>Clear Route Name &amp; POD Delivery Date</label>
-        <locationX>50</locationX>
-        <locationY>1895</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.RouteName__c</assignToReference>
             <operator>Assign</operator>
@@ -21,8 +22,8 @@
     <assignments>
         <name>SetClearanceOrder</name>
         <label>Clearance Order</label>
-        <locationX>402</locationX>
-        <locationY>611</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Clearance_Order__c</assignToReference>
             <operator>Assign</operator>
@@ -37,8 +38,8 @@
     <assignments>
         <name>SetCreatedLaterAsTrue</name>
         <label>Created Later = True</label>
-        <locationX>182</locationX>
-        <locationY>1295</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Created_Later__c</assignToReference>
             <operator>Assign</operator>
@@ -53,8 +54,8 @@
     <assignments>
         <name>SetCSIssueFixedAsFalse</name>
         <label>CS Issue Fixed? = False</label>
-        <locationX>182</locationX>
-        <locationY>995</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.CS_Issue_Fixed__c</assignToReference>
             <operator>Assign</operator>
@@ -70,8 +71,8 @@
         <description>Clearance End Date, Delivery Date, Order Placed Date,  Delivery Status</description>
         <name>SetDateFieldsAndDeliveryStatus</name>
         <label>Date Fields &amp; Delivery Status</label>
-        <locationX>182</locationX>
-        <locationY>3203</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Clearance_End_Date__c</assignToReference>
             <operator>Assign</operator>
@@ -107,8 +108,8 @@
     <assignments>
         <name>SetDeliveryAttempts</name>
         <label>Delivery Attempts</label>
-        <locationX>50</locationX>
-        <locationY>2003</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Delivery_Attempts__c</assignToReference>
             <operator>Add</operator>
@@ -123,8 +124,8 @@
     <assignments>
         <name>SetHowMuchWaste</name>
         <label>How much waste?</label>
-        <locationX>182</locationX>
-        <locationY>2303</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.How_much_waste__c</assignToReference>
             <operator>Assign</operator>
@@ -137,10 +138,23 @@
         </connector>
     </assignments>
     <assignments>
+        <name>SetInvoicedDate</name>
+        <label>Invoiced Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.InvoicedDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
         <name>SetPricebook</name>
         <label>Pricebook</label>
-        <locationX>182</locationX>
-        <locationY>1595</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Pricebook2Id</assignToReference>
             <operator>Assign</operator>
@@ -155,8 +169,8 @@
     <assignments>
         <name>SetStatusAndDeliveryDate</name>
         <label>Status &amp; Delivery Date</label>
-        <locationX>182</locationX>
-        <locationY>2603</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Status</assignToReference>
             <operator>Assign</operator>
@@ -178,8 +192,8 @@
     <assignments>
         <name>SetStatusAsInvoiced</name>
         <label>Status = &apos;Invoiced&apos;</label>
-        <locationX>182</locationX>
-        <locationY>2903</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Status</assignToReference>
             <operator>Assign</operator>
@@ -194,8 +208,8 @@
     <assignments>
         <name>SetSupplierAndMainProduct</name>
         <label>Supplier &amp; Main Product</label>
-        <locationX>666</locationX>
-        <locationY>611</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Supplier__c</assignToReference>
             <operator>Assign</operator>
@@ -217,8 +231,8 @@
     <assignments>
         <name>SetSyncWithCpAsFalse</name>
         <label>Sync With CP = False</label>
-        <locationX>182</locationX>
-        <locationY>3503</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.syncedwithcp__c</assignToReference>
             <operator>Assign</operator>
@@ -226,12 +240,38 @@
                 <booleanValue>false</booleanValue>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>IsInvoiced</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>SetVatExempt</name>
+        <label>Vat Exempt</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IsVATExemptLocation__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IsVatExemptLocation</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.IsVATExemptPartner__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IsVatExemptPartner</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>GetOrderProducts</targetReference>
+        </connector>
     </assignments>
     <decisions>
         <name>CSIssueFixedWithInvalidReason</name>
         <label>CS Issue Fixed With Invalid Reason?</label>
-        <locationX>314</locationX>
-        <locationY>887</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsNonClearanceOrderInsertedAsDelivered</targetReference>
         </defaultConnector>
@@ -290,8 +330,8 @@
     <decisions>
         <name>ForEachOrderProduct</name>
         <label>For Each Order Product</label>
-        <locationX>666</locationX>
-        <locationY>503</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>LoopOrderProducts</targetReference>
         </defaultConnector>
@@ -344,8 +384,8 @@
     <decisions>
         <name>IsClearanceOrderAndMainProductChanged</name>
         <label>Clearance Order &amp; Main Product Changed?</label>
-        <locationX>314</locationX>
-        <locationY>2195</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsSupplierStatus</targetReference>
         </defaultConnector>
@@ -411,8 +451,8 @@
     <decisions>
         <name>IsClearanceOrderInvoiced</name>
         <label>Clearance Order Invoiced?</label>
-        <locationX>314</locationX>
-        <locationY>3095</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsCustomerPortalUpdatedStatus</targetReference>
         </defaultConnector>
@@ -444,8 +484,11 @@
     <decisions>
         <name>IsCustomerPortalUpdatedStatus</name>
         <label>Customer Portal Updated Status?</label>
-        <locationX>314</locationX>
-        <locationY>3395</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>IsInvoiced</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesCustomerPortalUpdatedStatus</name>
@@ -473,8 +516,8 @@
     <decisions>
         <name>IsDetrackStatus</name>
         <label>Detrack Status?</label>
-        <locationX>314</locationX>
-        <locationY>1787</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsClearanceOrderAndMainProductChanged</targetReference>
         </defaultConnector>
@@ -516,8 +559,8 @@
     <decisions>
         <name>IsInvoiceCreated</name>
         <label>Invoice Created?</label>
-        <locationX>314</locationX>
-        <locationY>2795</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsClearanceOrderInvoiced</targetReference>
         </defaultConnector>
@@ -539,10 +582,33 @@
         </rules>
     </decisions>
     <decisions>
+        <name>IsInvoiced</name>
+        <label>Invoiced?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesInvoiced</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Invoiced</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetInvoicedDate</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>IsNonClearanceOrderInsertedAsDelivered</name>
         <label>Non Clearance Order Inserted As Delivered?</label>
-        <locationX>314</locationX>
-        <locationY>1187</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsPricebookMissingOnOrder</targetReference>
         </defaultConnector>
@@ -580,8 +646,8 @@
     <decisions>
         <name>IsPricebookMissingOnOrder</name>
         <label>Pricebook Missing On Order?</label>
-        <locationX>314</locationX>
-        <locationY>1487</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsDetrackStatus</targetReference>
         </defaultConnector>
@@ -612,8 +678,8 @@
     <decisions>
         <name>IsSupplierStatus</name>
         <label>Supplier Status</label>
-        <locationX>314</locationX>
-        <locationY>2495</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsInvoiceCreated</targetReference>
         </defaultConnector>
@@ -663,17 +729,27 @@
 )</expression>
     </formulas>
     <formulas>
-        <name>IsFMSupplier</name>
+        <name>IsPartnerOrder</name>
         <dataType>Boolean</dataType>
-        <expression>OR(ISBLANK({!$Record.Supplier__c}), {!$Record.Supplier__r.Name} = &apos;First Mile Ltd&apos;)</expression>
+        <expression>{!$Record.Account.RecordType.Name} == &apos;Partner&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>IsVatExemptLocation</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(NOT(ISNEW()), {!$Record.IsVATExemptLocation__c}, IF({!IsPartnerOrder}, false, OR({!$Record.Account.VAT_Exempt__c}, {!$Record.Account.Parent.VAT_Exempt__c})))</expression>
+    </formulas>
+    <formulas>
+        <name>IsVatExemptPartner</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(NOT(ISNEW()), {!$Record.IsVATExemptPartner__c}, IF({!IsPartnerOrder}, {!$Record.Account.VAT_Exempt__c}, AND(NOT(ISBLANK({!$Record.Account.Partnership__c})), {!$Record.Account.Partnership__r.VAT_Exempt__c})))</expression>
     </formulas>
     <interviewLabel>Order - Before Save {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Order - Before Save</label>
     <loops>
         <name>LoopOrderProducts</name>
         <label>Order Products</label>
-        <locationX>314</locationX>
-        <locationY>395</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <collectionReference>GetOrderProducts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -705,8 +781,8 @@
     <recordLookups>
         <name>GetOrderProducts</name>
         <label>Order Products</label>
-        <locationX>314</locationX>
-        <locationY>287</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>LoopOrderProducts</targetReference>
@@ -724,10 +800,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>188</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>GetOrderProducts</targetReference>
+            <targetReference>SetVatExempt</targetReference>
         </connector>
         <object>Order</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>

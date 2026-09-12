@@ -338,17 +338,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Supplier__c.CarrierRegNo_Expiry_Date__c</field>
-            <table>Schedule__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Supplier__c.Address__c</field>
-            <table>Schedule__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Supplier__c.IsEnvPermitHolder__c</field>
             <table>Schedule__c</table>
         </columns>
         <columns>
@@ -414,6 +404,46 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Po_Number__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Po_Number_Supplier__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Container_Type__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Earliest_Arrival_Text__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Latest_Arrival_Text__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ProductId__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Collection_Est_Weight__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Needs_Bin_Weighing__c</field>
             <table>Schedule__c</table>
         </columns>
         <masterLabel>Collections</masterLabel>

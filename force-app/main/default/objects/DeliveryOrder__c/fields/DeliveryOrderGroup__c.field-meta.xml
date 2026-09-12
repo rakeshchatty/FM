@@ -4,7 +4,7 @@
     <label>Delivery Order Group</label>
     <referenceTo>DeliveryOrderGroup__c</referenceTo>
     <relationshipLabel>Delivery Orders</relationshipLabel>
-    <relationshipName>Delivery_Orders</relationshipName>
+    <relationshipName>DeliveryOrders</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackHistory>true</trackHistory>

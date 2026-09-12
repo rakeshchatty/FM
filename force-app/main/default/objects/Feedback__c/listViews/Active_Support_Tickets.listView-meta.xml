@@ -3,6 +3,7 @@
     <fullName>Active_Support_Tickets</fullName>
     <columns>NAME</columns>
     <columns>Category__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
     <columns>Requested_by__c</columns>
     <columns>Description__c</columns>
     <columns>CREATED_DATE</columns>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>SetStatus</name>
+        <label>Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>InvoiceStatus</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>InvoiceAmount</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.AmountExclVAT__c} + {!$Record.VAT__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>InvoiceStatus</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.AmountOutstanding__c} = 0, &apos;Paid&apos;, IF({!$Record.AmountOutstanding__c} = {!InvoiceAmount}, &apos;Invoiced&apos;, &apos;Partially Paid&apos;))</expression>
+    </formulas>
+    <interviewLabel>Invoice - Before Update - Business Central Integration {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Invoice - Before Update - Business Central Integration</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SetStatus</targetReference>
+        </connector>
+        <filterFormula>AND (CONTAINS({!$User.Username}, &apos;business.central.integration@firstmile.co.uk&apos;), ISCHANGED({!$Record.AmountOutstanding__c}))</filterFormula>
+        <object>Invoice_Header__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

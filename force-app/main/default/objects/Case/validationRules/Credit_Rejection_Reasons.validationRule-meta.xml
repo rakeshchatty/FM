@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Rejection_Reasons</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+Rejected__c = TRUE,
+ISBLANK(Reason_for_Rejection__c)
+)</errorConditionFormula>
+    <errorDisplayField>Reason_for_Rejection__c</errorDisplayField>
+    <errorMessage>Please fill out a reason for rejecting this credit</errorMessage>
+</ValidationRule>

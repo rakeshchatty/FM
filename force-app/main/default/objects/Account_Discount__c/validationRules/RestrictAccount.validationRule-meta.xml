@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictAccount</fullName>
+    <active>true</active>
+    <errorConditionFormula>Account__r.RecordType.Name != &apos;Account&apos; &amp;&amp; Account__r.RecordType.Name != &apos;Partner&apos;</errorConditionFormula>
+    <errorMessage>Account must be of type Parent or Partner</errorMessage>
+</ValidationRule>

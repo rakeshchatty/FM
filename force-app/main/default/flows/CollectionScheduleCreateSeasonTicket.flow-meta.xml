@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Collection Schedule - Create Season Ticket {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Collection Schedule - Create Season Ticket</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetCollectionAggregator</name>
+        <label>Collection Aggregator</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CreateSeasonTicketWasteTransferNote</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CollectionAggregator__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CollectionAggregator__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetCollectionAggregator</targetReference>
+        </connector>
+        <filterFormula>AND(TEXT({!$Record.Supplier_Product__r.Product__r.WTN_Product__c}) = &apos;Season Ticket&apos;,
+OR(ISBLANK({!$Record.End_Date__c}), {!$Record.End_Date__c} &gt; TODAY()), 
+OR(ISNEW(), ISCHANGED({!$Record.End_Date__c}), ISCHANGED({!$Record.Supplier_Product__c})))</filterFormula>
+        <object>Schedule__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>CreateSeasonTicketWasteTransferNote</name>
+        <label>Create Season Ticket Waste Transfer Note</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <flowName>CreateSeasonTicketWasteTransferNotePerCollectionAggregator</flowName>
+        <inputAssignments>
+            <name>CollectionAggregator</name>
+            <value>
+                <elementReference>GetCollectionAggregator</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

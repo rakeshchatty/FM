@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictActive</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(IsActive__c), SuspensionDate__c &lt;= TODAY(), ReactivationDate__c &gt;= TODAY())</errorConditionFormula>
+    <errorDisplayField>IsActive__c</errorDisplayField>
+    <errorMessage>Cannot be activated or deactivated while in suspension period.</errorMessage>
+</ValidationRule>

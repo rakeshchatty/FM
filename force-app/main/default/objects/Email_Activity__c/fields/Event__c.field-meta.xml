@@ -18,6 +18,16 @@
                 <default>false</default>
                 <label>Bounced</label>
             </value>
+            <value>
+                <fullName>bounces</fullName>
+                <default>false</default>
+                <label>Bounce</label>
+            </value>
+            <value>
+                <fullName>blocks</fullName>
+                <default>false</default>
+                <label>Block</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

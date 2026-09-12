@@ -43,16 +43,12 @@ public with sharing class OrderItemTriggerHelper {
 	}
 
 	public void updateSubscribedProducts(Map<Id, OrderItem> listOrderItems, Map<Id,OrderItem> listOld, Boolean isInsert) {
-		system.debug('Entrou um novo OrderItem para fazer update do quantity Ordered!');
-
 		Set<Id> OrderIds = new Set<Id>();
 		Set < Id > OrderItemsIds = new Set < Id > ();
 		for (OrderItem p: listOrderItems.values()) {
 			OrderItemsIds.add(p.Id);
 			OrderIds.add(p.OrderId);
-			//system.debug('Order Item #'+p.Id);
 		}
-		system.debug('list Order Items que foram modificados: ' + listOrderItems.size());
 
 		List<Order> orders;
 		List < OrderItem > orderItemsData;
@@ -66,25 +62,16 @@ public with sharing class OrderItemTriggerHelper {
 		}
 
 		//TODO 957
-
-		system.debug('TAMANHO DOS ORDER ITEMS ###' + orders.size());
-		system.debug('TAMANHO DOS ORDER ITEMS DATA ### ' + orderItemsData.size());
-
-
 		Set<Id> productIds = new Set<Id>();
 		Set<Id> accountIds = new Set<Id>();
 		for(OrderItem o : listOrderItems.values()){
 			productIds.add(o.Product2Id);
-			//system.debug('Order Item Product Id #'+o.Product2Id);
 			for(Order ord : orders){
 				if(ord.Id == o.OrderId){
 					accountIds.add(ord.AccountId);
-					//system.debug('Order Item Account Id #'+ordem.AccountId);
 				}
 			}
 		}
-		system.debug('productIds --- ' +productIds);
-		system.debug('accountIds --- ' +accountIds);
 		//Account Id vem a zero, a lista vem vazia... DEBUG
 		if(productIds.size() > 0 && accountIds.size() > 0){
 
@@ -92,7 +79,6 @@ public with sharing class OrderItemTriggerHelper {
 		//jira 1995 --> Added the EndDate = NULL verification
 		List<Subscribed_Products__c> allsubs = [SELECT Id, Account__c, Product__c, quantityOrdered__c
 												FROM Subscribed_Products__c WHERE Product__c in :productIds and Account__c in :accountIds and (EndDate__c >= TODAY OR EndDate__c = NULL)];
-		system.debug('Tamanho dos Subs Products quando um OrderItem é inserido/alterado: '+allsubs.size());
 
 		for (OrderItem o: orderItemsData) {
 			//TODO 957
@@ -104,28 +90,19 @@ public with sharing class OrderItemTriggerHelper {
 					if(listOld == null){
 						//Foi insert
 						sp.quantityOrdered__c += o.Quantity;
-						system.debug('quantity ordered nova = ' + sp.quantityOrdered__c);
 					}else if(listOld.get(o.Id).Quantity == o.Quantity ){
-						system.debug('quantity on the order did not change.');
-						system.debug('valor antigo: '+listOld.get(o.Id).Quantity + ' valor novo: '+ o.Quantity);
 					}else{
 						sp.quantityOrdered__c += (o.Quantity - listOld.get(o.Id).Quantity);
-						system.debug('quantity on the order changed, was updated ' );
-						system.debug(o.Quantity +'-'+ listOld.get(o.Id).Quantity+' = '+ sp.quantityOrdered__c);
 					}
 
 					updateList.add(sp);
-
-
 				}
 
 			}
 		}
 			//END TODO 957
 		}
-		//system.debug('Check Quantity of Invoice Lines to Insert on continueInvoiceMontly: '+updateList.size());
 		Set<Subscribed_Products__c> setNoDups = new Set<Subscribed_Products__c>(updateList);
-		//system.debug('Check Quantity of Invoice Lines to Insert without duplicates: '+setNoDups.size());
 		List<Subscribed_Products__c> updateListNoDups = new List<Subscribed_Products__c>(setNoDups);
 		//update updateListNoDups;
 
@@ -157,7 +134,6 @@ public with sharing class OrderItemTriggerHelper {
 		Set<Id> accountIds = new Set<Id>();
 		for(OrderItem o : erased.values()){
 			productIds.add(o.Product2Id);
-			//system.debug('Order Item Product Id #'+o.Product2Id);
 			for(Order ord : ordens){
 				if(ord.Id == o.OrderId){
 					accountIds.add(ord.AccountId);
@@ -167,7 +143,6 @@ public with sharing class OrderItemTriggerHelper {
 
 		List<Subscribed_Products__c> allsubs = [SELECT Id, Account__c, Product__c, quantityOrdered__c
 												FROM Subscribed_Products__c WHERE Product__c in :productIds  and Account__c in :accountIds];
-		system.debug('Tamanho dos Subs Products quando um OrderItem é inserido/alterado: '+allsubs.size());
 
 		for (OrderItem o: orderItemsData) {
 			for(Subscribed_Products__c sp : allsubs){
@@ -175,7 +150,6 @@ public with sharing class OrderItemTriggerHelper {
 
 				if (sp.Product__c == o.Product2Id && sp.Account__c == o.Order.AccountId){
 					sp.quantityOrdered__c -= o.Quantity;
-					system.debug('quantity ordered nova subtraida= ' + sp.quantityOrdered__c);
 					updateList.add(sp);
 				}
 			}
@@ -196,7 +170,6 @@ public with sharing class OrderItemTriggerHelper {
 
 	//Need to optimize this method when possible
 	public void populateParterUnitPrice(List<OrderItem> lista) {
-		system.debug('populate partner unit price');
 		Set<Id> OrderItemIds = new Set<Id>();
 		Set<Id> OrderIds = new Set<Id>();
 		Set<Id> AccountIds = new Set<Id>();
@@ -205,8 +178,6 @@ public with sharing class OrderItemTriggerHelper {
 		Map<Id, Id> pbeProduct2IdMap = new Map<Id, Id>();
 
 		for(OrderItem o : lista){
-			system.debug(o.OrderId + ' - '+ o.Product2Id);
-			system.debug(o);
 			OrderItemIds.add(o.Id);
 			OrderIds.add(o.OrderId);
 			//ProductItemIds.add(o.Product2Id);
@@ -223,11 +194,6 @@ public with sharing class OrderItemTriggerHelper {
 		for(Order o : orders){
 			AccountIds.add(o.Account.Partnership__c);
 		}
-		system.debug('Partnerships encontrados: ' + AccountIds.size() + ' ' + AccountIds);
-		system.debug('OrderItemIds.size() = '+OrderItemIds.size());
-		system.debug('lista.size() = '+ lista.size());
-		system.debug('AccountIds = ' + AccountIds);
-		system.debug('ProductItemIds = ' + pbeProduct2IdMap);
 
 		Id partnerdiscount_RecordTypeId = Schema.SObjectType.Account_Discount__c.getRecordTypeInfosByName().get('PartnerDiscount').getRecordTypeId();
 		List<Account_Discount__c> discounts = new List <Account_Discount__c>();
@@ -245,8 +211,6 @@ public with sharing class OrderItemTriggerHelper {
 		   discounts = [SELECT Id, Product__c, Account__c, RecordTypeId, BID_Price__c, BID_Rebate__c,Product_Discount__c RecordType.DeveloperName from Account_Discount__c];
 		} */
 
-		system.debug('Account Discounts encontradas : ' + discounts.size() + ' ' + discounts);
-
 		/* Changes made on 05/11/2018  - Apex CPU Time Limit exceeded. Maybe because there were too many for loops inside for loops. it caused by the inner for, when looping the lista from orderitems. */
 		Map<OrderItem, Id> partnersFromOrderItems = new Map<OrderItem, Id>();
 		//Map<OrderItem, Order> getOrderFromOrderItem = new Map<OrderItem, Order>();
@@ -255,7 +219,6 @@ public with sharing class OrderItemTriggerHelper {
 			for(OrderItem oo : lista){
 				if(oo.OrderId == o.Id ){
 					//getOrderFromOrderItem.put(oo, o);
-					system.debug('> Order e OrderItem . Account Partnership: '+ o.Account.Partnership__c);
 					if(o.Account.Partnership__c != null){
 						partnersFromOrderItems.put(oo, o.Account.Partnership__c);
 					}
@@ -265,27 +228,21 @@ public with sharing class OrderItemTriggerHelper {
 
 		for(Account_Discount__c discount : discounts){
 			Id product2Id;
-			system.debug('> This is the Discount of Type Partner: ' + discount);
 			if(discount.BID_Price__c != null && discount.BID_Price__c != 0){
-				system.debug('> > BID PRICE. ');
 				for(OrderItem orderitem : lista){
 					product2Id = pbeProduct2IdMap.get(orderitem.PricebookEntryId);
 					if(partnersFromOrderItems.get(orderitem) == discount.Account__c && product2Id == discount.Product__c){
 						orderitem.Partner_Unit_Price__c = discount.BID_Price__c;
 						orderitem.EnqixBIDId__c = discount.EnqixBIDId__c;
-						system.debug('Product that has Discount: ' + product2Id + ' | Added to Partner Unit Price! =>  '+ orderitem.Partner_Unit_Price__c);
 					}
 				}
 			}
 
 			if(discount.BID_Rebate__c != null && discount.BID_Rebate__c != 0 ){
-				system.debug('> > BID REBATE. ');
 				for(OrderItem orderitem : lista){
 					product2Id = pbeProduct2IdMap.get(orderitem.PricebookEntryId);
 					if(partnersFromOrderItems.get(orderitem) == discount.Account__c && product2Id == discount.Product__c)
 						orderitem.Partner_Unit_Price__c = discount.BID_Rebate__c * -1;
-					system.debug('Product that has Discount: ' + product2Id + ' | Added to Partner Unit Price! =>  '+ orderitem.Partner_Unit_Price__c);
-
 				}
 			}
 		}
@@ -300,7 +257,7 @@ public with sharing class OrderItemTriggerHelper {
 			}
 		}
 		if(!OrderIds.isEmpty()) {
-			Map<Id, Order> ordersMap = new Map<Id, Order>([Select Id, AccountId, Partner_Total_Amount__c, Created_Later__c, (SELECT Partner_Unit_Price__c, Partner_Total_Price__c, OrderId from OrderItems) from Order where Id IN: OrderIds]);
+			Map<Id, Order> ordersMap = new Map<Id, Order>([Select Id, AccountId, Status, Partner_Total_Amount__c, Created_Later__c, (SELECT Partner_Unit_Price__c, Partner_Total_Price__c, OrderId from OrderItems) from Order where Id IN: OrderIds]);
 			for(OrderItem oi: lista) {
 				if(oi.OrderId != null) {
 					Order o = ordersMap.get(oi.OrderId);
@@ -311,7 +268,6 @@ public with sharing class OrderItemTriggerHelper {
 					if (o.Status == 'Delivered' && isInsert && !o.Created_Later__c) {
 						o.Created_Later__c = true;
 					}
-					system.debug('Order . Partner Total Amount nao é nulo, incrementa valor! ' + o.Partner_Total_Amount__c + ' + ' + oi.Partner_Total_Price__c);
 					toUpdateOrder.add(o);
 				}
 			}
@@ -319,7 +275,6 @@ public with sharing class OrderItemTriggerHelper {
 
 		if(toUpdateOrder.size()>0){
 			Set<Order> setOrders = new Set<Order>(toUpdateOrder);
-			system.debug('Check Quantity of Orders to Insert without duplicates: '+setOrders.size());
 			List<Order> listToInsertOrders = new List<Order>(setOrders);
 
 			Database.SaveResult[] results_updateOD = Database.update(listToInsertOrders,false);
@@ -364,10 +319,6 @@ public with sharing class OrderItemTriggerHelper {
 			}
 		}
 
-		system.debug('partnerIds --> '+partnerIds);
-		system.debug('accountIds --> '+accountIds);
-
-
 		Map < String, Account_Discount__c > adPartnerMap = new Map < String, Account_Discount__c > ();
 		Map < String, Account_Discount__c > adAccountMap = new Map < String, Account_Discount__c > ();
 
@@ -383,9 +334,6 @@ public with sharing class OrderItemTriggerHelper {
 										 string key = ad.Account__c + '-' + ad.Product__c;
 										 adAccountMap.put(key, ad);
 									 }
-
-		system.debug('adPartnerMap size: ' + adPartnerMap.keySet().size() + ' Conteudo: \n' + adPartnerMap.values());
-		system.debug('adAccountMap size: ' + adAccountMap.keySet().size() + ' Conteudo: \n' + adAccountMap.values());
 
 		for(Order ord: [Select Id, Account.ParentId, Account.Partnership__c from Order where ID =:orderWithOrderLines.keySet()]){
 			order = ord.Id;
@@ -414,30 +362,21 @@ public with sharing class OrderItemTriggerHelper {
 	}
 
 	public void populatePricebookEntryId(List<OrderItem> orderProds, set<Id> productId, set<Id> pricebookId) {
-		Map<String, PricebookEntry> pricebookEntry = new Map<String, PricebookEntry>();
-		List<PricebookEntry> pricebooks = [SELECT Id, Pricebook2Id, Product2Id, UnitPrice FROM PricebookEntry WHERE Pricebook2Id =:pricebookId and Product2Id =:productId];
-		Id pbE;
-		decimal unitPrice;
+		Map<String, PricebookEntry> pricebookEntryMap = new Map<String, PricebookEntry>();
+		List<PricebookEntry> pricebookEntries = [SELECT Id, Pricebook2Id, Product2Id, UnitPrice, CurrencyIsoCode FROM PricebookEntry WHERE Pricebook2Id =:pricebookId and Product2Id =:productId];
 
-		for (PricebookEntry pE : pricebooks){
-			system.debug('pE --> '+pE);
-			pricebookEntry.put( String.valueof(pE.Pricebook2Id) + String.valueOf(pE.Product2Id) , pE);
+		for (PricebookEntry pricebookEntry : pricebookEntries){
+			pricebookEntryMap.put(pricebookEntry.Pricebook2Id + '-' + pricebookEntry.Product2Id + '-' + pricebookEntry.CurrencyIsoCode, pricebookEntry);
 		}
-
-		for (OrderItem oi : orderProds){
-			String pricebook_product = String.valueof(oi.Price_Book__c) + String.valueof(oi.Product2Id);
-			if (pricebookEntry.containsKey(pricebook_product)){
-				pbE = pricebookEntry.get(pricebook_product).Id;
-				System.debug('pricebook_productUnitPrice -- ' + pricebookEntry.get(pricebook_product).UnitPrice);
-				System.debug('priceBookOrder' + oi.OrderId);
-				System.debug('priceBookList_Price__c' + oi.ListPrice__c);
-				unitPrice = pricebookEntry.get(pricebook_product).UnitPrice;
-				if (oi.ListPrice__c == null){
-					oi.ListPrice__c = unitPrice;
-				}
+		
+		PricebookEntry pricebookEntry;
+		for (OrderItem orderItem : orderProds){
+			String pricebook_product = orderItem.Price_Book__c + '-' + orderItem.Product2Id + '-' + orderItem.CurrencyIsoCode;
+			if (pricebookEntryMap.containsKey(pricebook_product)){
+				pricebookEntry = pricebookEntryMap.get(pricebook_product);
+				orderItem.ListPrice__c = orderItem.ListPrice__c == null ? pricebookEntry.UnitPrice : orderItem.ListPrice__c;
+				orderItem.PricebookEntryId = pricebookEntry.Id;
 			}
-			oi.PricebookEntryId = pbe;
-			system.debug('oi.PricebookEntryId --> '+oi.PricebookEntryId);
 		}
 		populateTotalDiscount(orderProds);
 	}
@@ -445,13 +384,6 @@ public with sharing class OrderItemTriggerHelper {
 	public void populateTotalDiscount(List<OrderItem> orderProds) {
 		decimal priceWithDiscount = 0;
 		for(OrderItem oi : orderProds){
-			system.debug('Parent.Overriding_Account_discount__c --> ' +oi.Overriding_Account_discount__c);
-			system.debug('Parent.Direct_Debit_Discount__c --> ' +oi.Direct_Debit_Discount__c);
-			system.debug('ListPrice__c --> ' +oi.ListPrice__c);
-			system.debug('ListPrice --> ' +oi.ListPrice);
-			system.debug('PricebookEntryId --> ' +oi.PricebookEntryId);
-			system.debug('Discount__c --> ' +oi.Discount__c);
-			system.debug('order --' + oi.OrderId);
 			//If the Order being created is not a 'credit note' order
 			if (oi.Credit_Note_line__c == False){
 				if (oi.ListPrice__c == null && oi.ListPrice != null){
@@ -460,13 +392,10 @@ public with sharing class OrderItemTriggerHelper {
 				if (oi.Discount_to_Apply__c == 'Account') {
 					if (oi.Discount__c != null && oi.ListPrice__c != null){
 						priceWithDiscount = oi.ListPrice__c - oi.Discount__c;
-						system.debug('priceWithDiscount --> '+priceWithDiscount);
 					}
-					system.debug('Discount__c --> '+oi.Discount__c);
 					//Has Acc discount and overriding discount and dd discount
 					if ((oi.Discount__c > 0 || oi.Discount__c < 0) && oi.Direct_Debit_Discount__c > 0 && oi.Overriding_Account_discount__c > 0) {
 						oi.Total_Discount__c = oi.Discount__c + (priceWithDiscount * (oi.Direct_Debit_Discount__c / 100)) + (priceWithDiscount * (oi.Overriding_Account_discount__c / 100));
-						system.debug('Total_Discount__c --> '+oi.Total_Discount__c);
 						//Has Acc discount and Overriding discount
 					} else if ((oi.Discount__c > 0 || oi.Discount__c < 0) && oi.Overriding_Account_discount__c > 0 && (oi.Direct_Debit_Discount__c == null || oi.Direct_Debit_Discount__c == 0)){
 						oi.Total_Discount__c = oi.Discount__c + (priceWithDiscount * (oi.Overriding_Account_discount__c / 100));
@@ -564,7 +493,6 @@ public with sharing class OrderItemTriggerHelper {
 				if(oi.Supplier_Unit_Price__c != null){
 					oi.Supplier_total__c = oi.Supplier_Unit_Price__c * oi.Quantity;
 				}
-				system.debug('unit price --> '+oi.UnitPrice);
 			}
 		}
 	}
@@ -578,7 +506,6 @@ public with sharing class OrderItemTriggerHelper {
 		for(OrderItem oi : orderProds){
 			// Fix: Accellor: Avoid fetching Order in loop
 			orderIds.add(oi.OrderId);
-			system.debug('oi id -->'+oi.id);
 			if(oi.Is_supplier_Order_Prod__c == true){
 				if(oi.Post_code_for_supplier__c == null && oi.Order.ShippingPostcode__c != null){
 					oi.Post_code_for_supplier__c = oi.Order.ShippingPostcode__c;
@@ -626,9 +553,6 @@ public with sharing class OrderItemTriggerHelper {
 
 	//Jira 1653 start
 	public static void orderProductsValidation(set < Id > orderIds, List<OrderItem> newOrderProducts) {
-		System.debug('Parameter Order IDs: ' + orderIds);
-		System.debug('Parameter newOrdProd Map: ' + newOrderProducts);
-
 		//This map relates the OrderId with the new Order products
 		Map <Id, List<OrderItem>> orderToOrderProduct = new Map <Id, List<OrderItem>>();
 		//This map allows the process to identify if the same order have both positive and negative order products. [0] for positives and [1] for negatives
@@ -646,8 +570,6 @@ public with sharing class OrderItemTriggerHelper {
 		{
 			organizeMaps(orderProduct, orderToOrderProduct, orderProductsPositiveNegative, false);
 		}
-		system.debug('OrdProd Map:' + orderToOrderProduct);
-		system.debug('posNeg Map:' + orderProductsPositiveNegative);
 		//Validate if ther ise negative and positive orders in the same order
 		for (Id OderID: orderProductsPositiveNegative.keySet()) {
 			if( orderProductsPositiveNegative.get(OderID)[0] == true && orderProductsPositiveNegative.get(OderID)[1] == true)

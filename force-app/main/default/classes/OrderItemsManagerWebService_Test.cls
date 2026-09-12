@@ -4,6 +4,7 @@ public class OrderItemsManagerWebService_Test {
     @isTest 
     private static void handleOrderItem_Test() {
         Test.startTest();
+        TestDataHelper.insertSupplier('First Mile Ltd');
         Id orderIdObj = createDummyData();
         RestRequest request = new RestRequest();
         request.requestUri =
@@ -26,11 +27,8 @@ public class OrderItemsManagerWebService_Test {
         INSERT parentAccount;
         Account locationAccount = TestDataHelper.createLocation(parentAccount.Id, Null);
         INSERT locationAccount;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
         
-        Suppliers__c supObj = new Suppliers__c();
-        supObj.Name = 'Test Supp';
-        supObj.Phone_Number__c = '1234567898';
-        INSERT supObj;
         
         Id pricebookId = Test.getStandardPricebookId();
         
@@ -46,7 +44,7 @@ public class OrderItemsManagerWebService_Test {
             PO_Number__c = 'WheelieBinOrder0',
             Invoice_Created__c = false,
             Pricebook2Id = pricebookId,
-            Supplier__c = supObj.Id
+            Supplier__c = supplier.Id
         );
         insert orderObj;
         
@@ -77,10 +75,7 @@ public class OrderItemsManagerWebService_Test {
         Account locationAccount = TestDataHelper.createLocation(parentAccount.Id, Null);
         INSERT locationAccount;
         
-        Suppliers__c supObj = new Suppliers__c();
-        supObj.Name = 'Test Supp';
-        supObj.Phone_Number__c = '1234567898';
-        INSERT supObj;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
         
         Id pricebookId = Test.getStandardPricebookId();
         System.debug('old standard::::::'+pricebookId);
@@ -111,7 +106,7 @@ public class OrderItemsManagerWebService_Test {
             PO_Number__c = 'WheelieBinOrder0',
             Invoice_Created__c = false,
             Pricebook2Id = customPB.Id,
-            Supplier__c = supObj.Id
+            Supplier__c = supplier.Id
         );
         insert orderObj;
         
@@ -147,10 +142,7 @@ public class OrderItemsManagerWebService_Test {
         Account locationAccount = TestDataHelper.createLocation(parentAccount.Id, Null);
         INSERT locationAccount;
         
-        Suppliers__c supObj = new Suppliers__c();
-        supObj.Name = 'Test Supp';
-        supObj.Phone_Number__c = '1234567898';
-        INSERT supObj;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
         
         Id pricebookId = Test.getStandardPricebookId();
         
@@ -166,7 +158,7 @@ public class OrderItemsManagerWebService_Test {
             PO_Number__c = 'WheelieBinOrder0',
             Invoice_Created__c = false,
             Pricebook2Id = pricebookId,
-            Supplier__c = supObj.Id
+            Supplier__c = supplier.Id
         );
         insert orderObj;
         

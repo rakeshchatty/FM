@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Overtime_Reason</fullName>
+    <active>true</active>
+    <description>Forces reason to be entered for overtime</description>
+    <errorConditionFormula>AND(
+NOT(ISBLANK( Overtime_Manual__c )),
+ISPICKVAL( Overtime_Reason__c,&quot;&quot;)
+)</errorConditionFormula>
+    <errorMessage>You must input an Overtime reason to enter overtime value</errorMessage>
+</ValidationRule>

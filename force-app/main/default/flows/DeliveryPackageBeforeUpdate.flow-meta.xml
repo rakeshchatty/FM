@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>60.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetStatusCancelled</name>
         <label>Status - Cancelled</label>
-        <locationX>314</locationX>
-        <locationY>395</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Status__c</assignToReference>
             <operator>Assign</operator>
@@ -17,8 +18,8 @@
     <assignments>
         <name>SetStatusDelivered</name>
         <label>Status - Delivered</label>
-        <locationX>50</locationX>
-        <locationY>395</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Status__c</assignToReference>
             <operator>Assign</operator>
@@ -30,8 +31,8 @@
     <assignments>
         <name>SetStatusInProgress</name>
         <label>Status - In Progress</label>
-        <locationX>842</locationX>
-        <locationY>395</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Status__c</assignToReference>
             <operator>Assign</operator>
@@ -41,23 +42,23 @@
         </assignmentItems>
     </assignments>
     <assignments>
-        <name>SetStatusRedeliver</name>
-        <label>Status - Redeliver</label>
-        <locationX>578</locationX>
-        <locationY>395</locationY>
+        <name>SetStatusReturnedToSender</name>
+        <label>Status - Returned To Sender</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Status__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Redeliver</stringValue>
+                <stringValue>Returned To Sender</stringValue>
             </value>
         </assignmentItems>
     </assignments>
     <decisions>
         <name>WhatEventType</name>
         <label>Event Type?</label>
-        <locationX>446</locationX>
-        <locationY>287</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>SetStatusInProgress</targetReference>
         </defaultConnector>
@@ -103,7 +104,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>SetStatusRedeliver</targetReference>
+                <targetReference>SetStatusReturnedToSender</targetReference>
             </connector>
             <label>Clear Route</label>
         </rules>
@@ -146,7 +147,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>320</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>WhatEventType</targetReference>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictNonAdHocWTNProduct</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT($Permission.AllowNonAdHocWTNProduct), WTN__r.RecordType.DeveloperName = &apos;WTN&apos;, BEGINS(WTN__r.Name, &apos;AdHoc WTN&apos;), OR(ISBLANK(Product__c), TEXT(Product__r.WTN_Product__c) != &apos;Ad-Hoc&apos;))</errorConditionFormula>
+    <errorDisplayField>Product__c</errorDisplayField>
+    <errorMessage>Product is required, and its WTN Product must be AdHoc WTN.</errorMessage>
+</ValidationRule>

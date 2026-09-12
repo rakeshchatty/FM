@@ -48,6 +48,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Is_National__c</field>
+            <table>Region__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DeliveryDays__c</field>
+            <table>Region__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Supplier__c</field>
             <table>Region__c</table>
         </columns>
@@ -109,6 +119,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Same_Day_Recovery__c</field>
+            <table>Region__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>London_Zone__c</field>
+            <table>Region__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>FM_Caddy_Schedule__c</field>
+            <table>Region__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>FM_Glass_Bin_Mon_Fri__c</field>
+            <table>Region__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>FM_Food_Bin_Mon_Fri__c</field>
             <table>Region__c</table>
         </columns>
         <masterLabel>Postcodes</masterLabel>

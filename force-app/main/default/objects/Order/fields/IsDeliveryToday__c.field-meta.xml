@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>IsDeliveryToday__c</fullName>
-    <formula>Requested_Delivery_Date__c = TODAY()</formula>
-    <label>Delivery Today</label>
-    <trackHistory>false</trackHistory>
-    <type>Checkbox</type>
-</CustomField>

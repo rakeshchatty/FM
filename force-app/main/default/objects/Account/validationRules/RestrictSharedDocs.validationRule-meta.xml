@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictSharedDocs</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(IsOwnerOfSupplierGroup__c), NOT(ISBLANK(SharedDocs__c)))</errorConditionFormula>
+    <errorDisplayField>SharedDocs__c</errorDisplayField>
+    <errorMessage>Shared Docs can only be selected when Owner of Supplier Group is True</errorMessage>
+</ValidationRule>

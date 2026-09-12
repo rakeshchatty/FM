@@ -13,7 +13,7 @@ public without sharing class WeightToOrderProductRollup {
 			SUM(Coffee_KG_Per_Unit__c) CoffeeKGPerUnit, SUM(AD_KG_Per_Unit__c) ADKGPerUnit, SUM(Recycled_KG_Per_Unit__c) RecycledKGPerUnit,
 			SUM(KWH_Produced_Per_Unit__c) KWHProducedPerUnit, SUM(WTE_KG_Per_Unit__c) WTEKGPerUnit,
 			SUM(Tonnes_CO2_Saved_Per_Unit__c) TonnesCO2SavedPerUnit, SUM(Trees_Saved_Per_Unit__c) TreesSavedPerUnit,
-			SUM(Total_KG_Per_Unit__c) TotalKGPerUnit
+			SUM(Total_KG_Per_Unit__c) TotalKGPerUnit, SUM(Overweight__c) Overweight
 			FROM Weight__c
 			WHERE Order_Product__c IN :orderItemIds
 			GROUP BY Order_Product__c];
@@ -29,6 +29,7 @@ public without sharing class WeightToOrderProductRollup {
 			orderProduct.Tonnes_CO2_Saved_from_Weights__c = (Decimal)aggrWeight.get('TonnesCO2SavedPerUnit');
 			orderProduct.Trees_Saved_from_Weights__c = (Decimal)aggrWeight.get('TreesSavedPerUnit');
 			orderProduct.Total_KG_from_Weights__c = (Decimal)aggrWeight.get('TotalKGPerUnit');
+			orderProduct.Overweight__c = (Decimal)aggrWeight.get('Overweight');
 			orderProduct.LastWeightModifiedDate__c = System.today();
 			orderItemMap.put(orderProduct.Id, orderProduct);
 		}

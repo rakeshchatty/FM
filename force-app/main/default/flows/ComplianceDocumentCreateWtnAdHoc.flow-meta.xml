@@ -1,87 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>CreateWasteCategoryProduct</name>
-        <label>Create Waste Category Product</label>
-        <locationX>605</locationX>
-        <locationY>1008</locationY>
-        <actionName>CreateWasteCategoryProductPerOrder</actionName>
-        <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>complianceDocumentId</name>
-            <value>
-                <elementReference>ComplianceDocument.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>orderId</name>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>wtnProduct</name>
-            <value>
-                <stringValue>Ad-Hoc</stringValue>
-            </value>
-        </inputParameters>
-        <nameSegment>CreateWasteCategoryProductPerOrder</nameSegment>
-    </actionCalls>
     <apiVersion>61.0</apiVersion>
-    <decisions>
-        <name>HasExistingComplianceDocument</name>
-        <label>Existing Compliance Document?</label>
-        <locationX>407</locationX>
-        <locationY>384</locationY>
-        <defaultConnector>
-            <targetReference>SupplierEmpty</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>YesHasExistingComplianceDocument</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>GetComplianceDocument</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>SupplierEmpty</name>
-        <label>Supplier Empty?</label>
-        <locationX>605</locationX>
-        <locationY>492</locationY>
-        <defaultConnector>
-            <targetReference>PrepareComplianceDocument</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>YesSupplierEmpty</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Supplier__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>GetFMSupplier</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
-    <formulas>
-        <name>SupplierId</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!$Record.Supplier__c}), {!GetFMSupplier.Id}, {!$Record.Supplier__c})</expression>
-    </formulas>
     <interviewLabel>ComplianceDocumentCreateWtnAdHoc {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Compliance Document - Create WTN Ad-Hoc</label>
     <processMetadataValues>
@@ -103,63 +24,32 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>CreateComplianceDocument</name>
-        <label>ComplianceDocument</label>
-        <locationX>605</locationX>
-        <locationY>900</locationY>
-        <connector>
-            <targetReference>CreateWasteCategoryProduct</targetReference>
-        </connector>
-        <inputReference>ComplianceDocument</inputReference>
-    </recordCreates>
     <recordLookups>
-        <name>GetComplianceDocument</name>
-        <label>Compliance Document</label>
-        <locationX>407</locationX>
+        <name>GetRecordTypeWTN</name>
+        <label>Record Type - WTN</label>
+        <locationX>308</locationX>
         <locationY>276</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>HasExistingComplianceDocument</targetReference>
+            <targetReference>ComplianceDocumentCreateWTNAdHoc</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Order__c</field>
+            <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.Id</elementReference>
+                <stringValue>WTN</stringValue>
             </value>
         </filters>
         <filters>
-            <field>Name</field>
-            <operator>StartsWith</operator>
-            <value>
-                <stringValue>AdHoc WTN</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Compliance_Doc__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>GetFMSupplier</name>
-        <label>FM - Supplier</label>
-        <locationX>473</locationX>
-        <locationY>600</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>PrepareComplianceDocument</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
+            <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>First Mile Ltd</stringValue>
+                <stringValue>Compliance_Doc__c</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Suppliers__c</object>
+        <object>RecordType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
@@ -185,7 +75,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <scheduledPaths>
             <connector>
-                <targetReference>GetComplianceDocument</targetReference>
+                <targetReference>GetRecordTypeWTN</targetReference>
             </connector>
             <pathType>AsyncAfterCommit</pathType>
         </scheduledPaths>
@@ -193,63 +83,28 @@
     </start>
     <status>Active</status>
     <subflows>
-        <name>PrepareComplianceDocument</name>
-        <label>Prepare Compliance Document</label>
-        <locationX>605</locationX>
-        <locationY>792</locationY>
-        <connector>
-            <targetReference>CreateComplianceDocument</targetReference>
-        </connector>
-        <flowName>ComplianceDocumentCreate</flowName>
+        <name>ComplianceDocumentCreateWTNAdHoc</name>
+        <label>Compliance Document - Create WTN AdHoc</label>
+        <locationX>308</locationX>
+        <locationY>384</locationY>
+        <flowName>ComplianceDocumentCreateWTNAdHocOrHazardousCN</flowName>
         <inputAssignments>
-            <name>IsSeasonTicket</name>
+            <name>Order</name>
             <value>
-                <booleanValue>false</booleanValue>
+                <elementReference>$Record</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <name>LocationId</name>
+            <name>WTNProduct</name>
             <value>
-                <elementReference>$Record.AccountId</elementReference>
+                <stringValue>Ad-Hoc</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <name>OrderId</name>
+            <name>RecordTypeId</name>
             <value>
-                <elementReference>$Record.Id</elementReference>
+                <elementReference>GetRecordTypeWTN.Id</elementReference>
             </value>
         </inputAssignments>
-        <inputAssignments>
-            <name>StartDate</name>
-            <value>
-                <elementReference>$Record.Delivery_Date__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>SupplierId</name>
-            <value>
-                <elementReference>SupplierId</elementReference>
-            </value>
-        </inputAssignments>
-        <outputAssignments>
-            <assignToReference>ComplianceDocument</assignToReference>
-            <name>ComplianceDocument</name>
-        </outputAssignments>
     </subflows>
-    <variables>
-        <name>ComplianceDocument</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Compliance_Doc__c</objectType>
-    </variables>
-    <variables>
-        <name>WTNWasteCategories</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>WTN_Waste_Category__c</objectType>
-    </variables>
 </Flow>

@@ -15,5 +15,14 @@
         <operation>equals</operation>
         <value>Bank Giro Credit,Inward Payment via FP,Credit Card,Direct Debit,Transfer</value>
     </filters>
+    <filters>
+        <field>Unallocated_Amount__c</field>
+        <operation>greaterThan</operation>
+        <value>GBP 1,GBP 851.6</value>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>equals</operation>
+    </filters>
     <label>Unallocated Cash - no account identified</label>
 </ListView>

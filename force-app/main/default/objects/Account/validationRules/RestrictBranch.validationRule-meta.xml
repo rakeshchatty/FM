@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictBranch</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(RecordType.DeveloperName != &apos;Account&apos;, 
+RecordType.DeveloperName != &apos;Partner&apos;, NOT(ISBLANK(TEXT(Branch__c))))</errorConditionFormula>
+    <errorDisplayField>Branch__c</errorDisplayField>
+    <errorMessage>Branch should not be selected for non Parent and non Partner accounts</errorMessage>
+</ValidationRule>

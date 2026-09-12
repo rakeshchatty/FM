@@ -8,20 +8,20 @@ public without sharing class BinWeightToWeightBatch implements Database.Batchabl
 		}
 
 		return Database.getQueryLocator([SELECT Id,
-			(SELECT Id, Date__c, CategoryCode__c, Kilogram__c FROM Bin_Weights__r),
-			(SELECT Id FROM Order_Products__r LIMIT 1)
-			FROM Collection_Waypoints__c
-			WHERE Id IN (SELECT Collection_Waypoint__c FROM BinWeight__c WHERE Status__c = 'New') AND Order_Created__c = true]);
+			(SELECT Id, Date__c, CategoryCode__c, Kilogram__c FROM BinWeights__r WHERE Status__c = 'Matched' AND Weight__c = null)
+			FROM OrderItem
+			WHERE Id IN (SELECT OrderProduct__c FROM BinWeight__c WHERE Status__c = 'Matched' AND Weight__c = null AND (DAY_ONLY(Date__c) >= LAST_N_DAYS:8 OR Date__c = THIS_MONTH))]);
 	}
 
-	public void execute(Database.BatchableContext BC, List<Collection_Waypoints__c> scope) {
+	public void execute(Database.BatchableContext BC, List<OrderItem> scope) {
 		Map<Id, Weight__c> weightsMap = new Map<Id, Weight__c>();
-		for (Collection_Waypoints__c waypoint : scope) {
-			for (BinWeight__c binWeight : waypoint.Bin_Weights__r) {
-				Weight__c weight = new Weight__c(Order_Product__c = waypoint.Order_Products__r[0].Id, ServiceDate__c = binWeight.Date__c);
+		for (OrderItem orderItem : scope) {
+			for (BinWeight__c binWeight : orderItem.BinWeights__r) {
 				if (!categoryToWeightFields.containsKey(binWeight.CategoryCode__c)) {
 					continue;
 				}
+
+				Weight__c weight = new Weight__c(BinWeight__c = binWeight.Id, Order_Product__c = orderItem.Id, ServiceDate__c = binWeight.Date__c);
 				for (String weightFieldName : categoryToWeightFields.get(binWeight.CategoryCode__c)) {
 					weight.put(weightFieldName.trim(), binWeight.Kilogram__c);
 				}
@@ -33,10 +33,12 @@ public without sharing class BinWeightToWeightBatch implements Database.Batchabl
 		List<BinWeight__c> binWeights = new List<BinWeight__c>();
 		for (Id binWeightId : weightsMap.keySet()) {
 			Weight__c weight = weightsMap.get(binWeightId);
-			binWeights.add(new BinWeight__c(Id = binWeightId, Weight__c = weight.Id, OrderProduct__c = weight.Order_Product__c,  Status__c = 'Matched'));
+			binWeights.add(new BinWeight__c(Id = binWeightId, Weight__c = weight.Id, Status__c = 'Weight Added'));
 		}
 		UPDATE binWeights;
 	}
 
-	public void finish(Database.BatchableContext BC) {}
+	public void finish(Database.BatchableContext BC) {
+		Database.executeBatch(new BinSummaryOfWaypointBatch());
+	}
 }

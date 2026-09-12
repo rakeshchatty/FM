@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TodayWithoutRoute</fullName>
+    <columns>NAME</columns>
+    <columns>Order__c</columns>
+    <columns>RouteDate__c</columns>
+    <columns>ServiceType__c</columns>
+    <columns>SkillSet__c</columns>
+    <columns>ServiceTime__c</columns>
+    <columns>DeliveryRoute__c</columns>
+    <columns>SequenceNumber__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>DeliveryRoute__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Today w/o Route</label>
+</ListView>

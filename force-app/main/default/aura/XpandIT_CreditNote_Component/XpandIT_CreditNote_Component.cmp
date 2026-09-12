@@ -2,6 +2,7 @@
     <aura:attribute name="isOpen" type="boolean" default="false"/>
     <aura:attribute name="recordId" type="Id" />
     <aura:attribute name="invoiceId" type="Id" />
+    <aura:attribute name="invoiceCurrencyIsoCode" type="String" />
     <aura:attribute name="locationId" type="Id" />
     <aura:attribute name="invoicesMethod" type="String" />
     <aura:attribute name="orderProds" type="List" />
@@ -11,7 +12,10 @@
     <aura:attribute name="amount" type="decimal" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:attribute name="isLONInvoice" type="Boolean"/>
-    <aura:attribute name="creditPartner" type="Boolean" default="false"/> 
+    <aura:attribute name="creditPartner" type="Boolean" default="false"/>
+    <aura:attribute name="reinvoicedElsewhere" type="Boolean" default="false"/>
+    <aura:attribute name="creditNoteReasons" type="List" />
+    <aura:attribute name="creditNoteReason" type="String" default="" />
     <aura:handler name="XpandIT_CreditNoteDeleteLine_Event" event="c:XpandIT_CreditNoteDeleteLine_Event" action="{!c.removeDeletedRow}"/>
     
     <div style="width: 100%; padding: 1%;">
@@ -86,6 +90,13 @@
                         </aura:iteration>
                     </lightning:select>
                     	<lightning:input style="margin-top: 3%" type="checkbox" label="Credit Partner?" value="{!v.creditPartner}" onchange="{!c.onChange}"></lightning:input>
+                        <lightning:input style="margin-top: 3%" type="checkbox" label="Partially or fully reinvoiced elsewhere?" checked="{!v.reinvoicedElsewhere}"></lightning:input>
+                    	<lightning:select name="creditNoteReason" label="Credit Note Reason" value="{!v.creditNoteReason}" required="true">
+                            <option value="">--None--</option>
+                            <aura:iteration items="{!v.creditNoteReasons}" var="reason">
+                                <option value="{!reason}">{!reason}</option>
+                            </aura:iteration>
+                        </lightning:select>
                     </aura:set>
                 </aura:if>
             </div>
@@ -105,7 +116,7 @@
                 </thead>
                 <tbody>
                     <aura:iteration items="{!v.orderProds}" var="orderProd" indexVar="index">
-                        <c:XpandIT_CreditNoteLine_Component ordProdInstance="{!orderProd}" rowIndex="{!index}"/>
+                        <c:XpandIT_CreditNoteLine_Component ordProdInstance="{!orderProd}" rowIndex="{!index}" invoiceCurrencyIsoCode="{!v.invoiceCurrencyIsoCode}"/>
                     </aura:iteration>
                 </tbody>
             </table>

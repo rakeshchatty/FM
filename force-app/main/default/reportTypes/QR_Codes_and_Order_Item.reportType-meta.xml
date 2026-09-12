@@ -147,4 +147,12 @@
         </columns>
         <masterLabel>QR Codes from Detrack</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderProduct__c</field>
+            <table>QR_Codes_from_Detrack__c.Qr_codes__r</table>
+        </columns>
+        <masterLabel>QR Codes</masterLabel>
+    </sections>
 </ReportType>

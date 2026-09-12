@@ -7,8 +7,9 @@ private class DeleteDeliveryPackageSchedularTest {
 		Account location = TestDataHelper.insertLocation(parent.Id, null);
 		Order order = TestDataHelper.insertOrder(location.Id);
 		Test.setMock(WebServiceMock.class, new ParcelforceSoap.ShipmentSuccessMock());
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
 		DeliveryPackage__c pkg = TestDataHelper.insertDeliveryPackage(order.Id, DeliveryPackage.STATUS_CANCELLED);
-		Test.setCreatedDate(pkg.Id, Datetime.now().addDays(-35));
+		Test.setCreatedDate(pkg.Id, Datetime.now().addDays(-61));
 	}
 
 	@isTest

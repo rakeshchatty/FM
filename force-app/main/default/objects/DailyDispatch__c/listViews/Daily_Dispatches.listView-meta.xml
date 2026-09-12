@@ -6,14 +6,15 @@
     <columns>RoundId__c</columns>
     <columns>Ops_Start_Time__c</columns>
     <columns>Ops_End_Time__c</columns>
+    <columns>Round_Duration__c</columns>
     <columns>Round_number__c</columns>
-    <columns>RoundStartTime__c</columns>
-    <columns>EndTime__c</columns>
+    <columns>Vehicle__c</columns>
+    <columns>Total_Tonnage__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>TODAY</value>
+        <value>12/25/2025 12:00 AM</value>
     </filters>
     <label>Daily Dispatches Created Today</label>
 </ListView>

@@ -21,19 +21,35 @@
         <label>Consolidate All Monthly</label>
     </customValue>
     <customValue>
-        <fullName>Quarterly - Advance</fullName>
-        <default>false</default>
-        <label>Quarterly - Advance</label>
-    </customValue>
-    <customValue>
         <fullName>Monthly - Scheduled</fullName>
-        <default>false</default>
+        <default>true</default>
         <label>Monthly - Consolidate Scheduled Only</label>
     </customValue>
     <customValue>
         <fullName>Monthly - Separated</fullName>
         <default>false</default>
         <label>Monthly - Consolidate Scheduled, Consolidate Ad-Hoc</label>
+    </customValue>
+    <customValue>
+        <fullName>Monthly - Location</fullName>
+        <default>false</default>
+        <label>Consolidate All Monthly By Location</label>
+    </customValue>
+    <customValue>
+        <fullName>Manual</fullName>
+        <default>false</default>
+        <label>Manual</label>
+    </customValue>
+    <customValue>
+        <fullName>Advance</fullName>
+        <default>false</default>
+        <label>Advance</label>
+    </customValue>
+    <customValue>
+        <fullName>Quarterly - Advance</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Quarterly - Advance</label>
     </customValue>
     <masterLabel>Invoice Frequency</masterLabel>
     <sorted>false</sorted>

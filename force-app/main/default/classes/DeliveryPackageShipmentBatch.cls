@@ -1,11 +1,10 @@
 public class DeliveryPackageShipmentBatch implements Database.Batchable<sObject>, Database.AllowsCallouts, Database.Stateful {
 
 	private ParcelforceSetting__c parcelforceSetting = ParcelforceSetting__c.getOrgDefaults();
-	private final String SHIPMENT_TYPE = parcelforceSetting.ShipmentType__c;
 	private final String CONTRACT_NUMBER = parcelforceSetting.ContractNumber__c;
 	private final String SERVICE_CODE = parcelforceSetting.ServiceCode__c;
 	private final DateTime NOW = System.now();
-	private Time lastCollection; 
+	private Time lastCollection;
 
 	private static final String SUCCESS_STATUS = 'ALLOCATED';
 	private List<DeliveryPackage__c> pkgs = new List<DeliveryPackage__c>();
@@ -23,8 +22,9 @@ public class DeliveryPackageShipmentBatch implements Database.Batchable<sObject>
 			lastCollection = Time.newInstance(23, 59, 59, 0);
 		}
 
-		return Database.getQueryLocator([SELECT Order__r.Account.Name, Order__r.OrderNumber, RequestedDeliveryDate__c, Count__c,IsSaturdayDelivery__c,
-			Order__r.ShippingCity, Order__r.ShippingPostalCode, Order__r.ShippingCountryCode, Order__r.ShippingStreetLineSingle__c, Order__r.Account.Enqix_Dly_ExtraInfo__c
+		return Database.getQueryLocator([SELECT Order__r.Account.Name, Order__r.OrderNumber, RequestedDeliveryDate__c, Count__c, IsSaturdayDelivery__c, Order__r.AccountId,
+			IsCollection__c, CollectionDepot__r.ContactName__c, CollectionDepot__r.Address__Street__s, CollectionDepot__r.Address__City__s, CollectionDepot__r.Address__PostalCode__s, CollectionDepot__r.Address__CountryCode__s,
+			Order__r.ShippingStreetLineSingle__c, Order__r.ShippingCity, Order__r.ShippingPostalCode, Order__r.ShippingCountryCode, Order__r.Account.Enqix_Dly_ExtraInfo__c
 			FROM DeliveryPackage__c
 			WHERE Id IN :packageIds AND Status__c IN (:DeliveryPackage.STATUS_NEW, :DeliveryPackage.STATUS_RETRY)]);
 	}
@@ -32,12 +32,13 @@ public class DeliveryPackageShipmentBatch implements Database.Batchable<sObject>
 	public void execute(Database.BatchableContext BC, List<DeliveryPackage__c> scope) {
 		for (DeliveryPackage__c pkg : scope) {
 			pkg.Message__c = '';
+
 			ParcelforceSoap.CreateShipmentReply response;
 			try {
 				response = new ParcelforceSoap.ShipServicePort().createShipment(createRequest(pkg));
 				if (response.CompletedShipmentInfo != null && response.CompletedShipmentInfo.Status == SUCCESS_STATUS) {
 					pkg.Status__c = DeliveryPackage.STATUS_ADVISED;
-					pkg.TrackingId__c = response.CompletedShipmentInfo.CompletedShipments.CompletedShipment[0].ShipmentNumber;
+					pkg.TrackingIds__c = pkg.TrackingId__c = response.CompletedShipmentInfo.CompletedShipments.CompletedShipment[0].ShipmentNumber;
 				} else {
 					pkg.Status__c = DeliveryPackage.STATUS_ERROR;
 					ParcelforceSoap.Alerts alerts = response.Alerts;
@@ -54,27 +55,64 @@ public class DeliveryPackageShipmentBatch implements Database.Batchable<sObject>
 	}
 
 	private ParcelforceSoap.RequestedShipment createRequest(DeliveryPackage__c pkg) {
-		List<String> shippingStreet = StringUtil.split(pkg.Order__r.ShippingStreetLineSingle__c, ',', 40, 3);
-		List<String> deliveryNotes = StringUtil.split(pkg.Order__r.Account.Enqix_Dly_ExtraInfo__c, ' ', 25, 4);
-		ParcelforceSoap.RequestedShipment request = new ParcelforceSoap.RequestedShipment();
-		request.ShipmentType = SHIPMENT_TYPE;
+		ParcelforceSoap.RequestedShipment request = pkg.IsCollection__c ? createCollectionRequest(pkg) : createDeliveryRequest(pkg);
 		request.ContractNumber = CONTRACT_NUMBER;
 		request.ServiceCode = SERVICE_CODE;
+		request.TotalNumberOfParcels = Integer.valueOf(pkg.Count__c);
+		request.Enhancement.SaturdayDeliveryRequired = pkg.IsSaturdayDelivery__c;
+		request.ReferenceNumber1 = pkg.Order__r.OrderNumber;
+		List<String> deliveryNotes = StringUtil.split(pkg.Order__r.Account.Enqix_Dly_ExtraInfo__c, ' ', 25, 4);
+		request.SpecialInstructions1 = deliveryNotes.size() >= 1 ? deliveryNotes[0] : null;
+		request.SpecialInstructions2 = deliveryNotes.size() >= 2 ? deliveryNotes[1] : null;
+		request.SpecialInstructions3 = deliveryNotes.size() >= 3 ? deliveryNotes[2] : null;
+		request.SpecialInstructions4 = deliveryNotes.size() >= 4 ? deliveryNotes[3] : null;
+		return request;
+	}
+
+	private ParcelforceSoap.RequestedShipment createDeliveryRequest(DeliveryPackage__c pkg) {
+		ParcelforceSoap.RequestedShipment request = new ParcelforceSoap.RequestedShipment();
+		request.ShipmentType = 'DELIVERY';
 		request.ShippingDate = NOW.time() <= lastCollection ? NOW.date() : Dateutil.getNextWeekday(NOW.date());
+
+		List<String> shippingStreet = StringUtil.split(pkg.Order__r.ShippingStreetLineSingle__c, ',', 40, 3);
 		request.RecipientContact.BusinessName = pkg.Order__r.Account.Name.left(40);
 		request.RecipientAddress.AddressLine1 = shippingStreet.size() >= 1 ? shippingStreet[0] : null;
 		request.RecipientAddress.AddressLine2 = shippingStreet.size() >= 2 ? shippingStreet[1] : null;
 		request.RecipientAddress.AddressLine3 = shippingStreet.size() >= 3 ? shippingStreet[2] : null;
 		request.RecipientAddress.Town = pkg.Order__r.ShippingCity;
 		request.RecipientAddress.Postcode = pkg.Order__r.ShippingPostalCode;
-		request.RecipientAddress.Country = pkg.Order__r.ShippingCountryCode ;
-		request.TotalNumberOfParcels = Integer.valueOf(pkg.Count__c);
-		request.Enhancement.SaturdayDeliveryRequired = pkg.IsSaturdayDelivery__c;
-		request.ReferenceNumber1 = pkg.Order__r.OrderNumber;
-		request.SpecialInstructions1 = deliveryNotes.size() >= 1 ? deliveryNotes[0] : null;
-		request.SpecialInstructions2 = deliveryNotes.size() >= 2 ? deliveryNotes[1] : null;
-		request.SpecialInstructions3 = deliveryNotes.size() >= 3 ? deliveryNotes[2] : null;
-		request.SpecialInstructions4 = deliveryNotes.size() >= 4 ? deliveryNotes[3] : null;
+		request.RecipientAddress.Country = pkg.Order__r.ShippingCountryCode;
+		return request;
+	}
+
+	private ParcelforceSoap.RequestedShipment createCollectionRequest(DeliveryPackage__c pkg) {
+		ParcelforceSoap.RequestedShipment request = new ParcelforceSoap.RequestedShipment();
+		request.ShipmentType = 'COLLECTION';
+		request.PrintOwnLabel = false;
+
+		request.RecipientContact.BusinessName = 'First Mile Ltd';
+		request.RecipientContact.ContactName = pkg.CollectionDepot__r.ContactName__c;
+		request.RecipientAddress.AddressLine1 = pkg.CollectionDepot__r.Address__Street__s;
+		request.RecipientAddress.Town = pkg.CollectionDepot__r.Address__City__s;
+		request.RecipientAddress.Postcode = pkg.CollectionDepot__r.Address__PostalCode__s;
+		request.RecipientAddress.Country = pkg.CollectionDepot__r.Address__CountryCode__s;
+
+		List<String> shippingStreet = StringUtil.split(pkg.Order__r.ShippingStreetLineSingle__c, ',', 40, 3);
+		request.CollectionInfo = new ParcelforceSoap.CollectionInfo();
+		request.CollectionInfo.CollectionContact.BusinessName = pkg.Order__r.Account.Name.left(40);
+		Contact serviceContact = AcrUtil.getLatestServiceContactForPhone(pkg.Order__r.AccountId);
+		request.CollectionInfo.CollectionContact.ContactName = serviceContact.Name;
+		request.CollectionInfo.CollectionContact.Telephone = String.isNotBlank(serviceContact.MobilePhone) ? serviceContact.MobilePhone : serviceContact.Phone;
+		request.CollectionInfo.CollectionAddress.AddressLine1 = shippingStreet.size() >= 1 ? shippingStreet[0] : null;
+		request.CollectionInfo.CollectionAddress.AddressLine2 = shippingStreet.size() >= 2 ? shippingStreet[1] : null;
+		request.CollectionInfo.CollectionAddress.AddressLine3 = shippingStreet.size() >= 3 ? shippingStreet[2] : null;
+		request.CollectionInfo.CollectionAddress.Town = pkg.Order__r.ShippingCity;
+		request.CollectionInfo.CollectionAddress.Postcode = pkg.Order__r.ShippingPostalCode;
+		request.CollectionInfo.CollectionAddress.Country = pkg.Order__r.ShippingCountryCode;
+		DateTime collectionDateTime = pkg.RequestedDeliveryDate__c;
+		String collectionDateString = collectionDateTime.format('yyyy-MM-dd') + 'T00:00:00';
+		request.CollectionInfo.CollectionTime.From_x = collectionDateString;
+		request.CollectionInfo.CollectionTime.To = collectionDateString;
 		return request;
 	}
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(!ISBLANK(Monday__c), Monday__c,
+IF(!ISBLANK(Tuesday__c), Tuesday__c,
+IF(!ISBLANK(Wednesday__c), Wednesday__c,
+IF(!ISBLANK(Thursday__c), Thursday__c,
+IF(!ISBLANK(Friday__c), Friday__c,
+IF(!ISBLANK(Saturday__c), Saturday__c,
+IF(!ISBLANK(Sunday__c), Sunday__c, &apos;&apos;)))))))</formula>
+    <label>Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

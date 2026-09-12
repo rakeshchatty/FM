@@ -10,6 +10,8 @@ public with sharing class SecurePaper_Test {
         Product_Skin__c weee = new Product_Skin__c(); 
         weee.Name = 'WEEE'; 
         insert weee;
+        
+        TestDataHelper.insertSupplier('First Mile Ltd');
     }
     
     @future

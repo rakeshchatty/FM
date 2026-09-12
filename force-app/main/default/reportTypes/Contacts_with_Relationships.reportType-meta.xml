@@ -357,7 +357,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PortalLoginEmailSent__c</field>
+            <field>Last_Portal_Login__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastEmailReceived__c</field>
             <table>Contact</table>
         </columns>
         <masterLabel>Contacts</masterLabel>

@@ -5,6 +5,7 @@
     <label>Product_Code</label>
     <length>10</length>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>
     <unique>false</unique>

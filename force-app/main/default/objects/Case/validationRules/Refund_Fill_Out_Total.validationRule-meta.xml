@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Refund_Fill_Out_Total</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    RecordType.DeveloperName = &quot;Credit_Note_Request&quot;,
+    ISPICKVAL(Action__c, &quot;Refund&quot;),
+    ISBLANK(Refund_Total_Value_inc_VAT__c)
+)</errorConditionFormula>
+    <errorDisplayField>Refund_Total_Value_inc_VAT__c</errorDisplayField>
+    <errorMessage>Please full out the total to refund including VAT</errorMessage>
+</ValidationRule>

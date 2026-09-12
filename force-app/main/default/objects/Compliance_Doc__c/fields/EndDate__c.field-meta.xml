@@ -3,6 +3,7 @@
     <fullName>EndDate__c</fullName>
     <label>End Date</label>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>DateTime</type>
 </CustomField>

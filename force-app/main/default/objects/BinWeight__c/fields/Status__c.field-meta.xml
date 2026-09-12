@@ -26,24 +26,33 @@
                 <label>No match</label>
             </value>
             <value>
-                <fullName>No unique match</fullName>
+                <fullName>Weight Added</fullName>
                 <default>false</default>
-                <label>No unique match</label>
-            </value>
-            <value>
-                <fullName>Weight already present</fullName>
-                <default>false</default>
-                <label>Weight already present</label>
+                <label>Weight Added</label>
             </value>
             <value>
                 <fullName>Manually matched</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Manually matched</label>
             </value>
             <value>
                 <fullName>Match removed</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Match removed</label>
+            </value>
+            <value>
+                <fullName>No unique match</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No unique match</label>
+            </value>
+            <value>
+                <fullName>Weight already present</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Weight already present</label>
             </value>
         </valueSetDefinition>
     </valueSet>

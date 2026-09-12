@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireSigned</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+OR (
+ISPICKVAL( DocumentType__c, &apos;Purchase of Waste Services Agreement&apos;),
+ISPICKVAL( DocumentType__c , &apos;Supplier Contract&apos;)
+),
+ISBLANK(Signed__c)
+)</errorConditionFormula>
+    <errorDisplayField>Signed__c</errorDisplayField>
+    <errorMessage>Signed By GZ is mandatory for this document type.</errorMessage>
+</ValidationRule>

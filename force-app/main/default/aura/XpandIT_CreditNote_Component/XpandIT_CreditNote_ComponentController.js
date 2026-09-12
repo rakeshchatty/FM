@@ -1,16 +1,21 @@
 ({
     handleClick : function (cmp, event, helper) {
-       if(event.getSource().get("v.label") === 'Confirm')
-       {
-           cmp.set("v.isOpen", true);
-       }
-       else if(event.getSource().get("v.title") === 'Cancel')
-       {
-           $A.get("e.force:closeQuickAction").fire();
-       } else if (event.getSource().get("v.title") === 'Cancel popup') {
-           cmp.set("v.isOpen", false);
-       }
-        
+        var selected = cmp.get("v.creditNoteReason");
+        if (selected == '') {
+            alert('Please select a Credit Note Reason');
+            return; 
+        }
+
+        if(event.getSource().get("v.label") === 'Confirm')
+        {
+            cmp.set("v.isOpen", true);
+        }
+        else if(event.getSource().get("v.title") === 'Cancel')
+        {
+            $A.get("e.force:closeQuickAction").fire();
+        } else if (event.getSource().get("v.title") === 'Cancel popup') {
+            cmp.set("v.isOpen", false);
+        }
     },
     
     
@@ -61,6 +66,17 @@
         var isPerOrderInvoice = true;
         var groupAccountID = '';
 
+        var cnReasonsAction = component.get("c.getCreditNoteReasons");
+        cnReasonsAction.setCallback(this, function(response) {
+            var state = response.getState();
+            if (response.getState() === "SUCCESS") {
+                component.set("v.creditNoteReasons", response.getReturnValue());
+            } else {
+                console.error("Error retrieving picklist values:", response.getError());
+            }
+        });
+        $A.enqueueAction(cnReasonsAction);
+        
         //Get Invoice method info
 		var action = component.get("c.getInvoiceResumeData");
         action.setParams({
@@ -81,6 +97,8 @@
             {
                 component.set("v.isLONInvoice", false);
             }
+
+            component.set("v.invoiceCurrencyIsoCode", invoiceInfo[3]);
 
             groupAccountID = invoiceInfo[0];
                 //Get Locations from account's Invoice
@@ -203,7 +221,9 @@
                 "notes": cmp.get("v.creditNoteDescription"),
                 "invoiceId": cmp.get("v.invoiceId"),
                 "locationID": cmp.find("locationsDropdown").get("v.value"),
-                "creditPartner": cmp.get("v.creditPartner")
+                "creditPartner": cmp.get("v.creditPartner"),
+                "isReinvoicedElsewhere": cmp.get("v.reinvoicedElsewhere"),
+                "creditNoteReason": cmp.get("v.creditNoteReason")
             });
             // Register the callback function
             genCredOrdAction.setCallback(this, function(response) {
@@ -243,7 +263,9 @@
                 "amount": amount,
                 "notes": cmp.get("v.creditNoteDescription"),
                 "invoiceId": cmp.get("v.invoiceId"),
-                "locationID": cmp.find("locationsDropdown").get("v.value")
+                "locationID": cmp.find("locationsDropdown").get("v.value"),
+                "isReinvoicedElsewhere": cmp.get("v.reinvoicedElsewhere"),
+                "creditNoteReason": cmp.get("v.creditNoteReason")
             });
             // Register the callback function
             genSimpleCredOrdAction.setCallback(this, function(response) {

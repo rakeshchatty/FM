@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DeliveryPackageQrCode__c</fullName>
+    <label>Delivery Package QR Code</label>
+    <referenceTo>DeliveryPackageQrCode__c</referenceTo>
+    <relationshipLabel>Delivery Package QR Code Items</relationshipLabel>
+    <relationshipName>DeliveryPackageQrCodeItems</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

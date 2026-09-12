@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsTodaySendAnnualWtnEmail__c</fullName>
+    <formula>DATEVALUE(CreatedDate) + 1 = TODAY()</formula>
+    <label>Send Annual WTN Email Today</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

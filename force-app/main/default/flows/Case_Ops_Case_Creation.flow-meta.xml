@@ -1,30 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <choices>
-        <name>Delivery_issue</name>
-        <choiceText>Delivery issue</choiceText>
+        <name>Bin_Weighing_Queries</name>
+        <choiceText>Bin Weighing Queries</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>Delivery issue</stringValue>
+            <stringValue>Bin Weighing Queries</stringValue>
         </value>
     </choices>
     <choices>
-        <name>Missed_Collections</name>
-        <choiceText>Missed Collections</choiceText>
+        <name>Delivery_Issues_General</name>
+        <choiceText>Delivery Issues - General</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>Missed Collections</stringValue>
+            <stringValue>Delivery Issue</stringValue>
         </value>
     </choices>
     <choices>
-        <name>Ops_Question_Query</name>
-        <choiceText>Ops Question/Query</choiceText>
+        <name>Delivery_Issues_Keys</name>
+        <choiceText>Delivery Issues - Keys</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>Ops Question/Query</stringValue>
+            <stringValue>Delivery Issues - Keys</stringValue>
         </value>
     </choices>
+    <choices>
+        <name>Mobilizations</name>
+        <choiceText>Mobilizations</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Mobilizations</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Schedule_Queries</name>
+        <choiceText>Schedule Queries</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Schedule Queries</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Service_Issues</name>
+        <choiceText>Service Issues</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Service Issues</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Attachments</name>
+        <label>Attachments</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Create_Ops_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>yesaddattachment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Add_Attachment</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Case</targetReference>
+            </connector>
+            <label>Add Attachment</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>Case - Ops Case Creation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Case - Ops Case Creation</label>
@@ -48,10 +98,69 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
+        <name>Copy_1_of_Create_Ops_Case</name>
+        <label>Copy 1 of Create Ops Case</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Location__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Internal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>00G4L000000Zj7N</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>0122X000000R36YQAS</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sub_Type__c</field>
+            <value>
+                <elementReference>Issue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Ops Question</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordCreates>
         <name>Create_Case</name>
         <label>Create Ops Case</label>
-        <locationX>176</locationX>
-        <locationY>350</locationY>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <assignRecordIdToReference>CaseID</assignRecordIdToReference>
+        <connector>
+            <targetReference>Add_An_Attachment</targetReference>
+        </connector>
         <inputAssignments>
             <field>Description</field>
             <value>
@@ -105,7 +214,7 @@
     <recordLookups>
         <name>AccountID</name>
         <label>AccountID</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -126,15 +235,60 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
+        <name>Add_An_Attachment</name>
+        <label>Add An Attachment</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Attachfile</name>
+            <extensionName>forceContent:fileUpload</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Upload Attachments</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>multiple</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>CaseID</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>Create_Ops_Case</name>
         <label>Create Ops Case</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Create_Case</targetReference>
+            <targetReference>Attachments</targetReference>
         </connector>
         <fields>
             <name>Create_Ops_Case_Section1</name>
@@ -149,6 +303,14 @@
                     <fieldType>InputField</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -163,14 +325,24 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Issue</name>
-                    <choiceReferences>Missed_Collections</choiceReferences>
-                    <choiceReferences>Delivery_issue</choiceReferences>
-                    <choiceReferences>Ops_Question_Query</choiceReferences>
+                    <choiceReferences>Bin_Weighing_Queries</choiceReferences>
+                    <choiceReferences>Delivery_Issues_General</choiceReferences>
+                    <choiceReferences>Delivery_Issues_Keys</choiceReferences>
+                    <choiceReferences>Mobilizations</choiceReferences>
+                    <choiceReferences>Service_Issues</choiceReferences>
                     <dataType>String</dataType>
                     <fieldText>Issue</fieldText>
                     <fieldType>DropdownBox</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -182,6 +354,14 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Description</name>
@@ -190,18 +370,49 @@
             <helpText>&lt;p&gt;Please leave as much information here as possible to help the Ops Team with your enquiry.&lt;/p&gt;</helpText>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Add_Attachment</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Add Attachment?</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>AccountID</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>CaseID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>

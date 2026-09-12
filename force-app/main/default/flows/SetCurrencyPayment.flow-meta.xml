@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>SetCurrencyCode</name>
+        <label>Currency Code</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CurrencyIsoCode</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>EffectiveCurrencyCode</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>AccountRecordType</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Account__r.RecordType.Name}</expression>
+    </formulas>
+    <formulas>
+        <name>EffectiveCurrencyCode</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISBLANK(TEXT({!$Record.CurrencyCode__c}))), TEXT({!$Record.CurrencyCode__c}), 
+IF(OR({!AccountRecordType} == &apos;Account&apos;, {!AccountRecordType} == &apos;Partner&apos;), 
+TEXT({!$Record.Account__r.CurrencyIsoCode}), TEXT({!$Record.Account__r.Parent.CurrencyIsoCode})))</expression>
+    </formulas>
+    <interviewLabel>Set Currency - Payment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Set Currency - Payment</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SetCurrencyCode</targetReference>
+        </connector>
+        <object>Bank_Statement__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

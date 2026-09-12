@@ -315,6 +315,16 @@
             <field>of_Total_Outstanding__c</field>
             <table>Invoice_Header__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Credit_Note_Reason__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Allocation_rollup__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
         <masterLabel>Invoice_Headers</masterLabel>
     </sections>
     <sections>

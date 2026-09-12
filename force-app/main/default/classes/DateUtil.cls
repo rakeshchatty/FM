@@ -19,38 +19,60 @@ public without sharing class DateUtil {
 		}
 	}
 
+	public static Date toNextDay(Date startDate, String nextDay) {
+		return startDate.addDays(Day.valueOf(nextDay).ordinal());
+	}
+
 	public static Date getNextWeekday(Date someDate) {
 		Integer dayOfWeek = getDayOfWeek(someDate).ordinal();
 		return dayOfWeek <= Day.Thursday.ordinal() ? someDate + 1 : someDate - dayOfWeek + 7;
 	}
 
-	public static Integer countDays(Date startDate, Date endDate, Day dayOfWeek) {
+	private static Set<Date> getDates(Date startDate, Date endDate, Integer weekFrequency) {
+		Integer daysToSkip = weekFrequency * 7;
+		Date matchedDate = startDate;
+
+		Set<Date> dates = new Set<Date>();
+		while (matchedDate <= endDate) {
+			dates.add(matchedDate);
+			matchedDate += daysToSkip;
+		}
+
+		return dates;
+	}
+
+	private static Set<Date> getDates(Date startDate, Date endDate, Day dayOfWeek) {
+		Date matchedDate = startDate;
+		do {
+			if (getDayOfWeek(matchedDate) == dayOfWeek) {
+				return getDates(matchedDate, endDate, 1);
+			} else {
+				matchedDate += 1;
+			}
+		} while (matchedDate <= endDate);
+
+		return new Set<Date>();
+	}
+
+	public static Set<Date> getDates(Date startDate, Date endDate, Day dayOfWeek, Integer weekFrequency, Date previousDate) {
+		weekFrequency = weekFrequency ?? 1;
 		if (startDate == null || endDate == null || startDate > endDate) {
-			return 0;
+			return new Set<Date>();
 		}
 
-		Integer totalDays = startDate.daysBetween(endDate + 1);
-		Integer dayCount = totalDays / 7;
-		Integer remainingDays = Math.mod(totalDays, 7);
-		if (remainingDays == 0) {
-			return dayCount;
+		if (weekFrequency == 1) {
+			return getDates(startDate, endDate, dayOfWeek);
 		}
 
-		Integer startDayIndex = getDayOfWeek(startDate).ordinal();
-		Integer endDayIndex = getDayOfWeek(endDate).ordinal();
-		Integer dayOfWeekIndex = dayOfWeek.ordinal();
-		if (startDayIndex <= endDayIndex) {	// E.g. Start = Tues, End = Sat
-			return startDayIndex <= dayOfWeekIndex && dayOfWeekIndex <= endDayIndex ? dayCount + 1 : dayCount;
-		} else {	// E.g. Start = Fri, End = Tue
-			return startDayIndex <= dayOfWeekIndex || dayOfWeekIndex <= endDayIndex ? dayCount + 1 : dayCount;
-		}
+		Integer daysToSkip = weekFrequency * 7;
+		Date matchedDate = previousDate;
+		do {
+			matchedDate += daysToSkip;
+		} while (matchedDate < startDate);
+
+		return getDates(matchedDate, endDate, weekFrequency);
 	}
-
-	public static Integer countDays(Date startDate, Date endDate, String dayOfWeek, Date startExclusionDate, Date endExclusionDate) {
-		Day day = Day.valueOf(dayOfWeek);
-		return countDays(startDate, endDate, day) - countDays(startExclusionDate, endExclusionDate, day);
-	}
-
+/*
 	public static Date getQuarterStartDate(Date someDate) {
 		Integer month = someDate.month();
 		if (month <= 3) {
@@ -75,5 +97,20 @@ public without sharing class DateUtil {
 		} else {
 			return Date.newInstance(someDate.year(), 12, 31);
 		}
+	}
+*/
+	@TestVisible
+	private static Integer weeksApart(Date date1, Date date2) {
+		Date startDate = date1 <= date2 ? date1 : date2;
+		Date endDate = date1 > date2 ? date1 : date2;
+		Integer startYear = startDate.year();
+		Integer endYear = endDate.year();
+		if (endYear > startYear) {
+			return weeksApart(startDate, Date.newInstance(startYear, 12, 31)) + weeksApart(Date.newInstance(startYear + 1, 1, 1), endDate);
+		}
+
+		Integer weekOfStartDate = (startDate.dayOfYear() + 6) / 7;
+		Integer weekOfEndDate = (endDate.dayOfYear() + 6) / 7;
+		return weekOfEndDate - weekOfStartDate;
 	}
 }

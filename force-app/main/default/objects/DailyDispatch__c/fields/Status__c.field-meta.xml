@@ -3,7 +3,7 @@
     <fullName>Status__c</fullName>
     <label>Status</label>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -12,18 +12,13 @@
             <sorted>false</sorted>
             <value>
                 <fullName>Created</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Created</label>
             </value>
             <value>
-                <fullName>Round Started</fullName>
+                <fullName>Started</fullName>
                 <default>false</default>
-                <label>Round Started</label>
-            </value>
-            <value>
-                <fullName>Round Complete</fullName>
-                <default>false</default>
-                <label>Round Complete</label>
+                <label>Started</label>
             </value>
             <value>
                 <fullName>Complete</fullName>

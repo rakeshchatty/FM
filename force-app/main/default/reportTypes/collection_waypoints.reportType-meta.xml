@@ -341,6 +341,66 @@
             <field>Daily_Dispatch__c.Name</field>
             <table>Collection_Waypoints__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MissedCollection__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Collected_at__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CaseSubject__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VisitedAt__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Dispatch_Date__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_Priority__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Billing_Lat__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Billing_Long__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SupplierPO__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Time__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Entity__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ID_case_safe__c</field>
+            <table>Collection_Waypoints__c</table>
+        </columns>
         <masterLabel>Collection Waypoint</masterLabel>
     </sections>
 </ReportType>

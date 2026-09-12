@@ -15,6 +15,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Direct Mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Don%27t know</fullName>
             <default>false</default>
         </values>
@@ -24,6 +28,14 @@
         </values>
         <values>
             <fullName>Existing customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Field Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flowd</fullName>
             <default>false</default>
         </values>
         <values>
@@ -106,6 +118,45 @@
         </values>
         <values>
             <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Attribution__c</picklist>
+        <values>
+            <fullName>24 Cleaning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Albion Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>First Mile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greener Than Green</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greenzone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greenzone Pipeline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greenzone Synergy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Redbridge Council</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -229,6 +280,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Branch__c</picklist>
+        <values>
+            <fullName>FM GZ Legacy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>First Mile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GZFML</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greenzone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GtG</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Collection_Frequency__c</picklist>
         <values>
             <fullName>Fortnightly</fullName>
@@ -298,6 +372,10 @@
         </values>
         <values>
             <fullName>Ealing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elmbridge Borough Council</fullName>
             <default>false</default>
         </values>
         <values>
@@ -416,7 +494,19 @@
             <default>true</default>
         </values>
         <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>18</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
             <default>false</default>
         </values>
         <values>
@@ -424,11 +514,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>28</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>30</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>37</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>43</fullName>
             <default>false</default>
         </values>
         <values>
@@ -440,11 +546,23 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>55</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>58</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>60</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>75</fullName>
             <default>false</default>
         </values>
         <values>
@@ -456,6 +574,10 @@
         <picklist>Credit_Control_Status__c</picklist>
         <values>
             <fullName>Internal Chase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lapsed</fullName>
             <default>false</default>
         </values>
         <values>
@@ -483,6 +605,56 @@
         </values>
         <values>
             <fullName>Very Low</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_Segment__c</picklist>
+        <values>
+            <fullName>Commercial Real Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compliance Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large Single Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Sector</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SME</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DMR_Exemption__c</picklist>
+        <values>
+            <fullName>Alternative Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landlord Managed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Microfirm</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -550,15 +722,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Data Clean Up</fullName>
+            <fullName>Collection Reliability Issues</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Dormant Process</fullName>
+            <fullName>Delivery Issues</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Duplicate</fullName>
+            <fullName>Dormant</fullName>
             <default>false</default>
         </values>
         <values>
@@ -570,23 +742,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Indirect lost work</fullName>
+            <fullName>Missing Features</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Internalised</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Moved out of area served</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not able to contact</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>One-off collection</fullName>
+            <fullName>Poor Customer Support</fullName>
             <default>false</default>
         </values>
         <values>
@@ -594,7 +754,22 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Service</fullName>
+            <fullName>Reseller</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Escalation_Stage__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -795,6 +970,36 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Food_Exemption__c</picklist>
+        <values>
+            <fullName>Alternative Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landlord Managed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Microfirm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>General_Waste_Exemption__c</picklist>
+        <values>
+            <fullName>Alternative Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landlord Managed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Microfirm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Industry</picklist>
         <values>
             <fullName>Bank</fullName>
@@ -907,6 +1112,17 @@
         </values>
         <values>
             <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MonthsInvoicedInAdvance__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1112,6 +1328,148 @@
         </values>
         <values>
             <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SharedDocs__c</picklist>
+        <values>
+            <fullName>Airside Liability Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Anti Bribery Policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Calibration Certificates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Certificate of Conformity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Constructionline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DO37 Duty of Care Audit Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desktop Audit - Duty of Care Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duty Of Care Audit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employers Liability Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FORS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health And Safety Policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ICO Registration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISO 14001 Certificate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISO 27001 Certificate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISO 45001 Certificate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISO 9001 Certificate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Method Statement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Modern Slavery and Human Trafficking Policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motor Insurances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operators Licence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Permit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Indemnity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Liability Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase of Waste Services Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk Assessment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safe Contractor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safe Systems Of Work</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supplier Contract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste Carrier Licence</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Size_upload__c</picklist>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mid Market</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SME</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -5,10 +5,7 @@ public class OrderItemTriggerNotificationHandler_test {
         Account parentAccount = TestDataHelper.insertAccount();
         Account location = TestDataHelper.insertLocation(parentAccount.Id, null);
         
-        Suppliers__c supplier = new Suppliers__c();
-        supplier.Name = 'Test Supp';
-        supplier.Phone_Number__c = '1234567898';
-        INSERT supplier;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('Test Supp');
         
         Id pricebookId = Test.getStandardPricebookId();
         

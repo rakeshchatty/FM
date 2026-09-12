@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Round_Schedule__c</fullName>
+    <label>Round Schedule</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>4 by 2</fullName>
+                <default>false</default>
+                <label>4 by 2</label>
+            </value>
+            <value>
+                <fullName>2 on 2 off</fullName>
+                <default>false</default>
+                <label>2 on 2 off</label>
+            </value>
+            <value>
+                <fullName>Mon-Fri</fullName>
+                <default>false</default>
+                <label>Mon-Fri</label>
+            </value>
+            <value>
+                <fullName>Mon-Sat</fullName>
+                <default>false</default>
+                <label>Mon-Sat</label>
+            </value>
+            <value>
+                <fullName>Mon-Sun</fullName>
+                <default>false</default>
+                <label>Mon-Sun</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

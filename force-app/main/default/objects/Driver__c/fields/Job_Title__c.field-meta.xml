@@ -3,6 +3,7 @@
     <fullName>Job_Title__c</fullName>
     <label>Job Title</label>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

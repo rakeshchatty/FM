@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Concat</name>
+        <label>Assign Concat</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>Concatenation</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ConcatenatedString</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Hash</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Hash</name>
+        <label>Assign Hash</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>HashText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Finalconcat</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Supplier_PO</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>ConcatenatedString</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Location__r.Name} &amp; &quot; - &quot; &amp; {!$Record.Supplier__r.Name} &amp; &quot; - &quot; &amp; {!$Record.Supplier_Product_Name__c}</expression>
+    </formulas>
+    <formulas>
+        <name>Finalconcat</name>
+        <dataType>String</dataType>
+        <expression>UPPER(LEFT({!$Record.Supplier__r.Name}, 3)) &amp; {!$Record.Supplier_Product__r.Product_Code_for_PO__c} &amp; TEXT(
+  MOD( 
+    {!Pseudohash1} + 
+    {!Pseudohash2} +
+    {!Pseudohash3} + 
+    {!Pseudohash4},
+    10000
+  )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>First3</name>
+        <dataType>String</dataType>
+        <expression>UPPER(LEFT({!$Record.Supplier__r.Name}, 3))</expression>
+    </formulas>
+    <formulas>
+        <name>Pseudohash1</name>
+        <dataType>Number</dataType>
+        <expression>IF(LEN({!Concatenation}) &gt;= 1, ASCII(MID({!Concatenation}, 1, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 2, ASCII(MID({!Concatenation}, 2, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 3, ASCII(MID({!Concatenation}, 3, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 4, ASCII(MID({!Concatenation}, 4, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 5, ASCII(MID({!Concatenation}, 5, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 6, ASCII(MID({!Concatenation}, 6, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 7, ASCII(MID({!Concatenation}, 7, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 8, ASCII(MID({!Concatenation}, 8, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 9, ASCII(MID({!Concatenation}, 9, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 10, ASCII(MID({!Concatenation}, 10, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 11, ASCII(MID({!Concatenation}, 11, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 12, ASCII(MID({!Concatenation}, 12, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 13, ASCII(MID({!Concatenation}, 13, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 14, ASCII(MID({!Concatenation}, 14, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 15, ASCII(MID({!Concatenation}, 15, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 16, ASCII(MID({!Concatenation}, 16, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 17, ASCII(MID({!Concatenation}, 17, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 18, ASCII(MID({!Concatenation}, 18, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 19, ASCII(MID({!Concatenation}, 19, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 20, ASCII(MID({!Concatenation}, 20, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 21, ASCII(MID({!Concatenation}, 21, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 22, ASCII(MID({!Concatenation}, 22, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 23, ASCII(MID({!Concatenation}, 23, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 24, ASCII(MID({!Concatenation}, 24, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 25, ASCII(MID({!Concatenation}, 25, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 26, ASCII(MID({!Concatenation}, 26, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 27, ASCII(MID({!Concatenation}, 27, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 28, ASCII(MID({!Concatenation}, 28, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 29, ASCII(MID({!Concatenation}, 29, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 30, ASCII(MID({!Concatenation}, 30, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 31, ASCII(MID({!Concatenation}, 31, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 32, ASCII(MID({!Concatenation}, 32, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 33, ASCII(MID({!Concatenation}, 33, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 34, ASCII(MID({!Concatenation}, 34, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 35, ASCII(MID({!Concatenation}, 35, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 36, ASCII(MID({!Concatenation}, 36, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 37, ASCII(MID({!Concatenation}, 37, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 38, ASCII(MID({!Concatenation}, 38, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 39, ASCII(MID({!Concatenation}, 39, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 40, ASCII(MID({!Concatenation}, 40, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 41, ASCII(MID({!Concatenation}, 41, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 42, ASCII(MID({!Concatenation}, 42, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 43, ASCII(MID({!Concatenation}, 43, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 44, ASCII(MID({!Concatenation}, 44, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 45, ASCII(MID({!Concatenation}, 45, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 46, ASCII(MID({!Concatenation}, 46, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 47, ASCII(MID({!Concatenation}, 47, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 48, ASCII(MID({!Concatenation}, 48, 1)), 0) +
+  IF(LEN({!Concatenation}) &gt;= 49, ASCII(MID({!Concatenation}, 49, 1)), 0) +
+ IF(LEN({!Concatenation}) &gt;= 50, ASCII(MID({!Concatenation}, 50, 1)), 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Pseudohash2</name>
+        <dataType>Number</dataType>
+        <expression>IF(LEN({!Concatenation}) &gt;= 51, ASCII(MID({!Concatenation}, 51, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 52, ASCII(MID({!Concatenation}, 52, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 53, ASCII(MID({!Concatenation}, 53, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 54, ASCII(MID({!Concatenation}, 54, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 55, ASCII(MID({!Concatenation}, 55, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 56, ASCII(MID({!Concatenation}, 56, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 57, ASCII(MID({!Concatenation}, 57, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 58, ASCII(MID({!Concatenation}, 58, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 59, ASCII(MID({!Concatenation}, 59, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 60, ASCII(MID({!Concatenation}, 60, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 61, ASCII(MID({!Concatenation}, 61, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 62, ASCII(MID({!Concatenation}, 62, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 63, ASCII(MID({!Concatenation}, 63, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 64, ASCII(MID({!Concatenation}, 64, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 65, ASCII(MID({!Concatenation}, 65, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 66, ASCII(MID({!Concatenation}, 66, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 67, ASCII(MID({!Concatenation}, 67, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 68, ASCII(MID({!Concatenation}, 68, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 69, ASCII(MID({!Concatenation}, 69, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 70, ASCII(MID({!Concatenation}, 70, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 71, ASCII(MID({!Concatenation}, 71, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 72, ASCII(MID({!Concatenation}, 72, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 73, ASCII(MID({!Concatenation}, 73, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 74, ASCII(MID({!Concatenation}, 74, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 75, ASCII(MID({!Concatenation}, 75, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 76, ASCII(MID({!Concatenation}, 76, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 77, ASCII(MID({!Concatenation}, 77, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 78, ASCII(MID({!Concatenation}, 78, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 79, ASCII(MID({!Concatenation}, 79, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 80, ASCII(MID({!Concatenation}, 80, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 81, ASCII(MID({!Concatenation}, 81, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 82, ASCII(MID({!Concatenation}, 82, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 83, ASCII(MID({!Concatenation}, 83, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 84, ASCII(MID({!Concatenation}, 84, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 85, ASCII(MID({!Concatenation}, 85, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 86, ASCII(MID({!Concatenation}, 86, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 87, ASCII(MID({!Concatenation}, 87, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 88, ASCII(MID({!Concatenation}, 88, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 89, ASCII(MID({!Concatenation}, 89, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 90, ASCII(MID({!Concatenation}, 90, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 91, ASCII(MID({!Concatenation}, 91, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 92, ASCII(MID({!Concatenation}, 92, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 93, ASCII(MID({!Concatenation}, 93, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 94, ASCII(MID({!Concatenation}, 94, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 95, ASCII(MID({!Concatenation}, 95, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 96, ASCII(MID({!Concatenation}, 96, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 97, ASCII(MID({!Concatenation}, 97, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 98, ASCII(MID({!Concatenation}, 98, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 99, ASCII(MID({!Concatenation}, 99, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 100, ASCII(MID({!Concatenation}, 100, 1)), 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Pseudohash3</name>
+        <dataType>Number</dataType>
+        <expression>IF(LEN({!Concatenation}) &gt;= 101, ASCII(MID({!Concatenation}, 101, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 102, ASCII(MID({!Concatenation}, 102, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 103, ASCII(MID({!Concatenation}, 103, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 104, ASCII(MID({!Concatenation}, 104, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 105, ASCII(MID({!Concatenation}, 105, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 106, ASCII(MID({!Concatenation}, 106, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 107, ASCII(MID({!Concatenation}, 107, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 108, ASCII(MID({!Concatenation}, 108, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 109, ASCII(MID({!Concatenation}, 109, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 110, ASCII(MID({!Concatenation}, 110, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 111, ASCII(MID({!Concatenation}, 111, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 112, ASCII(MID({!Concatenation}, 112, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 113, ASCII(MID({!Concatenation}, 113, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 114, ASCII(MID({!Concatenation}, 114, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 115, ASCII(MID({!Concatenation}, 115, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 116, ASCII(MID({!Concatenation}, 116, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 117, ASCII(MID({!Concatenation}, 117, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 118, ASCII(MID({!Concatenation}, 118, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 119, ASCII(MID({!Concatenation}, 119, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 120, ASCII(MID({!Concatenation}, 120, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 121, ASCII(MID({!Concatenation}, 121, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 122, ASCII(MID({!Concatenation}, 122, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 123, ASCII(MID({!Concatenation}, 123, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 124, ASCII(MID({!Concatenation}, 124, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 125, ASCII(MID({!Concatenation}, 125, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 126, ASCII(MID({!Concatenation}, 126, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 127, ASCII(MID({!Concatenation}, 127, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 128, ASCII(MID({!Concatenation}, 128, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 129, ASCII(MID({!Concatenation}, 129, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 130, ASCII(MID({!Concatenation}, 130, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 131, ASCII(MID({!Concatenation}, 131, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 132, ASCII(MID({!Concatenation}, 132, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 133, ASCII(MID({!Concatenation}, 133, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 134, ASCII(MID({!Concatenation}, 134, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 135, ASCII(MID({!Concatenation}, 135, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 136, ASCII(MID({!Concatenation}, 136, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 137, ASCII(MID({!Concatenation}, 137, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 138, ASCII(MID({!Concatenation}, 138, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 139, ASCII(MID({!Concatenation}, 139, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 140, ASCII(MID({!Concatenation}, 140, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 141, ASCII(MID({!Concatenation}, 141, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 142, ASCII(MID({!Concatenation}, 142, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 143, ASCII(MID({!Concatenation}, 143, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 144, ASCII(MID({!Concatenation}, 144, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 145, ASCII(MID({!Concatenation}, 145, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 146, ASCII(MID({!Concatenation}, 146, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 147, ASCII(MID({!Concatenation}, 147, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 148, ASCII(MID({!Concatenation}, 148, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 149, ASCII(MID({!Concatenation}, 149, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 150, ASCII(MID({!Concatenation}, 150, 1)), 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>Pseudohash4</name>
+        <dataType>Number</dataType>
+        <expression>IF(LEN({!Concatenation}) &gt;= 151, ASCII(MID({!Concatenation}, 151, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 152, ASCII(MID({!Concatenation}, 152, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 153, ASCII(MID({!Concatenation}, 153, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 154, ASCII(MID({!Concatenation}, 154, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 155, ASCII(MID({!Concatenation}, 155, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 156, ASCII(MID({!Concatenation}, 156, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 157, ASCII(MID({!Concatenation}, 157, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 158, ASCII(MID({!Concatenation}, 158, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 159, ASCII(MID({!Concatenation}, 159, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 160, ASCII(MID({!Concatenation}, 160, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 161, ASCII(MID({!Concatenation}, 161, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 162, ASCII(MID({!Concatenation}, 162, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 163, ASCII(MID({!Concatenation}, 163, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 164, ASCII(MID({!Concatenation}, 164, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 165, ASCII(MID({!Concatenation}, 165, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 166, ASCII(MID({!Concatenation}, 166, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 167, ASCII(MID({!Concatenation}, 167, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 168, ASCII(MID({!Concatenation}, 168, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 169, ASCII(MID({!Concatenation}, 169, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 170, ASCII(MID({!Concatenation}, 170, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 171, ASCII(MID({!Concatenation}, 171, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 172, ASCII(MID({!Concatenation}, 172, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 173, ASCII(MID({!Concatenation}, 173, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 174, ASCII(MID({!Concatenation}, 174, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 175, ASCII(MID({!Concatenation}, 175, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 176, ASCII(MID({!Concatenation}, 176, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 177, ASCII(MID({!Concatenation}, 177, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 178, ASCII(MID({!Concatenation}, 178, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 179, ASCII(MID({!Concatenation}, 179, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 180, ASCII(MID({!Concatenation}, 180, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 181, ASCII(MID({!Concatenation}, 181, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 182, ASCII(MID({!Concatenation}, 182, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 183, ASCII(MID({!Concatenation}, 183, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 184, ASCII(MID({!Concatenation}, 184, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 185, ASCII(MID({!Concatenation}, 185, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 186, ASCII(MID({!Concatenation}, 186, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 187, ASCII(MID({!Concatenation}, 187, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 188, ASCII(MID({!Concatenation}, 188, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 189, ASCII(MID({!Concatenation}, 189, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 190, ASCII(MID({!Concatenation}, 190, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 191, ASCII(MID({!Concatenation}, 191, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 192, ASCII(MID({!Concatenation}, 192, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 193, ASCII(MID({!Concatenation}, 193, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 194, ASCII(MID({!Concatenation}, 194, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 195, ASCII(MID({!Concatenation}, 195, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 196, ASCII(MID({!Concatenation}, 196, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 197, ASCII(MID({!Concatenation}, 197, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 198, ASCII(MID({!Concatenation}, 198, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 199, ASCII(MID({!Concatenation}, 199, 1)), 0) +
+IF(LEN({!Concatenation}) &gt;= 200, ASCII(MID({!Concatenation}, 200, 1)), 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Supplier - Create PO {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Supplier - Create PO</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Supplier_PO</name>
+        <label>Update Supplier PO</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Po_Number_Supplier__c</field>
+            <value>
+                <elementReference>HashText</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Concat</targetReference>
+        </connector>
+        <filterFormula>AND(
+    ISBLANK({!$Record.Po_Number_Supplier__c}),
+    NOT(
+        OR(
+            ISBLANK({!$Record.Supplier__c}),
+            {!$Record.Supplier__c} = &quot;First Mile Ltd&quot;
+        )
+    )
+)</filterFormula>
+        <object>Schedule__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Concatenation</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>HashText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetAccountManagerEmail</name>
         <label>Account Manager Email</label>
         <locationX>204</locationX>
-        <locationY>2087</locationY>
+        <locationY>2387</locationY>
         <assignmentItems>
             <assignToReference>$Record.Account_Manager_Email__c</assignToReference>
             <operator>Assign</operator>
@@ -21,7 +22,7 @@
         <name>SetAccountServiceStatus</name>
         <label>Account Service Status</label>
         <locationX>204</locationX>
-        <locationY>887</locationY>
+        <locationY>1187</locationY>
         <assignmentItems>
             <assignToReference>$Record.Account_Service_Status__c</assignToReference>
             <operator>Assign</operator>
@@ -34,10 +35,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>SetBranchToFM</name>
+        <label>Branch to FM</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Branch__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>First Mile</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ShouldSetPrimaryOpportunityIssue</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>SetCreditDays</name>
         <label>Credit Days</label>
         <locationX>336</locationX>
-        <locationY>2579</locationY>
+        <locationY>2879</locationY>
         <assignmentItems>
             <assignToReference>$Record.Credit_Days__c</assignToReference>
             <operator>Assign</operator>
@@ -50,7 +67,7 @@
         <name>SetInvoiceFields</name>
         <label>Invoice Fields</label>
         <locationX>204</locationX>
-        <locationY>1487</locationY>
+        <locationY>1787</locationY>
         <assignmentItems>
             <assignToReference>$Record.IsInvoiceFrequencyOverride__c</assignToReference>
             <operator>Assign</operator>
@@ -80,7 +97,7 @@
         <name>SetPrimaryOpportunityIssue</name>
         <label>Primary Opportunity Issue</label>
         <locationX>50</locationX>
-        <locationY>503</locationY>
+        <locationY>803</locationY>
         <assignmentItems>
             <assignToReference>$Record.Primary_Opportunity_Issue__c</assignToReference>
             <operator>Assign</operator>
@@ -96,7 +113,7 @@
         <name>SetReportType</name>
         <label>Report Type</label>
         <locationX>204</locationX>
-        <locationY>1787</locationY>
+        <locationY>2087</locationY>
         <assignmentItems>
             <assignToReference>$Record.Report_Type__c</assignToReference>
             <operator>Assign</operator>
@@ -112,7 +129,7 @@
         <name>SetShippingAddress</name>
         <label>Shipping Address</label>
         <locationX>204</locationX>
-        <locationY>2387</locationY>
+        <locationY>2687</locationY>
         <assignmentItems>
             <assignToReference>$Record.ShippingStreet</assignToReference>
             <operator>Assign</operator>
@@ -156,7 +173,7 @@
         <name>SetTimestampReadytoTransfer</name>
         <label>Timestamp Ready to Transfer</label>
         <locationX>204</locationX>
-        <locationY>1187</locationY>
+        <locationY>1487</locationY>
         <assignmentItems>
             <assignToReference>$Record.Timestamp_Ready_to_Transfer__c</assignToReference>
             <operator>Assign</operator>
@@ -172,7 +189,7 @@
         <name>IsAccountManagerAvailable</name>
         <label>Account Manager Available?</label>
         <locationX>336</locationX>
-        <locationY>1979</locationY>
+        <locationY>2279</locationY>
         <defaultConnector>
             <targetReference>IsShippingAddressBlankOnProspect</targetReference>
         </defaultConnector>
@@ -194,10 +211,49 @@
         </rules>
     </decisions>
     <decisions>
+        <name>IsBranchEmptyOnParentOrPartner</name>
+        <label>Branch Empty on Parent/Partner?</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <defaultConnector>
+            <targetReference>ShouldSetPrimaryOpportunityIssue</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesBranchEmptyOnParentOrPartner</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Branch__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Account</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetBranchToFM</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>IsDead</name>
         <label>Dead?</label>
         <locationX>336</locationX>
-        <locationY>1679</locationY>
+        <locationY>1979</locationY>
         <defaultConnector>
             <targetReference>IsAccountManagerAvailable</targetReference>
         </defaultConnector>
@@ -222,7 +278,7 @@
         <name>IsReadyToTransfer</name>
         <label>Ready To Transfer?</label>
         <locationX>336</locationX>
-        <locationY>1079</locationY>
+        <locationY>1379</locationY>
         <defaultConnector>
             <targetReference>IsWheelieBinCustomer</targetReference>
         </defaultConnector>
@@ -248,7 +304,7 @@
         <name>IsShippingAddressBlankOnProspect</name>
         <label>Shipping Address Blank on Prospect?</label>
         <locationX>336</locationX>
-        <locationY>2279</locationY>
+        <locationY>2579</locationY>
         <defaultConnector>
             <targetReference>SetCreditDays</targetReference>
         </defaultConnector>
@@ -308,7 +364,7 @@
         <name>IsWheelieBinCustomer</name>
         <label>Wheelie Bin Customer?</label>
         <locationX>336</locationX>
-        <locationY>1379</locationY>
+        <locationY>1679</locationY>
         <defaultConnector>
             <targetReference>IsDead</targetReference>
         </defaultConnector>
@@ -364,7 +420,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>ShouldSetPrimaryOpportunityIssue</targetReference>
+                <targetReference>IsBranchEmptyOnParentOrPartner</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -373,7 +429,7 @@
         <name>ShouldSetAccountServiceStatus</name>
         <label>Set Account Service Status?</label>
         <locationX>336</locationX>
-        <locationY>779</locationY>
+        <locationY>1079</locationY>
         <defaultConnector>
             <targetReference>IsReadyToTransfer</targetReference>
         </defaultConnector>
@@ -412,7 +468,7 @@
         <name>ShouldSetPrimaryOpportunityIssue</name>
         <label>Set Primary Opportunity Issue?</label>
         <locationX>182</locationX>
-        <locationY>395</locationY>
+        <locationY>695</locationY>
         <defaultConnector>
             <targetReference>ShouldSetAccountServiceStatus</targetReference>
         </defaultConnector>

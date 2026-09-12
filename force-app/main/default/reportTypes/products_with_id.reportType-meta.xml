@@ -223,7 +223,47 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>ChargeVariableWeight__c</field>
+            <field>Container_Type_Name__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsQrCodeEnforced__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DefaultWeightLimit__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>GZ_Service_ID__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Service_Type__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Service_Subtype__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WasteType__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ContainerType__c</field>
+            <table>Product2</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleID__c</field>
             <table>Product2</table>
         </columns>
         <masterLabel>Products</masterLabel>

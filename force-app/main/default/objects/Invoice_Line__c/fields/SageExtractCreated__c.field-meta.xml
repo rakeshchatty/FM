@@ -3,6 +3,7 @@
     <fullName>SageExtractCreated__c</fullName>
     <defaultValue>false</defaultValue>
     <label>Sage Extract Created</label>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

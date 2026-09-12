@@ -48,6 +48,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
+        TestDataHelper.insertSupplier('First Mile Ltd');
         OrderItem o = new OrderItem(
             OrderId = Ord2.Id,
             Quantity = 1,
@@ -139,8 +140,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
-		
-
+        TestDataHelper.insertSupplier('First Mile Ltd');
 		//order Items
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
@@ -269,8 +269,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
-		
-
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		//order Items
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
@@ -428,6 +427,7 @@ public class SubscribedProductTest {
 		
 
 		//order Items
+		TestDataHelper.insertSupplier('First Mile Ltd');
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
             OrderId = Ord1.Id,
@@ -589,8 +589,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
-		
-
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		//order Items
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
@@ -719,8 +718,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
-		
-
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		//order Items
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
@@ -872,6 +870,7 @@ public class SubscribedProductTest {
 		
 
 		//order Items
+        TestDataHelper.insertSupplier('First Mile Ltd');
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
             OrderId = Ord1.Id,
@@ -1000,8 +999,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
-		
-
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		//order Items
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(
@@ -1155,8 +1153,7 @@ public class SubscribedProductTest {
         );
         insert ord2;
 
-		
-
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		//order Items
         List<OrderItem> lstOLI = new List<OrderItem>();
         lstOLI.add(new OrderItem(

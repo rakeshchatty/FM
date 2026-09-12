@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Put Out Times" icon-name="custom:custom14">
+        <template lwc:if={putOutTimes}>
+            <div class="slds-m-around_medium">
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="slds-text-title_bold">Street Name</th>
+                            <th class="slds-text-title_bold">Put Out Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={putOutTimes} for:item="putOutTime">
+                            <tr key={putOutTime.Id}>
+                                <td>{putOutTime.Street_Name__c}</td>
+                                <td>{putOutTime.Put_Out_Time__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <template lwc:else>
+            <p class="slds-m-around_medium">No put out times available.</p>
+        </template>
+    </lightning-card>
+</template>

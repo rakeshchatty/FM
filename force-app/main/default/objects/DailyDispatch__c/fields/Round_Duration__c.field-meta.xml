@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Round_Duration__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( ISBLANK(EndTime__c), 0,  (EndTime__c -  RoundStartTime__c ) * 24)</formula>
+    <formula>IF( ISBLANK(Ops_End_Time__c), 0,  (Ops_End_Time__c-  Ops_Start_Time__c) * 24)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Round Duration</label>
     <precision>18</precision>

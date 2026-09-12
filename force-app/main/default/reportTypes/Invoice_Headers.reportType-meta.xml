@@ -336,6 +336,16 @@
             <field>LineCount__c</field>
             <table>Invoice_Header__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Credit_Note_Reason__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Allocation_rollup__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
         <masterLabel>Invoice_Headers</masterLabel>
     </sections>
     <sections>
@@ -348,6 +358,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Location__c.RecordType.DeveloperName</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.IsBinCollectionAdvanceInvoiced__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.MonthsInvoicedInAdvance__c</field>
             <table>Invoice_Header__c</table>
         </columns>
         <masterLabel>Account</masterLabel>

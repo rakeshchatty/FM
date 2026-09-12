@@ -17,6 +17,7 @@
         <nameSegment>Subscribed_Products__c.BID_allocation_exceeded</nameSegment>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Subscribed Product - BID Allocation Exceeded {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Subscribed Product - BID Allocation Exceeded</label>

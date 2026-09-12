@@ -12,7 +12,12 @@
     <filters>
         <field>Site_of_Tip__c</field>
         <operation>equals</operation>
-        <value>Weightbridge</value>
+        <value>Weighbridge</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>1/15/2026 12:00 AM</value>
     </filters>
     <label>Weighbridge tonnages</label>
 </ListView>

@@ -11,5 +11,10 @@
     <columns>CREATED_DATE</columns>
     <columns>Collection_Waypoint__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Date__c</field>
+        <operation>equals</operation>
+        <value>4/7/2025 12:00 AM</value>
+    </filters>
     <label>All</label>
 </ListView>

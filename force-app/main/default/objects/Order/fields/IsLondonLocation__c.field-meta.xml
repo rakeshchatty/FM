@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>IsLondonLocation__c</fullName>
-    <formula>AND(ShippingLatitude &gt; 51.25, ShippingLatitude &lt; 51.75, ShippingLongitude &gt; -0.56, ShippingLongitude &lt; 0.33)</formula>
-    <label>London Location?</label>
-    <trackHistory>false</trackHistory>
-    <type>Checkbox</type>
-</CustomField>

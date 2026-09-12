@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Set_level_1_owner</name>
-        <label>Set level 1 owner</label>
+        <name>L2_Order</name>
+        <label>L2 Order Quote or New Location Assignment</label>
+        <locationX>1370</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Orders.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_L2_Order_Owner</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_General_or_Doc_Request_Owner</name>
+        <label>Set General or Doc Request Owner</label>
+        <locationX>578</locationX>
+        <locationY>890</locationY>
+        <assignmentItems>
+            <assignToReference>Get_General_Or_Doc_Request.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Records_6</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Level_1_Owner</name>
+        <label>Set Level 1 Owner</label>
+        <locationX>314</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Level_1_Case.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Level_1_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_lTransactional_owner</name>
+        <label>Set Transactional Owner</label>
         <locationX>50</locationX>
         <locationY>458</locationY>
         <assignmentItems>
@@ -19,9 +68,9 @@
     </assignments>
     <assignments>
         <name>Set_Owner</name>
-        <label>Set Owner</label>
-        <locationX>842</locationX>
-        <locationY>674</locationY>
+        <label>All Other Case Assignment</label>
+        <locationX>1634</locationX>
+        <locationY>890</locationY>
         <assignmentItems>
             <assignToReference>GetCase.OwnerId</assignToReference>
             <operator>Assign</operator>
@@ -35,8 +84,8 @@
     </assignments>
     <assignments>
         <name>SetPCaseOwner</name>
-        <label>SetPCaseOwner</label>
-        <locationX>578</locationX>
+        <label>Key Accounts Case Assignment</label>
+        <locationX>1106</locationX>
         <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>Get_Priority_Cases.OwnerId</assignToReference>
@@ -58,9 +107,9 @@
     </constants>
     <decisions>
         <name>CaseData</name>
-        <label>CaseData</label>
-        <locationX>974</locationX>
-        <locationY>566</locationY>
+        <label>All Other Cases Available?</label>
+        <locationX>1766</locationX>
+        <locationY>782</locationY>
         <defaultConnector>
             <targetReference>NoCasesFound</targetReference>
         </defaultConnector>
@@ -84,7 +133,7 @@
     <decisions>
         <name>Check_if_Level_1</name>
         <label>Check if Level 1?</label>
-        <locationX>479</locationX>
+        <locationX>809</locationX>
         <locationY>134</locationY>
         <defaultConnector>
             <targetReference>Get_Priority_Cases</targetReference>
@@ -107,12 +156,37 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Decision_7</name>
+        <label>General or Doc request Found?</label>
+        <locationX>710</locationX>
+        <locationY>782</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_No_Cases_Found</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Decision_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_General_Or_Doc_Request</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_General_or_Doc_Request_Owner</targetReference>
+            </connector>
+            <label>General or Doc Request found</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Found_Level_1_Case</name>
-        <label>Found Level 1 Case?</label>
-        <locationX>182</locationX>
+        <label>Found Transactional Case?</label>
+        <locationX>281</locationX>
         <locationY>350</locationY>
         <defaultConnector>
-            <targetReference>No_Level_1_Cases_Available</targetReference>
+            <targetReference>Get_Level_1_Case</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -126,18 +200,18 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Set_level_1_owner</targetReference>
+                <targetReference>Set_lTransactional_owner</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
     <decisions>
         <name>Found_Priority_Case</name>
-        <label>Found Priority Case?</label>
-        <locationX>776</locationX>
+        <label>Found Key Account Case?</label>
+        <locationX>1337</locationX>
         <locationY>350</locationY>
         <defaultConnector>
-            <targetReference>GetCase</targetReference>
+            <targetReference>Get_Orders</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -156,7 +230,57 @@
             <label>FoundPcase?</label>
         </rules>
     </decisions>
-    <description>Priority cases first, then normal cases.  Now uses CS level</description>
+    <decisions>
+        <name>Level_1_Case_Found</name>
+        <label>Level 1 Case Found?</label>
+        <locationX>512</locationX>
+        <locationY>566</locationY>
+        <defaultConnector>
+            <targetReference>Get_General_Or_Doc_Request</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Level_1_Case</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Level_1_Owner</targetReference>
+            </connector>
+            <label>Found Case</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Order_Available</name>
+        <label>Order Available?</label>
+        <locationX>1568</locationX>
+        <locationY>566</locationY>
+        <defaultConnector>
+            <targetReference>GetCase</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Orders</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>L2_Order</targetReference>
+            </connector>
+            <label>Order</label>
+        </rules>
+    </decisions>
+    <description>Now sorts by oldest customer email</description>
     <environments>Default</environments>
     <interviewLabel>GetNextCasev2 {!$Flow.CurrentDateTime}</interviewLabel>
     <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
@@ -181,27 +305,76 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
-        <name>Get_Orders_and_Missed</name>
-        <label>Get Orders and Missed</label>
-        <locationX>182</locationX>
-        <locationY>242</locationY>
+        <name>Get_General_Or_Doc_Request</name>
+        <label>Get General Or Doc Request</label>
+        <locationX>710</locationX>
+        <locationY>674</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Found_Level_1_Case</targetReference>
+            <targetReference>Decision_7</targetReference>
         </connector>
-        <filterLogic>3 AND 6 AND ((1 OR 2) OR (4 AND 7) OR (5 AND 7))</filterLogic>
+        <filterLogic>(1 OR 2) AND 3 AND (4 OR 5)</filterLogic>
         <filters>
-            <field>Type</field>
+            <field>Status</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Order</stringValue>
+                <stringValue>Active</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>QueueName__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>CS Emails</stringValue>
             </value>
         </filters>
         <filters>
             <field>Type</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Missed Collection</stringValue>
+                <stringValue>Document Request</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>General</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Level_1_Case</name>
+        <label>Get Order Or Missed</label>
+        <locationX>512</locationX>
+        <locationY>458</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Level_1_Case_Found</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3 AND (4 OR 5)</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
             </value>
         </filters>
         <filters>
@@ -212,17 +385,98 @@
             </value>
         </filters>
         <filters>
-            <field>Subject</field>
-            <operator>Contains</operator>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Missed Collection</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Order</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Orders</name>
+        <label>Get Orders Quotes &amp; New Locations</label>
+        <locationX>1568</locationX>
+        <locationY>458</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Order_Available</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3 AND (4 OR 5 OR 6)</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>QueueName__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CS Emails</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
             <value>
                 <stringValue>Order</stringValue>
             </value>
         </filters>
         <filters>
-            <field>Subject</field>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New Quote or Location</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Quote</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Orders_and_Missed</name>
+        <label>Get Transactional Case</label>
+        <locationX>281</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Level_1_Case</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>QueueName__c</field>
             <operator>Contains</operator>
             <value>
-                <stringValue>Missed</stringValue>
+                <stringValue>Transactional</stringValue>
             </value>
         </filters>
         <filters>
@@ -233,10 +487,10 @@
             </value>
         </filters>
         <filters>
-            <field>Type</field>
-            <operator>IsNull</operator>
+            <field>Status</field>
+            <operator>EqualTo</operator>
             <value>
-                <booleanValue>true</booleanValue>
+                <stringValue>Active (Existing)</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -250,19 +504,19 @@
     </recordLookups>
     <recordLookups>
         <name>Get_Priority_Cases</name>
-        <label>Get Priority Cases</label>
-        <locationX>776</locationX>
+        <label>Get Key Account Cases</label>
+        <locationX>1337</locationX>
         <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Found_Priority_Case</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND (2 OR 5) AND 3 AND 4</filterLogic>
         <filters>
             <field>QueueName__c</field>
             <operator>Contains</operator>
             <value>
-                <stringValue>Priority</stringValue>
+                <stringValue>Key Account</stringValue>
             </value>
         </filters>
         <filters>
@@ -286,20 +540,29 @@
                 <stringValue>Billing/Pricing Query</stringValue>
             </value>
         </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Case</object>
+        <sortField>Last_Email_Date_Time__c</sortField>
+        <sortOrder>Asc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>GetCase</name>
-        <label>GetCase</label>
-        <locationX>974</locationX>
-        <locationY>458</locationY>
+        <label>Get All Other Cases</label>
+        <locationX>1766</locationX>
+        <locationY>674</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>CaseData</targetReference>
         </connector>
-        <filterLogic>(1 OR 7) AND 3 AND (4 OR 5 OR 6 OR 8) AND 9 AND 12 AND (2 OR 10 OR 11)</filterLogic>
+        <filterLogic>(1 OR 4) AND (2 OR 7) AND 3 AND 5 AND 6 AND 8 AND 9</filterLogic>
         <filters>
             <field>QueueName__c</field>
             <operator>Contains</operator>
@@ -322,31 +585,10 @@
             </value>
         </filters>
         <filters>
-            <field>Type</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Council Fine</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Type</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>New Quote or Location</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Type</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Billing/Pricing Query</stringValue>
-            </value>
-        </filters>
-        <filters>
             <field>QueueName__c</field>
             <operator>Contains</operator>
             <value>
-                <stringValue>Priority</stringValue>
+                <stringValue>Key Account</stringValue>
             </value>
         </filters>
         <filters>
@@ -371,17 +613,17 @@
             </value>
         </filters>
         <filters>
-            <field>Status</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Pending</stringValue>
-            </value>
-        </filters>
-        <filters>
             <field>Subject</field>
             <operator>NotEqualTo</operator>
             <value>
                 <stringValue>Job confirmation email</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>From_Email__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>customers@thefirstmile.co.uk</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -395,13 +637,23 @@
     </recordLookups>
     <recordUpdates>
         <name>Set_Case</name>
-        <label>Set Case</label>
-        <locationX>842</locationX>
-        <locationY>782</locationY>
+        <label>Set All Other Case Owner</label>
+        <locationX>1634</locationX>
+        <locationY>998</locationY>
         <connector>
             <targetReference>CaseUpdate</targetReference>
         </connector>
         <inputReference>GetCase</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_L2_Order_Owner</name>
+        <label>Set L2 Order Quote or New Location Owner</label>
+        <locationX>1370</locationX>
+        <locationY>782</locationY>
+        <connector>
+            <targetReference>Copy_1_of_Case_Updated</targetReference>
+        </connector>
+        <inputReference>Get_Orders</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_case</name>
@@ -414,20 +666,40 @@
         <inputReference>Get_Orders_and_Missed</inputReference>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_Level_1_Case</name>
+        <label>Update Level 1 Case</label>
+        <locationX>314</locationX>
+        <locationY>782</locationY>
+        <connector>
+            <targetReference>Copy_1_of_Level_1_Case_Assigned</targetReference>
+        </connector>
+        <inputReference>Get_Level_1_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Priority_Case</name>
-        <label>Update Priority Case</label>
-        <locationX>578</locationX>
+        <label>Update Key Account Case Owner</label>
+        <locationX>1106</locationX>
         <locationY>566</locationY>
         <connector>
             <targetReference>Priority_Case_Assigned</targetReference>
         </connector>
         <inputReference>Get_Priority_Cases</inputReference>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_6</name>
+        <label>Update General or Doc Request Case</label>
+        <locationX>578</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Copy_1_of_Copy_1_of_Level_1_Case_Assigned</targetReference>
+        </connector>
+        <inputReference>Get_General_Or_Doc_Request</inputReference>
+    </recordUpdates>
     <screens>
         <name>CaseUpdate</name>
-        <label>Case Updated</label>
-        <locationX>842</locationX>
-        <locationY>890</locationY>
+        <label>Level 2+ Case Assigned</label>
+        <locationX>1634</locationX>
+        <locationY>1106</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -435,10 +707,115 @@
             <name>CaseInfo</name>
             <fieldText>&lt;p&gt;You have been assigned a &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/{!GetCase.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;new case&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <nextOrFinishButtonLabel>Get Another Case</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_Case_Updated</name>
+        <label>Level 2+ Case Assigned</label>
+        <locationX>1370</locationX>
+        <locationY>890</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Copy_1_of_CaseInfo</name>
+            <fieldText>&lt;p&gt;You have been assigned a &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/{!Get_Orders.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;new case&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Get Another Case</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_Copy_1_of_Level_1_Case_Assigned</name>
+        <label>Level 1 Case Assigned</label>
+        <locationX>578</locationX>
+        <locationY>1106</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Copy_1_of_Copy_1_of_Copy_1_of_Pcaseassigned</name>
+            <fieldText>&lt;p&gt;You have been assigned a &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/{!Get_General_Or_Doc_Request.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;new case L1&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_Level_1_Case_Assigned</name>
+        <label>Level 1 Case Assigned</label>
+        <locationX>314</locationX>
+        <locationY>890</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Copy_1_of_Copy_1_of_Pcaseassigned</name>
+            <fieldText>&lt;p&gt;You have been assigned a &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/{!Get_Level_1_Case.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;new case L1&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Copy_1_of_No_Cases_Found</name>
+        <label>No Cases Found</label>
+        <locationX>842</locationX>
+        <locationY>890</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Copy_1_of_NoCasesFoundScreen</name>
+            <fieldText>&lt;p&gt;No Cases have been found, please try again later. &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
     </screens>
     <screens>
         <name>Copy_1_of_Priority_Case_Assigned</name>
@@ -450,28 +827,25 @@
         <allowPause>true</allowPause>
         <fields>
             <name>Copy_1_of_Pcaseassigned</name>
-            <fieldText>&lt;p&gt;You have been assigned a &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/%7B!Get_Orders_and_Missed.Id%7D/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;new case L1&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;You have been assigned a &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/{!Get_Orders_and_Missed.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;new case L1&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>No_Level_1_Cases_Available</name>
-        <label>No Level 1 Cases Available</label>
-        <locationX>314</locationX>
-        <locationY>458</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
         <name>NoCasesFound</name>
         <label>No Cases Found</label>
-        <locationX>1106</locationX>
-        <locationY>674</locationY>
+        <locationX>1898</locationX>
+        <locationY>890</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -479,14 +853,22 @@
             <name>NoCasesFoundScreen</name>
             <fieldText>&lt;p&gt;No Cases have been found, please try again later. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <screens>
         <name>Priority_Case_Assigned</name>
-        <label>Priority Case Assigned</label>
-        <locationX>578</locationX>
+        <label>Level 2+ Case Assigned</label>
+        <locationX>1106</locationX>
         <locationY>674</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -495,12 +877,20 @@
             <name>Pcaseassigned</name>
             <fieldText>&lt;p&gt;You have been assigned a new &lt;a href=&quot;https://thefirstmile.lightning.force.com/lightning/r/Case/{!Get_Priority_Cases.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;priority case&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>353</locationX>
+        <locationX>683</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_if_Level_1</targetReference>

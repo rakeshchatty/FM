@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Road closure</label>
+    <protected>false</protected>
+    <values>
+        <field>CaseOwnerId__c</field>
+        <value xsi:type="xsd:string">005w0000007M5pvAAC</value>
+    </values>
+    <values>
+        <field>CaseRecordTypeId__c</field>
+        <value xsi:type="xsd:string">0122X000000R36YQAS</value>
+    </values>
+    <values>
+        <field>CaseStatus__c</field>
+        <value xsi:type="xsd:string">Closed</value>
+    </values>
+    <values>
+        <field>CaseType__c</field>
+        <value xsi:type="xsd:string">Operations</value>
+    </values>
+    <values>
+        <field>Description__c</field>
+        <value xsi:type="xsd:string">Road closure</value>
+    </values>
+</CustomMetadata>

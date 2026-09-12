@@ -86,6 +86,31 @@
             <field>WTN__c.Parent__c</field>
             <table>WTN_Waste_Category__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WTN__c.Name</field>
+            <table>WTN_Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product__c.WTN_Product__c</field>
+            <table>WTN_Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WTN__c.Account__c</field>
+            <table>WTN_Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WTN__c.Contractor__c</field>
+            <table>WTN_Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Manual_Summary__c</field>
+            <table>WTN_Waste_Category__c</table>
+        </columns>
         <masterLabel>WTN Waste Categories</masterLabel>
     </sections>
 </ReportType>

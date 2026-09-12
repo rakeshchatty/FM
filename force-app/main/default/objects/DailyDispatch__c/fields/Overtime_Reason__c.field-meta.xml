@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Overtime_Reason__c</fullName>
+    <description>Reason for overtime being paid. Must be entered if overtime value is entered.</description>
+    <inlineHelpText>Reason for overtime being paid. Must be entered if overtime value is entered.</inlineHelpText>
+    <label>Overtime Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Extra Day</fullName>
+                <default>false</default>
+                <label>Extra Day</label>
+            </value>
+            <value>
+                <fullName>Long Shift</fullName>
+                <default>false</default>
+                <label>Long Shift</label>
+            </value>
+            <value>
+                <fullName>No Loader</fullName>
+                <default>false</default>
+                <label>No Loader</label>
+            </value>
+            <value>
+                <fullName>Covering 2 rounds</fullName>
+                <default>false</default>
+                <label>Covering 2 rounds</label>
+            </value>
+            <value>
+                <fullName>Covering different round</fullName>
+                <default>false</default>
+                <label>Covering different round</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -3,8 +3,8 @@
     <fullName>SelectedExceptionId__c</fullName>
     <externalId>false</externalId>
     <label>Selected Exception Id</label>
-    <length>255</length>
-    <required>false</required>
+    <length>20</length>
+    <required>true</required>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>

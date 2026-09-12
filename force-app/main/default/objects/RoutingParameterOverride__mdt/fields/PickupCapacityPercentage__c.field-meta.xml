@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PickupCapacityPercentage__c</fullName>
+    <description>Use when a pickup/removal takes up more capacity than a drop-off/delivery.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Pickup Capacity Percentage</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Percent</type>
+</CustomField>

@@ -68,11 +68,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner</field>
-            <table>Missed_Collection__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>RecordType</field>
             <table>Missed_Collection__c</table>
         </columns>
@@ -114,6 +109,81 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Collection_Schedule__c.Location__c.Id</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Daily_Dispatch__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DispatchAllocated__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CollectionWaypoint__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsCompleted__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SupplierId__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ProductName__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RequestedCollectionTime__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsAutoAllocateDispatch__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RoundId__c.Depot__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Daily_Dispatch__c.DriverId__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Daily_Dispatch__c.Default_Driver__c</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case__c.Priority</field>
+            <table>Missed_Collection__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case__c.Requested_Collection_Time__c</field>
             <table>Missed_Collection__c</table>
         </columns>
         <masterLabel>Missed Collections</masterLabel>

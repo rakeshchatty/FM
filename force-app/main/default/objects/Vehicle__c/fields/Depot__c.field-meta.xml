@@ -25,6 +25,11 @@
                 <label>Harriet Walk</label>
             </value>
             <value>
+                <fullName>Hoxton</fullName>
+                <default>false</default>
+                <label>Hoxton</label>
+            </value>
+            <value>
                 <fullName>Lambeth</fullName>
                 <default>false</default>
                 <label>Lambeth</label>

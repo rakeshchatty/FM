@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FM_Put_Out_Times</fullName>
+    <columns>NAME</columns>
+    <columns>Put_Out_Time__c</columns>
+    <columns>Council_Time_Band__c</columns>
+    <columns>Put_Out_Time_Window__c</columns>
+    <columns>Street_Name__c</columns>
+    <columns>Council_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Postcode__c</field>
+        <operation>contains</operation>
+    </filters>
+    <filters>
+        <field>Council_Name__c</field>
+        <operation>contains</operation>
+        <value>ken</value>
+    </filters>
+    <label>FM Put Out Times</label>
+</ListView>

@@ -101,6 +101,8 @@ public without sharing class ParcelforceSoap {
 		public Address RecipientAddress = new Address();
 		public Integer TotalNumberOfParcels;
 		public Enhancement Enhancement = new Enhancement();
+		public Boolean PrintOwnLabel;
+		public CollectionInfo CollectionInfo;
 		public String ReferenceNumber1;
 		public String SpecialInstructions1;
 		public String SpecialInstructions2;
@@ -114,20 +116,37 @@ public without sharing class ParcelforceSoap {
 		private String[] RecipientAddress_type_info = new String[]{'RecipientAddress','http://www.parcelforce.net/ws/ship/v14',null,'1','1','false'};
 		private String[] TotalNumberOfParcels_type_info = new String[]{'TotalNumberOfParcels','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] Enhancement_type_info = new String[]{'Enhancement','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
+		private String[] PrintOwnLabel_type_info = new String[]{'PrintOwnLabel','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
+		private String[] CollectionInfo_type_info = new String[]{'CollectionInfo','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] ReferenceNumber1_type_info = new String[]{'ReferenceNumber1','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] SpecialInstructions1_type_info = new String[]{'SpecialInstructions1','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] SpecialInstructions2_type_info = new String[]{'SpecialInstructions2','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] SpecialInstructions3_type_info = new String[]{'SpecialInstructions3','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] SpecialInstructions4_type_info = new String[]{'SpecialInstructions4','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] apex_schema_type_info = new String[]{'http://www.parcelforce.net/ws/ship/v14','true','false'};
-		private String[] field_order_type_info = new String[]{'ShipmentType','ContractNumber','ServiceCode','ShippingDate','RecipientContact','RecipientAddress','TotalNumberOfParcels','Enhancement','ReferenceNumber1','SpecialInstructions1','SpecialInstructions2','SpecialInstructions3','SpecialInstructions4'};
+		private String[] field_order_type_info = new String[]{'ShipmentType','ContractNumber','ServiceCode','ShippingDate','RecipientContact','RecipientAddress','TotalNumberOfParcels','Enhancement','PrintOwnLabel','CollectionInfo','ReferenceNumber1','SpecialInstructions1','SpecialInstructions2','SpecialInstructions3','SpecialInstructions4'};
 	}
+
+    public class CollectionInfo {
+        public Contact CollectionContact = new Contact();
+        public Address CollectionAddress = new Address();
+        public DateTimeRange CollectionTime = new DateTimeRange();
+        private String[] CollectionContact_type_info = new String[]{'CollectionContact','http://www.parcelforce.net/ws/ship/v14',null,'1','1','false'};
+        private String[] CollectionAddress_type_info = new String[]{'CollectionAddress','http://www.parcelforce.net/ws/ship/v14',null,'1','1','false'};
+        private String[] CollectionTime_type_info = new String[]{'CollectionTime','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
+        private String[] apex_schema_type_info = new String[]{'http://www.parcelforce.net/ws/ship/v14','true','false'};
+        private String[] field_order_type_info = new String[]{'CollectionContact','CollectionAddress','CollectionTime'};
+    }
 
 	public class Contact {
 		public String BusinessName;
+		public String ContactName;
+		public String Telephone;
 		private String[] BusinessName_type_info = new String[]{'BusinessName','http://www.parcelforce.net/ws/ship/v14',null,'1','1','false'};
+		private String[] ContactName_type_info = new String[]{'ContactName','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
+		private String[] Telephone_type_info = new String[]{'Telephone','http://www.parcelforce.net/ws/ship/v14',null,'0','1','false'};
 		private String[] apex_schema_type_info = new String[]{'http://www.parcelforce.net/ws/ship/v14','true','false'};
-		private String[] field_order_type_info = new String[]{'BusinessName'};
+		private String[] field_order_type_info = new String[]{'BusinessName','ContactName','Telephone'};
 	}
 
 	public class Address {
@@ -146,6 +165,15 @@ public without sharing class ParcelforceSoap {
 		private String[] apex_schema_type_info = new String[]{'http://www.parcelforce.net/ws/ship/v14','true','false'};
 		private String[] field_order_type_info = new String[]{'AddressLine1','AddressLine2','AddressLine3','Town','Postcode','Country'};
 	}
+
+    public class DateTimeRange {
+        public String From_x;
+        public String To;
+        private String[] From_x_type_info = new String[]{'From','http://www.parcelforce.net/ws/ship/v14',null,'1','1','false'};
+        private String[] To_type_info = new String[]{'To','http://www.parcelforce.net/ws/ship/v14',null,'1','1','false'};
+        private String[] apex_schema_type_info = new String[]{'http://www.parcelforce.net/ws/ship/v14','true','false'};
+        private String[] field_order_type_info = new String[]{'From_x','To'};
+    }
 
 	public class Enhancement {
 		public Boolean SaturdayDeliveryRequired;

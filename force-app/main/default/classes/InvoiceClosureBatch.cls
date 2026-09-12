@@ -24,7 +24,5 @@ public class InvoiceClosureBatch implements Database.Batchable<sObject> {
 		Database.update(invoices, false);
 	}
 
-	public void finish(Database.BatchableContext batchContext) {
-		Database.executeBatch(new SageExtractFromInvoiceBatch(dueDate), 200);
-	}
+	public void finish(Database.BatchableContext batchContext) {}
 }

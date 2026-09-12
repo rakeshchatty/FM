@@ -2,22 +2,15 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Allocate_to_rounds</fullName>
     <columns>NAME</columns>
-    <columns>Collection_Stream__c</columns>
     <columns>Days__c</columns>
     <columns>Time__c</columns>
-    <columns>Billing_Postcode__c</columns>
     <columns>Collection_Note__c</columns>
     <columns>Round__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Dead_or_Alive__c</field>
         <operation>equals</operation>
-        <value>LIVE</value>
-    </filters>
-    <filters>
-        <field>Billing_Postcode__c</field>
-        <operation>startsWith</operation>
-        <value>W1Y 9PE</value>
+        <value>Joe &amp; The Juice (Regents Park Road)</value>
     </filters>
     <label>Allocate to rounds</label>
 </ListView>

@@ -15,10 +15,40 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Moba_Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Type__c</picklist>
         <values>
             <fullName>Key</fullName>
             <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Waste_Stream__c</picklist>
+        <values>
+            <fullName>DMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glass</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
 </RecordType>

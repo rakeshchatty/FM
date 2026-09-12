@@ -8,15 +8,20 @@ public class CollectionScheduleTriggerHandler {
 				if (!isCloneInsertion) {
 					processInsert(newList);
 				}
+				WtnWasteCategoryOnSchedule.apply(newList);
 			}
 			when BEFORE_UPDATE {
 				processUpdate(newList, oldMap);
 			}
 			when BEFORE_DELETE {
 				processDelete(oldMap.values());
+				updateWtnWasteCategorySummary(oldMap);
 			}
-			when AFTER_INSERT, AFTER_UPDATE {
-				insertScheduleHistory(newList, oldMap);
+			when AFTER_INSERT {
+				updateWtnWasteCategorySummary(newList);
+			}
+			when AFTER_UPDATE {
+				updateWtnWasteCategorySummary(newList, oldMap);
 			}
 		}
 	}
@@ -69,33 +74,6 @@ public class CollectionScheduleTriggerHandler {
 		}
 	}
 
-	private void insertScheduleHistory(List<Schedule__c> newList, Map<Id, Schedule__c> oldMap) {
-		Set<Id> existingScheduleHistory = new Set<Id>();
-		for (ScheduleAdvanceInvoiceHistory__c scheduleHistory : [SELECT Schedule__c FROM ScheduleAdvanceInvoiceHistory__c WHERE Schedule__c IN :newList AND CreatedDate = TODAY]) {
-			existingScheduleHistory.add(scheduleHistory.Schedule__c);
-		}
-
-		List<ScheduleAdvanceInvoiceHistory__c> scheduleHistory = new List<ScheduleAdvanceInvoiceHistory__c>();
-        List<Schedule__c> scheduleList = [SELECT Id, Location__c, Collection_Quantity__c, Start_Date__c, End_Date__c, Suspension_Start_Date__c, Reactivation_Start_Date__c, Is_bin_collection__c, Location__r.IsLive__c, Location__r.Parent.IsBinCollectionAdvanceInvoiced__c, Fortnightly__c FROM Schedule__c WHERE Id IN :newList]; 
-		for (Schedule__c schedule : scheduleList) {
-			if (!schedule.Location__r.Parent.IsBinCollectionAdvanceInvoiced__c || !schedule.Is_bin_collection__c || !schedule.Location__r.IsLive__c || existingScheduleHistory.contains(schedule.Id)) {
-				continue;
-			}
-
-			Schedule__c oldSchedule = oldMap?.get(schedule.Id);
-			if (oldSchedule == null) {
-				scheduleHistory.add(new ScheduleAdvanceInvoiceHistory__c(Schedule__c = schedule.Id, Location__c = schedule.Location__c, IsNew__c = true));
-			} else if (schedule.Collection_Quantity__c != oldSchedule.Collection_Quantity__c || schedule.Fortnightly__c != oldSchedule.Fortnightly__c
-				|| schedule.Start_Date__c != oldSchedule.Start_Date__c || schedule.End_Date__c != oldSchedule.End_Date__c 
-				|| schedule.Suspension_Start_Date__c != oldSchedule.Suspension_Start_Date__c || schedule.Reactivation_Start_Date__c != oldSchedule.Reactivation_Start_Date__c) {
-
-				scheduleHistory.add(new ScheduleAdvanceInvoiceHistory__c(Schedule__c = oldSchedule.Id, Location__c = oldSchedule.Location__c, Quantity__c = oldSchedule.Collection_Quantity__c, IsFortnightly__c = oldSchedule.Fortnightly__c, 
-					StartDate__c = oldSchedule.Start_Date__c, EndDate__c = oldSchedule.End_Date__c, SuspensionStartDate__c = oldSchedule.Suspension_Start_Date__c, ReactivationStartDate__c = oldSchedule.Reactivation_Start_Date__c));
-			}
-		}
-		INSERT scheduleHistory;
-	}
-
 	private void processUpdate(List<Schedule__c> updatedList, Map<Id, Schedule__c> oldMap) {
 		Map<Object, CollectionAggregator__c> mapAggregator = getAggregatorsByKey(oldMap.values());
 		Map<Object, CollectionAggregator__c> aggregatorsToUpsert = new Map<Object, CollectionAggregator__c>();
@@ -133,7 +111,7 @@ public class CollectionScheduleTriggerHandler {
 		if (hasDuplicates(schedulesToUpdateAggregator)) {
 			applyError(schedulesToUpdateAggregator, Label.MsgDuplicateCollectionSchedule);
 			return;
-		}		
+		}
 
 		if (aggregatorsToUpsert.isEmpty()) {
 			return;
@@ -170,6 +148,56 @@ public class CollectionScheduleTriggerHandler {
 		}
 		if (!aggregatorsToDelete.isEmpty()) {
 			DELETE aggregatorsToDelete;
+		}
+	}
+
+	private void updateWtnWasteCategorySummary(List<Schedule__c> newList) {
+		List<Schedule__c> schedules = new List<Schedule__c>();
+		Boolean alreadyStarted;
+		for (Schedule__c schedule : newList) {
+			alreadyStarted = schedule.Start_Date__c == null || schedule.Start_Date__c <= System.today();
+			if (alreadyStarted && schedule.WtnWasteCategory__c != null) {
+				schedules.add(schedule);
+			}
+		}
+
+		if (!schedules.isEmpty()) {
+			System.enqueueJob(new WtnWasteCategorySummaryQueuable(schedules));
+		}
+	}
+
+	private void updateWtnWasteCategorySummary(List<Schedule__c> updatedList, Map<Id, Schedule__c> oldMap) {
+		List<Schedule__c> schedules = new List<Schedule__c>();
+		Boolean alreadyStarted;
+		Schedule__c oldSchedule;
+		for (Schedule__c schedule : updatedList) {
+			alreadyStarted = schedule.Start_Date__c == null || schedule.Start_Date__c <= System.today();
+			oldSchedule = oldMap.get(schedule.Id);
+			if (alreadyStarted && oldSchedule.WtnWasteCategory__c != schedule.WtnWasteCategory__c) {
+				if (schedule.WtnWasteCategory__c != null) {
+					schedules.add(schedule);
+				}
+				if (oldSchedule.WtnWasteCategory__c != null) {
+					schedules.add(oldSchedule);
+				}
+			}
+		}
+
+		if (!schedules.isEmpty() && !System.isBatch()) {
+			System.enqueueJob(new WtnWasteCategorySummaryQueuable(schedules));
+		}
+	}
+
+	private void updateWtnWasteCategorySummary(Map<Id, Schedule__c> oldMap) {
+		List<Schedule__c> schedules = new List<Schedule__c>();
+		for (Schedule__c schedule : oldMap.values()) {
+			if (schedule.WtnWasteCategory__c != null) {
+				schedules.add(schedule);
+			}
+		}
+
+		if (!schedules.isEmpty()) {
+			System.enqueueJob(new WtnWasteCategorySummaryQueuable(schedules));
 		}
 	}
 
@@ -216,6 +244,8 @@ public class CollectionScheduleTriggerHandler {
 
 		for (Integer i=1; i<collectionDays.size(); i++) {
 			Schedule__c clonedDay = schedule.clone(false, true, true, false);   // Changed to preserveReadonlyTimestamps=true
+			clonedDay.Discount_Type__c = schedule.Discount_Type__c;
+			clonedDay.Start_Date__c = schedule.Start_Date__c;
 			setCollectionDay(clonedDay, collectionDays[i], aggregatorKey);
 			clonedSchedules.add(clonedDay);
 		}

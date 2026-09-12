@@ -64,9 +64,11 @@ public with sharing class LogRegister {
 	public static void createLogsUpsert(List<Database.SaveResult> results, List<sObject> records, String process, String action, String sObjectType, String parentField) {
 		List<Log__c> logs = new List<Log__c>();
 		try {
-			for (Integer idx = 0; idx < results.size(); idx++) {
-				logs.add(createLog(results[idx].isSuccess(), results[idx].getErrors(), results[idx].getId(), records[idx], process, action, sObjectType, parentField));
-			}
+            for (Integer idx = 0; idx < results.size(); idx++) {
+                if (!results[idx].isSuccess()) {
+                    logs.add(createLog(false, results[idx].getErrors(), results[idx].getId(), records[idx], process, action, sObjectType, parentField));
+                }
+            }
 
 			INSERT logs;
 		}
@@ -78,9 +80,11 @@ public with sharing class LogRegister {
 	public static void createLogsUpsert(List<Database.UpsertResult> results, List<sObject> records, String process, String action, String sObjectType, String parentField) {
 		List<Log__c> logs = new List<Log__c>();
 		try {
-			for (Integer idx = 0; idx < results.size(); idx++) {
-				logs.add(createLog(results[idx].isSuccess(), results[idx].getErrors(), results[idx].getId(), records[idx], process, action, sObjectType, parentField));
-			}
+            for (Integer idx = 0; idx < results.size(); idx++) {
+                if (!results[idx].isSuccess()) {
+                    logs.add(createLog(false, results[idx].getErrors(), results[idx].getId(), records[idx], process, action, sObjectType, parentField));
+                }
+            }
 
 			INSERT logs;
 		}

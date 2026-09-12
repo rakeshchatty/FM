@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UseFixedUnitSequence__c</fullName>
+    <description>Ensures that all points with the same coordinates follow a preset sequence (apartment buildings, offices, trailer parks).</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Use Fixed Unit Sequence</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>true</fullName>
+                <default>false</default>
+                <label>true</label>
+            </value>
+            <value>
+                <fullName>false</fullName>
+                <default>false</default>
+                <label>false</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

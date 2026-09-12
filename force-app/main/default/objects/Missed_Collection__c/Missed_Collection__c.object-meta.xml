@@ -152,12 +152,12 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ReadWrite</externalSharingModel>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Missed Collection</label>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
         <label>Missed Collection Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Missed Collections</pluralLabel>
@@ -166,6 +166,6 @@
         <excludedStandardButtons>New</excludedStandardButtons>
         <listViewButtons>new_Missed</listViewButtons>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pending</fullName>
+        <default>true</default>
+        <label>Pending</label>
+    </customValue>
+    <customValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>Part Completed</fullName>
+        <default>false</default>
+        <label>Part Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Completed</fullName>
+        <default>false</default>
+        <label>Not Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed By Driver</fullName>
+        <default>false</default>
+        <label>Missed By Driver</label>
+    </customValue>
+    <masterLabel>Collection Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

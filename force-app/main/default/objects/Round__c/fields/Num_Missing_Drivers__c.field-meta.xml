@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Missing_Drivers__c</fullName>
+    <description>Number of drivers which are missing for this round. Uses round schedule field.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+AND(TEXT(Round_Schedule__c) = &quot;4 by 2&quot;, TEXT(Round_Status__c) = &quot;Active&quot;, Num_Days__c &gt; 2),
+IF(ISBLANK(Default_Driver__c), 1, 0) +
+IF(AND(TEXT(Round_Schedule__c) = &quot;4 by 2&quot;, ISBLANK(X2nd_Driver__c)), 0.5, 0),
+NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Num Missing Drivers</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

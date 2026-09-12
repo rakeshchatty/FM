@@ -67,8 +67,10 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>60.0</apiVersion>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>HasContentDocumentLink</name>
         <label>Content Document Link?</label>
@@ -86,7 +88,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>RetrieveServiceContacts</targetReference>
+                <targetReference>RetrieveServiceContact</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -166,36 +168,7 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Subject</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>BID CONTAMINATION REPORT</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Origin</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>BID App</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Type</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Driver Report</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Sub_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Contamination</stringValue>
-            </value>
-        </filters>
+        <filterFormula>AND({!$Record.Subject} = &apos;BID CONTAMINATION REPORT&apos;, ISPICKVAL({!$Record.Origin}, &apos;BID App&apos;), ISPICKVAL({!$Record.Type}, &apos;Driver Report&apos;), ISPICKVAL({!$Record.Sub_Type__c}, &apos;Contamination&apos;), NOT(OR(ISPICKVAL({!$Record.Account.Parent.Attribution__c},&apos;Greenzone&apos;), ISPICKVAL({!$Record.Account.Parent.Attribution__c},&apos;Greener Than Green&apos;))))</filterFormula>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
@@ -212,8 +185,8 @@
     </start>
     <status>Active</status>
     <subflows>
-        <name>RetrieveServiceContacts</name>
-        <label>Retrieve Service Contacts</label>
+        <name>RetrieveServiceContact</name>
+        <label>Retrieve Service Contact</label>
         <locationX>275</locationX>
         <locationY>492</locationY>
         <connector>

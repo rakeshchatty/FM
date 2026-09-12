@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WtnWasteCategory__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>WTN Waste Category</label>
+    <referenceTo>WTN_Waste_Category__c</referenceTo>
+    <relationshipLabel>Collection Schedules</relationshipLabel>
+    <relationshipName>CollectionSchedules</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

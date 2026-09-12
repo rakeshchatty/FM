@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsCollectionTomorrow__c</fullName>
+    <formula>AND(Location__r.IsLive__c, IsRoundActiveOnDay__c, NOT(Collection_Suspended__c), NOT(Week_Off__c),
+TextDays__c == CASE(WEEKDAY(TODAY() + 1), 2, &quot;Monday&quot;, 3, &quot;Tuesday&quot;, 4, &quot;Wednesday&quot;, 5, &quot;Thursday&quot;, 6, &quot;Friday&quot;, 7, &quot;Saturday&quot;, &quot;Sunday&quot;),
+OR(ISBLANK(Start_Date__c), Start_Date__c &lt;= TODAY() + 1), 
+OR(ISBLANK(End_Date__c), End_Date__c &gt;= TODAY() + 1))</formula>
+    <label>Collection Tomorrow?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

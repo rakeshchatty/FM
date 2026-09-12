@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Total_Tonnage__c</fullName>
     <label>Total Tonnage</label>
-    <summarizedField>Tonnage__c.Weight_kg__c</summarizedField>
+    <summarizedField>Tonnage__c.Tonnes__c</summarizedField>
     <summaryForeignKey>Tonnage__c.DailyDispatch__c</summaryForeignKey>
     <summaryOperation>sum</summaryOperation>
     <trackHistory>false</trackHistory>

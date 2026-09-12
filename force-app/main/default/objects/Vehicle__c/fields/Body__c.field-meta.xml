@@ -10,9 +10,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Cage</fullName>
+                <fullName>Vehicle Cage</fullName>
                 <default>false</default>
-                <label>Cage</label>
+                <label>Vehicle Cage</label>
             </value>
             <value>
                 <fullName>Compactor</fullName>
@@ -28,6 +28,11 @@
                 <fullName>Trailer</fullName>
                 <default>false</default>
                 <label>Trailer</label>
+            </value>
+            <value>
+                <fullName>Bike Cage</fullName>
+                <default>false</default>
+                <label>Bike Cage</label>
             </value>
         </valueSetDefinition>
     </valueSet>

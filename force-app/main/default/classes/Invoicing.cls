@@ -4,14 +4,22 @@ public without sharing class Invoicing {
 	public static final String FREQUENCY_WEEKLY = 'Weekly';
 	public static final String FREQUENCY_TWICEMONTHLY = 'Twice Monthly';
 	public static final String FREQUENCY_MONTHLY = 'Monthly';
-	public static final String FREQUENCY_QUARTERLY_ADVANCE = 'Quarterly - Advance';
+	public static final String FREQUENCY_ADVANCE = 'Advance';
 	public static final String FREQUENCY_MONTHLY_SCHEDULED = 'Monthly - Scheduled';
 	public static final String FREQUENCY_MONTHLY_SEPARATED = 'Monthly - Separated';
-
+	public static final String FREQUENCY_MONTHLY_BY_LOCATION = 'Monthly - Location';
+    public static final String FREQUENCY_MANUAL = 'Manual';
 	public static final String STATUS_OPEN = 'Draft';
 	public static final String STATUS_CLOSED = 'Invoiced';
 
 	public static Boolean BOOL_TEST_FUTURE = false;
+
+	private static Map<String, String> nominalMap = new Map<String, String>();
+	static {
+		for (NominalCode__mdt nominal : [SELECT Label, Code__c FROM NominalCode__mdt]) {
+			nominalMap.put(nominal.Label, nominal.Code__c);
+		}
+	}
 
 	/**
 	 * For each order, create new invoice or add invoice lines to an existing draft perodic invoice.
@@ -55,15 +63,11 @@ public without sharing class Invoicing {
 				orderToInvoiceMap.put(orderId, invoiceReadOnly);
 			}
 		}
-		Map<ID, Order> orderMap = getOrder(orderToInvoiceMap.keySet());
+		Map<Id, Order> orderMap = getOrder(orderToInvoiceMap.keySet());
 
 		for (Invoice_Header__c invoiceReadOnly : invoicesReadOnly) {
 			if (!invoiceReadOnly.Salesforce__c) {
 				continue;
-			}
-
-			for (String orderId : split(invoiceReadOnly.OrderIds__c)) {
-				orderToInvoiceMap.put(orderId, invoiceReadOnly);
 			}
 
 			Invoice_Header__c invoice = new Invoice_Header__c(Id = invoiceReadOnly.Id);
@@ -98,7 +102,7 @@ public without sharing class Invoicing {
 	}
 
 	private static void convertWheeliesAndRecurrings(Set<Id> orderIds) {
-		Map<ID, Order> orderMap = getOrder(orderIds);
+		Map<Id, Order> orderMap = getOrder(orderIds);
 		Map<Id, List<OrderItem>> orderItemsMap = getOrderItems(orderIds);
 
 		Set<Id> parentIds = new Set<Id>();
@@ -118,7 +122,7 @@ public without sharing class Invoicing {
 		Map<Id, Invoice_Header__c> locationInvoices = new Map<Id, Invoice_Header__c>();
 		Map<Id, Invoice_Header__c> scheduledInvoices = new Map<Id, Invoice_Header__c>();
 		for (Invoice_Header__c invoice : [SELECT IsPartnerHeader__c, Account__c, Location__r.ParentId, Location__c, Original_Invoice_to_Credit__c, InvoiceFrequency__c FROM Invoice_Header__c
-			WHERE Location__c IN :locationIds AND Salesforce__c = true AND Status__c = :STATUS_OPEN AND IsPartnerHeader__c = false]) {
+			WHERE Location__c IN :locationIds AND Salesforce__c = true AND Status__c = :STATUS_OPEN AND IsPartnerHeader__c = false AND IsCurrencySameAsAccount__c = true]) {
 			if (invoice.Account__c == invoice.Location__r.ParentId) {   // Fix to ensure re-parenting creates a new location invoice
 				if (invoice.InvoiceFrequency__c == FREQUENCY_MONTHLY_SCHEDULED) {
 					scheduledInvoices.put(invoice.Location__c, invoice);
@@ -130,7 +134,7 @@ public without sharing class Invoicing {
 
 		Map<Id, Invoice_Header__c> parentInvoices = new Map<Id, Invoice_Header__c>();
 		for (Invoice_Header__c invoice : [SELECT IsPartnerHeader__c, Account__c, Original_Invoice_to_Credit__c, InvoiceFrequency__c FROM Invoice_Header__c
-			WHERE Account__c IN :parentIds AND Location__c = null AND Salesforce__c = true AND Status__c = :STATUS_OPEN AND InvoiceFrequency__c != :FREQUENCY_QUARTERLY_ADVANCE AND IsPartnerHeader__c = false]) {
+			WHERE Account__c IN :parentIds AND Location__c = null AND Salesforce__c = true AND Status__c = :STATUS_OPEN AND InvoiceFrequency__c != :FREQUENCY_ADVANCE AND IsPartnerHeader__c = false AND IsCurrencySameAsAccount__c = true]) {
 			if (invoice.InvoiceFrequency__c == FREQUENCY_MONTHLY_SCHEDULED) {
 				scheduledInvoices.put(invoice.Account__c, invoice);
 			} else {
@@ -140,7 +144,7 @@ public without sharing class Invoicing {
 
 		Map<Id, Invoice_Header__c> advanceInvoices = new Map<Id, Invoice_Header__c>();
 		for (Invoice_Header__c invoice : [SELECT IsPartnerHeader__c, Account__c, Original_Invoice_to_Credit__c FROM Invoice_Header__c
-			WHERE Account__c IN :parentIds AND Location__c = null AND Salesforce__c = true AND Status__c = :STATUS_OPEN AND InvoiceFrequency__c = :FREQUENCY_QUARTERLY_ADVANCE AND IsPartnerHeader__c = false]) {
+			WHERE Account__c IN :parentIds AND Location__c = null AND Salesforce__c = true AND Status__c = :STATUS_OPEN AND InvoiceFrequency__c = :FREQUENCY_ADVANCE AND IsPartnerHeader__c = false AND IsCurrencySameAsAccount__c = true]) {
 				advanceInvoices.put(invoice.Account__c, invoice);
 		}
 
@@ -209,7 +213,7 @@ public without sharing class Invoicing {
 
 	private static void convertPartnerWheeliesAndRecurrings(Set<Id> orderIds) {
 		//Get Partner Accounts
-		Map<ID, Order> orderMap = getOrder(orderIds);
+		Map<Id, Order> orderMap = getOrder(orderIds);
 		Map<Id, List<OrderItem>> orderItemsMap = getOrderItems(orderIds);
 
 		//TODO - check if the Account-Partnership from the Order comes null or not, it should not come null because all orders that enter here
@@ -265,6 +269,8 @@ public without sharing class Invoicing {
 		invoice.PeriodEnd__c = order.PeriodEnd__c;
 
 		invoice.Original_Invoice_to_Credit__c = order.Original_Invoice_to_Credit__c;
+		invoice.IsReinvoicedElsewhere__c = order.IsReinvoicedElsewhere__c;
+		invoice.Credit_Note_Reason__c = order.CreditNoteReason__c;
 		if (order.CreditCard_Payment__c) {
 			invoice.Payment_Reference__c = order.PaymentReference__c;
 		}
@@ -292,6 +298,7 @@ public without sharing class Invoicing {
 		Boolean isPartner = invoice.IsPartnerHeader__c;
 		Boolean isCredit = isCredit(invoice);
 
+		String nominalCodeKey;
 		List<Invoice_Line__c> newInvoiceLines = new List<Invoice_Line__c>();
 		for (OrderItem orderItem : orderItems) {
 			if (hasInvoiceLine(orderItem, isPartner)) {
@@ -312,19 +319,15 @@ public without sharing class Invoicing {
 			invoiceLine.UnitPrice__c = (isPartner && isCredit) || !isPartner ? orderItem.UnitPrice : orderItem.Partner_Unit_Price__c; //3
 			invoiceLine.Amount__c = orderItem.Quantity * invoiceLine.UnitPrice__c; //4
 			invoiceLine.Order_Product__c = orderItem.Id;
-
-			if (orderItem.Order.Account.VAT_Exempt__c) {
-				invoiceLine.Vat__c = 0;
-			} else {
-				invoiceLine.Vat__c = (invoiceLine.Amount__c * TheVat__c.getInstance().Value__c).setScale(2, RoundingMode.HALF_UP); //5
-			}
-
+			invoiceLine.VATRate__c = isPartner ? orderItem.PartnerVATRate__c : orderItem.VATRate__c;
 			invoiceLine.Product_Code__c = orderItem.Product2.ProductCode; //6
 			//invoiceLine.DiscountWas__c = orderItem.ProductDiscount__c; //7
 			invoiceLine.Location_Id__c = orderItem.Order.AccountId; //8
 			invoiceLine.Product__c = orderItem.Product2Id; //9
 			invoiceLine.Order__c = orderItem.OrderId; //10
-			invoiceLine.Payment__c = order?.Bank_Statements__r[0]?.Id;
+			invoiceLine.Payment__c = order.Bank_Statements__r.isEmpty() ? null : order.Bank_Statements__r[0].Id;
+			nominalCodeKey = String.format('{0}-{1}-{2}', new String[]{orderItem.IsExternalSupplier__c ? 'External' : 'Internal', orderItem.Product2.ContainerType__c, orderItem.Product2.WasteType__c}).toUpperCase();
+			invoiceLine.NominalCode__c = nominalMap.get(nominalCodeKey) ?? 'N/A';
 
 			newInvoiceLines.add(invoiceLine);
 		}
@@ -332,12 +335,12 @@ public without sharing class Invoicing {
 		return newInvoiceLines;
 	}
 
-	private static Map<ID, Order> getOrder(Set<Id> orderIds) {
-		return new Map<ID, Order>([SELECT CreditCard_Payment__c, PaymentReference__c, Original_Invoice_to_Credit__c, Is_wheelie_bin_order__c, Recurring__c,
+	private static Map<Id, Order> getOrder(Set<Id> orderIds) {
+		return new Map<Id, Order>([SELECT CreditCard_Payment__c, PaymentReference__c, Original_Invoice_to_Credit__c, IsReinvoicedElsewhere__c, CreditNoteReason__c, Is_wheelie_bin_order__c, Recurring__c,
 			AccountId, Account.Name, Account.InvoiceFrequency__c, Account.RecordTypeId, Account.Enqix_Dead_Live__c, PeriodStart__c, PeriodEnd__c,
-			Account.ParentId, Account.Parent.Name, Account.Parent.IsBinCollectionAdvanceInvoiced__c, Account.Parent.InvoiceFrequency__c, Account.Parent.RecordTypeId, Account.EffectiveInvoiceFrequency__c,
-			Account.Partnership__c, Account.Partnership__r.Name, Account.Partnership__r.InvoiceFrequency__c, Account.Partnership__r.RecordTypeId,
-			(SELECT Id FROM Bank_Statements__r LIMIT 1)
+			Account.ParentId, Account.Parent.Name, Account.Parent.InvoiceFrequency__c, Account.Parent.RecordTypeId, Account.EffectiveInvoiceFrequency__c,
+			Account.Partnership__c, Account.Partnership__r.Name, Account.Partnership__r.InvoiceFrequency__c, Account.Partnership__r.RecordTypeId, IsAdvance__c,
+			(SELECT Id FROM Bank_Statements__r ORDER BY CreatedDate LIMIT 1)
 			FROM Order WHERE Id IN :orderIds]);
 	}
 
@@ -346,7 +349,7 @@ public without sharing class Invoicing {
 	 */
 	private static Map<Id, List<OrderItem>> getOrderItems(Set<Id> orderIds) {
 		Map<Id, List<OrderItem>> orderToItemsMap = new Map<Id, List<OrderItem>>();
-		List<OrderItem> orderItems = [SELECT OrderId, Quantity, UnitPrice, Product2.ProductCode, ProductDiscount__c, Product2Id, Partner_Unit_Price__c, Manual_Product_Name__c, Order.AccountId, Order.Account.VAT_Exempt__c,
+		List<OrderItem> orderItems = [SELECT OrderId, Quantity, UnitPrice, VATRate__c, PartnerVATRate__c, IsExternalSupplier__c, Product2.ProductCode, Product2.ContainerType__c, Product2.WasteType__c, ProductDiscount__c, Product2Id, Partner_Unit_Price__c, Manual_Product_Name__c, Order.AccountId,
 			(SELECT Invoice_HeaderId__r.IsPartnerHeader__c FROM Invoice_Lines__r)
 			FROM OrderItem WHERE OrderId IN :orderIds];
 
@@ -365,7 +368,7 @@ public without sharing class Invoicing {
 	}
 
 	private static Boolean isLocationInvoice(Order order, Account accountToInvoice) {
-		return !AccountUtil.isPartner(accountToInvoice) && OrderUtil.isFrequencyOverridden(order);
+		return !AccountUtil.isPartner(accountToInvoice) && (OrderUtil.isFrequencyOverridden(order) || accountToInvoice.InvoiceFrequency__c == FREQUENCY_MONTHLY_BY_LOCATION);
 	}
 
 	private static Boolean isImmediate(String frequency) {
@@ -385,13 +388,15 @@ public without sharing class Invoicing {
 	}
 
 	private static Date getDueDate(String invoiceFrequency) {
-		if (invoiceFrequency == FREQUENCY_IMMEDIATE || invoiceFrequency == FREQUENCY_QUARTERLY_ADVANCE) {
+        if (invoiceFrequency == FREQUENCY_MANUAL) {
+            return Date.newInstance(4000, 12, 31);
+        } else if (invoiceFrequency == FREQUENCY_IMMEDIATE) {
 			return System.today();
 		} else if (invoiceFrequency == FREQUENCY_WEEKLY) {
 			return Duration.toNextSunday();
 		} else if (invoiceFrequency == FREQUENCY_TWICEMONTHLY) {
 			return Duration.toTwiceMonthlyEnd();
-		} else if (invoiceFrequency == FREQUENCY_MONTHLY || invoiceFrequency == FREQUENCY_MONTHLY_SCHEDULED) {
+		} else if (invoiceFrequency == FREQUENCY_MONTHLY || invoiceFrequency == FREQUENCY_MONTHLY_SCHEDULED || invoiceFrequency == FREQUENCY_ADVANCE) {
 			return Duration.toMonthEnd();
 		} else {
 			return null;

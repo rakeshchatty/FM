@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Pret_Second_Round__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to highlight second pret dispatch to exclude them from round number calculations.</description>
+    <label>Is Pret Second Round</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

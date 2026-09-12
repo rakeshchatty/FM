@@ -1,40 +1,83 @@
 public with sharing class InvoiceExtension {
 
-	public Map<Account, List<Invoice_Line__c>> groupByLocation1 { get; private set; }
-	public Map<Account, List<Invoice_Line__c>> groupByLocation2 { get; private set; }
-	public Map<Account, Decimal> subtotals { get; private set; }
-
-	private static final Integer MAX_LINES = 8000;
+	public LegalEntity__c entity { get; private set; }
+	public Map<String, Map<Account, List<Invoice_Line__c>>> groupByPoNumber { get; private set; }
+	public Map<Account, List<Invoice_Line__c>> groupByLocation { get; private set; }
+	public Map<String, Decimal> subtotals { get; private set; }
+	public String poNumber { get; private set; }
+	public Boolean showPONumber { get; private set; }
 
 	public InvoiceExtension(ApexPages.StandardController ctrl) {
-		List<Invoice_Line__c> lines = [SELECT Id, Location_Id__c, Location_Id__r.Name, Location_Id__r.PO_Number__c, Invoice_HeaderId__c, Order__r.Delivery_Date__c, Order__r.OrderNumber , Description__c, Name, Qty__c, UnitPrice__c, Amount__c, Order__r.PO_Number__c
-									   FROM Invoice_Line__c
-									   WHERE Invoice_HeaderId__c = :ctrl.getId()
-									   ORDER BY Location_Id__c, Order__r.Delivery_Date__c];
+		groupByPoNumber = new Map<String, Map<Account, List<Invoice_Line__c>>>();
+		groupByLocation = new Map<Account, List<Invoice_Line__c>>();
+		subtotals = new Map<String, Decimal>();
 
-		groupByLocation1 = new Map<Account, List<Invoice_Line__c>>();
-		groupByLocation2 = new Map<Account, List<Invoice_Line__c>>();
-		subtotals = new Map<Account, Decimal>();
+		Invoice_Header__c invHeader = [SELECT Account__r.OwningEntity__c, Account__r.InvoiceFrequency__c, InvoiceFrequency__c, Account__r.PO_Number__c, Account__r.AdHocPONumber__c, Account__r.IgnorePOGroupingOnInvoicePDF__c
+			FROM Invoice_Header__c WHERE Id = :ctrl.getId()];
+		entity = LegalEntity.get(invHeader.Account__r.OwningEntity__c);
 
-		Map<Account, List<Invoice_Line__c>> groupByLocation = groupByLocation1;
-		Id previousLocationId;
-		Decimal subtotal = 0;
-		Integer counter = 0;
+		showPONumber = invHeader.Account__r.IgnorePOGroupingOnInvoicePDF__c;
 
-		for (Invoice_Line__c invoiceLine : lines) {
-			if (previousLocationId != invoiceLine.Location_Id__c) {
-				subtotal = 0;
-				if (counter > MAX_LINES) {
-					groupByLocation = groupByLocation2;
-				}
-				groupByLocation.put(invoiceLine.Location_Id__r, new List<Invoice_Line__c>());
+		List<Invoice_Line__c> linesWithPoNumber = [SELECT Location_Id__c, Location_Id__r.Name, DeliveryDate__c,
+			Description__c, Qty__c, UnitPrice__c, Amount__c, PO_Number__c, Location_Id__r.BillingPostalCode
+			FROM Invoice_Line__c WHERE Invoice_HeaderId__c = :ctrl.getId() AND PO_Number__c != null AND Location_Id__r.Parent.IgnorePOGroupingOnInvoicePDF__c = false
+			ORDER BY Location_Id__c, DeliveryDate__c];
+
+		List<Invoice_Line__c> linesWithoutPoNumber = [SELECT Location_Id__c, Location_Id__r.Name, DeliveryDate__c,
+			Description__c, Qty__c, UnitPrice__c, Amount__c, PO_Number__c, Location_Id__r.BillingPostalCode
+			FROM Invoice_Line__c WHERE Invoice_HeaderId__c = :ctrl.getId() AND (PO_Number__c = null OR Location_Id__r.Parent.IgnorePOGroupingOnInvoicePDF__c = true)
+			ORDER BY Location_Id__c, DeliveryDate__c];
+
+		groupByPoNumber(linesWithPoNumber);
+		groupByLocation(linesWithoutPoNumber);
+
+		getPoNumber(invHeader);
+	}
+
+	private void groupByPoNumber(List<Invoice_Line__c> invoiceLines) {
+		String linePoNumber;
+		List<Invoice_Line__c> invoices;
+
+		for (Invoice_Line__c invoiceLine : invoiceLines) {
+			linePoNumber = invoiceLine.PO_Number__c;
+
+			if (!groupByPoNumber.containsKey(linePoNumber)) {
+				groupByPoNumber.put(linePoNumber, new Map<Account, List<Invoice_Line__c>>());
+				subtotals.put(linePoNumber, 0);
 			}
-			groupByLocation.get(invoiceLine.Location_Id__r).add(invoiceLine);
 
-			previousLocationId = invoiceLine.Location_Id__c;
-			subtotal += invoiceLine.Amount__c;
-			counter++;
-			subtotals.put(invoiceLine.Location_Id__r, subtotal);
+			invoices = groupByPoNumber.get(linePoNumber).get(invoiceLine.Location_Id__r);
+			if (invoices == null) {
+				invoices = new List<Invoice_Line__c>();
+				groupByPoNumber.get(linePoNumber).put(invoiceLine.Location_Id__r, invoices);
+			}
+
+			invoices.add(invoiceLine);
+			subtotals.put(linePoNumber, subtotals.get(linePoNumber) + invoiceLine.Amount__c);
+		}
+	}
+
+	private void groupByLocation(List<Invoice_Line__c> invoiceLines) {
+		List<Invoice_Line__c> invoices;
+
+		for (Invoice_Line__c invoiceLine : invoiceLines) {
+			invoices = groupByLocation.get(invoiceLine.Location_Id__r);
+			if (invoices == null) {
+				invoices = new List<Invoice_Line__c>();
+				groupByLocation.put(invoiceLine.Location_Id__r, invoices);
+				subtotals.put(invoiceLine.Location_Id__c, 0);
+			}
+
+			invoices.add(invoiceLine);
+			subtotals.put(invoiceLine.Location_Id__c, subtotals.get(invoiceLine.Location_Id__c) + invoiceLine.Amount__c);
+		}
+	}
+
+	private void getPoNumber(Invoice_Header__c invoiceHeader) {
+		if (invoiceHeader.invoiceFrequency__c == Invoicing.FREQUENCY_MONTHLY_SCHEDULED || invoiceHeader.invoiceFrequency__c == Invoicing.FREQUENCY_ADVANCE) {
+			poNumber = invoiceHeader.Account__r.PO_Number__c;
+		} else if (invoiceHeader.invoiceFrequency__c == Invoicing.FREQUENCY_MONTHLY && invoiceHeader.Account__r.InvoiceFrequency__c == Invoicing.FREQUENCY_MONTHLY_SEPARATED) {
+			poNumber = invoiceHeader.Account__r.AdHocPONumber__c;
 		}
 	}
 }

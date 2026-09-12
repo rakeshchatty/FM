@@ -73,7 +73,7 @@ public class RecyclingExcelController_Test{
         }
         
         insert lstOrder;
-        
+        TestDataHelper.insertSupplier('First Mile Ltd');
         List<OrderItem> lstOLI = new List<OrderItem>();
         for (Integer i=0; i<11; i++) {
             lstOLI.add(new OrderItem(

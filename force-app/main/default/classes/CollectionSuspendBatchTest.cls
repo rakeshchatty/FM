@@ -1,50 +1,73 @@
 @isTest
-public class CollectionSuspendBatchTest {
-	static testMethod void testMethod1() {
-		Account parentAccount = TestDataHelper.createAccount();
-		INSERT parentAccount;
-		Account locationAccount = TestDataHelper.createLocation(parentAccount.Id, Null);
-		INSERT locationAccount;
+private class CollectionSuspendBatchTest {
 
-		Product_Category__c pc = new Product_Category__c();
-		pc.Name = 'test';
-		pc.Enqix_Id__c = 1;
-		pc.Product_Category_Key__c = 'test';
-		INSERT pc;
+	@testSetup
+	static void setup() {
+		TestDataHelper.suppressSuspensionDateValidation();
+		Product2 product = TestDataHelper.insertProduct('Product 1', 'P0001', 'Collection');
+		Suppliers__c supplier = TestDataHelper.insertSupplierFirstMile();
+		Supplier_Product__c supplierProduct = TestDataHelper.insertSupplierProduct(supplier, product);
+		Account parent = TestDataHelper.insertAccount();
+		Account location = TestDataHelper.insertLocation(parent.Id, null);
+		Round__c round = TestDataHelper.insertRound();
+		TestDataHelper.insertSchedule(location, round, supplier, supplierProduct, '08:00');
+	}
 
-		product2 prod = TestDataHelper.insertProduct('Product 1', '123', 'Collection', pc.id);
-
-		Suppliers__c s = new Suppliers__c();
-		s.Name = 'First Mile Ltd';
-		s.Enqix_ID__c = 23;
-		s.Phone_Number__c = '123423';
-		INSERT s;
-
-		Supplier_Product__c sp = new Supplier_Product__c();
-		sp.Name = 'test';
-		sp.Product__c = prod.id;
-		sp.Enqix_UID__c = 'test';
-		sp.Enqix_Pk__c = 1;
-		sp.Supplier__c = s.id;
-		INSERT sp;
-
-		Schedule__c sc = new Schedule__c();
-		sc.Collection_Note__c = 'Collection Note';
-		sc.Days__c = 'Monday';
-		sc.Location__c = locationAccount.Id;
-		sc.Price_Book__c = Test.getStandardPricebookId();
-		sc.Product__c = prod.Id;
-		sc.Supplier_Product__c = sp.id;
-		sc.Streams__c = 'Cardboard';
-		sc.Time__c = '07:45';
-		sc.Collection_Quantity__c = 1;
-		sc.Supplier__c = s.id;
-		sc.Suspension_Start_Date__c = system.today();
-		sc.Reactivation_Start_Date__c = system.today() + 30;
-		INSERT sc;
+	@isTest
+	static void activeSuspension() {
+		Schedule__c schedule = [SELECT Id, CollectionAggregator__r.IsSuspended__c FROM Schedule__c LIMIT 1];
+		Assert.isFalse(schedule.CollectionAggregator__r.IsSuspended__c);
+		INSERT new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = System.today().addDays(-5), ReactivationDate__c = System.today().addDays(5));
 
 		Test.startTest();
 		CollectionSuspendBatch.updateCollectionSuspendFlag();
 		Test.stopTest();
+
+		CollectionAggregator__c aggregator = [SELECT IsSuspended__c FROM CollectionAggregator__c WHERE Id = :schedule.CollectionAggregator__c];
+		Assert.isTrue(aggregator.IsSuspended__c);
+	}
+
+	@isTest
+	static void pastReactivation() {
+		Schedule__c schedule = [SELECT Id, CollectionAggregator__c FROM Schedule__c LIMIT 1];
+		UPDATE new CollectionAggregator__c(Id = schedule.CollectionAggregator__c, IsSuspended__c = true);
+		CollectionAggregator__c aggregator  = [SELECT IsSuspended__c FROM CollectionAggregator__c WHERE Id = :schedule.CollectionAggregator__c];
+		Assert.isTrue(aggregator.IsSuspended__c);
+		INSERT new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = System.today().addDays(-10), ReactivationDate__c = System.today());
+
+		Test.startTest();
+		CollectionSuspendBatch.updateCollectionSuspendFlag();
+		Test.stopTest();
+
+		aggregator = [SELECT IsSuspended__c FROM CollectionAggregator__c WHERE Id = :schedule.CollectionAggregator__c];
+		Assert.isFalse(aggregator.IsSuspended__c);
+	}
+
+	@isTest
+	static void futureSuspension() {
+		Schedule__c schedule = [SELECT Id, CollectionAggregator__r.IsSuspended__c FROM Schedule__c LIMIT 1];
+		Assert.isFalse(schedule.CollectionAggregator__r.IsSuspended__c);
+		INSERT new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = System.today().addDays(10), ReactivationDate__c = System.today().addDays(20));
+
+		Test.startTest();
+		CollectionSuspendBatch.updateCollectionSuspendFlag();
+		Test.stopTest();
+
+		CollectionAggregator__c aggregator = [SELECT IsSuspended__c FROM CollectionAggregator__c WHERE Id = :schedule.CollectionAggregator__c];
+		Assert.isFalse(aggregator.IsSuspended__c);
+	}
+
+	@isTest
+	static void inactiveSuspension() {
+		Schedule__c schedule = [SELECT Id, CollectionAggregator__r.IsSuspended__c FROM Schedule__c LIMIT 1];
+		Assert.isFalse(schedule.CollectionAggregator__r.IsSuspended__c);
+		INSERT new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = System.today().addDays(-5), ReactivationDate__c = System.today().addDays(5), IsActive__c = false);
+
+		Test.startTest();
+		CollectionSuspendBatch.updateCollectionSuspendFlag();
+		Test.stopTest();
+
+		CollectionAggregator__c aggregator = [SELECT IsSuspended__c FROM CollectionAggregator__c WHERE Id = :schedule.CollectionAggregator__c];
+		Assert.isFalse(aggregator.IsSuspended__c);
 	}
 }

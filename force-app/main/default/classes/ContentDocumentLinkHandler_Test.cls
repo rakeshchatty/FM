@@ -8,10 +8,7 @@ public class ContentDocumentLinkHandler_Test {
         Account locationAccount = TestDataHelper.createLocation(parentAccount.Id, Null);
         INSERT locationAccount;
         
-        Suppliers__c supObj = new Suppliers__c();
-        supObj.Name = 'Test Supp';
-        supObj.Phone_Number__c = '1234567898';
-        INSERT supObj;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
         
         Order orderObj = new Order(
             AccountId = locationAccount.Id,
@@ -24,7 +21,7 @@ public class ContentDocumentLinkHandler_Test {
             Type = 'Regular',
             PO_Number__c = 'WheelieBinOrder0',
             Invoice_Created__c = false,
-            Supplier__c = supObj.Id
+            Supplier__c = supplier.Id
         );
         insert orderObj;
         

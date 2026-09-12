@@ -28,12 +28,8 @@ private class OnInvoiceTriggerHelper_Test {
 		insert il;
 		system.debug(il);
 
-		Suppliers__c supp = new Suppliers__c();
-		supp.Name = 'test supplier';
-		supp.Phone_Number__c = '123456789';
-		insert supp;
-
-        TestDataHelper.insertSupplier('First Mile Ltd');
+        TestDataHelper.insertSupplier('test supplier');
+		TestDataHelper.insertSupplier('First Mile Ltd');
 	}
 
 	@isTest 
@@ -183,7 +179,6 @@ private class OnInvoiceTriggerHelper_Test {
         il2.Order__c = Ord1.Id;
         il2.Amount__c = 123;
         il2.VAT__c = 12;
-        il2.SageExtractCreated__c = false;
         il2.Product__c = prod.Id;
         invsLines.add(il2); 
         
@@ -197,8 +192,6 @@ private class OnInvoiceTriggerHelper_Test {
         invsLines.add(il1);
         
         insert invsLines;
-
-		Database.executebatch(new SageExtractFromInvoiceBatch(), 200);
 
         ih1 = [SELECT Id, Payment_Due_Date__c, Ready_to_Email__c, (SELECT Id, ProductAnalysisCode__c, Amount__c, VAT__c, Order__c, Delivery_Date__c FROM Invoice_Lines__r) FROM Invoice_Header__c where Id = :ih1.Id limit 1];
 
@@ -220,18 +213,6 @@ private class OnInvoiceTriggerHelper_Test {
         
         invoicesToPay.add(ih3);
         insert invoicesToPay;
-        
-        Bank_Statement__c bs = new Bank_Statement__c(
-        	Unallocated_Amount__c = -200,
-            Account__c = a.Id,
-            //CP_Transactional_Info__c = 'ch_1DpwAELlI9xY5rES7ST38i9o',
-            Transaction_Type__c = 'Credit Card',
-            fromCustomerPortal__c = true,
-            Document_name__c = 'testDocument',
-            Entry_Date__c = system.today(),
-            Transaction_Details__c = 'detail'
-        );        
-        //insert bs;
         
         List <Invoice_Header__c> invoicesToProcess = new List <Invoice_Header__c>();
         
@@ -261,7 +242,6 @@ private class OnInvoiceTriggerHelper_Test {
         il3.Order__c = Ord1.Id;
         il3.Amount__c = 123;
         il3.VAT__c = 12;
-        il3.SageExtractCreated__c = false;
         il3.Product__c = prod.Id;
         invoicesLinesToProcess.add(il3); 
         
@@ -275,25 +255,7 @@ private class OnInvoiceTriggerHelper_Test {
         invoicesLinesToProcess.add(il4);
         
         insert invoicesLinesToProcess;
-        
-        /*Bank_Statement__c bs1 = new Bank_Statement__c(
-        	Unallocated_Amount__c = -20,
-            Account__c = a.Id,
-            //CP_Transactional_Info__c = 'ch_1DpwAELlI9xY5rES7ST38i9o',
-            Transaction_Type__c = 'Credit Note',
-            fromCustomerPortal__c = true,
-            Document_name__c = 'testDocument',
-            Entry_Date__c = system.today(),
-            Transaction_Details__c = 'detail',
-            Credit_Note_Invoice__c = ih4.Id
-        );        
-        insert bs1;*/
-        
-        //delete il1;
 
-        //InvoiceHeaderTriggerHelper.CreateSageExtract(headersToinsert1);
-       
-        //test.startTest();
         
         Task t = new Task();
         //t.OwnerId = UserInfo.getUserId();
@@ -305,8 +267,6 @@ private class OnInvoiceTriggerHelper_Test {
 
         Invoicing.createLines(headersToinsert1);
         //InvoiceHeaderTriggerHelper.payInvoices(invoicesToPay);
-        InvoiceHeaderTriggerHelper.processCreditNotes(invoicesToProcess);        
-        
         delete invoicesLinesToProcess;
 
         test.stopTest();
@@ -331,19 +291,7 @@ private class OnInvoiceTriggerHelper_Test {
         order.Delivery_Date__c = System.today();
         order.Status = 'Delivered';
         order.CreditCard_Payment__c = true;
+        order.PaymentReference__c = '0000000000000000000046ABCDE';
         UPDATE order;
-        
-        Bank_Statement__c bankstatement = new Bank_Statement__c();
-        bankstatement.Account__c = parent.Id;
-        bankstatement.Entry_Date__c = System.today();
-        bankstatement.Transaction_Type__c = 'Credit Card';
-        bankstatement.Receipt_Amount__c = 78;
-        bankstatement.Unallocated_Amount__c = 78;
-        bankstatement.CP_Transactional_Info__c = 'test';
-        bankstatement.Document_name__c = 'test';
-        bankstatement.Transaction_Details__c = 'test';
-        Test.startTest();
-        INSERT bankstatement;
-        Test.stopTest();
     }
 }

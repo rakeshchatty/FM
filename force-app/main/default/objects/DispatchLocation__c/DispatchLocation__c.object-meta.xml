@@ -155,7 +155,7 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Dispatch Location</label>
     <nameField>
-        <displayFormat>DL-{0}</displayFormat>
+        <displayFormat>{0}</displayFormat>
         <label>#</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>

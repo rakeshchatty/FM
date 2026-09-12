@@ -289,6 +289,11 @@
             <field>CS_Ladder_Level__c</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case_Safe_ID__c</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
     </sections>
     <sections>
@@ -325,6 +330,41 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LinkUrl</field>
+            <table>User.FeedItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>maps__ActivityGenerationObjects__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Individual</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InsertedBy</field>
+            <table>User.FeedItems.Comments</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastEditDate</field>
+            <table>User.FeedItems.Comments</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Parent</field>
+            <table>User.FeedItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>User.FeedItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Visibility</field>
             <table>User.FeedItems</table>
         </columns>
         <masterLabel>User Feed</masterLabel>

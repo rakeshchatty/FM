@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictAttribution</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Attribution__c, &apos;Greenzone&apos;), NOT(CONTAINS(OwningEntity__r.Name, &apos;Greenzone&apos;)))</errorConditionFormula>
+    <errorDisplayField>OwningEntity__c</errorDisplayField>
+    <errorMessage>Owning entity has to be Greenzone for the Attribution to be Greenzone</errorMessage>
+</ValidationRule>

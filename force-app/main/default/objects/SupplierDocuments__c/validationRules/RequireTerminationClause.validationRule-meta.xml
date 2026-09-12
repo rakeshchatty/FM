@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireTerminationClause</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+        ISPICKVAL( DocumentType__c, &apos;Supplier Contract&apos;),
+        ISBLANK(TerminationClause__c)
+)</errorConditionFormula>
+    <errorDisplayField>TerminationClause__c</errorDisplayField>
+    <errorMessage>Termination Clause is mandatory for this document type.</errorMessage>
+</ValidationRule>

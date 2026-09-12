@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LocationAccuracyPriority__c</fullName>
+    <description>105: PRIORITY_PASSIVE - No extra power will be used to derive locations.
+104: PRIORITY_LOW_POWER - Low power usage at the possible expense of location accuracy.
+102: PRIORITY_BALANCED_POWER_ACCURACY - Balanced between location accuracy and power usage.
+100: PRIORITY_HIGH_ACCURACY - Highly accurate locations at the possible expense of additional power usage.</description>
+    <externalId>false</externalId>
+    <label>Location Accuracy Priority</label>
+    <precision>3</precision>
+    <required>true</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ops_Round_Capacity__c</fullName>
+    <description>Used to show if a round has capacity for additional collections.</description>
+    <label>Ops Round Capacity</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Round has capacity</fullName>
+                <default>true</default>
+                <label>Round has capacity</label>
+            </value>
+            <value>
+                <fullName>Maxed tonnage, capacity on time</fullName>
+                <default>false</default>
+                <label>Maxed tonnage, capacity on time</label>
+            </value>
+            <value>
+                <fullName>Maxed time,  capacity on tonnage</fullName>
+                <default>false</default>
+                <label>Maxed time,  capacity on tonnage</label>
+            </value>
+            <value>
+                <fullName>Maxed tonnage and time</fullName>
+                <default>false</default>
+                <label>Maxed tonnage and time</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

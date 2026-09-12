@@ -1480,182 +1480,62 @@
             <field>Optimizely_Transaction_ID__c</field>
             <table>Order</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Order_Category__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cost_Number_inc_VAT__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Quantity__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Promo_Code__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsBinCollection__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ExpectedDeliveryDate__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ops_Priority__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VAT__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsVATExemptPartner__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleIdProducts__c</field>
+            <table>Order</table>
+        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>AD_KG_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AD_KG_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AvailableQuantity</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Coffee_KG_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Coffe_KG_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EndDate</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>FeeDealNo__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>KWH_Produced_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>KWH_Produced_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Description</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ListPrice</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ListPrice__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Margin__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>OrderItemNumber</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>OriginalOrderItem</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PricebookEntry</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ProductDiscount__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ProductSupplement__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Quantity</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Recycled_KG_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Recycled_KG_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ServiceDate</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Supplier_Unit_Price__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Tonnes_CO2_Saved_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Tonnes_CO2_Saved_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Total_KG_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Total_KG_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Trees_Saved_Order_Line__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Trees_Saved_Per_Unit__c</field>
-            <table>Order.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>UnitPrice</field>
+            <field>WTE_KG_Per_Unit__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
@@ -1665,32 +1545,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>WTE_KG_Per_Unit__c</field>
+            <field>UnitPrice</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PricebookEntry.Product2</field>
+            <field>Trees_Saved_Per_Unit__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PricebookEntry.Product2.Name</field>
+            <field>Trees_Saved_Order_Line__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PricebookEntry.Product2.CreatedDate</field>
+            <field>Total_KG_Per_Unit__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>External_ID__c</field>
+            <field>Total_KG_Order_Line__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>DD_Discount__c</field>
+            <field>Tonnes_CO2_Saved_Per_Unit__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tonnes_CO2_Saved_Order_Line__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
@@ -1700,12 +1585,52 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Parent_Account_ID__c</field>
+            <field>Supplier_Unit_Price__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Location_Name__c</field>
+            <field>ServiceDate</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Recycled_KG_Per_Unit__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Recycled_KG_Order_Line__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Quantity</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.Product_Type__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ProductSupplement__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PricebookEntry.Product2.Name</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ProductDiscount__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
@@ -1720,12 +1645,112 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Product2.Product_Type__c</field>
+            <field>PricebookEntry.Product2</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Product2.Delivery_Category__c</field>
+            <field>PricebookEntry</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PartnershipID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Parent_Account_ID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OriginalOrderItem</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>OrderItemNumber</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Margin__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_Name__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ListPrice__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ListPrice</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Description</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>KWH_Produced_Per_Unit__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>KWH_Produced_Order_Line__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>FeeDealNo__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>External_ID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ExpectedQrCodeCount__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsQrCodeEnforced__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EndDate</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
@@ -1735,14 +1760,97 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>RecycleID__c</field>
+            <field>Product2.Delivery_Category__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PartnershipID__c</field>
+            <field>DD_Discount__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PricebookEntry.Product2.CreatedDate</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Coffee_KG_Per_Unit__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Coffe_KG_Order_Line__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AvailableQuantity</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AD_KG_Per_Unit__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AD_KG_Order_Line__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderRequestedDeliveryDate__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_ID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Supplier__c.Case_safe_ID__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Supplier__c.Case_safe_ID__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VATRate__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PartnerVATRate__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleIdProduct__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <masterLabel>Order Products</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.IsVariableBilling__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <masterLabel>Product</masterLabel>
     </sections>
 </ReportType>

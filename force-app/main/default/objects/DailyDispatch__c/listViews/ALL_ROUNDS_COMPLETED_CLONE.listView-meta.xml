@@ -7,16 +7,13 @@
     <columns>Ops_End_Time__c</columns>
     <columns>Round_Duration__c</columns>
     <columns>Vehicle__c</columns>
+    <columns>Round_number__c</columns>
+    <columns>DriverId__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>CREATED_DATE</field>
-        <operation>greaterThan</operation>
-        <value>10/1/2024 12:00 AM</value>
-    </filters>
-    <filters>
-        <field>NAME</field>
-        <operation>contains</operation>
-        <value>PM - 68</value>
+        <field>RoundStartTime__c</field>
+        <operation>equals</operation>
+        <value>7/27/2026 12:00 AM</value>
     </filters>
     <label>All Rounds Completed (Filters Edit)</label>
 </ListView>

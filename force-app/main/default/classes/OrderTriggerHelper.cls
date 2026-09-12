@@ -77,41 +77,60 @@ public with sharing class OrderTriggerHelper {
 			string key = ad.Account__c + '-' + ad.Product__c + '-' + ad.RecordType.Name;
 			accProdDiscountMap.put(key, ad);
 		}
+
+		Map<Id, List<WasteDestination__c>> facilityToWasteDestinationsMap = new Map<Id, List<WasteDestination__c>>();
 		for (
-			Recurrings__c r : [SELECT Price_Book__c,Account__r.Price_Book__c FROM Recurrings__c WHERE Account__c IN: locationIds]
+			Recurrings__c r : [SELECT Price_Book__c, Account__r.Price_Book__c, Facility__c FROM Recurrings__c WHERE Account__c IN: locationIds]
 		) {
 			if (!Test.isRunningTest()) {
 				accountPricebookIds.add(r.Account__r.Price_Book__c);
 			} else {
 				accountPricebookIds.add(r.Price_Book__c);
 			}
+
+			if (r.Facility__c != null && !facilityToWasteDestinationsMap.containsKey(r.Facility__c)) {
+				facilityToWasteDestinationsMap.put(r.Facility__c, new List<WasteDestination__c>());
+			}
 		}
-		system.debug('recurringPriceBooks' + accountPricebookIds);
+
+		if (!facilityToWasteDestinationsMap.isEmpty()) {
+			for (WasteDestination__c wasteDestination : [SELECT Facility__c, ServiceType__c, ServiceSubtype__c FROM WasteDestination__c WHERE Facility__c IN :facilityToWasteDestinationsMap.keySet() AND IsActiveToday__c = true]) {
+				facilityToWasteDestinationsMap.get(wasteDestination.Facility__c).add(wasteDestination);
+			}
+		}
+
 		Map<Id, Pricebook2> allPbs = new Map<Id, Pricebook2>([
 			SELECT Id,
 			(SELECT Product2Id, UnitPrice FROM PricebookEntries)FROM Pricebook2 WHERE Id IN: accountPricebookIds
 		]);
-		system.debug(allPbs);
+
+		Date TODAY = Date.today();
+
 		for (Order o : [
 			SELECT Id,
+			AccountId,
 			Account.ParentId,
 			Account.Partnership__c,
 			Account.Price_Book__c,
 			RecurringId__r.Discount_to_Apply__c,
 			RecurringId__r.Supplier__c,
 			RecurringId__r.Product__c,
+			RecurringId__r.Product__r.Product_Type__c,
+			RecurringId__r.Product__r.Service_Type__c,
+			RecurringId__r.Product__r.Service_Subtype__c,
+			RecurringId__r.Facility__c,
 			RecurringId__r.Price_Book__c,
+			RecurringId__r.ManualPrice__c,
+			RecurringId__r.Supplier_Unit_Price__c,
 			RecurringId__r.Quantity__c FROM Order WHERE Id IN: oIds
 		]) {
-			System.debug(o.Account.Price_book__c);
 			OrderItem op = new OrderItem();
 			op.OrderId = o.Id;
-			if(o.RecurringId__r.Discount_to_Apply__c == null){
-				op.Discount_to_Apply__c = 'Account';
-			} else {
-				op.Discount_to_Apply__c = o.RecurringId__r.Discount_to_Apply__c;
+			op.Location__c = o.AccountId;
+			if (o.RecurringId__r.Product__r.Product_Type__c == 'Collection') {
+				op.CollectionDate__c = TODAY;
 			}
-			System.debug('op.Discount_to_Apply__c' + op.Discount_to_Apply__c);
+			op.Discount_to_Apply__c = o.RecurringId__r.Discount_to_Apply__c;
 			op.Product2Id = o.RecurringId__r.Product__c;
 			if (!Test.isRunningTest()) {
 				op.Price_Book__c = o.Account.Price_Book__c;
@@ -120,23 +139,27 @@ public with sharing class OrderTriggerHelper {
 			}
 			op.Supplier__c = o.RecurringId__r.Supplier__c;
 			Pricebook2 usedPricebook = allPbs.get(op.Price_Book__c);
-			system.debug('used pricebook' + usedPricebook + ' order product2: ' + op);
 
-			//if(usedPricebook.PricebookEntries.size() != 0){ }
 			for (PricebookEntry pbe : usedPricebook.PricebookEntries) {
 				if (op.Product2Id == pbe.Product2Id) {
 					op.ListPrice__c = pbe.UnitPrice;
 					op.PricebookEntryId = pbe.Id;
-					system.debug('pbe.UnitPrice --> '+pbe.UnitPrice);
-					system.debug('ListPrice__c --> '+op.ListPrice__c);
+					break;
 				}
 			}
 			op.Quantity = o.RecurringId__r.Quantity__c;
+
+			if (o.RecurringId__r.ManualPrice__c != null) {
+				op.ListPrice__c = o.RecurringId__r.ManualPrice__c;
+			}
+			op.Supplier_Unit_Price__c = o.RecurringId__r.Supplier_Unit_Price__c;
+
 			if (op.Discount_to_Apply__c == 'Account') {
 				string opkeyacc = o.Account.ParentId + '-' + op.Product2Id + '-AccountDiscount';
 				if (accProdDiscountMap.containsKey(opkeyacc)) {
 					op.Discount__c = accProdDiscountMap.get(opkeyacc).Product_Discount__c;
 				}
+				op.Discount__c = op.Discount__c == null ? 0 : op.Discount__c;
 			} else if (op.Discount_to_Apply__c == 'Partner') {
 				string opkeypart = o.Account.Partnership__c + '-' + op.Product2Id + '-PartnerDiscount';
 				if (accProdDiscountMap.containsKey(opkeypart)) {
@@ -144,24 +167,81 @@ public with sharing class OrderTriggerHelper {
 					Decimal bidPrice = accProdDiscountMap.get(opkeypart).BID_Price__c == null ? 0 : accProdDiscountMap.get(opkeypart).BID_Price__c;
 					op.Partner_Discount__c = productDiscount + bidPrice;
 				}
+				op.Partner_Discount__c = op.Partner_Discount__c == null ? 0 : op.Partner_Discount__c;
 			}
-			system.debug('orderLinesToInsert --> '+orderLinesToInsert.size());
+
+			if (facilityToWasteDestinationsMap.containsKey(o.RecurringId__r.Facility__c)) {
+				for (WasteDestination__c wasteDestination : facilityToWasteDestinationsMap.get(o.RecurringId__r.Facility__c)) {
+					if (wasteDestination.ServiceType__c == o.RecurringId__r.Product__r.Service_Type__c && wasteDestination.ServiceSubtype__c == o.RecurringId__r.Product__r.Service_Subtype__c) {
+						op.WasteDestination__c = wasteDestination.Id;
+						break;
+					}
+				}
+			}
+
 			orderLinesToInsert.add(op);
 		}
 
 		if (orderLinesToInsert.size() > 0){
+			orderLinesToInsert.addAll(addAdditionalCharges(orderLinesToInsert));
+
 			Database.SaveResult[] resultsOL = Database.insert(orderLinesToInsert, false);
 			LogRegister.createLogsUpsert(resultsOL, orderLinesToInsert, 'OrderTriggerHelper insert OrderLines', 'Insert', 'OrderItem', 'OrderId');
 		}
 	}
 
+	private static List<OrderItem> addAdditionalCharges(List<OrderItem> orderItems) {
+		Id firstMileSupplierId = [SELECT Id FROM Suppliers__c WHERE IsExternal__c = false LIMIT 1].Id;
+		Map<Id, List<OrderItem>> orderToOrderItemsMap = new Map<Id, List<OrderItem>>();
+
+		for (OrderItem orderItem : orderItems) {
+			if (orderToOrderItemsMap.containsKey(orderItem.OrderId)) {
+				orderToOrderItemsMap.get(orderItem.OrderId).add(orderItem);
+			} else {
+				orderToOrderItemsMap.put(orderItem.OrderId, new List<OrderItem>{orderItem});
+			}
+		}
+
+		List<OrderItem> chargeOrderItems = new List<OrderItem>();
+		for (Id orderId : orderToOrderItemsMap.keySet()) {
+			AdditionalCharges.OrderData orderData = new AdditionalCharges.OrderData();
+			orderData.locationId = orderToOrderItemsMap.get(orderId)[0].Location__c;
+			orderData.orderItems = new List<AdditionalCharges.OrderItemData>();
+			for (OrderItem orderItem : orderToOrderItemsMap.get(orderId)) {
+				Decimal discount = orderItem.Discount_to_Apply__c == null ? 0 : orderItem.Discount_to_Apply__c == 'Partner' ? orderItem.Partner_Discount__c : orderItem.Discount__c;
+				AdditionalCharges.OrderItemData orderItemData = new AdditionalCharges.OrderItemData();
+				orderItemData.productId = orderItem.Product2Id;
+				orderItemData.quantity = orderItem.Quantity;
+				orderItemData.unitPrice = orderItem.ListPrice__c - discount;
+				orderData.orderItems.add(orderItemData);
+			}
+
+			List<AdditionalCharges.OrderItemData> additionalCharges = AdditionalCharges.process(orderData);
+			for (AdditionalCharges.OrderItemData additionalCharge : additionalCharges) {
+				OrderItem orderItem = new OrderItem();
+				orderItem.OrderId = orderId;
+				orderItem.Product2Id = additionalCharge.productId;
+				orderItem.PricebookEntryId = additionalCharge.pricebookEntryId;
+				orderItem.Manual_Product_Name__c = additionalCharge.productName;
+				orderItem.Quantity = additionalCharge.quantity;
+				orderItem.ListPrice__c = orderItem.unitPrice = additionalCharge.unitPrice;
+				orderItem.Discount_to_Apply__c = 'Account';
+				orderItem.Supplier__c = firstMileSupplierId;
+				orderItem.Quantity_Sold_In__c = 1;
+				orderItem.Total_Discount__c = orderItem.Discount__c = 0;
+				chargeOrderItems.add(orderItem);
+			}
+		}
+
+		return chargeOrderItems;
+	}
 
 	//TODO JIRA 965 - create secure descruction compliance docs
 	@future
 	public static void createSecureDestructionsFuture(Set<Id> orderIds) {
 		createSecureDestructions(orderIds);
 	}
-	
+
 	public static void createSecureDestructions(Set<Id> orderIds) {
 		/*Set<Id> orderIds = new Set<Id>();
 		for (Order o: orders) {
@@ -202,98 +282,5 @@ public with sharing class OrderTriggerHelper {
 		Database.SaveResult[] resultsOS = Database.insert(secDocstoCreate, false);
 		LogRegister.createLogsUpsert(resultsOS, secDocstoCreate, 'OrderTriggerHelper insert Compliance Documents', 'Insert', 'Compliance_Doc__c', 'Account__c');
 
-	}
-
-	//JIRA 964 - creation of Consignment Notes
-	@future
-	public static void createConsignmentNotesFuture(Set<Id> orderIds) {
-		createConsignmentNotes(orderIds);
-	}
-
-	public static void createConsignmentNotes(Set<Id> orderIds) {
-		Set<Id> accountIds = new Set<Id>();
-
-		List<Order> orderWithOrderLines = [SELECT Id, AccountId, Account.Name, (SELECT Id, Product2Id, Product2.Product_Skins__r.Name FROM OrderItems WHERE OrderId IN :orderIds AND (Product2.Product_Skins__r.Name LIKE '%WEEE%' OR
-				Product2.Product_Skins__r.Name LIKE '%Fluro%' OR Product2.Product_Skins__r.Name LIKE '%Batteries%')) FROM Order where Id in: orderIds AND Id IN(SELECT OrderId FROM OrderItem WHERE OrderId IN :orderIds AND (Product2.Product_Skins__r.Name LIKE '%WEEE%'
-				OR Product2.Product_Skins__r.Name LIKE '%Batteries%' OR Product2.Product_Skins__r.Name LIKE '%Fluro%'))];
-
-		for (Order o: orderWithOrderLines) {
-			accountIds.add(o.AccountId);
-		}
-
-		List<Compliance_Doc__c> mostRecentCN = [SELECT Order__c, Account__c, ConsignmentNote_Code__c FROM Compliance_Doc__c WHERE Account__c IN: accountids AND RecordType.Name = 'Consignment Notes'
-			ORDER BY Name desc
-		];
-		//system.debug(orderWithOrderLines);
-		system.debug(mostRecentCN);
-
-		Map<String, String> mostRecentCNmap = new Map<String, String>();
-		for (Compliance_Doc__c cd: mostRecentCN) {
-			string key = cd.Account__c;
-			if (!mostRecentCNmap.containsKey(key)) {
-				mostRecentCNmap.put(key, cd.ConsignmentNote_Code__c);
-			}
-		}
-
-		List<Compliance_Doc__c> consigNotesToCreate = new List<Compliance_Doc__c>();
-
-		for (Order o: orderWithOrderLines) {
-			for (OrderItem oi: o.OrderItems) {
-				system.debug(oi);
-				string key = o.AccountId;
-				string mostRecentCode;
-				Integer uniquedigitcode;
-				if (mostRecentCNmap.containsKey(key)) {
-					mostRecentCode = mostRecentCNmap.get(key);
-					uniquedigitcode = Integer.valueOf(mostRecentCode.substringAfter('CN'));
-					uniquedigitcode = uniquedigitcode + 1;
-					mostRecentCNmap.remove(key);
-					mostRecentCode = mostRecentCode.substring(0, 9) + uniquedigitcode;
-					system.debug(mostRecentCode);
-					mostRecentCNmap.put(key, mostRecentCode);
-					system.debug(uniquedigitcode);
-				}
-				Compliance_Doc__c cn = new Compliance_Doc__c();
-				string loc = '';
-				try {
-					loc = o.Account.Name.substring(0, 6).toUpperCase();
-				} catch (Exception e) {
-					loc = o.Account.Name.toUpperCase();
-				}
-				system.debug(loc);
-
-				if (uniquedigitcode != null) {
-					if (uniquedigitcode < 10) {
-						cn.ConsignmentNote_Code__c = loc + '/CN00' + uniquedigitcode;
-						cn.Name = loc + '/CN00' + uniquedigitcode;
-					} else if (uniquedigitcode < 100 && uniquedigitcode >= 10) {
-						cn.ConsignmentNote_Code__c = loc + '/CN0' + uniquedigitcode;
-						cn.Name = loc + '/CN0' + uniquedigitcode;
-					} else {
-						cn.ConsignmentNote_Code__c = loc + '/CN' + uniquedigitcode;
-						cn.Name = loc + '/CN' + uniquedigitcode;
-					}
-					uniquedigitcode = uniquedigitcode + 1;
-				} else {
-					cn.ConsignmentNote_Code__c = loc + '/CN001';
-					cn.Name = loc + '/CN001';
-					mostRecentCNmap.put(o.AccountId, cn.Name);
-				}
-				cn.RecordTypeId = Schema.SObjectType.Compliance_Doc__c.getRecordTypeInfosByName().get('Consignment Notes').getRecordTypeId();
-				cn.Account__c = o.AccountId;
-				cn.Order__c = o.Id;
-				cn.ConsignmentNote_PremisesCode__c = 'Exempt';
-				cn.ConsignmentNote_ProcessGivingWaste__c = 'End of Life EEE';
-				cn.Product__c = oi.Product2Id;
-				cn.Generated_on_Salesforce__c = true;
-				consigNotesToCreate.add(cn);
-			}
-		}
-
-		system.debug(consigNotesToCreate);
-		//insert consigNotesToCreate;
-
-		Database.SaveResult[] resultsCN = Database.insert(consigNotesToCreate, false);
-		LogRegister.createLogsUpsert(resultsCN, consigNotesToCreate, 'OrderTriggerHelper insert Consignment Documents', 'Insert', 'ConsignmentNote_Code__c', 'Account__c');
 	}
 }

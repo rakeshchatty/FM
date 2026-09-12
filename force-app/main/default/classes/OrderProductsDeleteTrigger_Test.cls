@@ -102,6 +102,7 @@ public with sharing class OrderProductsDeleteTrigger_Test {
 		
 		insert pro2;
 		upsert order2; */
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
         OrderItem op3 = new OrderItem();
         op3.Quantity = 1;
         op3.ListPrice__c = 1;
@@ -114,12 +115,10 @@ public with sharing class OrderProductsDeleteTrigger_Test {
 		Test.stopTest();
         //op3.Discount_to_Apply__c = 'Account';
 
-		Suppliers__c supp = new Suppliers__c(Name='Test', Phone_Number__c = '123456789');
-        insert supp;
         
         Supplier_Product__c suppProd1 = new Supplier_Product__c(
              Name = 'testSuppProd1',
-             Supplier__c = supp.Id,
+             Supplier__c = supplier.Id,
              Product__c = lstProds.get(0).Id,
              Start_Date__c = system.today() - 5,
              End_Date__c = system.today() + 5,

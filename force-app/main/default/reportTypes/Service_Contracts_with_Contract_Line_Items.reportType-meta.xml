@@ -235,6 +235,36 @@
             <field>RootServiceContract</field>
             <table>ServiceContract</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Send_for_Approval__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Approver__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Account_Manager__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Account_ManagerLocation__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Name</field>
+            <table>ServiceContract</table>
+        </columns>
         <masterLabel>Service Contracts</masterLabel>
     </sections>
     <sections>
@@ -316,6 +346,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>RootContractLineItem</field>
+            <table>ServiceContract.ContractLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AgreedWeightLimit__c</field>
+            <table>ServiceContract.ContractLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PricebookEntry.Product2</field>
             <table>ServiceContract.ContractLineItems</table>
         </columns>
         <masterLabel>Contract Line Items</masterLabel>

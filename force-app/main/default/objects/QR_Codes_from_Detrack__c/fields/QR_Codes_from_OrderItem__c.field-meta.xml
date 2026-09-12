@@ -3,7 +3,7 @@
     <fullName>QR_Codes_from_OrderItem__c</fullName>
     <description>Populated by process on orderItem that creates record whenever the detrack QR code field is populated</description>
     <label>QR Codes from OrderItem</label>
-    <length>10000</length>
+    <length>20000</length>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
     <visibleLines>50</visibleLines>

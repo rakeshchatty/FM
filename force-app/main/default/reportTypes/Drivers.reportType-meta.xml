@@ -96,6 +96,11 @@
             <field>Active_Driver__c</field>
             <table>Driver__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Driver_Depot__c</field>
+            <table>Driver__c</table>
+        </columns>
         <masterLabel>Drivers</masterLabel>
     </sections>
 </ReportType>

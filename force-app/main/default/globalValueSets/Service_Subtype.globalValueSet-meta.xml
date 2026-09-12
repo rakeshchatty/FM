@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Liquid</fullName>
+        <default>false</default>
+        <label>Liquid</label>
+    </customValue>
+    <customValue>
+        <fullName>35 Yard RoRo</fullName>
+        <default>false</default>
+        <label>35 Yard RoRo</label>
+    </customValue>
+    <customValue>
+        <fullName>Acetone</fullName>
+        <default>false</default>
+        <label>Acetone</label>
+    </customValue>
+    <customValue>
+        <fullName>ACM</fullName>
+        <default>false</default>
+        <label>ACM</label>
+    </customValue>
+    <customValue>
+        <fullName>Acrylic Scrap</fullName>
+        <default>false</default>
+        <label>Acrylic Scrap</label>
+    </customValue>
+    <customValue>
+        <fullName>Adblu</fullName>
+        <default>false</default>
+        <label>Adblu</label>
+    </customValue>
+    <customValue>
+        <fullName>Additional Bin</fullName>
+        <default>false</default>
+        <label>Additional Bin</label>
+    </customValue>
+    <customValue>
+        <fullName>Additional site membership</fullName>
+        <default>false</default>
+        <label>Additional site membership</label>
+    </customValue>
+    <customValue>
+        <fullName>Adhesive</fullName>
+        <default>false</default>
+        <label>Adhesive</label>
+    </customValue>
+    <customValue>
+        <fullName>Aerosols</fullName>
+        <default>false</default>
+        <label>Aerosols</label>
+    </customValue>
+    <customValue>
+        <fullName>Agrochemical Waste Containing Hazardous Substances</fullName>
+        <default>false</default>
+        <label>Agrochemical Waste Containing Hazardous Substances</label>
+    </customValue>
+    <customValue>
+        <fullName>Alcohol Wipes</fullName>
+        <default>false</default>
+        <label>Alcohol Wipes</label>
+    </customValue>
+    <customValue>
+        <fullName>Alkaline Batteries</fullName>
+        <default>false</default>
+        <label>Alkaline Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Animal Waste</fullName>
+        <default>false</default>
+        <label>Animal Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Archive Boxes</fullName>
+        <default>false</default>
+        <label>Archive Boxes</label>
+    </customValue>
+    <customValue>
+        <fullName>Ash</fullName>
+        <default>false</default>
+        <label>Ash</label>
+    </customValue>
+    <customValue>
+        <fullName>Attendance Fee</fullName>
+        <default>false</default>
+        <label>Attendance Fee</label>
+    </customValue>
+    <customValue>
+        <fullName>Aves</fullName>
+        <default>false</default>
+        <label>Aves</label>
+    </customValue>
+    <customValue>
+        <fullName>Bag Collection</fullName>
+        <default>false</default>
+        <label>Bag Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Bags</fullName>
+        <default>false</default>
+        <label>Bags</label>
+    </customValue>
+    <customValue>
+        <fullName>Bait Station</fullName>
+        <default>false</default>
+        <label>Bait Station</label>
+    </customValue>
+    <customValue>
+        <fullName>BALER</fullName>
+        <default>false</default>
+        <label>BALER</label>
+    </customValue>
+    <customValue>
+        <fullName>Batteries</fullName>
+        <default>false</default>
+        <label>Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Battery Barrel</fullName>
+        <default>false</default>
+        <label>Battery Barrel</label>
+    </customValue>
+    <customValue>
+        <fullName>Battery Bin</fullName>
+        <default>false</default>
+        <label>Battery Bin</label>
+    </customValue>
+    <customValue>
+        <fullName>Battery Box</fullName>
+        <default>false</default>
+        <label>Battery Box</label>
+    </customValue>
+    <customValue>
+        <fullName>Battery Tube</fullName>
+        <default>false</default>
+        <label>Battery Tube</label>
+    </customValue>
+    <customValue>
+        <fullName>Bike Saddles</fullName>
+        <default>false</default>
+        <label>Bike Saddles</label>
+    </customValue>
+    <customValue>
+        <fullName>Bin</fullName>
+        <default>false</default>
+        <label>Bin</label>
+    </customValue>
+    <customValue>
+        <fullName>Bin Bungs</fullName>
+        <default>false</default>
+        <label>Bin Bungs</label>
+    </customValue>
+    <customValue>
+        <fullName>Bonded Asbestos</fullName>
+        <default>false</default>
+        <label>Bonded Asbestos</label>
+    </customValue>
+    <customValue>
+        <fullName>Bulk Bags</fullName>
+        <default>false</default>
+        <label>Bulk Bags</label>
+    </customValue>
+    <customValue>
+        <fullName>Calcium Carbonate</fullName>
+        <default>false</default>
+        <label>Calcium Carbonate</label>
+    </customValue>
+    <customValue>
+        <fullName>Calcium Oxide</fullName>
+        <default>false</default>
+        <label>Calcium Oxide</label>
+    </customValue>
+    <customValue>
+        <fullName>Can Collections</fullName>
+        <default>false</default>
+        <label>Can Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Cardboard Collections</fullName>
+        <default>false</default>
+        <label>Cardboard Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Cat 1</fullName>
+        <default>false</default>
+        <label>Cat 1</label>
+    </customValue>
+    <customValue>
+        <fullName>Cat 2</fullName>
+        <default>false</default>
+        <label>Cat 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Chemical Waste</fullName>
+        <default>false</default>
+        <label>Chemical Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Circuit Boards</fullName>
+        <default>false</default>
+        <label>Circuit Boards</label>
+    </customValue>
+    <customValue>
+        <fullName>Cleaning</fullName>
+        <default>false</default>
+        <label>Cleaning</label>
+    </customValue>
+    <customValue>
+        <fullName>Clearance</fullName>
+        <default>false</default>
+        <label>Clearance</label>
+    </customValue>
+    <customValue>
+        <fullName>Clothing</fullName>
+        <default>false</default>
+        <label>Clothing</label>
+    </customValue>
+    <customValue>
+        <fullName>Coffee Grounds</fullName>
+        <default>false</default>
+        <label>Coffee Grounds</label>
+    </customValue>
+    <customValue>
+        <fullName>Collection</fullName>
+        <default>false</default>
+        <label>Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Collections</fullName>
+        <default>false</default>
+        <label>Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Compactor</fullName>
+        <default>false</default>
+        <label>Compactor</label>
+    </customValue>
+    <customValue>
+        <fullName>Composting</fullName>
+        <default>false</default>
+        <label>Composting</label>
+    </customValue>
+    <customValue>
+        <fullName>Congestion</fullName>
+        <default>false</default>
+        <label>Congestion</label>
+    </customValue>
+    <customValue>
+        <fullName>Console</fullName>
+        <default>false</default>
+        <label>Console</label>
+    </customValue>
+    <customValue>
+        <fullName>Containers</fullName>
+        <default>false</default>
+        <label>Containers</label>
+    </customValue>
+    <customValue>
+        <fullName>Contaminated Plastic</fullName>
+        <default>false</default>
+        <label>Contaminated Plastic</label>
+    </customValue>
+    <customValue>
+        <fullName>Contamination</fullName>
+        <default>false</default>
+        <label>Contamination</label>
+    </customValue>
+    <customValue>
+        <fullName>Contamination Fee</fullName>
+        <default>false</default>
+        <label>Contamination Fee</label>
+    </customValue>
+    <customValue>
+        <fullName>Contract Membership</fullName>
+        <default>false</default>
+        <label>Contract Membership</label>
+    </customValue>
+    <customValue>
+        <fullName>Cooking Oil</fullName>
+        <default>false</default>
+        <label>Cooking Oil</label>
+    </customValue>
+    <customValue>
+        <fullName>Damaged Equipment</fullName>
+        <default>false</default>
+        <label>Damaged Equipment</label>
+    </customValue>
+    <customValue>
+        <fullName>Delivery</fullName>
+        <default>false</default>
+        <label>Delivery</label>
+    </customValue>
+    <customValue>
+        <fullName>Dental Waste</fullName>
+        <default>false</default>
+        <label>Dental Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Detergents + Cleaners</fullName>
+        <default>false</default>
+        <label>Detergents + Cleaners</label>
+    </customValue>
+    <customValue>
+        <fullName>Discarded Equipment containing HCFC / HFC</fullName>
+        <default>false</default>
+        <label>Discarded Equipment containing HCFC / HFC</label>
+    </customValue>
+    <customValue>
+        <fullName>Dispensers</fullName>
+        <default>false</default>
+        <label>Dispensers</label>
+    </customValue>
+    <customValue>
+        <fullName>Documentation</fullName>
+        <default>false</default>
+        <label>Documentation</label>
+    </customValue>
+    <customValue>
+        <fullName>Dog Waste</fullName>
+        <default>false</default>
+        <label>Dog Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Dolav</fullName>
+        <default>false</default>
+        <label>Dolav</label>
+    </customValue>
+    <customValue>
+        <fullName>Domestic mixed Batteries</fullName>
+        <default>false</default>
+        <label>Domestic mixed Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Drum Collection</fullName>
+        <default>false</default>
+        <label>Drum Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Drum(s)</fullName>
+        <default>false</default>
+        <label>Drum(s)</label>
+    </customValue>
+    <customValue>
+        <fullName>Dry Cell Batteries</fullName>
+        <default>false</default>
+        <label>Dry Cell Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Early Termination</fullName>
+        <default>false</default>
+        <label>Early Termination</label>
+    </customValue>
+    <customValue>
+        <fullName>Emergency Cesspit Tanker Service</fullName>
+        <default>false</default>
+        <label>Emergency Cesspit Tanker Service</label>
+    </customValue>
+    <customValue>
+        <fullName>Emergency Grease Trap Service</fullName>
+        <default>false</default>
+        <label>Emergency Grease Trap Service</label>
+    </customValue>
+    <customValue>
+        <fullName>Equine Waste</fullName>
+        <default>false</default>
+        <label>Equine Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Equipment</fullName>
+        <default>false</default>
+        <label>Equipment</label>
+    </customValue>
+    <customValue>
+        <fullName>Exchange</fullName>
+        <default>false</default>
+        <label>Exchange</label>
+    </customValue>
+    <customValue>
+        <fullName>Fee</fullName>
+        <default>false</default>
+        <label>Fee</label>
+    </customValue>
+    <customValue>
+        <fullName>Fire Extinguishers</fullName>
+        <default>false</default>
+        <label>Fire Extinguishers</label>
+    </customValue>
+    <customValue>
+        <fullName>Floor Care Services</fullName>
+        <default>false</default>
+        <label>Floor Care Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Fluorescent Tubes</fullName>
+        <default>false</default>
+        <label>Fluorescent Tubes</label>
+    </customValue>
+    <customValue>
+        <fullName>Free Standing Water Cooler</fullName>
+        <default>false</default>
+        <label>Free Standing Water Cooler</label>
+    </customValue>
+    <customValue>
+        <fullName>Fresheners</fullName>
+        <default>false</default>
+        <label>Fresheners</label>
+    </customValue>
+    <customValue>
+        <fullName>Front End Loader</fullName>
+        <default>false</default>
+        <label>Front End Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>Gas</fullName>
+        <default>false</default>
+        <label>Gas</label>
+    </customValue>
+    <customValue>
+        <fullName>Gas Cylinders</fullName>
+        <default>false</default>
+        <label>Gas Cylinders</label>
+    </customValue>
+    <customValue>
+        <fullName>General Collection</fullName>
+        <default>false</default>
+        <label>General Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Glass</fullName>
+        <default>false</default>
+        <label>Glass</label>
+    </customValue>
+    <customValue>
+        <fullName>Glass Packaging</fullName>
+        <default>false</default>
+        <label>Glass Packaging</label>
+    </customValue>
+    <customValue>
+        <fullName>Grab Bags</fullName>
+        <default>false</default>
+        <label>Grab Bags</label>
+    </customValue>
+    <customValue>
+        <fullName>Grab Hire</fullName>
+        <default>false</default>
+        <label>Grab Hire</label>
+    </customValue>
+    <customValue>
+        <fullName>GRAB Lorry</fullName>
+        <default>false</default>
+        <label>GRAB Lorry</label>
+    </customValue>
+    <customValue>
+        <fullName>Grease Tubes</fullName>
+        <default>false</default>
+        <label>Grease Tubes</label>
+    </customValue>
+    <customValue>
+        <fullName>Green Waste</fullName>
+        <default>false</default>
+        <label>Green Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Gunwash/Thinners/Paint</fullName>
+        <default>false</default>
+        <label>Gunwash/Thinners/Paint</label>
+    </customValue>
+    <customValue>
+        <fullName>Haz Components removed from Discarded Equipment</fullName>
+        <default>false</default>
+        <label>Haz Components removed from Discarded Equipment</label>
+    </customValue>
+    <customValue>
+        <fullName>Hazardous Industrial Fridge</fullName>
+        <default>false</default>
+        <label>Hazardous Industrial Fridge</label>
+    </customValue>
+    <customValue>
+        <fullName>Human Waste</fullName>
+        <default>false</default>
+        <label>Human Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Hydrogen Peroxide</fullName>
+        <default>false</default>
+        <label>Hydrogen Peroxide</label>
+    </customValue>
+    <customValue>
+        <fullName>IBC</fullName>
+        <default>false</default>
+        <label>IBC</label>
+    </customValue>
+    <customValue>
+        <fullName>Insect</fullName>
+        <default>false</default>
+        <label>Insect</label>
+    </customValue>
+    <customValue>
+        <fullName>INTERNAL BINS</fullName>
+        <default>false</default>
+        <label>INTERNAL BINS</label>
+    </customValue>
+    <customValue>
+        <fullName>ITAM</fullName>
+        <default>false</default>
+        <label>ITAM</label>
+    </customValue>
+    <customValue>
+        <fullName>Jerry Can</fullName>
+        <default>false</default>
+        <label>Jerry Can</label>
+    </customValue>
+    <customValue>
+        <fullName>Jizer</fullName>
+        <default>false</default>
+        <label>Jizer</label>
+    </customValue>
+    <customValue>
+        <fullName>Labels</fullName>
+        <default>false</default>
+        <label>Labels</label>
+    </customValue>
+    <customValue>
+        <fullName>Launder charge</fullName>
+        <default>false</default>
+        <label>Launder charge</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Acid Batteries</fullName>
+        <default>false</default>
+        <label>Lead Acid Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Lithium Grease</fullName>
+        <default>false</default>
+        <label>Lithium Grease</label>
+    </customValue>
+    <customValue>
+        <fullName>Lithium Ion Batteries</fullName>
+        <default>false</default>
+        <label>Lithium Ion Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Loose</fullName>
+        <default>false</default>
+        <label>Loose</label>
+    </customValue>
+    <customValue>
+        <fullName>Loose Collection</fullName>
+        <default>false</default>
+        <label>Loose Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Maintenance</fullName>
+        <default>false</default>
+        <label>Maintenance</label>
+    </customValue>
+    <customValue>
+        <fullName>Mattress</fullName>
+        <default>false</default>
+        <label>Mattress</label>
+    </customValue>
+    <customValue>
+        <fullName>Mega Bag</fullName>
+        <default>false</default>
+        <label>Mega Bag</label>
+    </customValue>
+    <customValue>
+        <fullName>Metal Collections</fullName>
+        <default>false</default>
+        <label>Metal Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Metals</fullName>
+        <default>false</default>
+        <label>Metals</label>
+    </customValue>
+    <customValue>
+        <fullName>MFSU of Coating/Adhesive/Ink</fullName>
+        <default>false</default>
+        <label>MFSU of Coating/Adhesive/Ink</label>
+    </customValue>
+    <customValue>
+        <fullName>Midi Bag</fullName>
+        <default>false</default>
+        <label>Midi Bag</label>
+    </customValue>
+    <customValue>
+        <fullName>Mighty Bag</fullName>
+        <default>false</default>
+        <label>Mighty Bag</label>
+    </customValue>
+    <customValue>
+        <fullName>Misc.</fullName>
+        <default>false</default>
+        <label>Misc.</label>
+    </customValue>
+    <customValue>
+        <fullName>Mixed</fullName>
+        <default>false</default>
+        <label>Mixed</label>
+    </customValue>
+    <customValue>
+        <fullName>Mixed Fuels</fullName>
+        <default>false</default>
+        <label>Mixed Fuels</label>
+    </customValue>
+    <customValue>
+        <fullName>Nickel Cadmium Batteries</fullName>
+        <default>false</default>
+        <label>Nickel Cadmium Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Nickle Metal Hydride Batteries</fullName>
+        <default>false</default>
+        <label>Nickle Metal Hydride Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>Nitrile Gloves</fullName>
+        <default>false</default>
+        <label>Nitrile Gloves</label>
+    </customValue>
+    <customValue>
+        <fullName>Off Site Destruction</fullName>
+        <default>false</default>
+        <label>Off Site Destruction</label>
+    </customValue>
+    <customValue>
+        <fullName>Off Site Shredding</fullName>
+        <default>false</default>
+        <label>Off Site Shredding</label>
+    </customValue>
+    <customValue>
+        <fullName>Offensive Waste Emergency call out</fullName>
+        <default>false</default>
+        <label>Offensive Waste Emergency call out</label>
+    </customValue>
+    <customValue>
+        <fullName>Oil</fullName>
+        <default>false</default>
+        <label>Oil</label>
+    </customValue>
+    <customValue>
+        <fullName>Oil Drum</fullName>
+        <default>false</default>
+        <label>Oil Drum</label>
+    </customValue>
+    <customValue>
+        <fullName>Oil Filters</fullName>
+        <default>false</default>
+        <label>Oil Filters</label>
+    </customValue>
+    <customValue>
+        <fullName>Oil Granule</fullName>
+        <default>false</default>
+        <label>Oil Granule</label>
+    </customValue>
+    <customValue>
+        <fullName>Oil Tank</fullName>
+        <default>false</default>
+        <label>Oil Tank</label>
+    </customValue>
+    <customValue>
+        <fullName>Oily Rags</fullName>
+        <default>false</default>
+        <label>Oily Rags</label>
+    </customValue>
+    <customValue>
+        <fullName>On Site Shredding</fullName>
+        <default>false</default>
+        <label>On Site Shredding</label>
+    </customValue>
+    <customValue>
+        <fullName>Open Skip</fullName>
+        <default>false</default>
+        <label>Open Skip</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Fuels</fullName>
+        <default>false</default>
+        <label>Other Fuels</label>
+    </customValue>
+    <customValue>
+        <fullName>Package</fullName>
+        <default>false</default>
+        <label>Package</label>
+    </customValue>
+    <customValue>
+        <fullName>Packaging</fullName>
+        <default>false</default>
+        <label>Packaging</label>
+    </customValue>
+    <customValue>
+        <fullName>Paint</fullName>
+        <default>false</default>
+        <label>Paint</label>
+    </customValue>
+    <customValue>
+        <fullName>Paint Thinners</fullName>
+        <default>false</default>
+        <label>Paint Thinners</label>
+    </customValue>
+    <customValue>
+        <fullName>Paint Tins</fullName>
+        <default>false</default>
+        <label>Paint Tins</label>
+    </customValue>
+    <customValue>
+        <fullName>Pallets</fullName>
+        <default>false</default>
+        <label>Pallets</label>
+    </customValue>
+    <customValue>
+        <fullName>Paper Collection</fullName>
+        <default>false</default>
+        <label>Paper Collection</label>
+    </customValue>
+    <customValue>
+        <fullName>Paper Collections</fullName>
+        <default>false</default>
+        <label>Paper Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Parts Washer</fullName>
+        <default>false</default>
+        <label>Parts Washer</label>
+    </customValue>
+    <customValue>
+        <fullName>PC</fullName>
+        <default>false</default>
+        <label>PC</label>
+    </customValue>
+    <customValue>
+        <fullName>Penalty Charge</fullName>
+        <default>false</default>
+        <label>Penalty Charge</label>
+    </customValue>
+    <customValue>
+        <fullName>Personal Protective Equipment</fullName>
+        <default>false</default>
+        <label>Personal Protective Equipment</label>
+    </customValue>
+    <customValue>
+        <fullName>Pharmaceutical</fullName>
+        <default>false</default>
+        <label>Pharmaceutical</label>
+    </customValue>
+    <customValue>
+        <fullName>Plastic Cases</fullName>
+        <default>false</default>
+        <label>Plastic Cases</label>
+    </customValue>
+    <customValue>
+        <fullName>Plastic Collections</fullName>
+        <default>false</default>
+        <label>Plastic Collections</label>
+    </customValue>
+    <customValue>
+        <fullName>Polycarb</fullName>
+        <default>false</default>
+        <label>Polycarb</label>
+    </customValue>
+    <customValue>
+        <fullName>Polyethylene</fullName>
+        <default>false</default>
+        <label>Polyethylene</label>
+    </customValue>
+    <customValue>
+        <fullName>Polypropylene</fullName>
+        <default>false</default>
+        <label>Polypropylene</label>
+    </customValue>
+    <customValue>
+        <fullName>Portapaca</fullName>
+        <default>false</default>
+        <label>Portapaca</label>
+    </customValue>
+    <customValue>
+        <fullName>Post Back Box</fullName>
+        <default>false</default>
+        <label>Post Back Box</label>
+    </customValue>
+    <customValue>
+        <fullName>Product</fullName>
+        <default>false</default>
+        <label>Product</label>
+    </customValue>
+    <customValue>
+        <fullName>Protective Clothing</fullName>
+        <default>false</default>
+        <label>Protective Clothing</label>
+    </customValue>
+    <customValue>
+        <fullName>PVC</fullName>
+        <default>false</default>
+        <label>PVC</label>
+    </customValue>
+    <customValue>
+        <fullName>Radioactive</fullName>
+        <default>false</default>
+        <label>Radioactive</label>
+    </customValue>
+    <customValue>
+        <fullName>Rear End Loader</fullName>
+        <default>false</default>
+        <label>Rear End Loader</label>
+    </customValue>
+    <customValue>
+        <fullName>Removal Fee</fullName>
+        <default>false</default>
+        <label>Removal Fee</label>
+    </customValue>
+    <customValue>
+        <fullName>Ro/Ro</fullName>
+        <default>false</default>
+        <label>Ro/Ro</label>
+    </customValue>
+    <customValue>
+        <fullName>Roll On Roll Off</fullName>
+        <default>false</default>
+        <label>Roll On Roll Off</label>
+    </customValue>
+    <customValue>
+        <fullName>RORO</fullName>
+        <default>false</default>
+        <label>RORO</label>
+    </customValue>
+    <customValue>
+        <fullName>Rubble</fullName>
+        <default>false</default>
+        <label>Rubble</label>
+    </customValue>
+    <customValue>
+        <fullName>Sacks</fullName>
+        <default>false</default>
+        <label>Sacks</label>
+    </customValue>
+    <customValue>
+        <fullName>Sanitary</fullName>
+        <default>false</default>
+        <label>Sanitary</label>
+    </customValue>
+    <customValue>
+        <fullName>Sanitising Stations</fullName>
+        <default>false</default>
+        <label>Sanitising Stations</label>
+    </customValue>
+    <customValue>
+        <fullName>Sanitizer</fullName>
+        <default>false</default>
+        <label>Sanitizer</label>
+    </customValue>
+    <customValue>
+        <fullName>SEPA Scotland</fullName>
+        <default>false</default>
+        <label>SEPA Scotland</label>
+    </customValue>
+    <customValue>
+        <fullName>Service</fullName>
+        <default>false</default>
+        <label>Service</label>
+    </customValue>
+    <customValue>
+        <fullName>Sharps</fullName>
+        <default>false</default>
+        <label>Sharps</label>
+    </customValue>
+    <customValue>
+        <fullName>Shredders</fullName>
+        <default>false</default>
+        <label>Shredders</label>
+    </customValue>
+    <customValue>
+        <fullName>Site Clearance</fullName>
+        <default>false</default>
+        <label>Site Clearance</label>
+    </customValue>
+    <customValue>
+        <fullName>Skip</fullName>
+        <default>false</default>
+        <label>Skip</label>
+    </customValue>
+    <customValue>
+        <fullName>Skip Hire</fullName>
+        <default>false</default>
+        <label>Skip Hire</label>
+    </customValue>
+    <customValue>
+        <fullName>Skips</fullName>
+        <default>false</default>
+        <label>Skips</label>
+    </customValue>
+    <customValue>
+        <fullName>Solvents</fullName>
+        <default>false</default>
+        <label>Solvents</label>
+    </customValue>
+    <customValue>
+        <fullName>Spill Kit Waste</fullName>
+        <default>false</default>
+        <label>Spill Kit Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Stillage</fullName>
+        <default>false</default>
+        <label>Stillage</label>
+    </customValue>
+    <customValue>
+        <fullName>Swabs 31-45 litres</fullName>
+        <default>false</default>
+        <label>Swabs 31-45 litres</label>
+    </customValue>
+    <customValue>
+        <fullName>Swords &amp; Knives</fullName>
+        <default>false</default>
+        <label>Swords &amp; Knives</label>
+    </customValue>
+    <customValue>
+        <fullName>Tanker</fullName>
+        <default>false</default>
+        <label>Tanker</label>
+    </customValue>
+    <customValue>
+        <fullName>Tiles</fullName>
+        <default>false</default>
+        <label>Tiles</label>
+    </customValue>
+    <customValue>
+        <fullName>Toilet Chemical Waste</fullName>
+        <default>false</default>
+        <label>Toilet Chemical Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Toner</fullName>
+        <default>false</default>
+        <label>Toner</label>
+    </customValue>
+    <customValue>
+        <fullName>Toners</fullName>
+        <default>false</default>
+        <label>Toners</label>
+    </customValue>
+    <customValue>
+        <fullName>Trade</fullName>
+        <default>false</default>
+        <label>Trade</label>
+    </customValue>
+    <customValue>
+        <fullName>Trade Waste</fullName>
+        <default>false</default>
+        <label>Trade Waste</label>
+    </customValue>
+    <customValue>
+        <fullName>Transport</fullName>
+        <default>false</default>
+        <label>Transport</label>
+    </customValue>
+    <customValue>
+        <fullName>Transport Of Materials</fullName>
+        <default>false</default>
+        <label>Transport Of Materials</label>
+    </customValue>
+    <customValue>
+        <fullName>Tyres</fullName>
+        <default>false</default>
+        <label>Tyres</label>
+    </customValue>
+    <customValue>
+        <fullName>ULEZ</fullName>
+        <default>false</default>
+        <label>ULEZ</label>
+    </customValue>
+    <customValue>
+        <fullName>Unit</fullName>
+        <default>false</default>
+        <label>Unit</label>
+    </customValue>
+    <customValue>
+        <fullName>UV Ink</fullName>
+        <default>false</default>
+        <label>UV Ink</label>
+    </customValue>
+    <customValue>
+        <fullName>Vapes</fullName>
+        <default>false</default>
+        <label>Vapes</label>
+    </customValue>
+    <customValue>
+        <fullName>Wait And Load</fullName>
+        <default>false</default>
+        <label>Wait And Load</label>
+    </customValue>
+    <customValue>
+        <fullName>Waste Transfer Note</fullName>
+        <default>false</default>
+        <label>Waste Transfer Note</label>
+    </customValue>
+    <masterLabel>Service Subtype</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

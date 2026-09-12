@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RequireReactivationDateInFuture</fullName>
-    <active>true</active>
+    <active>false</active>
     <errorConditionFormula>Reactivation_Start_Date__c &lt;= Suspension_Start_Date__c</errorConditionFormula>
     <errorDisplayField>Reactivation_Start_Date__c</errorDisplayField>
     <errorMessage>Reactivation date should be after Suspension date.</errorMessage>

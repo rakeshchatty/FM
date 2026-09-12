@@ -66,6 +66,11 @@
                 <label>Redeliver</label>
             </value>
             <value>
+                <fullName>Returned To Sender</fullName>
+                <default>false</default>
+                <label>Returned To Sender</label>
+            </value>
+            <value>
                 <fullName>Delivered</fullName>
                 <default>false</default>
                 <label>Delivered</label>

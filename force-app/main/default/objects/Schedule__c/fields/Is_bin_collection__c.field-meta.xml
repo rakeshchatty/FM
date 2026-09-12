@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Is_bin_collection__c</fullName>
-    <formula>AND(
-  OR(
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;External Bin&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;Bin&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;Other&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;Internal Collection&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;HL5 RORO&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;RORO&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;Compactor Sack&apos;, 
-    Supplier_Product__r.Product__r.Container_Type__r.Name = &apos;Partner Internal Collection&apos;
-  ), 
-  ISPICKVAL(Supplier_Product__r.Product__r.Product_Type__c, &apos;Collection&apos;))</formula>
-    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <formula>AND(ISPICKVAL(Supplier_Product__r.Product__r.Product_Type__c, &apos;Collection&apos;), OR(ISPICKVAL(Supplier_Product__r.Product__r.Container_Type__r.Type__c, &apos;Bin&apos;), ISPICKVAL(Supplier_Product__r.Product__r.Container_Type__r.Type__c, &apos;Bale&apos;)))</formula>
     <label>Is bin collection?</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

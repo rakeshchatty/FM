@@ -6,7 +6,7 @@
 &quot;London&quot;, $Label.Price_Book_Tier_2_ID ,
 &quot;Inner London&quot;, $Label.Price_Book_Tier_1_ID ,
 &quot;Westminster&quot;, $Label.Price_Book_Tier_0_ID ,
-&quot;Outer London&quot;,$Label.Price_Book_Tier_4_ID ,
+&quot;Outer London&quot;,$Label.Price_Book_Tier_2_ID ,
 &quot;Birmingham&quot;, $Label.Price_Book_Tier_4_ID ,
 &quot;National 1&quot;,$Label.Price_Book_Tier_4_ID ,
 &quot;National 2&quot;,$Label.Price_Book_Tier_4_ID ,

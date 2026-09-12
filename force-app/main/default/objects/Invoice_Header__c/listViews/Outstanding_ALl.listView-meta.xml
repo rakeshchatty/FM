@@ -17,9 +17,9 @@
     <columns>CollectionNotes__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>AmountOutstanding__c</field>
+        <field>AmountInclVAT_f__c</field>
         <operation>equals</operation>
-        <value>107.7</value>
+        <value>GBP -2832.87</value>
     </filters>
     <label>Outstanding - All</label>
 </ListView>

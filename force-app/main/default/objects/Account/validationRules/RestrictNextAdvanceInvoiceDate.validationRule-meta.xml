@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictNextAdvanceInvoiceDate</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(NextAdvanceInvoiceDate__c), NOT(ISBLANK(NextAdvanceInvoiceDate__c)), OR(DAY(NextAdvanceInvoiceDate__c) != 1, NextAdvanceInvoiceDate__c &lt;= TODAY()))</errorConditionFormula>
+    <errorDisplayField>NextAdvanceInvoiceDate__c</errorDisplayField>
+    <errorMessage>Next Advance Invoice Date has to be the 1st of a future month.</errorMessage>
+</ValidationRule>

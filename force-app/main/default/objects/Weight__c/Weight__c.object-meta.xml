@@ -146,7 +146,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
     <enableSearch>false</enableSearch>
@@ -155,8 +155,10 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <label>Weight</label>
     <nameField>
-        <label>Weight Name</label>
-        <type>Text</type>
+        <displayFormat>{0}</displayFormat>
+        <label>#</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Weights</pluralLabel>
     <searchLayouts></searchLayouts>

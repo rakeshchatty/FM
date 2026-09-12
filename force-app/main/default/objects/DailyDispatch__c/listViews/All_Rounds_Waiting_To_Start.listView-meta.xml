@@ -2,23 +2,21 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All_Rounds_Waiting_To_Start</fullName>
     <columns>NAME</columns>
-    <columns>RoundId__c</columns>
     <columns>Vehicle__c</columns>
     <columns>DriverId__c</columns>
-    <columns>Bin_Weighing__c</columns>
+    <columns>Food_Pod__c</columns>
     <columns>Loader__c</columns>
     <columns>X2nd_Loader__c</columns>
     <columns>Dispatch_Notes__c</columns>
-    <columns>Tablet_Number__c</columns>
     <columns>Ops_Start_Time__c</columns>
     <columns>Ops_End_Time__c</columns>
-    <columns>Folder_Returned__c</columns>
-    <columns>Tablet_Returned__c</columns>
+    <columns>Agency_Loader_1__c</columns>
+    <columns>Agency_Loader_2__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>10/29/2024 12:00 AM</value>
+        <value>9/10/2026 12:00 AM</value>
     </filters>
     <label>All Rounds Waiting to Start</label>
     <sharedTo>

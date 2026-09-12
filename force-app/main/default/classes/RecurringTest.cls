@@ -110,11 +110,10 @@ public with sharing class RecurringTest {
         lstProds.get(1).Name = 'test product name';
         update lstProds.get(1);
         
-        Suppliers__c supp = new Suppliers__c(
-            Name = 'Test supp',
-            Phone_Number__c = '12332132'
-        );
-        insert supp;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
+
+        Facility__c facility = TestDataHelper.insertFacility('Facility');
+		TestDataHelper.insertWasteDestination(facility.Id, Date.today().addDays(-30), Date.today().addDays(30), 'BATTERIES', 'Liquid');
 
         Recurrings__c first_recurring = new Recurrings__c(
             Account__c = acc.Id,
@@ -127,7 +126,8 @@ public with sharing class RecurringTest {
             Name = 'Test_Recurring',
             Type__c = 'Invoicing',
             Price_Book__c = standardPricebook.Id,
-            Supplier__c = supp.Id
+            Supplier__c = supplier.Id,
+            Facility__c = facility.Id
         );
         insert first_recurring;
 
@@ -141,7 +141,8 @@ public with sharing class RecurringTest {
             Rec__c = 'Week',
             Name = 'Test_Recurring1',
             Type__c = 'Invoicing',
-            Price_Book__c = standardPricebook.Id
+            Price_Book__c = standardPricebook.Id,
+            Facility__c = facility.Id
         );
         insert recurring;
 
@@ -155,7 +156,8 @@ public with sharing class RecurringTest {
             Rec__c = 'Month',
             Name = 'Test_Recurring2',
             Type__c = 'Invoicing',
-            Price_Book__c = standardPricebook.Id
+            Price_Book__c = standardPricebook.Id,
+            Facility__c = facility.Id
         );
         insert recurring2;
         
@@ -166,7 +168,7 @@ public with sharing class RecurringTest {
             End_Date__c = system.today(),
             Enqix_UID__c = '1233321',
             Product__c = lstProds.get(2).Id,
-            Supplier__c = supp.Id,
+            Supplier__c = supplier.Id,
             Supplier_Price__c = 1
         );   
         suppProds.add(suppProd1);
@@ -177,7 +179,7 @@ public with sharing class RecurringTest {
             End_Date__c = system.today() + 10,
             Enqix_UID__c = '1233346',
             Product__c = lstProds.get(1).Id,
-            Supplier__c = supp.Id,
+            Supplier__c = supplier.Id,
             Supplier_Price__c = 1
         );   
         suppProds.add(suppProd2);
@@ -220,6 +222,8 @@ public with sharing class RecurringTest {
         prod.Report_Groupings__c = rpGroup;
 		prod.Recycle_KG__c = recycleKG;
         prod.Product_Skins__c = pskins.Id;
+        prod.Service_Type__c = 'BATTERIES';
+        prod.Service_Subtype__c = 'Liquid';
 
         return prod;
     }

@@ -219,18 +219,16 @@ public class Test_CollectionScheduleTrigger {
         priceBook2 pb = [SELECT Id FROM priceBook2 WHERE Name = 'PriceBook 1'];
         
         
-        Suppliers__c s = new Suppliers__c();
-        s.Name = 'test';
-        s.Enqix_ID__c = 23;
-        s.Phone_Number__c = '123423';
-        insert s;
+        Suppliers__c supplier = TestDataHelper.insertSupplier('test');
+        supplier.Enqix_ID__c = 23;
+        UPDATE supplier;
         
         Supplier_Product__c sp = new Supplier_Product__c();
         sp.Name = 'test';
         sp.Product__c = prod.id;
         sp.Enqix_UID__c = 'test';
         sp.Enqix_Pk__c = 1;
-        sp.Supplier__c = s.id;
+        sp.Supplier__c = supplier.id;
         insert sp;
                 
         Schedule__c sc = new Schedule__c();
@@ -243,7 +241,7 @@ public class Test_CollectionScheduleTrigger {
         sc.Streams__c = 'Cardboard';
         sc.Time__c = '07:45';
         sc.Collection_Quantity__c = 1;
-        sc.Supplier__c = s.id;
+        sc.Supplier__c = supplier.id;
         
         insert sc;
         

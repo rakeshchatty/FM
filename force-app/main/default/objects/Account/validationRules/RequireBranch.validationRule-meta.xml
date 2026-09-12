@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireBranch</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(AND(RecordType.DeveloperName == &apos;Account&apos;, IsLive__c),
+RecordType.DeveloperName == &apos;Partner&apos;), 
+ISBLANK(TEXT(Branch__c)))</errorConditionFormula>
+    <errorDisplayField>Branch__c</errorDisplayField>
+    <errorMessage>Branch is required for Live Parent and Partner accounts</errorMessage>
+</ValidationRule>

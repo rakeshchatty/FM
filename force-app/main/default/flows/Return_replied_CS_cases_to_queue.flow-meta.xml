@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Copy_2_of_Update_Case</name>
-        <label>Copy 2 of Update Case</label>
-        <locationX>314</locationX>
+        <name>Clearance_Case_Assignment</name>
+        <label>Clearance Case Assignment</label>
+        <locationX>1370</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>Get_Case.Status</assignToReference>
@@ -14,7 +15,122 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Update_Records_2</targetReference>
+            <targetReference>Update_Clearance_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>CSS_Case_Assignment</name>
+        <label>CSS Case Assignment</label>
+        <locationX>1634</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>00GPy00000BR6kX</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CSS_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Escalation_Reply_Assignment</name>
+        <label>Escalation Reply Assignment</label>
+        <locationX>842</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>00G4L000000iPP5</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Escalation_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>HP_Reply_Assignment</name>
+        <label>HP Reply Assignment</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>00G4L000000iP5F</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_HP_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Key_Account_Assignment</name>
+        <label>Key Account Assignment</label>
+        <locationX>1106</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>00GPy000008JUgv</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Key_Account_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Key_Accounts_Invoices_Assignment</name>
+        <label>Key Accounts Invoices Assignment</label>
+        <locationX>1898</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Case.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>00GPy00000CPvoz</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_KAI_Case</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -40,20 +156,36 @@
             <targetReference>Update_Case2</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Update_SC_Case</name>
+        <label>Update SC Case</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Active (Existing)</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Records_2</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Is_CS_Case</name>
         <label>Is CS Case?</label>
-        <locationX>314</locationX>
+        <locationX>1106</locationX>
         <locationY>539</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Outcome_1_of_Is_CS_Case</name>
-            <conditionLogic>or</conditionLogic>
+            <conditionLogic>(1 OR 2 OR 3) AND 4 AND 5</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Owner.UserRole.Name</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <stringValue>CS</stringValue>
+                    <stringValue>CS Emails</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -61,6 +193,27 @@
                 <operator>Contains</operator>
                 <rightValue>
                     <stringValue>Customer Service</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CS Emails</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Priority</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Key_Account_Case__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -79,9 +232,127 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Copy_2_of_Update_Case</targetReference>
+                <targetReference>Update_SC_Case</targetReference>
             </connector>
             <label>Is Supply Chain Case?</label>
+        </rules>
+        <rules>
+            <name>High_Prioriy</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Transactional</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>HP_Reply_Assignment</targetReference>
+            </connector>
+            <label>High Prioriy</label>
+        </rules>
+        <rules>
+            <name>Escalation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Escalation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Escalation_Reply_Assignment</targetReference>
+            </connector>
+            <label>Escalation</label>
+        </rules>
+        <rules>
+            <name>Key_Accounts</name>
+            <conditionLogic>1 OR (2 AND (3 OR 4 OR 5))</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Key Account Emails</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Key_Account_Case__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>CSS Queue</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Key Accounts Invoices</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Clearances</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Key_Account_Assignment</targetReference>
+            </connector>
+            <label>Key Accounts</label>
+        </rules>
+        <rules>
+            <name>Is_Clearance_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Clearance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clearance_Case_Assignment</targetReference>
+            </connector>
+            <label>Is Clearance Case</label>
+        </rules>
+        <rules>
+            <name>Is_CSS_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>CSS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CSS_Case_Assignment</targetReference>
+            </connector>
+            <label>Is CSS Case</label>
+        </rules>
+        <rules>
+            <name>Is_Key_Accounts_Invoices_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Owner:Group.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Key Accounts Invoices</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Key_Accounts_Invoices_Assignment</targetReference>
+            </connector>
+            <label>Is Key Accounts Invoices Case?</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -109,7 +380,7 @@
     <recordLookups>
         <name>Get_Case</name>
         <label>Get Case</label>
-        <locationX>314</locationX>
+        <locationX>1106</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -128,12 +399,14 @@
         <queriedFields>Id</queriedFields>
         <queriedFields>Status</queriedFields>
         <queriedFields>OwnerId</queriedFields>
+        <queriedFields>Priority</queriedFields>
+        <queriedFields>Key_Account_Case__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>Get_Owner</name>
         <label>Get Owner</label>
-        <locationX>314</locationX>
+        <locationX>1106</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -161,6 +434,48 @@
         <inputReference>Get_Case</inputReference>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_Clearance_Case</name>
+        <label>Update Clearance Case</label>
+        <locationX>1370</locationX>
+        <locationY>755</locationY>
+        <inputReference>Get_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_CSS_Case</name>
+        <label>Update CSS Case</label>
+        <locationX>1634</locationX>
+        <locationY>755</locationY>
+        <inputReference>Get_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Escalation_Case</name>
+        <label>Update Escalation Case</label>
+        <locationX>842</locationX>
+        <locationY>755</locationY>
+        <inputReference>Get_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_HP_Case</name>
+        <label>Update HP Case</label>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
+        <inputReference>Get_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_KAI_Case</name>
+        <label>Update KAI Case</label>
+        <locationX>1898</locationX>
+        <locationY>755</locationY>
+        <inputReference>Get_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Key_Account_Case</name>
+        <label>Update Key Account Case</label>
+        <locationX>1106</locationX>
+        <locationY>755</locationY>
+        <inputReference>Get_Case</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Records_2</name>
         <label>Update Case</label>
         <locationX>314</locationX>
@@ -168,7 +483,7 @@
         <inputReference>Get_Case</inputReference>
     </recordUpdates>
     <start>
-        <locationX>188</locationX>
+        <locationX>980</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Case</targetReference>

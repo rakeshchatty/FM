@@ -12,227 +12,421 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Centre_of_Round__Latitude__s</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Centre_of_Round__Longitude__s</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Default_Driver_Name__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Default_Driver__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Default_Vehicle_Name__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Default_Vehicle__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>External_Id__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Fri__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Lat__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Loader_Required__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Location__Latitude__s</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Location__Longitude__s</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Long__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Mon__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>RoundNo__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Round_Active_From__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Round_Diameter__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Round_Type__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Sat__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Site__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Sun__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Thu__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Tue__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Type__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Wed__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>1st Tip DMR</displayNameOverride>
             <field>X1st_Tip_DMR__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>1st Tip Food</displayNameOverride>
             <field>X1st_Tip_Food__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>1st Tip Waste</displayNameOverride>
             <field>X1st_Tip_Waste__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>X2nd_Tip_DMR__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>X2nd_Tip_Food__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>X2nd_Tip_Waste__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>FromTime__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ToTime__c</field>
-            <table>Round__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>2nd Driver</displayNameOverride>
             <field>X2nd_Driver__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Round_CS_ID__c</field>
+            <displayNameOverride>2nd Tip DMR</displayNameOverride>
+            <field>X2nd_Tip_DMR__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Round_Area__c</field>
+            <displayNameOverride>2nd Tip Food</displayNameOverride>
+            <field>X2nd_Tip_Food__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>2nd Tip Waste</displayNameOverride>
+            <field>X2nd_Tip_Waste__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active Today</displayNameOverride>
+            <field>IsActiveToday__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>StartTime__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bin Weighing</displayNameOverride>
             <field>Bin_Weighing__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StartDepot__c</field>
+            <displayNameOverride>Centre of Round (Latitude)</displayNameOverride>
+            <field>Centre_of_Round__Latitude__s</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Centre of Round (Longitude)</displayNameOverride>
+            <field>Centre_of_Round__Longitude__s</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Default Driver</displayNameOverride>
+            <field>Default_Driver__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Default Driver Name</displayNameOverride>
+            <field>Default_Driver_Name__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Default Vehicle</displayNameOverride>
+            <field>Default_Vehicle__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Default_Vehicle_Name</displayNameOverride>
+            <field>Default_Vehicle_Name__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Depot</displayNameOverride>
+            <field>Depot__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Depot Index</displayNameOverride>
+            <field>EndDepotIndex__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>External_Id</displayNameOverride>
+            <field>External_Id__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fl</displayNameOverride>
+            <field>FriLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Food Pod</displayNameOverride>
+            <field>Food_Pod__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Food Tip</displayNameOverride>
+            <field>Food_Tip__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fr</displayNameOverride>
+            <field>Fri__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FromTime</displayNameOverride>
+            <field>FromTime__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lat</displayNameOverride>
+            <field>Lat__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Loader Required</displayNameOverride>
+            <field>Loader_Required__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location (Latitude)</displayNameOverride>
+            <field>Location__Latitude__s</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location (Longitude)</displayNameOverride>
+            <field>Location__Longitude__s</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Long</displayNameOverride>
+            <field>Long__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Miley Data Status</displayNameOverride>
+            <field>DataStatus__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ml</displayNameOverride>
+            <field>MonLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MOBA Locations Last Updated</displayNameOverride>
+            <field>MOBA_Locations_Last_Updated__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mr</displayNameOverride>
+            <field>Mon__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Phase1TimedCollectionsInScope</displayNameOverride>
+            <field>Phase1TimedCollectionsInScope__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Phase1TimedCollectionsStatus</displayNameOverride>
+            <field>Phase1TimedCollectionsStatus__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Active From</displayNameOverride>
+            <field>Round_Active_From__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Area</displayNameOverride>
+            <field>Round_Area__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round CS ID</displayNameOverride>
+            <field>Round_CS_ID__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Diameter</displayNameOverride>
+            <field>Round_Diameter__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round ID</displayNameOverride>
+            <field>Id</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Round Name</displayNameOverride>
+            <field>Name</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Notes</displayNameOverride>
+            <field>Round_Notes__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Schedule</displayNameOverride>
+            <field>Round_Schedule__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Status</displayNameOverride>
+            <field>Round_Status__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Type</displayNameOverride>
+            <field>Round_Type__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RoundNo</displayNameOverride>
+            <field>RoundNo__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sal</displayNameOverride>
+            <field>SatLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sar</displayNameOverride>
+            <field>Sat__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Site</displayNameOverride>
+            <field>Site__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Depot Index</displayNameOverride>
+            <field>StartDepotIndex__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stream</displayNameOverride>
+            <field>Stream__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sul</displayNameOverride>
+            <field>SunLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sunr</displayNameOverride>
+            <field>Sun__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Thl</displayNameOverride>
+            <field>ThuLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Thr</displayNameOverride>
+            <field>Thu__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>TI</displayNameOverride>
+            <field>TueLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tip 1</displayNameOverride>
+            <field>Tip_1__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tip 2</displayNameOverride>
+            <field>Tip_2__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ToTime</displayNameOverride>
+            <field>ToTime__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tr</displayNameOverride>
+            <field>Tue__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Type</displayNameOverride>
+            <field>Type__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Type</displayNameOverride>
+            <field>Vehicle_Type__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Wl</displayNameOverride>
+            <field>WedLoader__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Wr</displayNameOverride>
+            <field>Wed__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Added to Miley</displayNameOverride>
+            <field>AddedToMiley__c</field>
             <table>Round__c</table>
         </columns>
         <columns>
@@ -242,7 +436,72 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>MOBA_Locations_Last_Updated__c</field>
+            <field>StartDepot__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Vehicle_Category__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Pret_Second_Round__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Num_Days__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsSequencingEnabled__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ops_Round_Capacity__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Expected_Num_Tips__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Num_Missing_Drivers__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Weekday_Round__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Round_Region__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Master_Round__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Shift_Length__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Food_Pod_Weekend__c</field>
+            <table>Round__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Master_Round_Formula__c</field>
             <table>Round__c</table>
         </columns>
         <masterLabel>Round</masterLabel>
@@ -250,62 +509,120 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discount Type</displayNameOverride>
             <field>Discount_Type__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fortnightly?</displayNameOverride>
             <field>Fortnightly__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Week Off</displayNameOverride>
             <field>Week_Off__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Future GW</displayNameOverride>
             <field>Future_GW__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Future DMR</displayNameOverride>
             <field>Future_DMR__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Future OR</displayNameOverride>
             <field>Future_OR__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round to Change From</displayNameOverride>
             <field>Round_to_Change_From__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round Active On Day?</displayNameOverride>
             <field>IsRoundActiveOnDay__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Round ID to change from</displayNameOverride>
             <field>Round_ID_to_change_from__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Suspended Round Id</displayNameOverride>
             <field>SuspendedRoundId__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latest Arrival</displayNameOverride>
             <field>LatestArrival__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Po Number</displayNameOverride>
             <field>Po_Number__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Po Number Supplier</displayNameOverride>
+            <field>Po_Number_Supplier__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Container Type</displayNameOverride>
+            <field>Container_Type__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Earliest Arrival (Text)</displayNameOverride>
+            <field>Earliest_Arrival_Text__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latest Arrival (Text)</displayNameOverride>
+            <field>Latest_Arrival_Text__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Id</displayNameOverride>
+            <field>ProductId__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>External Supplier?</displayNameOverride>
+            <field>IsExternalSupplier__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Collection_Est_Weight__c</field>
+            <table>Round__c.Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Needs_Bin_Weighing__c</field>
             <table>Round__c.Collections__r</table>
         </columns>
         <masterLabel>Collections</masterLabel>

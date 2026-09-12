@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Overtime_Manual__c</fullName>
+    <description>Manual Input of Overtime which will be paid. You need to enter an Overtime Reason as well.
+Enter in decimal hours, eg 1 hour 30 mins is 1.5</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Manual Input of Overtime which will be paid. You need to enter an Overtime Reason as well.
+Enter in decimal hours, eg 1 hour 30 mins is 1.5</inlineHelpText>
+    <label>Overtime Manual (hrs)</label>
+    <precision>7</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

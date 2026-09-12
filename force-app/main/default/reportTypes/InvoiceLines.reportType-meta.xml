@@ -266,6 +266,11 @@
             <field>Order__c.Id</field>
             <table>Invoice_Line__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>NominalCode__c</field>
+            <table>Invoice_Line__c</table>
+        </columns>
         <masterLabel>Invoice_Lines</masterLabel>
     </sections>
     <sections>
@@ -324,6 +329,26 @@
             <field>Invoice_HeaderId__c.CreatedDate</field>
             <table>Invoice_Line__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Invoice_HeaderId__c.CreatedBy</field>
+            <table>Invoice_Line__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Invoice_HeaderId__c.CreatedDate__c</field>
+            <table>Invoice_Line__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_Id__c.Parent.case_safe_id__c</field>
+            <table>Invoice_Line__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Invoice_HeaderId__c.AmountExclVAT__c</field>
+            <table>Invoice_Line__c</table>
+        </columns>
         <masterLabel>Invoice Header</masterLabel>
     </sections>
     <sections>
@@ -345,6 +370,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Order_Product__c.OrderItemNumber</field>
+            <table>Invoice_Line__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Order__c.Case_Safe_ID__c</field>
             <table>Invoice_Line__c</table>
         </columns>
         <masterLabel>Order Product</masterLabel>

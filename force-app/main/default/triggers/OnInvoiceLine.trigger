@@ -1,4 +1,4 @@
-trigger OnInvoiceLine on Invoice_Line__c (after insert, after update, before delete) {
+trigger OnInvoiceLine on Invoice_Line__c (after insert) {
     OnInvoiceLineHelper.entry(
                         Trigger.operationType,
                         Trigger.new,

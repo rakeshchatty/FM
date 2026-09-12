@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PreStartTime__c</fullName>
+    <description>The amount of time (in seconds) spent at the beginning of the route performing route-related activities
+*Note that this must be enabled with a different setting (enablePreStartTime 0 = off 1 = on).</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Pre Start Time</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

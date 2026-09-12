@@ -1,6 +1,7 @@
 public class SendInvoiceEmailBatch implements Database.Batchable<sObject>, Schedulable {
 
 	private static final String[] STATUS_TO_PROCESS = new String[]{'New', 'Retry'};
+	private static final SendGridSetting__c SEND_GRID = SendGridSetting__c.getOrgDefaults();
 
 	@InvocableMethod(label='Send Invoice Email Batch')
 	public static void sendEmails() {
@@ -12,14 +13,13 @@ public class SendInvoiceEmailBatch implements Database.Batchable<sObject>, Sched
 	}
 
 	public Database.QueryLocator start(Database.BatchableContext batchContext) {
-		SendGridSetting__c SEND_GRID = SendGridSetting__c.getOrgDefaults();
 		if (!SEND_GRID.IsInvoiceEmailEnabled__c) {
 			// DUMMY, no rows returned
 			String query = 'SELECT Id FROM SendInvoiceEmail__c WHERE CreatedDate = NEXT_YEAR';
 			return Database.getQueryLocator(query);
 		}
 
-		String query = 'SELECT Invoice__c, Invoice__r.LineCount__c, Invoice__r.Account__r.FinanceContact__c FROM SendInvoiceEmail__c WHERE Status__c IN :STATUS_TO_PROCESS';
+		String query = 'SELECT Invoice__c, Invoice__r.LineCount__c, Invoice__r.Account__r.FinanceContact__c FROM SendInvoiceEmail__c WHERE Status__c IN :STATUS_TO_PROCESS ORDER BY Invoice__r.LineCount__c';
 		return Database.getQueryLocator(query);
 	}
 
@@ -28,6 +28,8 @@ public class SendInvoiceEmailBatch implements Database.Batchable<sObject>, Sched
 		for (SendInvoiceEmail__c invoiceEmail : invoiceEmails) {
 			if (invoiceEmail.Invoice__r.LineCount__c == 0) {
 				invoiceEmail.Status__c = 'Error - No Lines';
+			} else if (invoiceEmail.Invoice__r.LineCount__c > SEND_GRID.MaxInvoiceLinesForPDFGeneration__c) {
+				invoiceEmail.Status__c = 'Error - More Lines';
 			} else if (invoiceEmail.Invoice__r.Account__r.FinanceContact__c == null) {
 				invoiceEmail.Status__c = 'Error - Finance Contact';
 			} else {

@@ -6,6 +6,11 @@
         <label>Avon Metals</label>
     </customValue>
     <customValue>
+        <fullName>B&amp;M Birmingham</fullName>
+        <default>false</default>
+        <label>B&amp;M Birmingham</label>
+    </customValue>
+    <customValue>
         <fullName>Balcan Engineering</fullName>
         <default>false</default>
         <label>Balcan Engineering</label>
@@ -81,7 +86,7 @@
         <label>Cory Cringle Dock</label>
     </customValue>
     <customValue>
-        <fullName>Cory Northumberland Warf</fullName>
+        <fullName>Cory Northumberland Wharf</fullName>
         <default>false</default>
         <label>Cory Northumberland Wharf</label>
     </customValue>
@@ -111,6 +116,11 @@
         <label>D.S Smith</label>
     </customValue>
     <customValue>
+        <fullName>Day Aggregates</fullName>
+        <default>false</default>
+        <label>Day Aggregates</label>
+    </customValue>
+    <customValue>
         <fullName>Edwards</fullName>
         <default>false</default>
         <label>Edwards</label>
@@ -136,9 +146,19 @@
         <label>European Metal Recycling</label>
     </customValue>
     <customValue>
+        <fullName>FCC Allington</fullName>
+        <default>false</default>
+        <label>FCC Allington</label>
+    </customValue>
+    <customValue>
         <fullName>G &amp; P Batteries</fullName>
         <default>false</default>
         <label>G &amp; P Batteries</label>
+    </customValue>
+    <customValue>
+        <fullName>GK Recycling</fullName>
+        <default>false</default>
+        <label>GK Recycling</label>
     </customValue>
     <customValue>
         <fullName>Go 4 Greener</fullName>
@@ -246,6 +266,11 @@
         <label>Powerday Bermondsey</label>
     </customValue>
     <customValue>
+        <fullName>Premier Waste</fullName>
+        <default>false</default>
+        <label>Premier Waste</label>
+    </customValue>
+    <customValue>
         <fullName>Proper Oils</fullName>
         <default>false</default>
         <label>Proper Oils</label>
@@ -269,6 +294,11 @@
         <fullName>Restore</fullName>
         <default>false</default>
         <label>Restore</label>
+    </customValue>
+    <customValue>
+        <fullName>RSL</fullName>
+        <default>false</default>
+        <label>RSL</label>
     </customValue>
     <customValue>
         <fullName>S&amp;P Oil</fullName>
@@ -356,14 +386,29 @@
         <label>Veolia</label>
     </customValue>
     <customValue>
+        <fullName>Veolia Southwark</fullName>
+        <default>false</default>
+        <label>Veolia Southwark</label>
+    </customValue>
+    <customValue>
         <fullName>Viridor</fullName>
         <default>false</default>
         <label>Viridor</label>
     </customValue>
     <customValue>
+        <fullName>Viridor Ardley</fullName>
+        <default>false</default>
+        <label>Viridor Ardley</label>
+    </customValue>
+    <customValue>
         <fullName>Viridor Lakeside</fullName>
         <default>false</default>
         <label>Viridor Lakeside</label>
+    </customValue>
+    <customValue>
+        <fullName>Viridor Peterborough</fullName>
+        <default>false</default>
+        <label>Viridor Peterborough</label>
     </customValue>
     <customValue>
         <fullName>VK Recycling</fullName>
@@ -392,6 +437,12 @@
         <label>Clipstone</label>
     </customValue>
     <customValue>
+        <fullName>Cubana Bar And Restaurant(Lower Marsh)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cubana Bar And Restaurant(Lower Marsh)</label>
+    </customValue>
+    <customValue>
         <fullName>Waterloo Hub Hotel</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -416,16 +467,16 @@
         <label>Mountbarrow House</label>
     </customValue>
     <customValue>
-        <fullName>Adam&apos;s Row</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Adam&apos;s Row</label>
-    </customValue>
-    <customValue>
         <fullName>Wylie</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Wylie</label>
+    </customValue>
+    <customValue>
+        <fullName>Adam&apos;s Row</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Adam&apos;s Row</label>
     </customValue>
     <customValue>
         <fullName>Waterloo</fullName>
@@ -438,12 +489,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Victoria</label>
-    </customValue>
-    <customValue>
-        <fullName>Cubana Bar And Restaurant(Lower Marsh)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Cubana Bar And Restaurant(Lower Marsh)</label>
     </customValue>
     <masterLabel>Tips</masterLabel>
     <sorted>false</sorted>

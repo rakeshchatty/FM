@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DispatchId__c</fullName>
+    <externalId>false</externalId>
+    <formula>REVERSE(LEFT(REVERSE(URI__c), FIND(&apos;/&apos;, REVERSE(URI__c)) - 1))</formula>
+    <label>Dispatch Id</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

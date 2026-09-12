@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Code_for_PO__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    CONTAINS( Product__r.Name , &quot;(OL)&quot;),
+    CASE(
+          Product__r.ProductCategory__c  ,
+        &quot;Internal Bin&quot;, &quot;IN&quot;,
+        &quot;Glass&quot;, &quot;GL&quot;,
+        &quot;Mixed Recycling&quot;, &quot;DMR&quot;,
+        &quot;Coffee Cups&quot;, &quot;COF&quot;,
+        &quot;Other&quot;, &quot;OT&quot;,
+        &quot;Food&quot;, &quot;FD&quot;,
+        &quot;Clearances&quot;, &quot;CL&quot;,
+        &quot;Cardboard&quot;, &quot;CD&quot;,
+        &quot;External Bin&quot;, &quot;EX&quot;,
+        &quot;Coffee Grounds&quot;, &quot;CG&quot;,
+        &quot;General Waste&quot;, &quot;GW&quot;,
+        &quot;Garden Waste&quot;, &quot;GA&quot;,
+        &quot;Plastic&quot;, &quot;PL&quot;,
+        &quot;Audits&quot;, &quot;A&quot;,
+        &quot;Cans and Plastics&quot;, &quot;CP&quot;,
+        &quot;Compostables&quot;, &quot;COM&quot;,
+        &quot;Coat Hangers&quot;, &quot;CH&quot;,
+        &quot;Copier Paper&quot;, &quot;CP&quot;,
+        &quot;Confidential&quot;, &quot;SD&quot;,
+        &quot;Source Separated Dry Recycling&quot;, &quot;SS&quot;,
+        &quot;WEEE&quot;, &quot;WE&quot;,
+        &quot;Batteries&quot;, &quot;BA&quot;,
+        &quot;Sharps&quot;, &quot;SH&quot;,
+        &quot;Coffee Capsules&quot;, &quot;CC&quot;,
+        &quot;Fluorescent Tube&quot;, &quot;FT&quot;,
+        &quot;Wood&quot;, &quot;WO&quot;,
+        &quot;Metals&quot;, &quot;ME&quot;,
+        &quot;Product and Packaging&quot;, &quot;PP&quot;,
+        &quot;Confidential Data&quot;, &quot;SDD&quot;,
+        &quot;Textile&quot;, &quot;TE&quot;,
+        &quot;Cooking Oil&quot;, &quot;CO&quot;,
+        &quot;Bin Rental&quot;, &quot;BR&quot;,
+        &quot;Toner Sack&quot;, &quot;TS&quot;,
+        &quot;Stationery&quot;, &quot;ST&quot;,
+        &quot;Finance Adjustment&quot;, &quot;FA&quot;,
+        &quot;Discounts&quot;, &quot;DI&quot;,
+        &quot;&quot;
+    ) &amp; &quot;OL&quot;, 
+    CASE(
+          Product__r.ProductCategory__c  ,
+        &quot;Internal Bin&quot;, &quot;IN&quot;,
+        &quot;Glass&quot;, &quot;GL&quot;,
+        &quot;Mixed Recycling&quot;, &quot;DMR&quot;,
+        &quot;Coffee Cups&quot;, &quot;COF&quot;,
+        &quot;Other&quot;, &quot;OT&quot;,
+        &quot;Food&quot;, &quot;FD&quot;,
+        &quot;Clearances&quot;, &quot;CL&quot;,
+        &quot;Cardboard&quot;, &quot;CD&quot;,
+        &quot;External Bin&quot;, &quot;EX&quot;,
+        &quot;Coffee Grounds&quot;, &quot;CG&quot;,
+        &quot;General Waste&quot;, &quot;GW&quot;,
+        &quot;Garden Waste&quot;, &quot;GA&quot;,
+        &quot;Plastic&quot;, &quot;PL&quot;,
+        &quot;Audits&quot;, &quot;A&quot;,
+        &quot;Cans and Plastics&quot;, &quot;CP&quot;,
+        &quot;Compostables&quot;, &quot;COM&quot;,
+        &quot;Coat Hangers&quot;, &quot;CH&quot;,
+        &quot;Copier Paper&quot;, &quot;CP&quot;,
+        &quot;Confidential&quot;, &quot;SD&quot;,
+        &quot;Source Separated Dry Recycling&quot;, &quot;SS&quot;,
+        &quot;WEEE&quot;, &quot;WE&quot;,
+        &quot;Batteries&quot;, &quot;BA&quot;,
+        &quot;Sharps&quot;, &quot;SH&quot;,
+        &quot;Coffee Capsules&quot;, &quot;CC&quot;,
+        &quot;Fluorescent Tube&quot;, &quot;FT&quot;,
+        &quot;Wood&quot;, &quot;WO&quot;,
+        &quot;Metals&quot;, &quot;ME&quot;,
+        &quot;Product and Packaging&quot;, &quot;PP&quot;,
+        &quot;Confidential Data&quot;, &quot;SDD&quot;,
+        &quot;Textile&quot;, &quot;TE&quot;,
+        &quot;Cooking Oil&quot;, &quot;CO&quot;,
+        &quot;Bin Rental&quot;, &quot;BR&quot;,
+        &quot;Toner Sack&quot;, &quot;TS&quot;,
+        &quot;Stationery&quot;, &quot;ST&quot;,
+        &quot;Finance Adjustment&quot;, &quot;FA&quot;,
+        &quot;Discounts&quot;, &quot;DI&quot;,
+        &quot;&quot;
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Code for PO</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

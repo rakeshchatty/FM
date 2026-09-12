@@ -201,6 +201,66 @@
             <field>calcvehicle__c</field>
             <table>DailyDispatch__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Round_Notes__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Food_Pod__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Miley_Data_Status__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WasKeyFolderTaken__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Dispatch_Delay__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agency_Loader_1__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agency_Loader_2__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Calculated_Overtime__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overtime_Manual__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overtime_Reason__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Master_Round_ID__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Num_Loaders__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
         <masterLabel>Daily Dispatches</masterLabel>
     </sections>
 </ReportType>

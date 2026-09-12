@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Partner_cant_be_blank_if_has_a_partner</fullName>
-    <active>true</active>
-    <description>Partnership field cannot be blank if &quot;is member of a partner&quot; = yes</description>
-    <errorConditionFormula>AND( ISPICKVAL(Is_a_member_of_a_partnership__c , &apos;Yes&apos;), ISBLANK( Partnership__c ))</errorConditionFormula>
-    <errorMessage>Partnership field cannot be blank if the lead is a member of a partnership.</errorMessage>
-</ValidationRule>

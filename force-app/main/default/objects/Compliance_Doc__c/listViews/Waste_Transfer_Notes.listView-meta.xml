@@ -9,7 +9,7 @@
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Compliance_Doc__c.Consignment_Notes</value>
+        <value>Compliance_Doc__c.Consignment_Notes_Legacy</value>
     </filters>
     <label>Waste Transfer Notes</label>
 </ListView>

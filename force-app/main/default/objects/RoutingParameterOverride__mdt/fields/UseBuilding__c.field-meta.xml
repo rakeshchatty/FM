@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UseBuilding__c</fullName>
+    <description>The Use building-number sequence setting ensures that units within one building on a blockface will be serviced before units in other buildings on that blockface when the buildings share the same location (X, Y coordinates). If this option is chosen and you have populated the [Building] field with either a building number or a preferred sequence, stops with the same coordinates will be grouped by their building value and the buildings will be sequenced in the specified order.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Use Building</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>true</fullName>
+                <default>false</default>
+                <label>true</label>
+            </value>
+            <value>
+                <fullName>false</fullName>
+                <default>false</default>
+                <label>false</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

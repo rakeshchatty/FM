@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_Key_Account_Case</name>
+        <label>Is Key Account Case?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Not Key Account</defaultConnectorLabel>
+        <rules>
+            <name>Key_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>KeyCase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case</targetReference>
+            </connector>
+            <label>Key Account</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>KeyCase</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+   /* ----- FromAddress domain checks ----- */
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@pret.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@iceking.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@dallas-holdings.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@halagroup.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@kzholdings.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@exultant.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@caffenero.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@sidekickgroup.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@greenzoneuk.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@gailsbread.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@acmplc.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@paddypowerbetfair.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@paddypower.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@invida.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@brewdog.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@doccleaning.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@veolia.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@wastesource.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@reconomy.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@envirocollections.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@itsu.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@atgentertainment.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@caffenero.local&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@gzcss.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@uniqlo.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@albionwaste.net&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@cdwaste.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@curbside.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;phocafe.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@savills.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@savillspm.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@premierfmsolutions.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@handt.co.uk&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@knightfrank.com&quot;),
+   CONTAINS(LOWER({!$Record.FromAddress}), &quot;@savillspm.co.uk&quot;),
+
+   /* ----- ToAddress specific inbox ----- */
+   CONTAINS(LOWER({!$Record.ToAddress}), &quot;keyaccounts@thefirstmile.co.uk&quot;)
+)</expression>
+    </formulas>
+    <interviewLabel>Case - Key Account Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Key Account Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Key_Account_Case__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Parent</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Key_Account_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Incoming</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ToAddress</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>clearances@thefirstmile.co.uk</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ToAddress</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>css@thefirstmile.co.uk</stringValue>
+            </value>
+        </filters>
+        <object>EmailMessage</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

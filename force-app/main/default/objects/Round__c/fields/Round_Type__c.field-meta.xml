@@ -3,7 +3,7 @@
     <fullName>Round_Type__c</fullName>
     <label>Round Type</label>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -23,7 +23,7 @@
             <value>
                 <fullName>DAY</fullName>
                 <default>false</default>
-                <label>DAY</label>
+                <label>MIDNIGHT</label>
             </value>
             <value>
                 <fullName>PM</fullName>

@@ -14,18 +14,18 @@ global class RecurringBatch implements Database.Batchable<sObject> {
 	String query;
 
 	global RecurringBatch(String criteria) {
-		query = 'SELECT Id, Last_Working_Day__c, Product__r.Name, Next_Date__c, First_Date__c, Account__c, Account__r.Enqix_Dead_Live__c,Type__c, Recur_every__c, Rec__c, PO_Number__c, Active__c, PO_from_Supplier__c, Supplier__c FROM Recurrings__c WHERE ' + criteria;
+		query = 'SELECT Id, Last_Working_Day__c, Product__r.Name, Next_Date__c, First_Date__c, Account__c, Account__r.Enqix_Dead_Live__c,Type__c, Recur_every__c, Rec__c, PO_Number__c, Active__c, PO_from_Supplier__c, Supplier__c, Supplier__r.IsExternal__c FROM Recurrings__c WHERE ' + criteria;
 	}
 
 	global RecurringBatch() {
-		query = 'SELECT Id, Last_Working_Day__c, Product__r.Name, Next_Date__c, First_Date__c, Account__c, Account__r.Enqix_Dead_Live__c, Type__c, Recur_every__c, Rec__c, PO_Number__c, Active__c, PO_from_Supplier__c, Supplier__c FROM Recurrings__c WHERE Next_Date__c = TODAY and Active__c = TRUE';
+		query = 'SELECT Id, Last_Working_Day__c, Product__r.Name, Next_Date__c, First_Date__c, Account__c, Account__r.Enqix_Dead_Live__c, Type__c, Recur_every__c, Rec__c, PO_Number__c, Active__c, PO_from_Supplier__c, Supplier__c, Supplier__r.IsExternal__c FROM Recurrings__c WHERE Next_Date__c = TODAY and Active__c = TRUE';
 	}
 
 	global Database.QueryLocator start(Database.BatchableContext BC) {
 		return Database.getQueryLocator(query);
 	}
 
-   	global void execute(Database.BatchableContext BC, List<sObject> scope) {
+	global void execute(Database.BatchableContext BC, List<sObject> scope) {
 		List<Order> newOrders = new List<Order>();
 		List<Recurrings__c> recurrings = new List<Recurrings__c>();
 
@@ -42,21 +42,25 @@ global class RecurringBatch implements Database.Batchable<sObject> {
 			}
 
 			Order newOrder = new Order(AccountId = r.Account__c,
-				EffectiveDate = r.First_Date__c,
-				Order_Placed_Date__c = today,
-				Type = r.Type__c,
-				PO_Number__c = r.PO_Number__c,
-				IsSalesforceRecurring__c = true,
-				PO_from_Supplier__c = r.PO_from_Supplier__c,
-				Supplier__c = r.Supplier__c,
-				RecurringId__c = r.Id,
-				Recurring__c = true,
-				Status = 'Confirmed',
-				ConfirmationEmailStatus__c = 'Do Not Send');
+									   EffectiveDate = r.First_Date__c,
+									   Order_Placed_Date__c = today,
+									   Type = r.Type__c,
+									   PO_Number__c = r.PO_Number__c,
+									   IsSalesforceRecurring__c = true,
+									   PO_from_Supplier__c = r.PO_from_Supplier__c,
+									   Supplier__c = r.Supplier__c,
+									   RecurringId__c = r.Id,
+									   Recurring__c = true,
+									   Status = 'Confirmed',
+									   ConfirmationEmailStatus__c = 'Do Not Send',
+									   IsFuelSurchargeEvaluated__c = true);
 
 			if (r.Type__c == 'Invoicing'){
 				newOrder.Delivery_Status__c = 'Invoicing';
 				newOrder.Type = 'Invoicing';
+			} else if (r.Supplier__c != null && r.Supplier__r.IsExternal__c) {
+				newOrder.Delivery_Status__c = 'Delivery';
+				newOrder.Type = 'Contractor';
 			} else {
 				newOrder.Delivery_Status__c = 'Delivery';
 				newOrder.Type = 'Regular';

@@ -5,6 +5,8 @@ public without sharing class AccountUtil {
 	public static final Id RECORDTYPEID_LOCATION = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Location').getRecordTypeId();
 	public static final Id RECORDTYPEID_PROSPECT = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Prospect').getRecordTypeId();
 
+	public static final String PARTNER_TYPE_BID = 'BID';
+
 	public static final String LIVE = 'Live';
 
 	public static Boolean isLive(Account account) {
@@ -20,6 +22,8 @@ public without sharing class AccountUtil {
 	}
 
 	public static Map<String, Account_Discount__c> getDiscounts(Set<Id> accountIds, Set<Id> productIds) {
+		accountIds.remove(null);
+		productIds.remove(null);
 		List<Account_Discount__c> discounts = [SELECT Account__c, Product__c, Product_Discount__c, Bid_Price__c FROM Account_Discount__c 
 			WHERE Account__c IN :accountIds AND Product__c IN :productIds 
 			AND (DiscountSupStartDate__c <= TODAY OR DiscountSupStartDate__c = null) 

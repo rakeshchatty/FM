@@ -3,7 +3,7 @@
     <fullName>Code__c</fullName>
     <externalId>false</externalId>
     <label>Code</label>
-    <length>4</length>
+    <length>5</length>
     <required>true</required>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>

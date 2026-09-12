@@ -3,8 +3,8 @@
     <actionCalls>
         <name>SendOrderDetailsToSupplier</name>
         <label>Send Order Details To Supplier</label>
-        <locationX>176</locationX>
-        <locationY>323</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -57,8 +57,10 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>55.0</apiVersion>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <formulas>
         <name>EmailBody</name>
@@ -122,13 +124,13 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>SendOrderDetailsToSupplier</targetReference>
         </connector>
         <filterFormula>AND(
-{!$Record.Order.Type__c} != &apos;Invoicing&apos;,
+NOT(ISPICKVAL({!$Record.Order.Type}, &apos;Invoicing&apos;)),
 {!$Record.Supplier__r.Name} != &apos;First Mile Ltd&apos;,
 NOT(ISBLANK({!$Record.Supplier_Email__c})),
 NOT(CONTAINS({!$Record.Product2.Name}, &apos;Overweight&apos;))

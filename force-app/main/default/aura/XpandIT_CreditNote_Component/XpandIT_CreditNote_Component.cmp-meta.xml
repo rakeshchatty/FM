@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>45.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
     <description>This component will help 1st Mile users to generate credit notes based on an invoice.</description>
 </AuraDefinitionBundle>

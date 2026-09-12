@@ -1,98 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>EmailConsignmentNotes</name>
-        <label>Email - Consignment Notes</label>
-        <locationX>314</locationX>
-        <locationY>647</locationY>
-        <actionName>SendGridEmail</actionName>
-        <actionType>apex</actionType>
-        <dataTypeMappings>
-            <typeName>T__collection</typeName>
-            <typeValue>Compliance_Doc__c</typeValue>
-        </dataTypeMappings>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>greetingName</name>
-            <value>
-                <elementReference>GreetingName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>templateId</name>
-            <value>
-                <stringValue>d-731855b2eed3494ea70c725178d59ae6</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>toAddress</name>
-            <value>
-                <elementReference>ToAddress</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>toName</name>
-            <value>
-                <elementReference>ToName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>var01</name>
-            <value>
-                <elementReference>ShippingAddress</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>SendGridEmail</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>EmailSecureDestructionCertificate</name>
-        <label>Email - Secure Destruction Certificate</label>
-        <locationX>578</locationX>
-        <locationY>647</locationY>
-        <actionName>SendGridEmail</actionName>
-        <actionType>apex</actionType>
-        <dataTypeMappings>
-            <typeName>T__collection</typeName>
-            <typeValue>Compliance_Doc__c</typeValue>
-        </dataTypeMappings>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>greetingName</name>
-            <value>
-                <elementReference>GreetingName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>templateId</name>
-            <value>
-                <stringValue>d-ab548f88512b4db691da0d662b33da53</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>toAddress</name>
-            <value>
-                <elementReference>ToAddress</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>toName</name>
-            <value>
-                <elementReference>ToName</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>var01</name>
-            <value>
-                <elementReference>ShippingAddress</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>SendGridEmail</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>EmailWasteTransferNotes</name>
-        <label>Email - Waste Transfer Notes</label>
+        <name>SendComplianceDocumentEmail</name>
+        <label>Send Compliance Document Email</label>
         <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationY>539</locationY>
         <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
@@ -100,6 +12,13 @@
             <typeValue>Compliance_Doc__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>attribution</name>
+            <value>
+                <elementReference>$Record.Account__r.EffectiveAttribution__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
         <inputParameters>
             <name>greetingName</name>
             <value>
@@ -109,7 +28,7 @@
         <inputParameters>
             <name>templateId</name>
             <value>
-                <stringValue>d-cad11ecc880d4cee821935709889ba5a</stringValue>
+                <elementReference>TemplateId</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -130,17 +49,25 @@
                 <elementReference>ShippingAddress</elementReference>
             </value>
         </inputParameters>
+        <inputParameters>
+            <name>var02</name>
+            <value>
+                <elementReference>$Record.Account__r.Name</elementReference>
+            </value>
+        </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>61.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>HasRecipients</name>
-        <label>Recipients?</label>
-        <locationX>776</locationX>
+        <name>CustomerToBeExcludedAndHasRecipients</name>
+        <label>Customer to be Excluded and Recipients?</label>
+        <locationX>182</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
-            <name>YesHasRecipients</name>
+            <name>YesCustomerToBeExcludedAndHasRecipientsAndTemplateId</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>RecipientCount</leftValueReference>
@@ -149,65 +76,28 @@
                     <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account__r.EffectiveAttribution__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Greener Than Green</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>WhichRecordType</targetReference>
+                <targetReference>SendComplianceDocumentEmail</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>WhichRecordType</name>
-        <label>Record Type?</label>
-        <locationX>446</locationX>
-        <locationY>539</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>WasteTransferNotes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.RecordType.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Waste Transfer Notes</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>EmailWasteTransferNotes</targetReference>
-            </connector>
-            <label>Waste Transfer Notes</label>
-        </rules>
-        <rules>
-            <name>ConsignmentNotes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.RecordType.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Consignment Notes</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>EmailConsignmentNotes</targetReference>
-            </connector>
-            <label>Consignment Notes</label>
-        </rules>
-        <rules>
-            <name>SecureDestructionCertificate</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.RecordType.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Secure Destruction Certificate</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>EmailSecureDestructionCertificate</targetReference>
-            </connector>
-            <label>Secure Destruction Certificate</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>TemplateId</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.RecordType.DeveloperName}, 
+&quot;ConsignmentNote&quot;, &quot;d-731855b2eed3494ea70c725178d59ae6&quot;, 
+&quot;Secure_Destruction_Certificate&quot;, &quot;d-ab548f88512b4db691da0d662b33da53&quot;, 
+&apos;&apos;)</expression>
+    </formulas>
     <interviewLabel>Send Compliance Document Email {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Send Compliance Document Email</label>
     <processMetadataValues>
@@ -230,11 +120,12 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>650</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>RetrieveServiceContact</targetReference>
         </connector>
+        <filterFormula>OR({!$Record.RecordType.DeveloperName} = &quot;ConsignmentNote&quot;, {!$Record.RecordType.DeveloperName} = &quot;Secure_Destruction_Certificate&quot;)</filterFormula>
         <object>Compliance_Doc__c</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
@@ -243,10 +134,10 @@
     <subflows>
         <name>RetrieveServiceContact</name>
         <label>Retrieve Service Contact</label>
-        <locationX>776</locationX>
+        <locationX>182</locationX>
         <locationY>323</locationY>
         <connector>
-            <targetReference>HasRecipients</targetReference>
+            <targetReference>CustomerToBeExcludedAndHasRecipients</targetReference>
         </connector>
         <flowName>RetrieveAccountContactsToEmail</flowName>
         <inputAssignments>

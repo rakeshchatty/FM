@@ -11,11 +11,12 @@
     <columns>Document_name__c</columns>
     <columns>UPDATEDBY_USER</columns>
     <columns>Receipt_Amount__c</columns>
+    <columns>Notes__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>TransactionAmount__c</field>
         <operation>equals</operation>
-        <value>5562.29</value>
+        <value>GBP 2498.34</value>
     </filters>
-    <label>Search by date</label>
+    <label>By Date</label>
 </ListView>

@@ -530,6 +530,46 @@
             <field>Po_Number__c</field>
             <table>Schedule__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Po_Number_Supplier__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Container_Type__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Earliest_Arrival_Text__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Latest_Arrival_Text__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ProductId__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Collection_Est_Weight__c</field>
+            <table>Schedule__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Needs_Bin_Weighing__c</field>
+            <table>Schedule__c</table>
+        </columns>
         <masterLabel>Collections</masterLabel>
     </sections>
     <sections>
@@ -585,11 +625,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner</field>
-            <table>Schedule__c.Missed_Collections__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>RecordType</field>
             <table>Schedule__c.Missed_Collections__r</table>
         </columns>
@@ -611,6 +646,46 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CP_Missed_Collection_Id__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DispatchAllocated__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CollectionWaypoint__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsCompleted__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SupplierId__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ProductName__c</field>
+            <table>Schedule__c.Missed_Collections__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RequestedCollectionTime__c</field>
             <table>Schedule__c.Missed_Collections__r</table>
         </columns>
         <masterLabel>Missed Collections</masterLabel>

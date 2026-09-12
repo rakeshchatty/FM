@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Collection PM</label>
+    <protected>false</protected>
+    <values>
+        <field>AddExtraRoute__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>BeginEndRouteTimeAtFacility__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>EndDepotIndex__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>GenerateMethod__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>IncludeMeanderPenalty__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>IncludeRoutePreparationTime__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>LoopParkOption__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>MaxAllowableWalkingTimeBetweenComponents__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>MaxLoopDemand__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>MaxLoopTime__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>MaxRouteTime__c</field>
+        <value xsi:type="xsd:string">24:00</value>
+    </values>
+    <values>
+        <field>MixedMode__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NumberOfDemandFields__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NumberOfRoutes__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ParkAndLoop__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>PickupCapacityPercentage__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>PickupDeliveryNumberStacked__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>PostEndTime__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>PreStartTime__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>RouteNumberIncrement__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>SequenceGap__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>SequenceStart__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>SolutionLabel__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>SolutionName__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Solver__c</field>
+        <value xsi:type="xsd:string">Sequence Existing Routes</value>
+    </values>
+    <values>
+        <field>StartDepotIndex__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>StartRouteNumber__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>StartTime__c</field>
+        <value xsi:type="xsd:string">17:00</value>
+    </values>
+    <values>
+        <field>TargetTime__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UseBlockSequence__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UseBuilding__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UseExtraDistance__c</field>
+        <value xsi:type="xsd:string">false</value>
+    </values>
+    <values>
+        <field>UseExtraTime__c</field>
+        <value xsi:type="xsd:string">false</value>
+    </values>
+    <values>
+        <field>UseFixedUnitSequence__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UsePickupDeliveryCapacity__c</field>
+        <value xsi:type="xsd:string">false</value>
+    </values>
+    <values>
+        <field>UsePreparationTime__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UseRegions__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UseSectors__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UseSpecialties__c</field>
+        <value xsi:type="xsd:string">false</value>
+    </values>
+    <values>
+        <field>UseZonePriority__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

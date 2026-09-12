@@ -14,7 +14,7 @@
     <filters>
         <field>Payment_Amount__c</field>
         <operation>greaterThan</operation>
-        <value>1</value>
+        <value>456</value>
     </filters>
     <label>Unallocated Cash - Account Identified</label>
 </ListView>

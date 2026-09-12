@@ -86,6 +86,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Hired__c</field>
+            <table>Vehicle__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>GrossWeight__c</field>
             <table>Vehicle__c</table>
         </columns>
@@ -126,6 +131,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Key_Pin__c</field>
+            <table>Vehicle__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Garage__c</field>
             <table>Vehicle__c</table>
         </columns>
@@ -157,6 +167,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Bin_Weighing__c</field>
+            <table>Vehicle__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Fob_Serial_Number__c</field>
             <table>Vehicle__c</table>
         </columns>
         <masterLabel>Vehicles</masterLabel>
@@ -199,7 +214,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Round_Duration__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ops_End_Time__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EffectiveVehicleNumber__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Default_Driver__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Round_number__c</field>
             <table>Vehicle__c.Daily_Dispatches__r</table>
         </columns>
         <columns>
@@ -209,7 +244,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Ops_Start_Time__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>DieselPumped__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_foreign_round__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Already_Created__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Round_Duration2__c</field>
             <table>Vehicle__c.Daily_Dispatches__r</table>
         </columns>
         <columns>
@@ -234,6 +289,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>EffectiveDriverName__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Enqix_DailyDispatch_Id__c</field>
             <table>Vehicle__c.Daily_Dispatches__r</table>
         </columns>
@@ -245,6 +305,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Issues__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Vehicle__c</field>
             <table>Vehicle__c.Daily_Dispatches__r</table>
         </columns>
         <columns>
@@ -337,6 +402,71 @@
             <field>calcvehicle__c</field>
             <table>Vehicle__c.Daily_Dispatches__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Round_Notes__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RoundId__c.Bin_Weighing__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Food_Pod__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Miley_Data_Status__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WasKeyFolderTaken__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Dispatch_Delay__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agency_Loader_1__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agency_Loader_2__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Calculated_Overtime__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overtime_Manual__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overtime_Reason__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Master_Round_ID__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Num_Loaders__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r</table>
+        </columns>
         <masterLabel>Daily Dispatches</masterLabel>
     </sections>
     <sections>
@@ -392,6 +522,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>DailyDispatch__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Date_Round__c</field>
             <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
         </columns>
@@ -423,6 +558,31 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Load__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_of_Round__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tonnes__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Origin_Depot__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_Name__c</field>
+            <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ticket_Number__c</field>
             <table>Vehicle__c.Daily_Dispatches__r.Tonnages__r</table>
         </columns>
         <masterLabel>Tonnages</masterLabel>

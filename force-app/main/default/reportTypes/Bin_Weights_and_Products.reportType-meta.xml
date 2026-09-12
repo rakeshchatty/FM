@@ -690,6 +690,46 @@
             <field>WTE_KG_Per_Unit_Manual__c</field>
             <table>OrderItem</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsExternalSupplier__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsQrCodeEnforced__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ExpectedQrCodeCount__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>OrderRequestedDeliveryDate__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location_ID__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>VATRate__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PartnerVATRate__c</field>
+            <table>OrderItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecycleIdProduct__c</field>
+            <table>OrderItem</table>
+        </columns>
         <masterLabel>Order Products</masterLabel>
     </sections>
     <sections>
@@ -765,17 +805,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Datetime__c</field>
-            <table>OrderItem.BinWeights__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Vehicle__c</field>
             <table>OrderItem.BinWeights__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Collection_Waypoint__c</field>
+            <table>OrderItem.BinWeights__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>text_date__c</field>
+            <table>OrderItem.BinWeights__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overweight__c</field>
+            <table>OrderItem.BinWeights__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AllowedWeight__c</field>
             <table>OrderItem.BinWeights__r</table>
         </columns>
         <masterLabel>Bin Weights</masterLabel>

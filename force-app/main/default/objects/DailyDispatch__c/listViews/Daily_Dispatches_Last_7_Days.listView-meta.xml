@@ -10,21 +10,17 @@
     <columns>DriverId__c</columns>
     <columns>Default_Driver__c</columns>
     <columns>Dispatch_Date__c</columns>
+    <columns>Dispatch_Notes__c</columns>
+    <columns>Dispatch_Delay__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>LAST_N_DAYS:7</value>
+        <value>YESTERDAY</value>
     </filters>
     <filters>
         <field>NAME</field>
         <operation>contains</operation>
-        <value>102</value>
-    </filters>
-    <filters>
-        <field>Total_Tonnage__c</field>
-        <operation>greaterThan</operation>
-        <value>0</value>
     </filters>
     <label>Daily Dispatches Last 7 Days</label>
     <sharedTo>

@@ -11,6 +11,7 @@
         <nameSegment>InvoiceHeaderOverdueDaysBatch</nameSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Invoice Header - Overdue Days - Schedule {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Invoice Header - Update Overdue Days - Scheduler</label>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireExtraJobProduct</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(Round_Dispatched__c), NOT(ISBLANK(Round_Dispatched__c)), ISBLANK(SupplierProduct__c), ISPICKVAL(Type, &apos;Extra Job&apos;))</errorConditionFormula>
+    <errorDisplayField>SupplierProduct__c</errorDisplayField>
+    <errorMessage>Collection product is required for Extra Job to be assigned to dispatch.</errorMessage>
+</ValidationRule>

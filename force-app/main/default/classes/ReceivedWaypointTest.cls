@@ -14,7 +14,8 @@ public class ReceivedWaypointTest {
 		INSERT parentAccount;
 		Account location = new Account(Name=source, ParentId=parentAccount.Id, RecordtypeId=locatonRecordTypeId, Price_Book__c = Test.getStandardPricebookId(), Enqix_Dead_Live__c = 'Live');
 		INSERT location;
-		
+
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		List<Order> orderList = new List<Order>();
 		for (Integer i=0; i<7; i++) {
 			orderList.add(new Order(AccountId=location.Id, EffectiveDate=System.today(), Status='Draft'));
@@ -34,6 +35,7 @@ public class ReceivedWaypointTest {
 		Test.startTest();
 		ReceivedWaypointGroup__c waypointGroup = new ReceivedWaypointGroup__c(Date__c=waypointDate, Source__c=source, Timestamp__c=timestamp);
 		INSERT waypointGroup;
+		EventBus.publish(new ReceivedWaypointGroupEvent__e(GroupId__c = waypointGroup.Id, Date__c = waypointGroup.Date__c, Source__c = waypointGroup.Source__c, Timestamp__c = waypointGroup.Timestamp__c));
 		Test.stopTest();
 
 		for (ReceivedWaypoint__c receivedWaypoint : receivedWaypointList) {
@@ -72,7 +74,9 @@ public class ReceivedWaypointTest {
 		INSERT receivedWaypointList;
 
 		Test.startTest();
-		INSERT new ReceivedWaypointGroup__c(Date__c=waypointDate, Source__c=source, Timestamp__c=timestamp);
+        ReceivedWaypointGroup__c waypointGroup = new ReceivedWaypointGroup__c(Date__c=waypointDate, Source__c=source, Timestamp__c=timestamp);
+		INSERT waypointGroup;
+		EventBus.publish(new ReceivedWaypointGroupEvent__e(GroupId__c = waypointGroup.Id, Date__c = waypointGroup.Date__c, Source__c = waypointGroup.Source__c, Timestamp__c = waypointGroup.Timestamp__c));
 		Test.stopTest();
 
 		Assert.areEqual(3, [SELECT Id FROM maps__Route__c].size(), '3 Routes are inserted');

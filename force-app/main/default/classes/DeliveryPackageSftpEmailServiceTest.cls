@@ -5,6 +5,7 @@ private class DeliveryPackageSftpEmailServiceTest {
 	static void setup() {
 		TestDataHelper.insertParcelforceSetting();
 		Account parent = TestDataHelper.insertAccount();
+        TestDataHelper.insertSupplierFirstMile();
 		Account location = TestDataHelper.insertLocation(parent.Id, null);
 		Order order = TestDataHelper.insertOrder(location.Id);
 		DeliveryPackage__c pkg = TestDataHelper.createDeliveryPackage(order.Id);
@@ -48,9 +49,11 @@ private class DeliveryPackageSftpEmailServiceTest {
 		Messaging.InboundEmail email = new Messaging.InboundEmail();
 		email.subject = 'Test Email';
 
+		String todayDate = DateTime.now().format('yyMMdd');
+
 		Messaging.InboundEmail.BinaryAttachment binaryAttachment = new Messaging.InboundEmail.BinaryAttachment();
 		binaryAttachment.fileName = 'TA0IxyzPQR.csv';
-		binaryAttachment.body = Blob.valueOf('+1+WIRE+CONTRACT+12345678+I104+110113+084500+MK7 8LE+SENDERS REF+1 ITEMS+++');
+		binaryAttachment.body = Blob.valueOf('+1+WIRE+CONTRACT+12345678+I104+' + todayDate + '+084500+MK7 8LE+SENDERS REF+1 ITEMS+++');
 		email.binaryAttachments = new List<Messaging.InboundEmail.BinaryAttachment>{binaryAttachment};
 
 		Test.startTest();
@@ -67,6 +70,6 @@ private class DeliveryPackageSftpEmailServiceTest {
 		Assert.areEqual(1, trackingEvents.size(), 'One tracking event should be created');
 		Assert.areEqual('12345678', trackingEvents[0].Name, 'TrackingId Mismatched');
 		Assert.areEqual('I104', trackingEvents[0].Code__c, 'Status code Mismatched');
-		Assert.areEqual('2023-01-13 08:45:00', trackingEvents[0].DateTime__c.format('YYYY-MM-DD hh:mm:ss'), 'Event datetime Mismatched');
+		Assert.areEqual(todayDate + ' 08:45:00', trackingEvents[0].DateTime__c.format('yyMMdd hh:mm:ss'), 'Event datetime Mismatched');
 	}
 }

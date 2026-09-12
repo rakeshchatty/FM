@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Send_Chaser_1</name>
-        <label>Send Chaser 1</label>
+        <name>SendEmail</name>
+        <label>Send Email</label>
         <locationX>50</locationX>
-        <locationY>1176</locationY>
+        <locationY>576</locationY>
         <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
@@ -12,6 +12,13 @@
             <typeValue>Invoice_Header__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>attribution</name>
+            <value>
+                <elementReference>$Record.EffectiveAttribution__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
         <inputParameters>
             <name>collection</name>
             <value>
@@ -21,7 +28,8 @@
         <inputParameters>
             <name>fromEmail</name>
             <value>
-                <stringValue>accounts@thefirstmile.co.uk</stringValue>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
+                <stringValue>creditcontrol@thefirstmile.co.uk</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -39,13 +47,13 @@
         <inputParameters>
             <name>toAddress</name>
             <value>
-                <elementReference>ToEmail2</elementReference>
+                <elementReference>ToAddress</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
             <name>toName</name>
             <value>
-                <elementReference>ToName2</elementReference>
+                <elementReference>ToName</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -67,128 +75,42 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
-    <assignments>
-        <name>Set_email_and_name</name>
-        <label>Set email and name</label>
-        <locationX>270</locationX>
-        <locationY>792</locationY>
-        <assignmentItems>
-            <assignToReference>ToEmail2</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>For_each_finance_contact.Contact.Email</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>ToName2</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Fullname</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>For_each_finance_contact</targetReference>
-        </connector>
-    </assignments>
-    <collectionProcessors>
-        <name>Retain_only_Finance_Contacts</name>
-        <elementSubtype>FilterCollectionProcessor</elementSubtype>
-        <label>Retain only Finance Contacts</label>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>CustomerToBeExcludedAndHasRecipients</name>
+        <label>Customer to be Excluded and Recipients?</label>
         <locationX>182</locationX>
         <locationY>468</locationY>
-        <assignNextValueToReference>currentItem_Retain_only_Finance_Contacts_0</assignNextValueToReference>
-        <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
-        <collectionReference>Get_Contact</collectionReference>
-        <conditionLogic>and</conditionLogic>
-        <conditions>
-            <leftValueReference>currentItem_Retain_only_Finance_Contacts_0.Roles</leftValueReference>
-            <operator>Contains</operator>
-            <rightValue>
-                <stringValue>Finance Contact</stringValue>
-            </rightValue>
-        </conditions>
-        <connector>
-            <targetReference>For_each_finance_contact</targetReference>
-        </connector>
-    </collectionProcessors>
-    <decisions>
-        <name>Has_email</name>
-        <label>Has email?</label>
-        <locationX>402</locationX>
-        <locationY>684</locationY>
-        <defaultConnector>
-            <targetReference>For_each_finance_contact</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
-            <name>Yes2</name>
+            <name>YesCustomerToBeExcludedAndHasRecepients</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>For_each_finance_contact.Contact.Email</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.EffectiveAttribution__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Greener Than Green</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Set_email_and_name</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>OK_to_send</name>
-        <label>OK to send?</label>
-        <locationX>182</locationX>
-        <locationY>1068</locationY>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ToEmail2</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>ToName2</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Send_Chaser_1</targetReference>
+                <targetReference>SendEmail</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
     <environments>Default</environments>
-    <formulas>
-        <name>Fullname</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!For_each_finance_contact.Contact.FirstName}), {!For_each_finance_contact.Contact.LastName}, {!For_each_finance_contact.Contact.FirstName} &amp; &apos; &apos; &amp; {!For_each_finance_contact.Contact.LastName})</expression>
-    </formulas>
     <interviewLabel>Cash Weekly Chaser 2 (30-59 Days) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Cash Weekly Chaser 2 (30-59 Days)</label>
-    <loops>
-        <name>For_each_finance_contact</name>
-        <label>For each finance contact</label>
-        <locationX>182</locationX>
-        <locationY>576</locationY>
-        <collectionReference>Retain_only_Finance_Contacts</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Has_email</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>OK_to_send</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -209,37 +131,13 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>Get_Contact</name>
-        <label>Get Contact</label>
-        <locationX>182</locationX>
-        <locationY>360</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Retain_only_Finance_Contacts</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>AccountContactRelation</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>ContactId</queriedFields>
-        <queriedFields>Roles</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_invoices_owed</name>
         <label>Get invoices owed</label>
         <locationX>182</locationX>
         <locationY>252</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Contact</targetReference>
+            <targetReference>RetrieveFinanceContacts</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -303,13 +201,49 @@
         </filters>
         <object>Account</object>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Weekly</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2023-10-31</startDate>
             <startTime>08:45:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>RetrieveFinanceContacts</name>
+        <label>Retrieve Finance Contacts</label>
+        <locationX>182</locationX>
+        <locationY>360</locationY>
+        <connector>
+            <targetReference>CustomerToBeExcludedAndHasRecipients</targetReference>
+        </connector>
+        <flowName>RetrieveAccountContactsToEmail</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Role</name>
+            <value>
+                <stringValue>Finance Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>RecipientCount</assignToReference>
+            <name>RecipientCount</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToAddress</assignToReference>
+            <name>ToAddress</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToName</assignToReference>
+            <name>ToName</name>
+        </outputAssignments>
+    </subflows>
     <variables>
         <name>currentItem_Retain_only_Finance_Contacts_0</name>
         <dataType>SObject</dataType>
@@ -319,14 +253,15 @@
         <objectType>AccountContactRelation</objectType>
     </variables>
     <variables>
-        <name>ToEmail</name>
-        <dataType>String</dataType>
+        <name>RecipientCount</name>
+        <dataType>Number</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+        <scale>0</scale>
     </variables>
     <variables>
-        <name>ToEmail2</name>
+        <name>ToAddress</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
@@ -334,13 +269,6 @@
     </variables>
     <variables>
         <name>ToName</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>ToName2</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>

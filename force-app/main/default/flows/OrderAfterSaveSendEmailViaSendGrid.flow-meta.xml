@@ -1,38 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>SendGridDeliveryUpdateWeWillBeInTouch</name>
-        <label>SendGrid: Delivery update - we&apos;ll be in touch</label>
-        <locationX>402</locationX>
-        <locationY>1013</locationY>
-        <actionName>SendGridSendServiceFinanceContactEmail</actionName>
+        <name>SendEmailWeWillBeInTouch</name>
+        <label>Send Email - We&apos;ll be in touch</label>
+        <locationX>446</locationX>
+        <locationY>1571</locationY>
+        <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>SetConfirmationEmailSent</targetReference>
         </connector>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>Order</typeValue>
+        </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>accountId</name>
+            <name>greetingName</name>
             <value>
-                <elementReference>$Record.AccountId</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>accountName</name>
-            <value>
-                <elementReference>$Record.Account.Name</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>orderNumber</name>
-            <value>
-                <elementReference>$Record.OrderNumber</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>role</name>
-            <value>
-                <stringValue>Service Contact</stringValue>
+                <elementReference>GreetingName</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -41,58 +27,86 @@
                 <stringValue>d-27556ce9816940b68dcba82b746099f5</stringValue>
             </value>
         </inputParameters>
-        <nameSegment>SendGridSendServiceFinanceContactEmail</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>SendGridDeliveryUpdateWeWillTryAgainTomorrow</name>
-        <label>SendGrid: Delivery update - we&apos;ll try again tomorrow</label>
-        <locationX>490</locationX>
-        <locationY>647</locationY>
-        <actionName>SendGridSendServiceFinanceContactEmail</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>SetConfirmationEmailSent</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>accountId</name>
+            <name>toAddress</name>
             <value>
-                <elementReference>$Record.AccountId</elementReference>
+                <elementReference>ToAddress</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>accountName</name>
+            <name>toName</name>
+            <value>
+                <elementReference>ToName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var01</name>
             <value>
                 <elementReference>$Record.Account.Name</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>orderNumber</name>
+            <name>var02</name>
             <value>
                 <elementReference>$Record.OrderNumber</elementReference>
             </value>
         </inputParameters>
-        <inputParameters>
-            <name>role</name>
-            <value>
-                <stringValue>Service Contact</stringValue>
-            </value>
-        </inputParameters>
+        <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmailWeWillTryAgainTomorrow</name>
+        <label>Send Email - We&apos;ll try again tomorrow</label>
+        <locationX>490</locationX>
+        <locationY>863</locationY>
+        <actionName>SendGridEmail</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>Order</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>templateId</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>d-818b41c79dc843a09b8ada657c7b362f</stringValue>
             </value>
         </inputParameters>
-        <nameSegment>SendGridSendServiceFinanceContactEmail</nameSegment>
+        <inputParameters>
+            <name>toAddress</name>
+            <value>
+                <elementReference>ToAddress</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>toName</name>
+            <value>
+                <elementReference>ToName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var01</name>
+            <value>
+                <elementReference>$Record.Account.Name</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var02</name>
+            <value>
+                <elementReference>$Record.OrderNumber</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>58.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetConfirmationEmailSent</name>
         <label>Confirmation Email Sent</label>
-        <locationX>402</locationX>
-        <locationY>1121</locationY>
+        <locationX>358</locationX>
+        <locationY>1763</locationY>
         <assignmentItems>
             <assignToReference>Order.Confirmation_Email_Sent__c</assignToReference>
             <operator>Assign</operator>
@@ -107,8 +121,8 @@
     <assignments>
         <name>SetOrderId</name>
         <label>Order Id</label>
-        <locationX>270</locationX>
-        <locationY>1337</locationY>
+        <locationX>402</locationX>
+        <locationY>2063</locationY>
         <assignmentItems>
             <assignToReference>Order.Id</assignToReference>
             <operator>Assign</operator>
@@ -124,7 +138,7 @@
         <name>SetStatus</name>
         <label>Status</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>Order.Status</assignToReference>
             <operator>Assign</operator>
@@ -139,8 +153,8 @@
     <decisions>
         <name>DetrackUnsuccessfulDelivery</name>
         <label>Detrack Unsuccessful Delivery?</label>
-        <locationX>402</locationX>
-        <locationY>431</locationY>
+        <locationX>534</locationX>
+        <locationY>539</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>WrongProduct</name>
@@ -241,10 +255,103 @@
         </rules>
     </decisions>
     <decisions>
+        <name>HasRecipients2</name>
+        <label>Recipients?</label>
+        <locationX>534</locationX>
+        <locationY>1355</locationY>
+        <defaultConnector>
+            <targetReference>ShouldUpdateOrder</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesHasRecipients2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IsCustomerToBeExcluded</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>IsCustomerToBeExcluded</name>
+        <label>Customer to be Excluded?</label>
+        <locationX>358</locationX>
+        <locationY>1463</locationY>
+        <defaultConnector>
+            <targetReference>SendEmailWeWillBeInTouch</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcluded</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Greenzone</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Greener Than Green</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetConfirmationEmailSent</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>IsCustomerToBeExcludedAndHasRecipients</name>
+        <label>Customer to be Excluded and Recipients?</label>
+        <locationX>622</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcludedAndHasRecipients</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Greenzone</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue> Greener Than Green</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailWeWillTryAgainTomorrow</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>ShouldUpdateOrder</name>
         <label>Update Order?</label>
-        <locationX>402</locationX>
-        <locationY>1229</locationY>
+        <locationX>534</locationX>
+        <locationY>1955</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesUpdateOrder</name>
@@ -267,6 +374,16 @@
         <name>ComplianceDocumentName</name>
         <dataType>String</dataType>
         <expression>{!$Record.Account.Name } + &quot; Clearance WTN&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>FullName</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!$Record.Contact__r.FirstName}), {!$Record.Contact__r.LastName}, {!$Record.Contact__r.FirstName} + &apos; &apos; + {!$Record.Contact__r.LastName})</expression>
+    </formulas>
+    <formulas>
+        <name>RouteName</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!$Record.RouteName__c}), {!$Record__Prior.RouteName__c}, {!$Record.RouteName__c})</expression>
     </formulas>
     <formulas>
         <name>Subject</name>
@@ -297,11 +414,17 @@
     <recordCreates>
         <name>CreateCase</name>
         <label>Case</label>
-        <locationX>402</locationX>
-        <locationY>905</locationY>
+        <locationX>534</locationX>
+        <locationY>1247</locationY>
         <connector>
-            <targetReference>SendGridDeliveryUpdateWeWillBeInTouch</targetReference>
+            <targetReference>HasRecipients2</targetReference>
         </connector>
+        <inputAssignments>
+            <field>DeliveryRouteName__c</field>
+            <value>
+                <elementReference>RouteName</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Delivery_Feedback__c</field>
             <value>
@@ -386,11 +509,17 @@
     <recordCreates>
         <name>CreateCase2</name>
         <label>Case</label>
-        <locationX>490</locationX>
-        <locationY>539</locationY>
+        <locationX>622</locationX>
+        <locationY>647</locationY>
         <connector>
-            <targetReference>SendGridDeliveryUpdateWeWillTryAgainTomorrow</targetReference>
+            <targetReference>IsCustomerToBeExcludedAndHasRecipients</targetReference>
         </connector>
+        <inputAssignments>
+            <field>DeliveryRouteName__c</field>
+            <value>
+                <elementReference>RouteName</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Delivery_Feedback__c</field>
             <value>
@@ -469,8 +598,8 @@
     <recordLookups>
         <name>GetCaseRecordTypeDeliveryQuery</name>
         <label>Case Record Type: Delivery Query</label>
-        <locationX>402</locationX>
-        <locationY>323</locationY>
+        <locationX>534</locationX>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>DetrackUnsuccessfulDelivery</targetReference>
@@ -498,15 +627,15 @@
     <recordUpdates>
         <name>UpdateOrder</name>
         <label>Order</label>
-        <locationX>270</locationX>
-        <locationY>1445</locationY>
+        <locationX>402</locationX>
+        <locationY>2171</locationY>
         <inputReference>Order</inputReference>
     </recordUpdates>
     <start>
-        <locationX>276</locationX>
+        <locationX>408</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>GetCaseRecordTypeDeliveryQuery</targetReference>
+            <targetReference>RetrieveOrderContactorServiceContact</targetReference>
         </connector>
         <filterLogic>or</filterLogic>
         <filters>
@@ -528,6 +657,57 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>RetrieveOrderContactorServiceContact</name>
+        <label>Retrieve Order Contact or Service Contact</label>
+        <locationX>534</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>GetCaseRecordTypeDeliveryQuery</targetReference>
+        </connector>
+        <flowName>RetrieveOrderContactOrAccountContact</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Order</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Role</name>
+            <value>
+                <stringValue>Service Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>GreetingName</assignToReference>
+            <name>GreetingName</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>RecipientCount</assignToReference>
+            <name>RecipientCount</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToAddress</assignToReference>
+            <name>ToAddress</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToName</assignToReference>
+            <name>ToName</name>
+        </outputAssignments>
+    </subflows>
+    <variables>
+        <name>GreetingName</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>Order</name>
         <dataType>SObject</dataType>
@@ -535,5 +715,27 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Order</objectType>
+    </variables>
+    <variables>
+        <name>RecipientCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>ToAddress</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ToName</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
 </Flow>

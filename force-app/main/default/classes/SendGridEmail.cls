@@ -2,6 +2,7 @@ public without sharing class SendGridEmail {
 
 	private static final Integer STATUS_SUCCESS = 202;
 	private static final SendGridSetting__c SEND_GRID = SendGridSetting__c.getOrgDefaults();
+	private static final List<String> DISABLED_TEMPLATE_IDS = new List<String>{'d-bb3b5519832e47c28daf310f092489c2', 'd-c8ab2f042caf418a8dac48152e4acb94', 'd-a123be97e75e4bea8b157b0ff87a1648'};
 	private Input[] inputs;
 
 	public class Input {
@@ -19,6 +20,9 @@ public without sharing class SendGridEmail {
 		@InvocableVariable(required=false label='Greeting Name')
 		public List<String> greetingName;
 
+		@InvocableVariable(required=false label='Subject')
+		public String subject;
+
 		@InvocableVariable(required=false label='Collection of Records')
 		public List<sObject> collection = new List<sObject>();
 
@@ -28,9 +32,17 @@ public without sharing class SendGridEmail {
 
 		@InvocableVariable(required=false)
 		public Id contentDocumentId;
-
+		@InvocableVariable(required=false)
+		public List<Id> contentDocumentIds;
 		@InvocableVariable(required=false)
 		public Boolean isAttachmentInline = false;
+
+		@InvocableVariable(required=false label='Event Type')
+		public String eventType;
+		@InvocableVariable(required=false label='Account Id')
+		public String accountId;
+		@InvocableVariable(required=false label='Attribution')
+		public String attribution;
 	}
 
 	public SendGridEmail() {}
@@ -51,11 +63,17 @@ public without sharing class SendGridEmail {
 	public void send() {
 		List<SendGridRequestLog__c> requestLogs = new List<SendGridRequestLog__c>();
 		for (Input input : inputs) {
-			removeDuplicateRecipient(input);	// Avoid duplicate emails, as SendGrid will fail
-			requestLogs.add(new SendGridRequestLog__c(TemplateId__c = input.templateId, HasAttachment__c = input.contentDocumentId != null, Request__c = JSON.serialize(input)));
+			createHubSpotEvent(input);
+			if (!DISABLED_TEMPLATE_IDS.contains(input.templateId)) {
+				Boolean hasAttachments = (input.contentDocumentId != null) || (input.contentDocumentIds != null && !input.contentDocumentIds.isEmpty());
+				removeDuplicateRecipient(input);	// Avoid duplicate emails, as SendGrid will fail
+				requestLogs.add(new SendGridRequestLog__c(TemplateId__c = input.templateId, HasAttachment__c = hasAttachments, Request__c = JSON.serialize(input)));
+			}
 		}
 
-		INSERT requestLogs;
+		if (!requestLogs.isEmpty()) {
+			INSERT requestLogs;
+		}
 	}
 
 	public void send(SendGridEvent__e event) {
@@ -64,7 +82,6 @@ public without sharing class SendGridEmail {
 		}
 
 		Input input = (Input)JSON.deserialize(event.JsonBody__c, Input.class);
-
 		Body body = new Body();
 		body.template_id = input.templateId;
 		body.from_email = new Email(String.isNotBlank(input.fromEmail) ? input.fromEmail : SEND_GRID.FromEmail__c,
@@ -73,7 +90,7 @@ public without sharing class SendGridEmail {
 		body.personalizations = setupPersonalizations(input);
 		body.attachments = setupAttachments(input);
 
-		SendGridEmail.post(event.RequestLogId__c, JSON.serialize(body).replace('from_email', 'from'));
+		SendGridEmail.post(event.RequestLogId__c, JSON.serialize(body, true).replace('from_email', 'from'));
 	}
 
 	private void removeDuplicateRecipient(Input input) {
@@ -93,21 +110,35 @@ public without sharing class SendGridEmail {
 	}
 
 	private List<Attachment> setupAttachments(Input input) {
-		if (input.contentDocumentId == null) {
+		if (input.contentDocumentId == null && (input.contentDocumentIds == null || input.contentDocumentIds.isEmpty())) {
 			return null;
 		}
 
-		ContentDocument contentDocument = [SELECT LatestPublishedVersionId FROM ContentDocument WHERE Id = :input.contentDocumentId];
-		ContentVersion contentVersion = [SELECT Title, FileExtension, VersionData FROM ContentVersion WHERE Id = :contentDocument.LatestPublishedVersionId];
-		Attachment attachment = new Attachment();
-		attachment.filename = contentVersion.Title.containsIgnoreCase(contentVersion.FileExtension) ? contentVersion.Title : contentVersion.Title + '.' + contentVersion.FileExtension;
-		attachment.content = EncodingUtil.base64Encode(contentVersion.VersionData);
-		if (input.isAttachmentInline) {
-			attachment.disposition = 'inline';
-			attachment.content_id = 'inlineContent';
+		List<Id> contentDocumentIds = new List<Id>();
+		if (input.contentDocumentIds != null && !input.contentDocumentIds.isEmpty()) {
+			contentDocumentIds.addAll(input.contentDocumentIds);
+		} else {
+			contentDocumentIds.add(input.contentDocumentId);
 		}
 
-		return new List<Attachment>{attachment};
+		List<Id> contentVersionIds = new List<Id>();
+		for (ContentDocument contentDocument : [SELECT LatestPublishedVersionId FROM ContentDocument WHERE Id IN :contentDocumentIds]) {
+			contentVersionIds.add(contentDocument.LatestPublishedVersionId);
+		}
+
+		List<Attachment> attachments = new List<Attachment>();
+		for (ContentVersion contentVersion : [SELECT Title, FileExtension, VersionData FROM ContentVersion WHERE Id IN :contentVersionIds]) {
+			Attachment attachment = new Attachment();
+			attachment.filename = contentVersion.Title.containsIgnoreCase(contentVersion.FileExtension) ? contentVersion.Title : contentVersion.Title + '.' + contentVersion.FileExtension;
+			attachment.content = EncodingUtil.base64Encode(contentVersion.VersionData);
+			if (input.isAttachmentInline) {
+				attachment.disposition = 'inline';
+				attachment.content_id = 'inlineContent';
+			}
+			attachments.add(attachment);
+		}
+
+		return attachments;
 	}
 
 	private List<Personalization> setupPersonalizations(Input input) {
@@ -120,6 +151,8 @@ public without sharing class SendGridEmail {
 			personalization.to = new List<Email>{new Email(input.toAddress[i], input.toName[i])};
 			personalization.dynamic_template_data = new Map<String, Object>(dynamicTemplateData);
 			personalization.dynamic_template_data.put('fullName', input.toName[i]);
+			personalization.dynamic_template_data.put('subject', input.subject);
+			personalization.dynamic_template_data.put('attribution', input.attribution);
 			personalizations.add(personalization);
 		}
 		if (input.greetingName != null) {
@@ -236,6 +269,7 @@ public without sharing class SendGridEmail {
 		private Email reply_to;
 		private List<Attachment> attachments;
 		private List<Personalization> personalizations;
+		private String attribution;
 	}
 
 	private class Attachment {
@@ -249,7 +283,6 @@ public without sharing class SendGridEmail {
 	private class Personalization {
 		private List<Email> to;
 		private Map<String, Object> dynamic_template_data;
-		private String subject;
 	}
 
 	private class Email {
@@ -260,5 +293,55 @@ public without sharing class SendGridEmail {
 			this.email = email;
 			this.name = name;
 		}
+	}
+
+	private static void createHubSpotEvent(Input input) {
+		if (input.eventType == null || input.accountId == null) {
+			return;
+		}
+
+		HubSpotEvent__c hubspotEvent = new HubSpotEvent__c();
+		hubspotEvent.EventType__c = input.eventType;
+		hubspotEvent.AccountId__c = input.accountId;
+		hubspotEvent.GreetingName__c = (input.greetingName == null || input.greetingName.isEmpty()) ? '' : String.join(input.greetingName, ', ');
+		hubspotEvent.ToAddress__c = String.join(input.toAddress, ', ');
+		hubspotEvent.ToName__c = String.join(input.toName, ', ');
+		hubspotEvent.Value01__c = input.var01;
+		hubspotEvent.Value02__c = input.var02;
+		hubspotEvent.Value03__c = input.var03;
+		hubspotEvent.Value04__c = input.var04;
+		hubspotEvent.Value05__c = input.var05;
+
+		Database.SaveResult result = Database.insert(hubSpotEvent, false);
+		LogRegister.createLogsUpsert(new List<Database.SaveResult>{result}, new List<HubSpotEvent__c>{hubspotEvent}, 'Create HubSpotEvent', 'Insert', 'HubSpotEvent__c', null);
+
+		if (!input.collection.isEmpty()) {
+			List<HubSpotEventLine__c> hubSpotEventLines = new List<HubSpotEventLine__c>();
+			sObject sObj = input.collection[0];
+			if (String.valueOf(sObj.Id.getSObjectType()) == 'CollectionAggregator__c') {
+				for (sObject record : input.collection) {
+					hubSpotEventLines.add(createAggregatorLine((CollectionAggregator__c)record, hubSpotEvent.Id));
+				}
+			}
+
+			Database.SaveResult[] results = Database.insert(hubSpotEventLines, false);
+			LogRegister.createLogsUpsert(results, hubSpotEventLines, 'Create HubSpotEventLines', 'Insert', 'HubSpotEventLine__c', 'Event__c');
+		}
+	}
+
+	private static HubSpotEventLine__c createAggregatorLine(CollectionAggregator__c collectionAggregator, Id hubSpotEventId) {
+		HubSpotEventLine__c hubSpotEventLine = new HubSpotEventLine__c();
+		hubSpotEventLine.ObjectType__c = 'Collection Aggregator';
+		hubSpotEventLine.Event__c = hubSpotEventId;
+		hubSpotEventLine.Value01__c = collectionAggregator.SupplierProductName__c;
+		hubSpotEventLine.Value02__c = collectionAggregator.Monday__c;
+		hubSpotEventLine.Value03__c = collectionAggregator.Tuesday__c;
+		hubSpotEventLine.Value04__c = collectionAggregator.Wednesday__c;
+		hubSpotEventLine.Value05__c = collectionAggregator.Thursday__c;
+		hubSpotEventLine.Value06__c = collectionAggregator.Friday__c;
+		hubSpotEventLine.Value07__c = collectionAggregator.Saturday__c;
+		hubSpotEventLine.Value08__c = collectionAggregator.Sunday__c;
+
+		return hubSpotEventLine;
 	}
 }

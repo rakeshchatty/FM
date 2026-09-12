@@ -1,5 +1,0 @@
-<design:component label="Multiple Invoices Component" >
-   <design:attribute name="availableInvoices" label="Available Invoices" />
-   <design:attribute name="selectedInvoices" label="Invoices to be Payed" />
-   <design:attribute name="paymentAmount" label="Payment Amount" />
-</design:component>

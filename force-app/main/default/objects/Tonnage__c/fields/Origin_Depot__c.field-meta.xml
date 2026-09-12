@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Origin_Depot__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The depot the waste came from. Primarily used to separate bike tonnage from Camley and Hoxton.</description>
+    <inlineHelpText>The depot the waste came from. Primarily used to separate bike tonnage from Camley and Hoxton.</inlineHelpText>
+    <label>Origin Depot</label>
+    <referenceTo>Depot__c</referenceTo>
+    <relationshipLabel>Tonnages</relationshipLabel>
+    <relationshipName>Tonnages</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

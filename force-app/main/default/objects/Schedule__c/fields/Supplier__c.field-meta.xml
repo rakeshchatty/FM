@@ -3,6 +3,16 @@
     <fullName>Supplier__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
     <label>Supplier</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Please select an Active Supplier.</errorMessage>
+        <filterItems>
+            <field>Suppliers__c.Supplier_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Suppliers__c</referenceTo>
     <relationshipLabel>Collections</relationshipLabel>
     <relationshipName>Collections</relationshipName>

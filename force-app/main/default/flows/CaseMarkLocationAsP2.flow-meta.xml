@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Count</name>
         <label>Count</label>
@@ -97,6 +98,13 @@
                 <stringValue>Missed Collection</stringValue>
             </value>
         </filters>
+        <filters>
+            <field>Sub_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Subcontractor Missed Collection</stringValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Case</object>
         <queriedFields>Id</queriedFields>
@@ -132,8 +140,8 @@
         <filterFormula>AND(
     {!$Record.RecordTypeId} = &apos;012w0000000V9gvAAC&apos;, 
     NOT(ISBLANK({!$Record.Location__c})), 
-    NOT({!$Record.Location__r.SetPriorityManually__c})
-)</filterFormula>
+    NOT({!$Record.Location__r.SetPriorityManually__c}),
+    NOT(ISPICKVAL({!$Record.Sub_Type__c}, &apos;Subcontractor Missed Collection&apos;)))</filterFormula>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

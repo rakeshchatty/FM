@@ -3,6 +3,7 @@
     <fullName>One_Off__c</fullName>
     <defaultValue>false</defaultValue>
     <label>One-Off</label>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

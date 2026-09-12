@@ -50,9 +50,8 @@ public class InvoiceClosureSchedularTest {
 		Invoice_Header__c periodicInvoice = [SELECT Status__c FROM Invoice_Header__c WHERE Name = 'Periodic Invoice'];
 		System.assertEquals(periodicInvoice.Status__c, Invoicing.STATUS_OPEN, 'Invoice must be open before batch execution' );
 
-		InvoiceClosureScheduler invoiceClosureSch = new InvoiceClosureScheduler(System.today() - 1);
 		Test.startTest();
-		invoiceClosureSch.execute(null);
+		new InvoiceClosureScheduler().execute(null);
 		Test.stopTest();
 
 		periodicInvoice = [SELECT Status__c FROM Invoice_Header__c WHERE Name = 'Periodic Invoice'];

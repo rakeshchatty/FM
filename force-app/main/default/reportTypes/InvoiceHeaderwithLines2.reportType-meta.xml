@@ -285,6 +285,26 @@
             <field>of_Total_Outstanding__c</field>
             <table>Invoice_Header__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location__c.Account_ManagerLocation__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Location__c.Account_Manager__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Credit_Note_Reason__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Allocation_rollup__c</field>
+            <table>Invoice_Header__c</table>
+        </columns>
         <masterLabel>Invoice_Headers</masterLabel>
     </sections>
     <sections>
@@ -1856,6 +1876,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Order_Product__c.Total_KG__c</field>
+            <table>Invoice_Header__c.Invoice_Lines__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>NominalCode__c</field>
             <table>Invoice_Header__c.Invoice_Lines__r</table>
         </columns>
         <masterLabel>Invoice_Lines</masterLabel>

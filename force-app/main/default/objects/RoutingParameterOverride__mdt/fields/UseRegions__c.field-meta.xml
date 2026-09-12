@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UseRegions__c</fullName>
+    <description>When enabled, we will use the values defined in the Service Location Region attribute, where regions can be divided into multiple routes, but routes cannot cross into (or pull from) other regions when balancing service locations. Ex: Set this property and updated Region with Postal Code to prevent SL records from more than one Postal Code to be assigned to the same route.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Use Regions</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>true</fullName>
+                <default>false</default>
+                <label>true</label>
+            </value>
+            <value>
+                <fullName>false</fullName>
+                <default>false</default>
+                <label>false</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

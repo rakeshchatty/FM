@@ -3,8 +3,8 @@
     <fullName>StartTime__c</fullName>
     <externalId>false</externalId>
     <label>Start Time</label>
-    <length>30</length>
-    <required>false</required>
+    <length>5</length>
+    <required>true</required>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>

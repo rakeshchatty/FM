@@ -3,7 +3,7 @@
     <fullName>Count_of_Opens__c</fullName>
     <externalId>false</externalId>
     <label>Count of Opens</label>
-    <precision>3</precision>
+    <precision>6</precision>
     <required>false</required>
     <scale>0</scale>
     <trackTrending>false</trackTrending>

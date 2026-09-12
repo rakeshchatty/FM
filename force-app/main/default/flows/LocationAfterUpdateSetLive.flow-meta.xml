@@ -3,7 +3,7 @@
     <actionCalls>
         <name>DoesParentAndPartnershipHaveLiveLocations</name>
         <label>Live Locations On Parent &amp; Partnership?</label>
-        <locationX>226</locationX>
+        <locationX>281</locationX>
         <locationY>1031</locationY>
         <actionName>LiveLocations</actionName>
         <actionType>apex</actionType>
@@ -30,6 +30,7 @@
             </value>
         </inputParameters>
         <nameSegment>LiveLocations</nameSegment>
+        <offset>0</offset>
         <outputParameters>
             <assignToReference>DoesParentHaveLiveLocations</assignToReference>
             <name>doesParentHaveLiveLocations</name>
@@ -40,10 +41,27 @@
         </outputParameters>
     </actionCalls>
     <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>RemoveParent</name>
+        <label>Remove Parent</label>
+        <locationX>72</locationX>
+        <locationY>1871</locationY>
+        <assignmentItems>
+            <assignToReference>Accounts</assignToReference>
+            <operator>RemoveAll</operator>
+            <value>
+                <elementReference>Parent</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>UpdateAccount</targetReference>
+        </connector>
+    </assignments>
     <assignments>
         <name>SetLocationFields</name>
         <label>Location Fields</label>
-        <locationX>94</locationX>
+        <locationX>149</locationX>
         <locationY>839</locationY>
         <assignmentItems>
             <assignToReference>$Record.Enqix_Date_Made_Live__c</assignToReference>
@@ -102,7 +120,7 @@
     <assignments>
         <name>SetParentLive</name>
         <label>Parent Live</label>
-        <locationX>314</locationX>
+        <locationX>369</locationX>
         <locationY>1247</locationY>
         <assignmentItems>
             <assignToReference>Parent.Id</assignToReference>
@@ -147,7 +165,7 @@
     <assignments>
         <name>SetPartnerLive</name>
         <label>Partner live</label>
-        <locationX>138</locationX>
+        <locationX>204</locationX>
         <locationY>1655</locationY>
         <assignmentItems>
             <assignToReference>Partner.Id</assignToReference>
@@ -193,13 +211,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>UpdateAccount</targetReference>
+            <targetReference>IsParentAndPartnerTheSameAccount</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>IsBid</name>
         <label>Bid?</label>
-        <locationX>226</locationX>
+        <locationX>281</locationX>
         <locationY>323</locationY>
         <defaultConnector>
             <targetReference>IsLocationBecomingLive</targetReference>
@@ -224,7 +242,7 @@
     <decisions>
         <name>IsLocationBecomingLive</name>
         <label>Location Becoming Live?</label>
-        <locationX>226</locationX>
+        <locationX>281</locationX>
         <locationY>623</locationY>
         <defaultConnector>
             <targetReference>DoesParentAndPartnershipHaveLiveLocations</targetReference>
@@ -247,9 +265,41 @@
         </rules>
     </decisions>
     <decisions>
+        <name>IsParentAndPartnerTheSameAccount</name>
+        <label>Parent and Partner the same account?</label>
+        <locationX>204</locationX>
+        <locationY>1763</locationY>
+        <defaultConnector>
+            <targetReference>UpdateAccount</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Parent.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Partner.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Accounts</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>Parent</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>RemoveParent</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>IsPartnershipAvailable</name>
         <label>Partnership Available?</label>
-        <locationX>226</locationX>
+        <locationX>281</locationX>
         <locationY>1439</locationY>
         <defaultConnector>
             <targetReference>UpdateAccount</targetReference>
@@ -274,7 +324,7 @@
     <decisions>
         <name>ParentHaveLiveLocations</name>
         <label>Parent Have Live Locations</label>
-        <locationX>226</locationX>
+        <locationX>281</locationX>
         <locationY>1139</locationY>
         <defaultConnector>
             <targetReference>SetParentLive</targetReference>
@@ -356,7 +406,7 @@
     <recordLookups>
         <name>GetPartnerDiscount</name>
         <label>Partner Discount</label>
-        <locationX>94</locationX>
+        <locationX>149</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -378,7 +428,7 @@
     <recordLookups>
         <name>GetRecordType</name>
         <label>Record Type</label>
-        <locationX>94</locationX>
+        <locationX>149</locationX>
         <locationY>731</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -408,12 +458,12 @@
     <recordUpdates>
         <name>UpdateAccount</name>
         <label>Account</label>
-        <locationX>226</locationX>
-        <locationY>1931</locationY>
+        <locationX>281</locationX>
+        <locationY>2231</locationY>
         <inputReference>Accounts</inputReference>
     </recordUpdates>
     <start>
-        <locationX>100</locationX>
+        <locationX>155</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>IsBid</targetReference>

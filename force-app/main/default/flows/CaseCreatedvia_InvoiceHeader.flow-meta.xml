@@ -24,6 +24,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <choices>
         <name>CreditNote</name>
         <choiceText>Credit Note</choiceText>
@@ -1250,6 +1251,14 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1290,6 +1299,14 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1330,6 +1347,14 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1349,6 +1374,14 @@
             <name>RecentCases</name>
             <fieldText>&lt;p&gt;This customer has an open Case.  Select one to chase. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Casetochase</name>
@@ -1357,6 +1390,14 @@
             <fieldText>Open Cases</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>ViewCaseDetails</name>
@@ -1364,6 +1405,14 @@
             <fieldText>View Case Details</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ViewCaseDetails}=TRUE, 1, 0)+
@@ -1377,6 +1426,14 @@ IF({!CreateANewCase}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Chase Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ViewCaseDetails}=TRUE, 1, 0)+
@@ -1390,6 +1447,14 @@ IF({!CreateANewCase}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Create a new Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ViewCaseDetails}=TRUE, 1, 0)+
@@ -1415,6 +1480,14 @@ IF({!CreateANewCase}=TRUE, 1, 0)=1</formulaExpression>
             <name>RecentCases_0</name>
             <fieldText>&lt;p&gt;This customer has recently closed Cases or open credit notes. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>ChoseClosedCase</name>
@@ -1423,6 +1496,14 @@ IF({!CreateANewCase}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Closed Cases</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Credit_Note_Cases</name>
@@ -1431,6 +1512,14 @@ IF({!CreateANewCase}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Credit Note Cases</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>ViewRecentlyClosedCase</name>
@@ -1438,6 +1527,14 @@ IF({!CreateANewCase}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>View Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ViewRecentlyClosedCase}=TRUE, 1, 0)+
@@ -1450,6 +1547,14 @@ IF({!Create_a_new_Case_from_Closed_Cases}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Create a new Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ViewRecentlyClosedCase}=TRUE, 1, 0)+
@@ -1474,6 +1579,14 @@ IF({!Create_a_new_Case_from_Closed_Cases}=TRUE, 1, 0)=1</formulaExpression>
             <name>RecentCases_0_0</name>
             <fieldText>&lt;p&gt;Case Number:&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!ChaseCaseRecord.CaseNumber}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Case Owner: {!ChaseCaseRecord.Owner:User.FirstName} {!ChaseCaseRecord.Owner:User.LastName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Case Opened:  {!ChaseCaseRecord.CreatedDate}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Requested Resolution Date:  {!ChaseCaseRecord.Requested_Resolution_Date__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Details:  {!ChaseCaseRecord.Description}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>ChaseCaseSecondScreen</name>
@@ -1481,6 +1594,14 @@ IF({!Create_a_new_Case_from_Closed_Cases}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Chase Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ChaseCaseSecondScreen}=TRUE, 1, 0)+
@@ -1494,6 +1615,14 @@ IF({!Close_screen_with_no_action}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Create A New Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ChaseCaseSecondScreen}=TRUE, 1, 0)+
@@ -1507,6 +1636,14 @@ IF({!Close_screen_with_no_action}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Close screen with no action</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ChaseCaseSecondScreen}=TRUE, 1, 0)+
@@ -1518,6 +1655,14 @@ IF({!Close_screen_with_no_action}=TRUE, 1, 0)=1</formulaExpression>
             <name>GoBack</name>
             <fieldText>&lt;p&gt;To select a different Case press the &quot;Previous&quot; button.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1537,6 +1682,14 @@ IF({!Close_screen_with_no_action}=TRUE, 1, 0)=1</formulaExpression>
             <name>ViewClosedCaseScreen</name>
             <fieldText>&lt;p&gt;Case Number:  {!GetClosedCase.CaseNumber}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Case Owner:  {!GetClosedCase.Owner:User.FirstName} {!GetClosedCase.Owner:User.LastName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Case Opened:  {!GetClosedCase.CreatedDate}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Case Closed:  {!GetClosedCase.ClosedDate}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Details:  {!GetClosedCase.Description}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CreateNewCaseFromClosedCase1</name>
@@ -1544,6 +1697,14 @@ IF({!Close_screen_with_no_action}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Create a new Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!CreateNewCaseFromClosedCase1}=TRUE, 1, 0)+
@@ -1556,6 +1717,14 @@ IF({!Close_screen_with_no_action_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Close screen with no action</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!CreateNewCaseFromClosedCase1}=TRUE, 1, 0)+
@@ -1566,6 +1735,14 @@ IF({!Close_screen_with_no_action_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>GoBack_0</name>
             <fieldText>&lt;p&gt;To select a different Case press the &quot;Previous&quot; button.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1585,6 +1762,14 @@ IF({!Close_screen_with_no_action_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>ViewClosedCaseScreen_0</name>
             <fieldText>&lt;p&gt;Case Number:  {!GetCreditNoteCase.CaseNumber}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Case Owner:  &lt;/span&gt;&lt;/p&gt;&lt;p&gt;{!GetCreditNoteCase.Owner:User.FirstName} {!GetCreditNoteCase.Owner:User.LastName}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Case Opened:  {!GetCreditNoteCase.CreatedDate}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Case Closed:  {!GetCreditNoteCase.ClosedDate}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Details:  {!GetCreditNoteCase.Description}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CreateNewCaseFromClosedCase1_0</name>
@@ -1592,6 +1777,14 @@ IF({!Close_screen_with_no_action_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Create a new Case</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!Close_screen_with_no_action_0_0}=TRUE, 1, 0)+
@@ -1604,6 +1797,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Close screen with no action</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;You can only select one option&lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!Close_screen_with_no_action_0_0}=TRUE, 1, 0)+
@@ -1614,6 +1815,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>GoBack_0_0</name>
             <fieldText>&lt;p&gt;To select a different Case press the &quot;Previous&quot; button.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1633,6 +1842,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>NoCasesFoundScreen</name>
             <fieldText>&lt;p&gt;No Cases have been found, use the form below to create a new Case. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Case_Subject</name>
@@ -1640,12 +1857,28 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Case Subject</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Casedescription</name>
             <fieldText>Case Description</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Priority_Level</name>
@@ -1657,6 +1890,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Priority Level</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Requested_Resolution_Date</name>
@@ -1667,6 +1908,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Requested Resolution Date</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CaseSubType</name>
@@ -1678,6 +1927,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Sub Type</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Add_attachment</name>
@@ -1685,6 +1942,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Add attachment?</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1706,12 +1971,28 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Case Subject</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CaseDescriptionClosedCase</name>
             <fieldText>Case Description</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>PriorityLevelClosedCase</name>
@@ -1723,6 +2004,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Priority Level</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>RequestedResolutionDateClosedCase</name>
@@ -1733,6 +2022,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Requested Resolution Date</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CaseSubTypeClosedCase</name>
@@ -1744,6 +2041,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Sub Type</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>AddAttachmentClosedCase</name>
@@ -1751,6 +2056,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Add attachment?</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1772,12 +2085,28 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Case Subject</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CaseDescriptionOpenCase</name>
             <fieldText>Case Description</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>PriorityLevelOpenCase</name>
@@ -1789,6 +2118,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Priority Level</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>RequestedResolutionDateOpenCase</name>
@@ -1799,6 +2136,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Requested Resolution Date</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>CaseSubTypeOpenCase</name>
@@ -1810,6 +2155,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Sub Type</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>AddAttachmentOpenCase</name>
@@ -1817,6 +2170,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <fieldText>Add attachment?</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1833,6 +2194,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>OneOptionOnly</name>
             <fieldText>&lt;p&gt;You can only select one option, either view a recently closed case or a credit note case.  &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please go back and select one option. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1849,6 +2218,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>CaseCreated</name>
             <fieldText>&lt;p&gt;Your Case has been created, number &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!GetCaseDetails.CaseNumber}. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;/{!GetCaseDetails.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Click to view the Case.&lt;/a&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1865,6 +2242,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>CaseCreated_0</name>
             <fieldText>&lt;p&gt;Your Case has been created. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1881,6 +2266,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>CaseCreated_0_0</name>
             <fieldText>&lt;p&gt;Your Case has been created. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1897,6 +2290,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>ClosedNoAction</name>
             <fieldText>&lt;p&gt;Please close this screen, no actions have been completed. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1913,6 +2314,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>ClosedNoAction_0</name>
             <fieldText>&lt;p&gt;Please close this screen, no actions have been completed. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1929,6 +2338,14 @@ IF({!CreateNewCaseFromClosedCase1_0}=TRUE, 1, 0)=1</formulaExpression>
             <name>ClosedNoAction_0_0</name>
             <fieldText>&lt;p&gt;Please close this screen, no actions have been completed. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>

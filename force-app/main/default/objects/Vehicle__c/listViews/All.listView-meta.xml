@@ -11,13 +11,14 @@
     <columns>Active__c</columns>
     <columns>Notes__c</columns>
     <columns>Used_Today__c</columns>
-    <columns>Issue__c</columns>
+    <columns>Hired__c</columns>
     <columns>Garage__c</columns>
+    <columns>Issue__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Bin_Weighing__c</field>
+        <field>Body__c</field>
         <operation>equals</operation>
-        <value>1</value>
+        <value>,Compactor,Vehicle Cage,Bike Cage</value>
     </filters>
     <label>All</label>
 </ListView>

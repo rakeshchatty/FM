@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictSuspentionDateWithInSuspension</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISCHANGED(SuspensionDate__c), SuspensionDate__c &lt;= TODAY(), ReactivationDate__c &gt;= TODAY())</errorConditionFormula>
+    <errorDisplayField>SuspensionDate__c</errorDisplayField>
+    <errorMessage>Suspension date cannot be changed while in suspension period.</errorMessage>
+</ValidationRule>

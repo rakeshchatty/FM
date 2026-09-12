@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetSupplierFields</name>
         <label>Supplier Fields</label>
@@ -72,7 +73,7 @@
 NOT((ISBLANK({!$Record.Supplier__c}))),
 NOT(CONTAINS({!$Record.Supplier__r.Name}, &quot;First Mile&quot;)),
 ISBLANK({!$Record.Collection_Waypoint__c}),
-ISBLANK({!$Record.Order.RecurringId__c}),
+OR(ISBLANK({!$Record.Order.RecurringId__c}), {!$Record.Supplier__r.IsExternal__c}),
 {!$Record.Quantity} &gt; 0)</filterFormula>
         <object>OrderItem</object>
         <recordTriggerType>Create</recordTriggerType>

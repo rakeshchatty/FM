@@ -25,13 +25,17 @@ public without sharing class OrderUtil {
 		}
 
 		if (isAdvanceBinOrder(order)) {
-			return Invoicing.FREQUENCY_QUARTERLY_ADVANCE;
+			return Invoicing.FREQUENCY_ADVANCE;
 		}
 
 		String locationFrequency = order.Account.EffectiveInvoiceFrequency__c;
 		if (locationFrequency == Invoicing.FREQUENCY_MONTHLY_SCHEDULED || locationFrequency == Invoicing.FREQUENCY_MONTHLY_SEPARATED) {
 			return isScheduled(order) ? Invoicing.FREQUENCY_MONTHLY_SCHEDULED :
 				locationFrequency == Invoicing.FREQUENCY_MONTHLY_SCHEDULED ? Invoicing.FREQUENCY_IMMEDIATE : Invoicing.FREQUENCY_MONTHLY;
+		}
+
+		if (locationFrequency == Invoicing.FREQUENCY_MONTHLY_BY_LOCATION) {
+			return Invoicing.FREQUENCY_MONTHLY;
 		}
 
 		return locationFrequency;
@@ -50,46 +54,57 @@ public without sharing class OrderUtil {
 	}
 
 	public static Boolean isAdvanceBinOrder(Order order) {
-		return isBin(order) && order.Account.Parent.IsBinCollectionAdvanceInvoiced__c;
+		return order.IsAdvance__c && isBin(order);
 	}
 
 	public static Boolean isFrequencyOverridden(Order order) {
-		return !isAdvanceBinOrder(order) && AccountUtil.isFrequencyOverridden(order.Account);
+		return !isAdvanceBinOrder(order) && (AccountUtil.isFrequencyOverridden(order.Account) || order.Account.EffectiveInvoiceFrequency__c == Invoicing.FREQUENCY_MONTHLY_BY_LOCATION);
 	}
 
-	public static Order createOrder(Schedule__c schedule) {
-		return createOrder(schedule.Location__c, schedule.Supplier__r, System.today(), schedule.Po_Number__c);
+	public static Order createOrder(Schedule__c schedule, Date periodStart) {
+		return createOrder(schedule.Location__c, schedule.Supplier__r, periodStart, schedule.Po_Number__c, schedule.Po_Number_Supplier__c);
+	}
+
+	public static Order createOrder(Id locationId, Suppliers__c supplier, Date periodStart) {
+		return createOrder(locationId, supplier, periodStart, null, null);
 	}
 
 	public static Order createOrder(Collection_Waypoints__c collectionWaypoint) {
-		return createOrder(collectionWaypoint.Location__c, collectionWaypoint.Supplier__r, collectionWaypoint.Daily_Dispatch__r.CreatedDate.date(), collectionWaypoint.Collection_Schedule__r.Po_Number__c);
+		return createOrder(collectionWaypoint.Location__c, collectionWaypoint.Supplier__r, collectionWaypoint.Daily_Dispatch__r.CreatedDate.date(), collectionWaypoint.Collection_Schedule__r.Po_Number__c, collectionWaypoint.Collection_Schedule__r.Po_Number_Supplier__c);
 	}
 
-	private static Order createOrder(Id locationId, Suppliers__c supplier, Date deliveryDate, String poNumber) {
+	private static Order createOrder(Id locationId, Suppliers__c supplier, Date deliveryDate, String poNumber, String supplierPoNumber) {
 		String supplierStatus = (String.isBlank(supplier?.Name) || supplier?.Name == 'First Mile Ltd') ? '' : 'Accepted';
 		return new Order(AccountId = locationId, Supplier__c = supplier?.Id, Supplier_Status__c = supplierStatus,
 						EffectiveDate = deliveryDate, Requested_Delivery_Date__c = deliveryDate,
 						Status = 'Draft', IsBinCollection__c = true, ConfirmationEmailStatus__c = 'Do Not Send',
-						PO_Number__c = String.isNotBlank(poNumber) ? poNumber : null);
+						PO_from_Supplier__c = String.isNotBlank(supplierPoNumber) ? supplierPoNumber : null, PO_Number__c = String.isNotBlank(poNumber) ? poNumber : null);
 	}
 
-	public static OrderItem createOrderItem(Order order, Schedule__c schedule, Decimal quantity, Account_Discount__c discount) {
-		return createOrderItem(order.Id, schedule.Supplier_Product__r.Product__c, schedule.Location__r.Price_Book__c,
-			schedule.Supplier__c, quantity, schedule.Enqix_Price__c,
-			schedule.Discount_Type__c, discount);
-	}
-
-	public static OrderItem createOrderItem(Order order, Collection_Waypoints__c collectionWaypoint) {
-		OrderItem orderItem = createOrderItem(order.Id, collectionWaypoint.Supplier_Product__r.Product__c, collectionWaypoint.Location__r.Price_Book__c,
-			collectionWaypoint.Supplier__c, collectionWaypoint.Collection_Quantity__c, collectionWaypoint.Manual_Price__c,
-			collectionWaypoint.Discount_Type__c, collectionWaypoint.Account_Discount__r);
-		orderItem.Collection_Waypoint__c = collectionWaypoint.Id;
+	public static OrderItem createOrderItem(Order order, Schedule__c schedule, Account_Discount__c discount, Date collectionDate) {
+		OrderItem orderItem = createOrderItem(order.Id, schedule.Supplier_Product__r.Product__c, schedule.Collection_Quantity__c,
+			schedule.Location__r.Price_Book__c, schedule.Enqix_Price__c, schedule.Discount_Type__c, discount, schedule.Supplier__c);
+		orderItem.CollectionDate__c = collectionDate;
+		orderItem.Supplier_Unit_Price__c = schedule.SupplierUnitPrice__c;
 		return orderItem;
 	}
 
-	private static OrderItem createOrderItem(Id orderId, Id productId, Id pricebookId, Id supplierId, Decimal quantity, Decimal listPrice, String discountType, Account_Discount__c discount) {
+	public static OrderItem createOrderItem(Order order, Collection_Waypoints__c collectionWaypoint) {
+		OrderItem orderItem = createOrderItem(order.Id, collectionWaypoint.Supplier_Product__r.Product__c, collectionWaypoint.Collection_Quantity__c,
+			collectionWaypoint.Location__r.Price_Book__c, collectionWaypoint.Manual_Price__c, collectionWaypoint.Discount_Type__c, collectionWaypoint.Account_Discount__r, collectionWaypoint.Supplier__c);
+		orderItem.Collection_Waypoint__c = collectionWaypoint.Id;
+		orderItem.CollectionDate__c = collectionWaypoint.CreatedDate.date();
+		orderItem.Supplier_Unit_Price__c = collectionWaypoint.SupplierUnitPrice__c;
+		return orderItem;
+	}
+
+	public static OrderItem createOrderItem(Id orderId, Id productId, Decimal quantity, Id pricebookId) {
+		return createOrderItem(orderId, productId, quantity, pricebookId, null, null, null, null);
+	}
+
+	public static OrderItem createOrderItem(Id orderId, Id productId, Decimal quantity, Id pricebookId, Decimal listPrice, String discountType, Account_Discount__c discount, Id supplierId) {
 		OrderItem orderItem = new OrderItem(OrderId = orderId, Product2Id = productId, Price_Book__c = pricebookId, Supplier__c = supplierId,
-					Quantity = quantity, Discount_to_Apply__c = 'Account');
+					Quantity = quantity, Discount_to_Apply__c = discountType);
 
 		if (listPrice != null) {
 			orderItem.ListPrice__c = listPrice;

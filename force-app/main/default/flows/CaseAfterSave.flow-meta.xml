@@ -4,7 +4,7 @@
         <name>AM_Chatter</name>
         <label>AM Chatter</label>
         <locationX>94</locationX>
-        <locationY>755</locationY>
+        <locationY>1055</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -24,13 +24,14 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
         <name>CaseEscalationEmail</name>
         <label>EscalationEmail</label>
         <locationX>226</locationX>
-        <locationY>431</locationY>
+        <locationY>731</locationY>
         <actionName>Case.Escalation</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -44,12 +45,33 @@
             </value>
         </inputParameters>
         <nameSegment>Case.Escalation</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>CreateAdditionalWaypoint</name>
+        <label>Create Additional Waypoint</label>
+        <locationX>248</locationX>
+        <locationY>2339</locationY>
+        <actionName>CreateWaypointFromCase</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>IsDriverDispatched</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>caseIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CreateWaypointFromCase</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>DriverDispatched</name>
         <label>Post: Driver Dispatched</label>
         <locationX>248</locationX>
-        <locationY>2339</locationY>
+        <locationY>2639</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -66,13 +88,14 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
         <name>ExtraJobToBeCollected</name>
         <label>Post: Extra Job To Be Collected</label>
         <locationX>248</locationX>
-        <locationY>1739</locationY>
+        <locationY>2039</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -92,14 +115,16 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetOnPriorityFalse</name>
         <label>On Priority</label>
         <locationX>314</locationX>
-        <locationY>1247</locationY>
+        <locationY>1547</locationY>
         <assignmentItems>
             <assignToReference>AccountPriority</assignToReference>
             <operator>Assign</operator>
@@ -115,7 +140,7 @@
         <name>SetOnPriorityTrue</name>
         <label>On Priority</label>
         <locationX>50</locationX>
-        <locationY>1247</locationY>
+        <locationY>1547</locationY>
         <assignmentItems>
             <assignToReference>AccountPriority</assignToReference>
             <operator>Assign</operator>
@@ -131,7 +156,7 @@
         <name>Account_Managed</name>
         <label>Account Managed?</label>
         <locationX>226</locationX>
-        <locationY>539</locationY>
+        <locationY>839</locationY>
         <defaultConnector>
             <targetReference>WhatType</targetReference>
         </defaultConnector>
@@ -153,10 +178,35 @@
         </rules>
     </decisions>
     <decisions>
+        <name>High_Priority</name>
+        <label>Escalation?</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>WhatPriority</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not High Priority</defaultConnectorLabel>
+        <rules>
+            <name>Escalation_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.QueueName__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalation Queue</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Put_On_Escalation</targetReference>
+            </connector>
+            <label>Escalation Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>IsClosed</name>
         <label>IsClosed?</label>
         <locationX>182</locationX>
-        <locationY>1139</locationY>
+        <locationY>1439</locationY>
         <defaultConnector>
             <targetReference>SetOnPriorityFalse</targetReference>
         </defaultConnector>
@@ -181,7 +231,7 @@
         <name>IsDailyDispatchAssignedToExtraJob</name>
         <label>Daily Dispatch Assigned To Extra Job?</label>
         <locationX>380</locationX>
-        <locationY>1931</locationY>
+        <locationY>2231</locationY>
         <defaultConnector>
             <targetReference>IsDriverDispatched</targetReference>
         </defaultConnector>
@@ -203,10 +253,16 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Round_Dispatched__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>CreateCollectionWaypoints</targetReference>
+                <targetReference>CreateAdditionalWaypoint</targetReference>
             </connector>
-            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>Yes</label>
         </rules>
     </decisions>
@@ -214,7 +270,7 @@
         <name>IsDriverDispatched</name>
         <label>Driver Dispatched?</label>
         <locationX>380</locationX>
-        <locationY>2231</locationY>
+        <locationY>2531</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesDriverDispatched</name>
@@ -251,7 +307,7 @@
         <name>IsExtraJobToBeCollected</name>
         <label>Extra Job To Be Collected?</label>
         <locationX>380</locationX>
-        <locationY>1631</locationY>
+        <locationY>1931</locationY>
         <defaultConnector>
             <targetReference>IsDailyDispatchAssignedToExtraJob</targetReference>
         </defaultConnector>
@@ -291,7 +347,7 @@
         <name>WhatPriority</name>
         <label>Priority?</label>
         <locationX>380</locationX>
-        <locationY>323</locationY>
+        <locationY>623</locationY>
         <defaultConnector>
             <targetReference>WhatType</targetReference>
         </defaultConnector>
@@ -331,7 +387,7 @@
         <name>WhatType</name>
         <label>Type?</label>
         <locationX>380</locationX>
-        <locationY>1031</locationY>
+        <locationY>1331</locationY>
         <defaultConnector>
             <targetReference>IsExtraJobToBeCollected</targetReference>
         </defaultConnector>
@@ -385,7 +441,7 @@
         <name>Get_AM</name>
         <label>Get AM</label>
         <locationX>94</locationX>
-        <locationY>647</locationY>
+        <locationY>947</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AM_Chatter</targetReference>
@@ -404,10 +460,26 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Put_On_Escalation</name>
+        <label>Put On Escalation</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>WhatPriority</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>Escalation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>UpdateAccount</name>
         <label>Account</label>
         <locationX>182</locationX>
-        <locationY>1439</locationY>
+        <locationY>1739</locationY>
         <connector>
             <targetReference>IsExtraJobToBeCollected</targetReference>
         </connector>
@@ -438,29 +510,13 @@
         <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>WhatPriority</targetReference>
+            <targetReference>High_Priority</targetReference>
         </connector>
         <object>Case</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <subflows>
-        <name>CreateCollectionWaypoints</name>
-        <label>Create Collection Waypoints</label>
-        <locationX>248</locationX>
-        <locationY>2039</locationY>
-        <connector>
-            <targetReference>IsDriverDispatched</targetReference>
-        </connector>
-        <flowName>CreateCollectionWaypointsFromCase</flowName>
-        <inputAssignments>
-            <name>Case</name>
-            <value>
-                <elementReference>$Record</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
     <textTemplates>
         <name>ChatterPost</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>

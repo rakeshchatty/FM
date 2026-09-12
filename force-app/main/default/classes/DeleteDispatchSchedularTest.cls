@@ -7,17 +7,25 @@ private class DeleteDispatchSchedularTest {
 		Account location = TestDataHelper.insertLocation(parent.Id, null);
 		Round__c round = TestDataHelper.insertRound();
 
-		DailyDispatch__c dispatch = new DailyDispatch__c(RoundId__c = round.Id, Name = round.Name);
-		INSERT dispatch;
-		Test.setCreatedDate(dispatch.Id, Datetime.now().addDays(-35));
+		DailyDispatch__c dispatch = TestDataHelper.insertDispatch(round);
+		Test.setCreatedDate(dispatch.Id, Datetime.now().addDays(-95));
 
-		DispatchLocation__c dispatchLocation = new DispatchLocation__c(Dispatch__c = dispatch.Id, Location__c = location.Id);
-		INSERT dispatchLocation;
-		Test.setCreatedDate(dispatchLocation.Id, Datetime.now().addDays(-35));
+		DispatchLocation__c dispatchLocation = TestDataHelper.insertDispatchLocation(dispatch, location);
+		Test.setCreatedDate(dispatchLocation.Id, Datetime.now().addDays(-95));
+
+		Suppliers__c supplier = TestDataHelper.insertSupplierFirstMile();
+		Product2 product = TestDataHelper.insertProduct('Test Product 01', 'TP001', 'Collection');
+		Supplier_Product__c supplierProduct = TestDataHelper.insertSupplierProduct(supplier, product);
+
+		Schedule__c schedule = TestDataHelper.createSchedule(location, round, supplier, supplierProduct, '10:00');
+		schedule.Start_Date__c = Date.today().addDays(-105);
+		schedule.End_Date__c = Date.today().addDays(-95);
+		INSERT schedule;
+		Test.setCreatedDate(schedule.Id, Datetime.now().addDays(-95));
 
 		Collection_Waypoints__c waypoint = new Collection_Waypoints__c(Location__c = location.Id);
 		INSERT waypoint;
-		Test.setCreatedDate(waypoint.Id, Datetime.now().addDays(-35));
+		Test.setCreatedDate(waypoint.Id, Datetime.now().addDays(-95));
 	}
 
 	@isTest

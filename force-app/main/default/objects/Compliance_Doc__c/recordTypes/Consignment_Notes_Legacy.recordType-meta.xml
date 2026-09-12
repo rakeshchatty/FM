@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consignment_Notes_Legacy</fullName>
+    <active>true</active>
+    <label>Consignment Notes (Legacy)</label>
+    <picklistValues>
+        <picklist>EWC_Categories__c</picklist>
+        <values>
+            <fullName>Cardboard Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dry Mixed Recycling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kitchen and canteen food waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mixed commercial waste</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Confirmed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

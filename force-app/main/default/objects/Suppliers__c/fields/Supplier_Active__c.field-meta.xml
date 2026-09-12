@@ -4,6 +4,7 @@
     <defaultValue>true</defaultValue>
     <label>Supplier Active</label>
     <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>SetStatusAtCarrierWarehouse</name>
+        <label>Status - At Carrier Warehouse</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>At Carrier Warehouse</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusDelivered</name>
+        <label>Status - Delivered</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Delivered</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusNotDelivered</name>
+        <label>Status - Not Delivered</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not Delivered</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusOutForDelivery</name>
+        <label>Status - Out For Delivery</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Out For Delivery</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusReceivedByCarrier</name>
+        <label>Status - Received By Carrier</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Received By Carrier</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusReturnedToSender</name>
+        <label>Status - Returned To Sender</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Returned To Sender</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusReturningBackToSender</name>
+        <label>Status - Returning Back To Sender</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Returning Back To Sender</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>SetStatusUnknown</name>
+        <label>Status - Unknown</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not Applicable</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>WhatEventType</name>
+        <label>Event Type?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>SetStatusUnknown</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>ReceivedByCarrier</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsReceivedByCarrier</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusReceivedByCarrier</targetReference>
+            </connector>
+            <label>Received By Carrier</label>
+        </rules>
+        <rules>
+            <name>AtCarrierWarehouse</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsAtCarrierWarehouse</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusAtCarrierWarehouse</targetReference>
+            </connector>
+            <label>At Carrier Warehouse</label>
+        </rules>
+        <rules>
+            <name>OutForDelivery</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsOutForDelivery</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusOutForDelivery</targetReference>
+            </connector>
+            <label>Out For Delivery</label>
+        </rules>
+        <rules>
+            <name>NotDelivered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNotDelivered</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusNotDelivered</targetReference>
+            </connector>
+            <label>Not Delivered</label>
+        </rules>
+        <rules>
+            <name>ReturningBackToSender</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsReturningBackToSender</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusReturningBackToSender</targetReference>
+            </connector>
+            <label>Returning Back To Sender</label>
+        </rules>
+        <rules>
+            <name>ReturnedToSender</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsReturnedToSender</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusReturnedToSender</targetReference>
+            </connector>
+            <label>Returned To Sender</label>
+        </rules>
+        <rules>
+            <name>Delivered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsDelivered</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetStatusDelivered</targetReference>
+            </connector>
+            <label>Delivered</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>IsAtCarrierWarehouse</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!StatusAtCarrierWarehouse}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>IsDelivered</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Setup.RoyalMailSetting__c.StatusDelivered__c}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>IsNotDelivered</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!StatusNotDelivered}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>IsOutForDelivery</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Setup.RoyalMailSetting__c.StatusOutForDelivery__c}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>IsReceivedByCarrier</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Setup.RoyalMailSetting__c.StatusReceivedByCarrier__c}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>IsReturnedToSender</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!$Setup.RoyalMailSetting__c.StatusReturnedToSender__c}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>IsReturningBackToSender</name>
+        <dataType>Boolean</dataType>
+        <expression>CONTAINS({!StatusReturningBackToSender}, TEXT({!$Record.Event__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>StatusAtCarrierWarehouse</name>
+        <dataType>String</dataType>
+        <expression>{!$Setup.RoyalMailSetting__c.StatusAtCarrierWarehouse1__c} + &apos;,&apos; + {!$Setup.RoyalMailSetting__c.StatusAtCarrierWarehouse2__c} + &apos;,&apos; + {!$Setup.RoyalMailSetting__c.StatusAtCarrierWarehouse3__c} + &apos;,&apos; + {!$Setup.RoyalMailSetting__c.StatusAtCarrierWarehouse4__c}</expression>
+    </formulas>
+    <formulas>
+        <name>StatusNotDelivered</name>
+        <dataType>String</dataType>
+        <expression>{!$Setup.RoyalMailSetting__c.StatusNotDelivered1__c}  + &apos;,&apos; + {!$Setup.RoyalMailSetting__c.StatusNotDelivered2__c}</expression>
+    </formulas>
+    <formulas>
+        <name>StatusReturningBackToSender</name>
+        <dataType>String</dataType>
+        <expression>{!$Setup.RoyalMailSetting__c.StatusReturningBackToSender1__c} + &apos;,&apos; + {!$Setup.RoyalMailSetting__c.StatusReturningBackToSender2__c}</expression>
+    </formulas>
+    <interviewLabel>Delivery Package Item - Status From Event {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Delivery Package Item - Status From Event</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>WhatEventType</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Event__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>DeliveryPackageItem__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

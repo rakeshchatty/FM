@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>DeadAccountFields</name>
         <label>Dead Account Fields</label>
@@ -16,6 +17,14 @@
             <value>
                 <elementReference>$Flow.CurrentDate</elementReference>
             </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.MonthsInvoicedInAdvance__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.NextAdvanceInvoiceDate__c</assignToReference>
+            <operator>Assign</operator>
         </assignmentItems>
     </assignments>
     <environments>Default</environments>

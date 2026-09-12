@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Festive_Rounds</fullName>
+    <columns>NAME</columns>
+    <columns>RoundNo__c</columns>
+    <columns>Round_Type__c</columns>
+    <columns>Round_Active_From__c</columns>
+    <columns>Default_Driver__c</columns>
+    <columns>Default_Vehicle__c</columns>
+    <columns>Mon__c</columns>
+    <columns>Tue__c</columns>
+    <columns>Wed__c</columns>
+    <columns>Thu__c</columns>
+    <columns>Fri__c</columns>
+    <columns>Sat__c</columns>
+    <columns>Sun__c</columns>
+    <columns>AddedToMiley__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Christmas</value>
+    </filters>
+    <label>Festive Rounds 2025</label>
+</ListView>

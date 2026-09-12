@@ -17,8 +17,7 @@ private class CollectionScheduleTriggerTest {
 		Product2 product = TestDataHelper.createProduct('Test Product', '12355321', 'Collection', productCategory.Id, wasteCategory.Id, containerType.Id, '264');
 		INSERT product;
 
-		Suppliers__c supplier = new Suppliers__c(Name = 'First Mile Ltd', Phone_Number__c = '123456789');
-		INSERT supplier;
+		Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd');
 
 		Supplier_Product__c supplierProduct = new Supplier_Product__c(Name = 'Test Supplier Product', Supplier__c = supplier.Id, Product__c = product.Id, Enqix_UID__c = '1233');
 		INSERT supplierProduct;
@@ -45,7 +44,6 @@ private class CollectionScheduleTriggerTest {
 	private static void testController() {
 		Account location = [SELECT Id FROM Account WHERE RecordType.DeveloperName = 'Location' LIMIT 1];
 		CollectionScheduleController.getCollections(location.Id);
-		CollectionScheduleController.deleteAllCollections(location.Id);
 	}
 
 	@isTest
@@ -251,14 +249,6 @@ private class CollectionScheduleTriggerTest {
 		} catch (DmlException e) {
 			System.assertEquals(Label.MsgDuplicateCollectionSchedule, e.getDmlMessage(0));
 		}
-	}
-
-	@isTest
-	private static void testUpdateQuantity() {
-		Schedule__c collectionSchedule = [SELECT Id FROM Schedule__c LIMIT 1];
-		collectionSchedule.Collection_Quantity__c = 20;
-		UPDATE collectionSchedule;
-		System.assertEquals(1, [SELECT Id FROM ScheduleAdvanceInvoiceHistory__c WHERE Schedule__c = :collectionSchedule.Id].size());
 	}
 
 	private static List<Schedule__c> querySchedules() {

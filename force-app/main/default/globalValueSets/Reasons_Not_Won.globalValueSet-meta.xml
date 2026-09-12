@@ -1,166 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Benchmarking</fullName>
-        <default>false</default>
-        <label>Benchmarking</label>
-    </customValue>
-    <customValue>
-        <fullName>Bespoke requirements cannot be met</fullName>
-        <default>false</default>
-        <label>Bespoke requirements cannot be met</label>
-    </customValue>
-    <customValue>
-        <fullName>Chose broker/ cleaner for ease</fullName>
-        <default>false</default>
-        <label>Chose broker/ cleaner for ease</label>
-    </customValue>
-    <customValue>
-        <fullName>Declined sack service</fullName>
-        <default>false</default>
-        <label>Declined sack service</label>
-    </customValue>
-    <customValue>
-        <fullName>Health and safety concern from ops</fullName>
-        <default>false</default>
-        <label>Health and safety concern from ops</label>
-    </customValue>
-    <customValue>
-        <fullName>Internal Decision - no bid / margin too low</fullName>
-        <default>false</default>
-        <label>Internal Decision - no bid / margin too low</label>
-    </customValue>
-    <customValue>
-        <fullName>No compactor in area</fullName>
-        <default>false</default>
-        <label>No compactor in area</label>
-    </customValue>
-    <customValue>
-        <fullName>No response x 5</fullName>
-        <default>false</default>
-        <label>No response x 5</label>
-    </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of area serviced</fullName>
-        <default>false</default>
-        <label>Out of area serviced</label>
-    </customValue>
-    <customValue>
-        <fullName>Payment / minimum order terms</fullName>
-        <default>false</default>
-        <label>Payment / minimum order terms</label>
-    </customValue>
-    <customValue>
-        <fullName>Price (too expensive)</fullName>
+        <fullName>Price (Too Expensive)</fullName>
         <default>false</default>
         <label>Price (too expensive)</label>
     </customValue>
     <customValue>
-        <fullName>Price (wanted free/ paid for collection)</fullName>
+        <fullName>Service Fit (Couldn&apos;t Meet Requirements)</fullName>
         <default>false</default>
-        <label>Price (wanted free/ paid for collection)</label>
+        <label>Service Fit (Couldn&apos;t Meet Requirements)</label>
     </customValue>
     <customValue>
-        <fullName>Prospecting - Benchmarking</fullName>
+        <fullName>Value Not Clear (Customer didn&apos;t see enough benefit to switch)</fullName>
         <default>false</default>
-        <label>Prospecting - Benchmarking</label>
+        <label>Value Not Clear (Customer didn&apos;t see enough benefit to switch)</label>
     </customValue>
     <customValue>
-        <fullName>Prospecting - Bespoke requirements cannot be met</fullName>
+        <fullName>Timing/Delay (Project postponed/on hold)</fullName>
         <default>false</default>
-        <label>Prospecting - Bespoke requirements cannot be met</label>
+        <label>Timing/Delay (Project postponed/on hold)</label>
     </customValue>
     <customValue>
-        <fullName>Prospecting - Happy with current supplier</fullName>
+        <fullName>Internal Factors (Staff Change / Restructure)</fullName>
         <default>false</default>
-        <label>Prospecting - Happy with current supplier</label>
+        <label>Internal Factors (Staff Change / Restructure)</label>
     </customValue>
     <customValue>
-        <fullName>Prospecting - No response</fullName>
+        <fullName>Disqualified by First Mile</fullName>
         <default>false</default>
-        <label>Prospecting - No response</label>
-    </customValue>
-    <customValue>
-        <fullName>Prospecting - Not Won</fullName>
-        <default>false</default>
-        <label>Prospecting - Not Won</label>
-    </customValue>
-    <customValue>
-        <fullName>Prospecting - Price (too expensive)</fullName>
-        <default>false</default>
-        <label>Prospecting - Price (too expensive)</label>
-    </customValue>
-    <customValue>
-        <fullName>Prospecting - Serviced Building</fullName>
-        <default>false</default>
-        <label>Prospecting - Serviced Building</label>
-    </customValue>
-    <customValue>
-        <fullName>Restaurant - no food/ glass segregation</fullName>
-        <default>false</default>
-        <label>Restaurant - no food/ glass segregation</label>
-    </customValue>
-    <customValue>
-        <fullName>Serviced building</fullName>
-        <default>false</default>
-        <label>Serviced building</label>
-    </customValue>
-    <customValue>
-        <fullName>Site Closed Down</fullName>
-        <default>false</default>
-        <label>Site Closed Down</label>
-    </customValue>
-    <customValue>
-        <fullName>Want shred-on-site</fullName>
-        <default>false</default>
-        <label>Want shred-on-site</label>
-    </customValue>
-    <customValue>
-        <fullName>Customer is within a serviced building</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Customer is within a serviced building</label>
-    </customValue>
-    <customValue>
-        <fullName>Stayed with current supplier</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Stayed with current supplier</label>
-    </customValue>
-    <customValue>
-        <fullName>No added value/ not priority</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>No added value/ not priority</label>
-    </customValue>
-    <customValue>
-        <fullName>No response x5</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>No response x5</label>
-    </customValue>
-    <customValue>
-        <fullName>Staying with current supplier</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Staying with current supplier</label>
-    </customValue>
-    <customValue>
-        <fullName>Service</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Service</label>
-    </customValue>
-    <customValue>
-        <fullName>Operational limitation</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Operational limitation</label>
+        <label>Disqualified by First Mile</label>
     </customValue>
     <masterLabel>Reasons Not Won</masterLabel>
     <sorted>false</sorted>

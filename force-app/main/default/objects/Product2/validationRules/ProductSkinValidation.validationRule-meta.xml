@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>ProductSkinValidation</fullName>
-    <active>false</active>
-    <description>Cannot be null</description>
-    <errorConditionFormula>ISBLANK(Product_Skins__c)</errorConditionFormula>
-    <errorMessage>Product Skin not valid</errorMessage>
-</ValidationRule>

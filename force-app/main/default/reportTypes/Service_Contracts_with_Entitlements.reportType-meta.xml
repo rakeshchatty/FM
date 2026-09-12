@@ -235,6 +235,21 @@
             <field>RootServiceContract</field>
             <table>ServiceContract</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Send_for_Approval__c</field>
+            <table>ServiceContract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Approver__c</field>
+            <table>ServiceContract</table>
+        </columns>
         <masterLabel>Service Contracts</masterLabel>
     </sections>
     <sections>

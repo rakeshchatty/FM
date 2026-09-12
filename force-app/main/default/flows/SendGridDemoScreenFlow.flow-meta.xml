@@ -52,6 +52,7 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>SendEmailViaSendGridWithCollection</name>
@@ -93,6 +94,7 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>SendEmailViaSendGridWithInlineImage</name>
@@ -152,6 +154,7 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>SendEmailviaSendGridWithoutAttachment</name>
@@ -196,8 +199,10 @@
             </value>
         </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetRecipients</name>
         <label>Recipients</label>
@@ -207,14 +212,14 @@
             <assignToReference>ToAddress</assignToReference>
             <operator>Add</operator>
             <value>
-                <stringValue>rakesh.chatty@accellor.com</stringValue>
+                <stringValue>aswinasokan@gmail.com</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>ToName</assignToReference>
             <operator>Add</operator>
             <value>
-                <stringValue>Accellor</stringValue>
+                <stringValue>Aswin</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -325,6 +330,14 @@
             <name>EmailInvoked</name>
             <fieldText>&lt;p&gt;Email Sent!&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>

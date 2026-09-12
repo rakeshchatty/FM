@@ -13,7 +13,7 @@
     <filters>
         <field>Receipt_Amount__c</field>
         <operation>equals</operation>
-        <value>998.77</value>
+        <value>59</value>
     </filters>
     <label>Card Payments to Allocate</label>
 </ListView>

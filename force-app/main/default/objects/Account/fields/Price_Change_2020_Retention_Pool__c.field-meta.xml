@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Price_Change_2020_Retention_Pool__c</fullName>
-    <defaultValue>false</defaultValue>
-    <label>Price Change 2020 Retention Pool</label>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
-    <type>Checkbox</type>
-</CustomField>

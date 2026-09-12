@@ -3,6 +3,5 @@
     <fullName>QrCode</fullName>
     <fields>Name</fields>
     <fields>OrderProduct__c</fields>
-    <fields>Code__c</fields>
     <label>QrCode</label>
 </CompactLayout>

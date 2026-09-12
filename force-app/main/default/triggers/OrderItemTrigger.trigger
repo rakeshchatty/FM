@@ -2,8 +2,6 @@
 //@modifications 03.02.2022 "Order Save behaviour" release - make necessary changes
 trigger OrderItemTrigger on OrderItem (before insert, after insert, before update, after update, before delete, after delete) {
     
-    OrderItemTriggerHandler.handleTrigger(Trigger.new, Trigger.oldMap, Trigger.operationType);
-
     public static boolean AfterInsertHasRun = false;
     
     if ((Trigger.IsAfter && Trigger.IsInsert) || (Trigger.IsAfter && Trigger.IsUpdate)) {
@@ -29,15 +27,6 @@ trigger OrderItemTrigger on OrderItem (before insert, after insert, before updat
             }
             helper.updateSubscribedProducts(trigger.newMap, trigger.oldMap, false);
         }
-    }
-    if (Trigger.IsDelete && Trigger.IsBefore || Trigger.IsDelete && Test.isRunningTest()) {
-        new OrderItemTriggerHelper().subtractQuantityOrdered(trigger.oldMap);
-        // if (!UserInfo.getUserName().contains('integration@thefirstmile.co.uk') && !UserInfo.getUserName().contains('customer.portal@thefirstmile.co.uk')) {
-        //     List<OrderItem> orderItemError = [SELECT Id FROM OrderItem WHERE Id IN :Trigger.old AND (Order.Detrack_Status__c = 'In Progress' OR Order.Status = 'Invoiced')];
-        //     for (OrderItem orderItem : orderItemError) {
-        //         Trigger.oldMap.get(orderItem.Id).addError('You cannot delete this OrderProduct because the Detrack Status is In Progress or the Order is already Invoiced.');
-        //     }
-        // }
     }
 
     // BEGIN TODO - 991 JIRA
@@ -122,4 +111,6 @@ trigger OrderItemTrigger on OrderItem (before insert, after insert, before updat
         OrderItemTriggerHelper helper = new OrderItemTriggerHelper();
         helper.updateOrderSummary(ordOItemsMap); 
     }   
+
+    OrderItemTriggerHandler.handleTrigger(Trigger.new, Trigger.oldMap, Trigger.operationType);
 }

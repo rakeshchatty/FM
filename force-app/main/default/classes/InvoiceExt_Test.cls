@@ -1,6 +1,11 @@
 @isTest
 public with sharing class InvoiceExt_Test {
-    
+
+	@testSetup
+	static void setup() {
+        TestDataHelper.insertDefaultLegalEntity('Test Entity');
+    }
+
     @future
     private static void insertCustomSetting(){
       Enqix_Id_automation__c testRecord = new Enqix_Id_automation__c(Name = 'teste', Enqix_id__c = 20000, Enqix_Location_Id__c = 30000);
@@ -14,6 +19,7 @@ public with sharing class InvoiceExt_Test {
         insertCustomSetting();
         Test.stopTest();
         Enqix_Id_automation__c testRecord = new Enqix_Id_automation__c(Enqix_id__c = 20000, Enqix_Location_Id__c = 30000);
+        TestDataHelper.insertSupplier('First Mile Ltd');
 		system.debug('Começando testes monthly');
         Account am1, am2;
         Account parentMonthly;
@@ -176,6 +182,7 @@ public with sharing class InvoiceExt_Test {
 	
     @isTest
 	public static void InvoiceExtensionPerOrderTest() {
+        TestDataHelper.insertSupplier('First Mile Ltd');
         Enqix_Id_automation__c testRecord = new Enqix_Id_automation__c(Enqix_id__c = 20000, Enqix_Location_Id__c = 30000);
 		system.debug('Começando testes Per Order');
         

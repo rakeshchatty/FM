@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>IsScheduledForDeletion__c</fullName>
-    <formula>DATEVALUE(CreatedDate) &lt; TODAY() - 30</formula>
+    <formula>DATEVALUE(CreatedDate) &lt; TODAY() - 14</formula>
     <label>Scheduled For Deletion</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

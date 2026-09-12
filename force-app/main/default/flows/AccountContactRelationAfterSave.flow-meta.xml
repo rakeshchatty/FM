@@ -1,65 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>59.0</apiVersion>
-    <decisions>
-        <name>ShouldSetFinanceContactOnAccount</name>
-        <label>Set Finance Contact On Account?</label>
-        <locationX>182</locationX>
-        <locationY>323</locationY>
-        <defaultConnector>
-            <targetReference>ResetAccountTransferredToEnqix</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>YesSetFinanceContactonAccount</name>
-            <conditionLogic>(1 OR 2) AND 3 AND 4 AND 5</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Account.RecordType.DeveloperName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Account</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Account.RecordType.DeveloperName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Partner</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Account.FinanceContact__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Roles</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>Finance Contact</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Contact.Email</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>UpdateAccountSetFinanceContact</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
-    <formulas>
-        <name>ISNEW</name>
-        <dataType>Boolean</dataType>
-        <expression>ISNEW()</expression>
-    </formulas>
     <interviewLabel>Account Contact Relation - After Save {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Account Contact Relation - After Save</label>
     <processMetadataValues>
@@ -81,53 +24,22 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordUpdates>
-        <name>UpdateAccountSetFinanceContact</name>
-        <label>Account - Set Finance Contact</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <connector>
-            <targetReference>ResetAccountTransferredToEnqix</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>FinanceContact__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.AccountId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>FinanceContact__c</field>
-            <value>
-                <elementReference>$Record.ContactId</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>ShouldSetFinanceContactOnAccount</targetReference>
+            <targetReference>ResetAccountTransferredToEnqix</targetReference>
         </connector>
         <object>AccountContactRelation</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <subflows>
         <name>ResetAccountTransferredToEnqix</name>
         <label>Reset Account Transferred To Enqix</label>
-        <locationX>182</locationX>
-        <locationY>623</locationY>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
         <flowName>ResetAccountTransferredToEnqix</flowName>
         <inputAssignments>
             <name>AccountId</name>

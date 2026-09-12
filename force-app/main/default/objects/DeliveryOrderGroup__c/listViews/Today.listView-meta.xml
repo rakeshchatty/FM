@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Today</fullName>
+    <columns>NAME</columns>
+    <columns>RouteDate__c</columns>
+    <columns>DeliveryRouteGroup__c</columns>
+    <columns>RoutingJobId__c</columns>
+    <columns>RoutingStatus__c</columns>
+    <columns>RoutingPollCount__c</columns>
+    <columns>RoutingResponse__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Today</label>
+</ListView>

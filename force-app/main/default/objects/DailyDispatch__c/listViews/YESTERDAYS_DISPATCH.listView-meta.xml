@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>YESTERDAYS_DISPATCH</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>NAME</columns>
+    <columns>Dispatch_Delay__c</columns>
+    <columns>Vehicle__c</columns>
+    <columns>DriverId__c</columns>
+    <columns>Loader__c</columns>
+    <columns>X2nd_Loader__c</columns>
+    <columns>Dispatch_Notes__c</columns>
+    <columns>Ops_Start_Time__c</columns>
+    <columns>Ops_End_Time__c</columns>
+    <columns>Agency_Loader_1__c</columns>
+    <columns>Agency_Loader_2__c</columns>
+    <columns>Total_Tonnage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>9/11/2026 12:00 AM</value>
+    </filters>
+    <label>YESTERDAYS DISPATCH</label>
+</ListView>

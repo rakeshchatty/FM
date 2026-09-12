@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetOrderBillingAddress</name>
         <label>Order - Billng Address</label>
@@ -56,7 +57,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>DoesAccountHasShippingAddress</targetReference>
+            <targetReference>DoesAccountHasShippingLatLon</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -170,8 +171,8 @@
         </assignmentItems>
     </assignments>
     <decisions>
-        <name>DoesAccountHasShippingAddress</name>
-        <label>Account Has Shipping Address?</label>
+        <name>DoesAccountHasShippingLatLon</name>
+        <label>Account Has Shipping Lat/Lon?</label>
         <locationX>182</locationX>
         <locationY>395</locationY>
         <defaultConnector>
@@ -182,7 +183,14 @@
             <name>YesAccountHasShippingAddress</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Account.ShippingStreet</leftValueReference>
+                <leftValueReference>$Record.Account.ShippingLongitude</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.ShippingLatitude</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>

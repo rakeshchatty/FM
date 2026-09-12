@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>StatusMustNotEqualDOrIIfDDIsNull</fullName>
-    <active>true</active>
-    <description>Status must not equal Delivered OR Invoiced IF Delivery Date is null</description>
-    <errorConditionFormula>AND( !ISNEW(),ISBLANK(Delivery_Date__c), OR(ISPICKVAL( Status, &apos;Delivered&apos;),ISPICKVAL( Status, &apos;Invoiced&apos;)),$User.LastName &lt;&gt; &apos;Portal&apos;, $User.LastName &lt;&gt; &apos;Allen&apos;, $User.LastName &lt;&gt; &apos;Loader&apos;)</errorConditionFormula>
-    <errorMessage>You cannot mark an Order as delivered without a delivery date.</errorMessage>
-</ValidationRule>

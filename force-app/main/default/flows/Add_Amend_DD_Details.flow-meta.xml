@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <description>Has this flow been used on the correct record type and do we have DD details for this customer?</description>
         <name>Main_Decision</name>
@@ -175,6 +176,14 @@
             <name>DisplayText3</name>
             <fieldText>&lt;p&gt;Thanks, we have updated the Direct Debit details.  Once Authorised by the Finance Team it will take at least 10 days before any money is taken from the account.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -194,6 +203,14 @@
             <name>DisplayText2</name>
             <fieldText>&lt;p&gt;Who at this company is giving you the direct debit details?  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>FirstName</name>
@@ -201,6 +218,14 @@
             <fieldText>First Name</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>LastName</name>
@@ -208,6 +233,14 @@
             <fieldText>Last Name</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>DD_Sort_Code_Text</name>
@@ -215,6 +248,14 @@
             <fieldText>DD Sort Code</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;The sort code need to be 6 digits.  &lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>AND(ISNUMBER({!DD_Sort_Code_Text}), 
@@ -229,6 +270,14 @@ OR(CONTAINS({!DD_Sort_Code_Text},&quot;,&quot;)))))</formulaExpression>
             <fieldText>DD Account Number</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;The account number need to be 8 digits.  &lt;/span&gt;&lt;/p&gt;</errorMessage>
                 <formulaExpression>AND(ISNUMBER({!DD_Account_Number_Text}), 
@@ -255,6 +304,14 @@ OR(CONTAINS({!DD_Account_Number_Text},&quot;,&quot;)))))</formulaExpression>
             <name>CustomerDDDetails</name>
             <fieldText>&lt;p&gt;We have the following DD Details for this customer: &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;DD Sort Code:{!GetAccountDetails.dd_sort_code__c}&lt;/p&gt;&lt;p&gt;DD Account Number:  {!GetAccountDetails.dd_account_number__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Are you sure these details need to be overwritten?  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <nextOrFinishButtonLabel>Yes change the details</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -272,6 +329,14 @@ OR(CONTAINS({!DD_Account_Number_Text},&quot;,&quot;)))))</formulaExpression>
             <name>DisplayText</name>
             <fieldText>&lt;p&gt;This flow can only be used on a Partner or Partner account. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>

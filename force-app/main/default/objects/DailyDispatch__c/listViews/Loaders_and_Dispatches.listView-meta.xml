@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loaders_and_Dispatches</fullName>
+    <columns>NAME</columns>
+    <columns>Dispatch_Date__c</columns>
+    <columns>Num_Loaders__c</columns>
+    <columns>Loader__c</columns>
+    <columns>X2nd_Loader__c</columns>
+    <columns>Dispatch_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Dispatch_Date__c</field>
+        <operation>equals</operation>
+        <value>1/28/2025</value>
+    </filters>
+    <label>Loaders and Dispatches</label>
+</ListView>

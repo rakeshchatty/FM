@@ -1171,6 +1171,16 @@
             <field>Order__c.WTE_KG__c</field>
             <table>Bank_Statement__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Notes__c</field>
+            <table>Bank_Statement__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Unallocated_Updated__c</field>
+            <table>Bank_Statement__c</table>
+        </columns>
         <masterLabel>Bank Statements</masterLabel>
     </sections>
 </ReportType>

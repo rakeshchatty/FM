@@ -1,4 +1,4 @@
-trigger DeliveryPackageTrackingFileTrigger on DeliveryPackageTrackingFile__c (after insert,after update) {
+trigger DeliveryPackageTrackingFileTrigger on DeliveryPackageTrackingFile__c (after insert) {
 
-	new DeliveryPackageTrakingFileTriggerHandler().handleTrigger(Trigger.new, Trigger.oldMap, Trigger.operationType);
+	new DeliveryPackageTrackingFileHandler().handleTrigger(Trigger.new, Trigger.oldMap, Trigger.operationType);
 }

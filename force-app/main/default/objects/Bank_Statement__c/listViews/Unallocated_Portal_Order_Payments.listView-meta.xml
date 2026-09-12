@@ -23,5 +23,9 @@
         <operation>greaterThan</operation>
         <value>0</value>
     </filters>
+    <filters>
+        <field>Order__c</field>
+        <operation>notEqual</operation>
+    </filters>
     <label>Unallocated Portal Order Payments</label>
 </ListView>

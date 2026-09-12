@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireDocumentNumber</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+OR (
+ISPICKVAL( DocumentType__c, &apos;Waste Carrier Licence&apos;),
+ISPICKVAL( DocumentType__c , &apos;Employers Liability Insurance&apos;),
+ISPICKVAL( DocumentType__c , &apos;Public Liability Insurance&apos;),
+ISPICKVAL( DocumentType__c , &apos;Operators Licence&apos;),
+ISPICKVAL( DocumentType__c , &apos;Motor Insurances&apos;),
+ISPICKVAL( DocumentType__c , &apos;ISO 9001 Certificate&apos;),
+ISPICKVAL( DocumentType__c , &apos;ISO 14001 Certificate&apos;),
+ISPICKVAL( DocumentType__c , &apos;Safe Contractor&apos;),
+ISPICKVAL( DocumentType__c , &apos;ISO 45001 Certificate&apos;),
+ISPICKVAL( DocumentType__c , &apos;ISO 27001 Certificate&apos;),
+ISPICKVAL( DocumentType__c , &apos;Professional Indemnity&apos;),
+ISPICKVAL( DocumentType__c , &apos;FORS&apos;),
+ISPICKVAL( DocumentType__c , &apos;ICO Registration&apos;)
+),
+ISBLANK(DocumentNumber__c)
+)</errorConditionFormula>
+    <errorDisplayField>DocumentNumber__c</errorDisplayField>
+    <errorMessage>Document Number is mandatory for this document type.</errorMessage>
+</ValidationRule>

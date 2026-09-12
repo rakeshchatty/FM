@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LoopParkOption__c</fullName>
+    <description>Influence where your park points should be located, either at the first street encountered for a loop, or in the middle of the service streets on a loop.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Loop Park Option</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>Traditional park point selection method, which is somewhat random</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <label>Encourage parking in the middle of the service streets</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <label>Encourage parking at the first service street</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

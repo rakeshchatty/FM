@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>59.0</apiVersion>
-    <assignments>
-        <name>SetAttachment</name>
-        <label>Attachment</label>
-        <locationX>462</locationX>
-        <locationY>1116</locationY>
-        <assignmentItems>
-            <assignToReference>LoopAttachment.ParentId</assignToReference>
-            <operator>Assign</operator>
+    <actionCalls>
+        <name>AttachmentToContentDocument</name>
+        <label>Attachment to Content Document</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>AttachmentToContentDocument</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>UpdateCollectionException</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>attachmentIds</name>
+            <value>
+                <elementReference>AttachmentIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>parentId</name>
             <value>
                 <elementReference>CreateCase</elementReference>
             </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Attachments</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>LoopAttachment</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>LoopAttachment</targetReference>
-        </connector>
-    </assignments>
+        </inputParameters>
+        <nameSegment>AttachmentToContentDocument</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>IsExceptionSelected</name>
-        <label>Exception Selected?</label>
-        <locationX>374</locationX>
-        <locationY>276</locationY>
+        <name>HasAttachments</name>
+        <label>Attachments?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>GetOwner</targetReference>
+            <targetReference>UpdateCollectionException</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
-            <name>YesExceptionSelected</name>
+            <name>YesAttachments</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.SelectedExceptionId__c</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>GetAttachment</leftValueReference>
+                <operator>IsEmpty</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>GetSelectedException</targetReference>
+                <targetReference>AttachmentIds</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -53,24 +57,10 @@
     <formulas>
         <name>CaseSubject</name>
         <dataType>String</dataType>
-        <expression>LEFT(&apos;Miley PR: &apos; + {!$Record.Location__r.Name}, 255)</expression>
+        <expression>LEFT(&apos;Miley PR: &apos; + {!GetSelectedException.Description__c}, 255)</expression>
     </formulas>
     <interviewLabel>Collection Exception - After Save {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Collection Exception - After Save</label>
-    <loops>
-        <name>LoopAttachment</name>
-        <label>Attachment</label>
-        <locationX>374</locationX>
-        <locationY>1008</locationY>
-        <collectionReference>GetAttachment</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>SetAttachment</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>CreateAttachments</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -91,20 +81,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>CreateAttachments</name>
-        <label>Attachments</label>
-        <locationX>374</locationX>
-        <locationY>1308</locationY>
-        <connector>
-            <targetReference>UpdateCollectionException</targetReference>
-        </connector>
-        <inputReference>Attachments</inputReference>
-    </recordCreates>
-    <recordCreates>
         <name>CreateCase</name>
         <label>Case</label>
-        <locationX>374</locationX>
-        <locationY>792</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>GetAttachment</targetReference>
         </connector>
@@ -112,6 +92,18 @@
             <field>Description</field>
             <value>
                 <elementReference>Comments</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DispatchLocation__c</field>
+            <value>
+                <elementReference>$Record.DispatchLocation__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Driver__c</field>
+            <value>
+                <elementReference>$Record.DailyDispatch__r.EffectiveDriverName__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -123,13 +115,25 @@
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>GetOwner.Id</elementReference>
+                <elementReference>GetSelectedException.CaseOwnerId__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>GetRecordType.Id</elementReference>
+                <elementReference>GetSelectedException.CaseRecordTypeId__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Round__c</field>
+            <value>
+                <elementReference>$Record.DailyDispatch__r.RoundId__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <elementReference>GetSelectedException.CaseStatus__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -141,7 +145,7 @@
         <inputAssignments>
             <field>Type</field>
             <value>
-                <stringValue>Operations</stringValue>
+                <elementReference>GetSelectedException.CaseType__c</elementReference>
             </value>
         </inputAssignments>
         <object>Case</object>
@@ -150,11 +154,11 @@
     <recordLookups>
         <name>GetAttachment</name>
         <label>Attachment</label>
-        <locationX>374</locationX>
-        <locationY>900</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>LoopAttachment</targetReference>
+            <targetReference>HasAttachments</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -164,69 +168,25 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>BodyLength</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Attachment</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>GetOwner</name>
-        <label>Owner (Operations)</label>
-        <locationX>374</locationX>
-        <locationY>576</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>GetRecordType</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Username</field>
-            <operator>StartsWith</operator>
-            <value>
-                <stringValue>opsteam@thefirstmile.co.uk</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>User</object>
-        <queriedFields>Id</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>GetRecordType</name>
-        <label>Record Type (Operations)</label>
-        <locationX>374</locationX>
-        <locationY>684</locationY>
+        <name>GetSelectedException</name>
+        <label>Selected Exception</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>CreateCase</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>SobjectType</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Case</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Operations</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <queriedFields>Id</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>GetSelectedException</name>
-        <label>Selected Exception</label>
-        <locationX>242</locationX>
-        <locationY>384</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>GetOwner</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -238,15 +198,13 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>CollectionExceptions__mdt</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Description__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
         <name>UpdateCollectionException</name>
         <label>Collection Exception</label>
-        <locationX>374</locationX>
-        <locationY>1416</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <inputAssignments>
             <field>Case__c</field>
             <value>
@@ -256,22 +214,13 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Complete</stringValue>
-            </value>
-        </filters>
         <object>CollectionException__c</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
             <connector>
-                <targetReference>IsExceptionSelected</targetReference>
+                <targetReference>GetSelectedException</targetReference>
             </connector>
             <pathType>AsyncAfterCommit</pathType>
         </scheduledPaths>
@@ -282,11 +231,32 @@
         <name>Comments</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>Selected Exception: {!GetSelectedException.Description__c}
-QR Code: {!$Record.Barcode__c}
+QR Code: {!$Record.QrCodes__c}
 {!$Record.Note__c}
 
 Submitted from {!$Record.DailyDispatch__r.Name} by {!$Record.DailyDispatch__r.EffectiveDriverName__c}</text>
     </textTemplates>
+    <transforms>
+        <name>AttachmentIds</name>
+        <label>Attachment Ids</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>AttachmentToContentDocument</targetReference>
+        </connector>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <scale>0</scale>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <transformValues>
+            <transformValueActions>
+                <transformType>Map</transformType>
+                <value>
+                    <elementReference>GetAttachment[$EachItem].Id</elementReference>
+                </value>
+            </transformValueActions>
+        </transformValues>
+    </transforms>
     <variables>
         <name>Attachments</name>
         <dataType>SObject</dataType>

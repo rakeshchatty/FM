@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireNextAdvanceInvoiceDate</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(TEXT(MonthsInvoicedInAdvance__c))), ISBLANK(NextAdvanceInvoiceDate__c))</errorConditionFormula>
+    <errorDisplayField>NextAdvanceInvoiceDate__c</errorDisplayField>
+    <errorMessage>Next Advance Invoice Date is required when Months Invoiced In Advance is selected.</errorMessage>
+</ValidationRule>

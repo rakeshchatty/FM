@@ -60,6 +60,46 @@
             <field>Name</field>
             <table>Waste_Category__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EWC_Code_Compact__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Hazardous__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Chapter_Number__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Chapter_Description__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Subchapter_Code__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Subchapter_Description__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Related_Codes__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Description__c</field>
+            <table>Waste_Category__c</table>
+        </columns>
         <masterLabel>Waste Categories</masterLabel>
     </sections>
     <sections>
@@ -121,6 +161,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>TempComplianceDocumentID__c</field>
+            <table>Waste_Category__c.WTN_Waste_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Manual_Summary__c</field>
             <table>Waste_Category__c.WTN_Waste_Categories__r</table>
         </columns>
         <masterLabel>WTN Waste Categories</masterLabel>

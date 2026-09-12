@@ -20,6 +20,7 @@ public class WeightToOrderProductRollupTest {
         );
         Insert pbe;
 
+		TestDataHelper.insertSupplier('First Mile Ltd');
 		Order order = new Order(AccountId = location.Id,
 									EffectiveDate = System.today(),
 									Status = 'Confirmed',

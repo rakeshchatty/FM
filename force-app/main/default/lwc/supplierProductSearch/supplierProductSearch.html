@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Find a Supplier in this area">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                label="Search Product"
+                value={searchKey}
+                onchange={handleSearchKeyChange}>
+            </lightning-input>
+
+            <template if:true={products}>
+                <lightning-combobox
+                    label="Select a Product"
+                    placeholder="Choose a product"
+                    options={productOptions}
+                    value={selectedProductId}
+                    onchange={handleProductSelect}>
+                </lightning-combobox>
+            </template>
+
+            <template if:true={results}>
+                <div class="result-box">
+                    <template for:each={results} for:item="res">
+                        <div key={res.supplierName} class="slds-box slds-m-bottom_x-small">
+                            <strong>{res.supplierName}</strong><br />
+                            <lightning-formatted-number 
+                                value={res.supplierPrice} 
+                                format-style="currency" 
+                                currency-code={res.currencyIsoCode}>
+                            </lightning-formatted-number>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

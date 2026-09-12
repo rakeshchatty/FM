@@ -50,4 +50,36 @@ public class SendGridEmailTest {
 			return res;
 		}
 	}
+
+	@isTest static void testHubSpotEvent() {
+		Account parent = TestDataHelper.insertAccount();
+		Account location = TestDataHelper.insertLocation(parent.Id, null);
+		Round__c round = TestDataHelper.insertRound();
+		Suppliers__c supplier = TestDataHelper.insertSupplierFirstMile();
+		Product2 product = TestDataHelper.insertProduct('Product1', 'FM001', 'Collection');
+		Supplier_Product__c supplierProduct = TestDataHelper.insertSupplierProduct(supplier, product);
+		TestDataHelper.insertSchedule(location, round, supplier, supplierProduct, '10:00');
+		TestDataHelper.insertSchedule(location, round, supplier, supplierProduct, '11:00');
+
+		List<sObject> aggregators = [SELECT SupplierProductName__c, Monday__c, Tuesday__c, Wednesday__c, Thursday__c, Friday__c, Saturday__c, Sunday__c FROM CollectionAggregator__c];
+
+		SendGridEmail.Input input = new SendGridEmail.Input();
+		input.templateId = 'templateId123';
+		input.toAddress = new List<String>{'toAddress@toAddress.com'};
+		input.toName = new List<String>{'toName'};
+		input.accountId = 'TestAccoundId';
+		input.eventType = 'TestEventType';
+		input.var01 = '1';
+		input.var02 = '2';
+		input.var03 = '3';
+		input.var04 = '4';
+		input.var05 = '5';
+		input.collection.addAll(aggregators);
+
+		Test.setMock(HttpCalloutMock.class, new SendGridResponseMock());
+
+		Test.startTest();
+		new SendGridEmail(new List<SendGridEmail.Input>{input}).send();
+		Test.stopTest();
+	}
 }

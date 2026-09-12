@@ -216,6 +216,26 @@
             <field>DailyDispatch__c.RoundId__c.RoundNo__c</field>
             <table>Tonnage__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tonnes__c</field>
+            <table>Tonnage__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Origin_Depot__c</field>
+            <table>Tonnage__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_Name__c</field>
+            <table>Tonnage__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ticket_Number__c</field>
+            <table>Tonnage__c</table>
+        </columns>
         <masterLabel>Tonnages</masterLabel>
     </sections>
 </ReportType>

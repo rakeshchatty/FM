@@ -54,7 +54,8 @@ public class AccountDiscountGrossPriceTrigger_Test {
             PO_Number__c = 'WheelieBinOrder0'
         );
         insert ord1;
-        
+
+        TestDataHelper.insertSupplier('First Mile Ltd');
         OrderItem oi = new OrderItem(
             OrderId = ord1.Id,
             Quantity = 1,

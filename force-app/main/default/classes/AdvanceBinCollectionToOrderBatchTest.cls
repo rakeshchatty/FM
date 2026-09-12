@@ -3,54 +3,75 @@ public class AdvanceBinCollectionToOrderBatchTest {
 
 	@testSetup
 	private static void setup() {
-		Product_Category__c productCategory = new Product_Category__c(Name = 'Test Product Category', Enqix_Id__c = 12345, Product_Category_Key__c = 'Test Product Category Key');
-		INSERT productCategory;
-
-		Waste_Category__c  wasteCategory = new Waste_Category__c(Name = 'Cardboard Waste', Codes__c = '123456');
-		INSERT wasteCategory;
+		TestDataHelper.suppressSuspensionDateValidation();
+		Product2 rentalProduct = TestDataHelper.insertProduct('Rental Product', 'RP001', 'Collection');
 
 		Container_Type__c containerType = TestDataHelper.insertContainerType('Bin');
+		Product2 product1 = TestDataHelper.insertProduct('Test Product', '12355321', 'Collection', containerType.Id, rentalProduct.Id);
 
-		Product2 product = TestDataHelper.createProduct('Test Product', '12355321', 'Collection', productCategory.Id, wasteCategory.Id, containerType.Id, '264');
-		INSERT product;
+		TestDataHelper.insertStandardPricebookEntry(rentalProduct.Id, 10);
+		TestDataHelper.insertStandardPricebookEntry(product1.Id, 10);
 
-		Suppliers__c supplier = new Suppliers__c(Name = 'First Mile Ltd', Phone_Number__c = '123456789');
-		INSERT supplier;
-
-		Supplier_Product__c supplierProduct = new Supplier_Product__c(Name = 'Test Supplier Product', Supplier__c = supplier.Id, Product__c = product.Id, Enqix_UID__c = '1233');
-		INSERT supplierProduct;
+		Suppliers__c supplier = TestDataHelper.insertSupplierFirstMile();
+		Supplier_Product__c supplierProduct1 = TestDataHelper.insertSupplierProduct(supplier, product1);
 
 		Account parent = TestDataHelper.createAccount();
-		parent.IsBinCollectionAdvanceInvoiced__c = true;
+		parent.MonthsInvoicedInAdvance__c = '3';
+		parent.NextAdvanceInvoiceDate__c = Date.today().toStartOfMonth().addMonths(1);
 		INSERT parent;
 		Account location = TestDataHelper.insertLocation(parent.Id, null);
+		Round__c round = TestDataHelper.insertRound();
 
-		List<Schedule__c> collectionSchedules = new List<Schedule__c>();
-		collectionSchedules.add(new Schedule__c(Location__c = location.Id, Supplier__c = supplier.Id, Supplier_Product__c = supplierProduct.Id, Collection_Quantity__c = 10,
-												Days__c = 'Monday', Time__c = '18:00'));
-		collectionSchedules.add(new Schedule__c(Location__c = location.Id, Supplier__c = supplier.Id, Supplier_Product__c = supplierProduct.Id, Collection_Quantity__c = 10,
-												Days__c = 'Tuesday;Wednesday;Thursday', Time__c = '18:00'));
-		collectionSchedules.add(new Schedule__c(Location__c = location.Id, Supplier__c = supplier.Id, Supplier_Product__c = supplierProduct.Id, Collection_Quantity__c = 10,
-												Days__c = 'Saturday;Sunday', Time__c = '20:30'));
-		INSERT collectionSchedules;
+		TestDataHelper.insertSchedule(location, round, supplier, supplierProduct1, '18:00');
 	}
 
 	@isTest
-	static void createAdvanceBinInvoices() {
+	static void validateDatesWithoutSuspension() {
+		Schedule__c schedule = [SELECT Id, CollectionAggregator__c, Start_Date__c, End_Date__c, Days__c, Week_Off__c, WeekFrequency__c, PreviousCollectionDate__c FROM Schedule__c WHERE Days__c = 'Monday'];
+		schedule.Start_Date__c = schedule.End_Date__c = null;
+
 		Test.startTest();
-		new AdvanceBinCollectionToOrderSchedular(true).execute(null);
+		AdvanceBinCollectionToOrderBatch batch = new AdvanceBinCollectionToOrderBatch();
+		batch.loadAggregatorToSuspensionsMap(new List<Schedule__c>{schedule});
+		Set<Date> dates = batch.getCollectionDates(schedule);
 		Test.stopTest();
+		Assert.areEqual(13, dates.size());
 	}
 
 	@isTest
-	static void createAdvanceBinInvoicesForDelta() {
-		Schedule__c schedule = [SELECT Id, Location__c FROM Schedule__c LIMIT 1];
-		ScheduleAdvanceInvoiceHistory__c scheduleHistory = new ScheduleAdvanceInvoiceHistory__c(Schedule__c = schedule.Id, Location__c = schedule.Location__c, Quantity__c = 05);
-		INSERT scheduleHistory;
-		Test.setCreatedDate(scheduleHistory.Id, System.now() - 1);
+	static void validateDatesWithSuspension() {
+		Schedule__c schedule = [SELECT Id, CollectionAggregator__c, Start_Date__c, End_Date__c, Days__c, Week_Off__c, WeekFrequency__c, PreviousCollectionDate__c FROM Schedule__c WHERE Days__c = 'Monday'];
+
+		Date startDate = Date.today().toStartOfMonth().addMonths(1);
+		ScheduleSuspension__c suspension1 = new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = startDate, ReactivationDate__c = startDate.addDays(7));
+		ScheduleSuspension__c suspension2 = new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = startDate.AddMonths(1), ReactivationDate__c = startDate.AddMonths(1).addDays(7));
+		ScheduleSuspension__c suspension3 = new ScheduleSuspension__c(Aggregator__c = schedule.CollectionAggregator__c, SuspensionDate__c = startDate.AddMonths(2), ReactivationDate__c = startDate.AddMonths(2).addDays(7));
+		INSERT new List<ScheduleSuspension__c>{suspension1, suspension2, suspension3};
+
+		schedule.Start_Date__c = schedule.End_Date__c = null;
 
 		Test.startTest();
-		new AdvanceBinCollectionToOrderSchedular(true).execute(null);
+		AdvanceBinCollectionToOrderBatch batch = new AdvanceBinCollectionToOrderBatch();
+		batch.loadAggregatorToSuspensionsMap(new List<Schedule__c>{schedule});
+		Set<Date> dates = batch.getCollectionDates(schedule);
 		Test.stopTest();
+		Assert.areEqual(10, dates.size());
+	}
+
+	@isTest
+	static void test() {
+		Account parent = [SELECT NextAdvanceInvoiceDate__c FROM Account WHERE RecordType.Name = 'Account'];
+
+		Test.startTest();
+		new AdvanceBinCollectionToOrderSchedular().execute(null);
+		Test.stopTest();
+
+		Assert.areEqual(2, [SELECT Count() FROM Order]);
+
+		Id rentalProductId = [SELECT Id FROM Product2 WHERE Name = 'Rental Product'].Id;
+		Assert.areEqual(1, [SELECT Count() FROM OrderItem WHERE Product2Id = :rentalProductId]);
+		Assert.areEqual(6, [SELECT Quantity FROM OrderItem WHERE Product2Id = :rentalProductId].Quantity);
+
+		Assert.areEqual(parent.NextAdvanceInvoiceDate__c.addMonths(3), [SELECT NextAdvanceInvoiceDate__c FROM Account WHERE RecordType.Name = 'Account'].NextAdvanceInvoiceDate__c);
 	}
 }

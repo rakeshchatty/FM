@@ -3,6 +3,7 @@
     <fullName>IsWTNRenewalDue__c</fullName>
     <formula>AND(DATEVALUE(EndDate__c) = TODAY() - 1, BEGINS(Name, &apos;Season Ticket WTN&apos;))</formula>
     <label>WTN Renewal Due</label>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

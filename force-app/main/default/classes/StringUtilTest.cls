@@ -33,4 +33,29 @@ private class StringUtilTest {
 		Assert.areEqual('Empty cardboard boxes &', lines[3]);
 		Assert.areEqual('IT equipment such as one monitor, cables, computer box & The smaller boxes at the front are filled with books & A kickstep & Stationery/£165.', lines[4]);
 	}
+
+	@isTest
+	static void toLowerTrim() {
+		Assert.areEqual('boxes filled with cardboard', StringUtil.lower(StringUtil.trim('  Boxes Filled with Cardboard  ')));
+	}
+
+	@isTest
+	static void splitTrim() {
+		List<String> lines = StringUtil.splitTrim('  Boxes,Filled, with ,Cardboard , Pieces  ', ',');
+		Assert.areEqual('Boxes', lines[0]);
+		Assert.areEqual('Filled', lines[1]);
+		Assert.areEqual('with', lines[2]);
+		Assert.areEqual('Cardboard', lines[3]);
+		Assert.areEqual('Pieces', lines[4]);
+	}
+
+	@isTest
+	static void splitTrimStrip() {
+		List<String> lines = StringUtil.splitTrimStrip('  "Boxes",Filled, "with" ,"Cardboard" , Pieces  ', ',', '"');
+		Assert.areEqual('Boxes', lines[0]);
+		Assert.areEqual('Filled', lines[1]);
+		Assert.areEqual('with', lines[2]);
+		Assert.areEqual('Cardboard', lines[3]);
+		Assert.areEqual('Pieces', lines[4]);
+	}
 }

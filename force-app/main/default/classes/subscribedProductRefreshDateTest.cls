@@ -6,6 +6,7 @@ public class subscribedProductRefreshDateTest {
     	Account acc;
         Account parent;
 
+        TestDataHelper.insertSupplier('First Mile Ltd');
 		//Products
         List<Product2> lstProds = new List<Product2>();
         

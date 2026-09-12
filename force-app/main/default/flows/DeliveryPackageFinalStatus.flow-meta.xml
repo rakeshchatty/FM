@@ -3,12 +3,12 @@
     <actionCalls>
         <name>UpdateQrCodes</name>
         <label>Update QR Codes to Order Items</label>
-        <locationX>110</locationX>
-        <locationY>384</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>DeliveryPackageAttachQrCode</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>SetOrderAsDelivered</targetReference>
+            <targetReference>HasDeliveredDate</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -19,12 +19,13 @@
         </inputParameters>
         <nameSegment>DeliveryPackageAttachQrCode</nameSegment>
     </actionCalls>
-    <apiVersion>60.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetOrderAsDelivered</name>
         <label>Order - Delivered</label>
-        <locationX>110</locationX>
-        <locationY>492</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>Order.Status</assignToReference>
             <operator>Assign</operator>
@@ -46,8 +47,8 @@
     <assignments>
         <name>SetOrderId</name>
         <label>Order Id</label>
-        <locationX>506</locationX>
-        <locationY>684</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>Order.Id</assignToReference>
             <operator>Assign</operator>
@@ -62,8 +63,8 @@
     <assignments>
         <name>SetOrderRouteCleared</name>
         <label>Order - Clear Route</label>
-        <locationX>374</locationX>
-        <locationY>384</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>Order.Maps_Route__c</assignToReference>
             <operator>Assign</operator>
@@ -85,10 +86,32 @@
         </connector>
     </assignments>
     <decisions>
+        <name>HasDeliveredDate</name>
+        <label>Delivered Date?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>SetOrderAsDelivered</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>NoDeliveredDate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DeliveredDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>WhatStatus</name>
         <label>Status?</label>
-        <locationX>506</locationX>
-        <locationY>276</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>Delivered</name>
@@ -127,14 +150,14 @@
                 <leftValueReference>$Record.Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Redeliver</stringValue>
+                    <stringValue>Returned To Sender</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <isGoTo>true</isGoTo>
                 <targetReference>SetOrderRouteCleared</targetReference>
             </connector>
-            <label>Clear Route</label>
+            <label>Returned To Sender</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -167,34 +190,27 @@
     <recordUpdates>
         <name>UpdateOrder</name>
         <label>Order</label>
-        <locationX>506</locationX>
-        <locationY>792</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <inputReference>Order</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>or</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
-            <field>Status__c</field>
+            <field>IsFinalStatus__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Delivered</stringValue>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <filters>
-            <field>Status__c</field>
-            <operator>EqualTo</operator>
+            <field>Order__c</field>
+            <operator>IsNull</operator>
             <value>
-                <stringValue>Cancelled</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Redeliver</stringValue>
+                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <object>DeliveryPackage__c</object>

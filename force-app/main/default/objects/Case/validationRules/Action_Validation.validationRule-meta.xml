@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Action_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    RecordType.DeveloperName = &quot;Credit_Note_Request&quot;,
+    ISBLANK(TEXT(Action__c))
+)</errorConditionFormula>
+    <errorDisplayField>Action__c</errorDisplayField>
+    <errorMessage>Please fill out the action that needs to be taken</errorMessage>
+</ValidationRule>

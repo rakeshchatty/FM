@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Note_Non_Closures</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ISPICKVAL(Status, &quot;Closed&quot;),
+ISPICKVAL(Action__c, &quot;Credit&quot;), 
+RecordType.DeveloperName = &quot;Credit_Note_Request&quot;,
+NOT(OR(Rejected__c, Finance_Approved__c))
+)</errorConditionFormula>
+    <errorMessage>This case cannot be closed until your request has been approved or rejected. You&apos;ll receive a notifcation once this has been completed.</errorMessage>
+</ValidationRule>

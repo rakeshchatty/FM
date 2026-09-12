@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireActiveProduct</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Active__c, OR(ISBLANK(Product__c), NOT(Product__r.IsActive)))</errorConditionFormula>
+    <errorDisplayField>Product__c</errorDisplayField>
+    <errorMessage>An active Product is required.</errorMessage>
+</ValidationRule>

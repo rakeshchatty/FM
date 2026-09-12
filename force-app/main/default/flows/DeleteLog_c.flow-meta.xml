@@ -11,6 +11,7 @@
         <nameSegment>LogDeleteBatch</nameSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Delete Log__c {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Delete Log__c</label>

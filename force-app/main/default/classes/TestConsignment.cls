@@ -28,6 +28,8 @@ private class TestConsignment {
         //Products
         List<Product2> lstProds = new List<Product2>();
         
+        TestDataHelper.insertSupplier('First Mile Ltd');
+        
         system.debug('Criar Produtos SKIN:: ');
         for (Integer i=0; i<11; i++) {
             lstProds.add(createTestProductSkin('Prod-' + (i+1), 100, (i+1)));
@@ -89,6 +91,9 @@ private class TestConsignment {
         system.debug('Começando testes Consignment Notes');
         //Products
         List<Product2> lstProds = new List<Product2>();
+        
+        //Suppliers
+        Suppliers__c testSupplier = TestDataHelper.insertSupplier('First Mile Ltd');
         
         system.debug('Criar Produtos SKIN:: ');
         for (Integer i=0; i<11; i++) {

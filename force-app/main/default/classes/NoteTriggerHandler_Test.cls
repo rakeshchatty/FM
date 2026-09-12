@@ -8,10 +8,7 @@ public class NoteTriggerHandler_Test {
         Account childAccount = TestDataHelper.createLocation(parentAccount.Id, null);
         insert childAccount;
         
-        Suppliers__c supObj = new Suppliers__c();
-        supObj.Name = 'Test Supp';
-        supObj.Phone_Number__c = '1234567898';
-        INSERT supObj;
+        Suppliers__c supObj =  TestDataHelper.insertSupplier('Test Supp');
         
         Order orderObj = new Order(
             AccountId = childAccount.Id,

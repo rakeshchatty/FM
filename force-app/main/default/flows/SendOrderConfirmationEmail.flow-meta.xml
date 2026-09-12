@@ -3,8 +3,8 @@
     <actionCalls>
         <name>SendOrderConfirmationEmail</name>
         <label>Send Order Confirmation Email</label>
-        <locationX>242</locationX>
-        <locationY>924</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -15,6 +15,13 @@
             <typeValue>OrderItem</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>attribution</name>
+            <value>
+                <elementReference>$Record.Account.EffectiveAttribution__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
         <inputParameters>
             <name>collection</name>
             <value>
@@ -60,7 +67,7 @@
         <inputParameters>
             <name>var03</name>
             <value>
-                <elementReference>$Record.Requested_Delivery_Date__c</elementReference>
+                <elementReference>$Record.ExpectedDeliveryDate__c</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -75,14 +82,22 @@
                 <elementReference>$Record.OrderNumber</elementReference>
             </value>
         </inputParameters>
+        <inputParameters>
+            <name>var06</name>
+            <value>
+                <elementReference>$Record.Account.Name</elementReference>
+            </value>
+        </inputParameters>
         <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>60.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>SetCoffeeCupAndPodPostbackServiceCount</name>
         <label>Coffee Cup &amp; Pod Postback Service Count</label>
-        <locationX>242</locationX>
-        <locationY>708</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>CoffeeCupPostbackServiceCount</assignToReference>
             <operator>AssignCount</operator>
@@ -98,45 +113,15 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>SetRecipient</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>SetRecipient</name>
-        <label>Recipient</label>
-        <locationX>242</locationX>
-        <locationY>816</locationY>
-        <assignmentItems>
-            <assignToReference>ToAddress</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>$Record.Contact__r.Email</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>ToName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>FullName</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>GreetingName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Name</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>SendOrderConfirmationEmail</targetReference>
+            <targetReference>RetrieveOrderContactOrServiceContact</targetReference>
         </connector>
     </assignments>
     <collectionProcessors>
         <name>FilterCoffeeCupPostbackService</name>
         <elementSubtype>FilterCollectionProcessor</elementSubtype>
         <label>Coffee Cup Postback Service</label>
-        <locationX>242</locationX>
-        <locationY>492</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNextValueToReference>currentItem_FilterCoffeePodPostbackService</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
         <collectionReference>OrderItems</collectionReference>
@@ -156,8 +141,8 @@
         <name>FilterCoffeePodPostbackService</name>
         <elementSubtype>FilterCollectionProcessor</elementSubtype>
         <label>Coffee Pod Postback Service</label>
-        <locationX>242</locationX>
-        <locationY>600</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNextValueToReference>currentItem_FilterCoffeePodPostbackService</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
         <collectionReference>OrderItems</collectionReference>
@@ -174,10 +159,39 @@
         </connector>
     </collectionProcessors>
     <decisions>
+        <name>CustomerToBeExcludedAndHasRecipients</name>
+        <label>Customer to be Excluded and Recipients?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcludedAndHasRecepients</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.EffectiveAttribution__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Greener Than Green</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendOrderConfirmationEmail</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>HasOrderItems</name>
         <label>Order Items?</label>
-        <locationX>374</locationX>
-        <locationY>384</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesHasOrderItems</name>
@@ -203,16 +217,6 @@
 IF({!CoffeeCupPostbackServiceCount} &gt; 0, &apos;d-9c567332e6b94c39a6ebd9d8e1207bbf&apos;, 
 IF({!CoffeePodPostbackServiceCount} &gt; 0, &apos;d-9004df5da3ef4e9c8195f89e0155bdc8&apos;, 
 &apos;d-aeb38c1bdbb245239e398abbebb13206&apos;)))</expression>
-    </formulas>
-    <formulas>
-        <name>FullName</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!$Record.Contact__r.FirstName}), {!$Record.Contact__r.LastName}, {!$Record.Contact__r.FirstName} + &apos; &apos; + {!$Record.Contact__r.LastName})</expression>
-    </formulas>
-    <formulas>
-        <name>Name</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!$Record.Contact__r.FirstName}), {!$Record.Contact__r.LastName}, {!$Record.Contact__r.FirstName})</expression>
     </formulas>
     <formulas>
         <name>ShippingAddress</name>
@@ -247,8 +251,8 @@ Mixed Recycling Overweight Charge (P): 01t4L000001yuRoQAI
 General Waste Overweight Charge (P): 01t4L000001yuRtQAI</description>
         <name>GetOrderItems</name>
         <label>Order Items</label>
-        <locationX>374</locationX>
-        <locationY>276</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>HasOrderItems</targetReference>
@@ -294,8 +298,8 @@ General Waste Overweight Charge (P): 01t4L000001yuRtQAI</description>
     <recordUpdates>
         <name>SetEmailSent</name>
         <label>Set as Email Sent</label>
-        <locationX>242</locationX>
-        <locationY>1032</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <inputAssignments>
             <field>ConfirmationEmailStatus__c</field>
             <value>
@@ -305,10 +309,10 @@ General Waste Overweight Charge (P): 01t4L000001yuRtQAI</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND 2 AND 3 AND (4 OR 5)</filterLogic>
         <filters>
             <field>Status</field>
             <operator>EqualTo</operator>
@@ -331,10 +335,17 @@ General Waste Overweight Charge (P): 01t4L000001yuRtQAI</description>
             </value>
         </filters>
         <filters>
-            <field>Contact__c</field>
-            <operator>IsNull</operator>
+            <field>Clearance_Order__c</field>
+            <operator>EqualTo</operator>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Supplier_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Accepted</stringValue>
             </value>
         </filters>
         <object>Order</object>
@@ -352,6 +363,50 @@ General Waste Overweight Charge (P): 01t4L000001yuRtQAI</description>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>RetrieveOrderContactOrServiceContact</name>
+        <label>Retrieve Order Contact or Service Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CustomerToBeExcludedAndHasRecipients</targetReference>
+        </connector>
+        <flowName>RetrieveOrderContactOrAccountContact</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Order</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Role</name>
+            <value>
+                <stringValue>Service Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>GreetingName</assignToReference>
+            <name>GreetingName</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>RecipientCount</assignToReference>
+            <name>RecipientCount</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToAddress</assignToReference>
+            <name>ToAddress</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToName</assignToReference>
+            <name>ToName</name>
+        </outputAssignments>
+    </subflows>
     <variables>
         <name>CoffeeCupPostbackServiceCount</name>
         <dataType>Number</dataType>
@@ -393,6 +448,14 @@ General Waste Overweight Charge (P): 01t4L000001yuRtQAI</description>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
+        <name>RecipientCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
     </variables>
     <variables>
         <name>ToAddress</name>

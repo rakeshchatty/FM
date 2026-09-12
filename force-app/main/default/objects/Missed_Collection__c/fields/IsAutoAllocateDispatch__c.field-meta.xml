@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsAutoAllocateDispatch__c</fullName>
+    <formula>AND(
+Case__r.Account.CollectionPriority__c != &apos;New&apos;,
+ISPICKVAL(Case__r.Priority, &apos;P3&apos;), 
+ISPICKVAL(Case__r.Requested_Collection_Time__c, &apos;PM&apos;), 
+HOUR(TIMEVALUE(Case__r.CreatedDate)) &lt;= 15, 
+MOD(DATEVALUE(Case__r.CreatedDate) - DATE(2024, 1, 1), 7) &lt; 5, 
+ISPICKVAL(Daily_Dispatch__r.RoundId__r.Round_Type__c, &apos;PM&apos;), 
+Case__r.Location__r.ParentId != &apos;001w000001QGnfpAAD&apos;
+)</formula>
+    <label>Auto Allocate Dispatch?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

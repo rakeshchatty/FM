@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireValue</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+OR (
+ISPICKVAL( DocumentType__c , &apos;Employers Liability Insurance&apos;),
+ISPICKVAL( DocumentType__c , &apos;Public Liability Insurance&apos;),
+ISPICKVAL( DocumentType__c , &apos;Professional Indemnity&apos;)
+),
+ISBLANK(Value__c)
+)</errorConditionFormula>
+    <errorDisplayField>Value__c</errorDisplayField>
+    <errorMessage>Value is mandatory for this document type.</errorMessage>
+</ValidationRule>

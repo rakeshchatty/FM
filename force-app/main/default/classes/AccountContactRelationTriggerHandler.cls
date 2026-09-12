@@ -1,12 +1,19 @@
 public without sharing class AccountContactRelationTriggerHandler {
 
 	public void handleTrigger(List<AccountContactRelation> newList, Map<Id, AccountContactRelation> oldMap, TriggerOperation operation) {
+		HubSpotAcrSync hubSpotAcrSync = new HubSpotAcrSync();
 		switch on operation {
-			when AFTER_INSERT, AFTER_UPDATE {
+			when AFTER_INSERT {
 				setFinanceContactOnAccount(newList);
+				hubSpotAcrSync.handleInsert(newList);
+			}
+			when AFTER_UPDATE {
+				setFinanceContactOnAccount(newList);
+				hubSpotAcrSync.handleUpdate(newList, oldMap);
 			}
 			when BEFORE_DELETE {
 				validateFinanceContact(oldMap);
+				hubSpotAcrSync.handleDelete(oldMap.values());
 			}
 		}
 	}

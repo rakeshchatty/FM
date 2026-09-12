@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Airside Liability Insurance</fullName>
+        <default>false</default>
+        <label>Airside Liability Insurance</label>
+    </customValue>
+    <customValue>
+        <fullName>Anti Bribery Policy</fullName>
+        <default>false</default>
+        <label>Anti Bribery Policy</label>
+    </customValue>
+    <customValue>
+        <fullName>Calibration Certificates</fullName>
+        <default>false</default>
+        <label>Calibration Certificates</label>
+    </customValue>
+    <customValue>
+        <fullName>Certificate of Conformity</fullName>
+        <default>false</default>
+        <label>Certificate of Conformity</label>
+    </customValue>
+    <customValue>
+        <fullName>CHAS</fullName>
+        <default>false</default>
+        <label>CHAS</label>
+    </customValue>
+    <customValue>
+        <fullName>Constructionline</fullName>
+        <default>false</default>
+        <label>Constructionline</label>
+    </customValue>
+    <customValue>
+        <fullName>Desktop Audit - Duty of Care Form</fullName>
+        <default>false</default>
+        <label>Desktop Audit - Duty of Care Form</label>
+    </customValue>
+    <customValue>
+        <fullName>DO37 Duty of Care Audit Form</fullName>
+        <default>false</default>
+        <label>DO37 Duty of Care Audit Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Duty Of Care Audit</fullName>
+        <default>false</default>
+        <label>Duty Of Care Audit</label>
+    </customValue>
+    <customValue>
+        <fullName>Employers Liability Insurance</fullName>
+        <default>false</default>
+        <label>Employers Liability Insurance</label>
+    </customValue>
+    <customValue>
+        <fullName>Environmental Policy</fullName>
+        <default>false</default>
+        <label>Environmental Policy</label>
+    </customValue>
+    <customValue>
+        <fullName>FORS</fullName>
+        <default>false</default>
+        <label>FORS</label>
+    </customValue>
+    <customValue>
+        <fullName>Health And Safety Policy</fullName>
+        <default>false</default>
+        <label>Health And Safety Policy</label>
+    </customValue>
+    <customValue>
+        <fullName>ICO Registration</fullName>
+        <default>false</default>
+        <label>ICO Registration</label>
+    </customValue>
+    <customValue>
+        <fullName>ISO 14001 Certificate</fullName>
+        <default>false</default>
+        <label>ISO 14001 Certificate</label>
+    </customValue>
+    <customValue>
+        <fullName>ISO 27001 Certificate</fullName>
+        <default>false</default>
+        <label>ISO 27001 Certificate</label>
+    </customValue>
+    <customValue>
+        <fullName>ISO 45001 Certificate</fullName>
+        <default>false</default>
+        <label>ISO 45001 Certificate</label>
+    </customValue>
+    <customValue>
+        <fullName>ISO 9001 Certificate</fullName>
+        <default>false</default>
+        <label>ISO 9001 Certificate</label>
+    </customValue>
+    <customValue>
+        <fullName>Method Statement</fullName>
+        <default>false</default>
+        <label>Method Statement</label>
+    </customValue>
+    <customValue>
+        <fullName>Modern Slavery and Human Trafficking Policy</fullName>
+        <default>false</default>
+        <label>Modern Slavery and Human Trafficking Policy</label>
+    </customValue>
+    <customValue>
+        <fullName>Motor Insurances</fullName>
+        <default>false</default>
+        <label>Motor Insurances</label>
+    </customValue>
+    <customValue>
+        <fullName>Operators Licence</fullName>
+        <default>false</default>
+        <label>Operators Licence</label>
+    </customValue>
+    <customValue>
+        <fullName>Permit</fullName>
+        <default>false</default>
+        <label>Permit</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Indemnity</fullName>
+        <default>false</default>
+        <label>Professional Indemnity</label>
+    </customValue>
+    <customValue>
+        <fullName>Public Liability Insurance</fullName>
+        <default>false</default>
+        <label>Public Liability Insurance</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase of Waste Services Agreement</fullName>
+        <default>false</default>
+        <label>Purchase of Waste Services Agreement</label>
+    </customValue>
+    <customValue>
+        <fullName>Risk Assessment</fullName>
+        <default>false</default>
+        <label>Risk Assessment</label>
+    </customValue>
+    <customValue>
+        <fullName>Safe Contractor</fullName>
+        <default>false</default>
+        <label>Safe Contractor</label>
+    </customValue>
+    <customValue>
+        <fullName>Safe Systems Of Work</fullName>
+        <default>false</default>
+        <label>Safe Systems Of Work</label>
+    </customValue>
+    <customValue>
+        <fullName>Supplier Contract</fullName>
+        <default>false</default>
+        <label>Supplier Contract</label>
+    </customValue>
+    <customValue>
+        <fullName>Waste Carrier Licence</fullName>
+        <default>false</default>
+        <label>Waste Carrier Licence</label>
+    </customValue>
+    <masterLabel>Supplier Document Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

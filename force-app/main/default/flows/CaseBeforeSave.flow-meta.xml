@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <description>Assign to Service Queue</description>
         <name>OwnerId</name>
@@ -882,6 +883,13 @@
                 <operator>StartsWith</operator>
                 <rightValue>
                     <stringValue>Thank you for your email</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Undelivered Mail Returned to Sender</stringValue>
                 </rightValue>
             </conditions>
             <connector>

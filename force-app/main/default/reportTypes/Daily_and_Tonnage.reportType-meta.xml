@@ -180,6 +180,66 @@
             <field>calcvehicle__c</field>
             <table>DailyDispatch__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Round_Notes__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Food_Pod__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Miley_Data_Status__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>WasKeyFolderTaken__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Dispatch_Delay__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agency_Loader_1__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Agency_Loader_2__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Calculated_Overtime__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overtime_Manual__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overtime_Reason__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Master_Round_ID__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Num_Loaders__c</field>
+            <table>DailyDispatch__c</table>
+        </columns>
         <masterLabel>Daily Dispatches</masterLabel>
     </sections>
     <sections>
@@ -271,6 +331,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Weightbridge_Id__c</field>
+            <table>DailyDispatch__c.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tonnes__c</field>
+            <table>DailyDispatch__c.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Origin_Depot__c</field>
+            <table>DailyDispatch__c.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_Name__c</field>
+            <table>DailyDispatch__c.Tonnages__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ticket_Number__c</field>
             <table>DailyDispatch__c.Tonnages__r</table>
         </columns>
         <masterLabel>Tonnages</masterLabel>

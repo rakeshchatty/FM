@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BeginEndRouteTimeAtFacility__c</fullName>
+    <description>When on, include pre and post time as part of the max length of the day, effectively shortening the length of the day and start time is unaffected. When off, the pre and post time do not impact the max length of day. The pre time would move the start time to earlier than the facility start time.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Begin End Route Time At Facility</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>true</fullName>
+                <default>false</default>
+                <label>true</label>
+            </value>
+            <value>
+                <fullName>false</fullName>
+                <default>false</default>
+                <label>false</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -3,7 +3,7 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>Order__c</columns>
-    <columns>IsSaturdayDelivery__c</columns>
+    <columns>IsCollection__c</columns>
     <columns>RequestedDeliveryDate__c</columns>
     <columns>Count__c</columns>
     <columns>TrackingId__c</columns>
@@ -14,8 +14,8 @@
     <columns>Message__c</columns>
     <columns>Carrier__c</columns>
     <columns>RouteName__c</columns>
-    <columns>LAST_UPDATE</columns>
     <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

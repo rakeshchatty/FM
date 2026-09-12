@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireDepots</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISPICKVAL(Round_Type__c, &apos;AM&apos;), ISPICKVAL(Round_Type__c, &apos;PM&apos;)), OR(ISBLANK(StartDepot__c), ISBLANK(EndDepot__c)))</errorConditionFormula>
+    <errorMessage>Start Depot &amp; End Depot are required on AM or PM rounds.</errorMessage>
+</ValidationRule>

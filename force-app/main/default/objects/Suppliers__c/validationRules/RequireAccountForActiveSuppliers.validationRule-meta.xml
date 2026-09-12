@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireAccountForActiveSuppliers</fullName>
+    <active>false</active>
+    <description>An account is required for Active Suppliers.</description>
+    <errorConditionFormula>Supplier_Active__c &amp;&amp;  ISBLANK( SupplierAccount__c )</errorConditionFormula>
+    <errorDisplayField>SupplierAccount__c</errorDisplayField>
+    <errorMessage>Supplier Account is required for Active Supplier.</errorMessage>
+</ValidationRule>

@@ -6,6 +6,8 @@
     <columns>Type_of_Waste__c</columns>
     <columns>CREATEDBY_USER.ALIAS</columns>
     <columns>CREATED_DATE</columns>
+    <columns>Tonnes__c</columns>
+    <columns>Time_of_Tip__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>Site_of_Tip__c</field>
@@ -13,14 +15,9 @@
         <value>Weighbridge</value>
     </filters>
     <filters>
-        <field>CREATEDBY_USER.ALIAS</field>
-        <operation>equals</operation>
-        <value>rpain</value>
-    </filters>
-    <filters>
         <field>CREATED_DATE</field>
         <operation>equals</operation>
-        <value>2/19/2024 12:00 AM</value>
+        <value>TODAY</value>
     </filters>
     <label>Weighbridge Tonnages</label>
 </ListView>

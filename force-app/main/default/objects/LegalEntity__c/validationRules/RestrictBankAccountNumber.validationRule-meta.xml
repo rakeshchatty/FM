@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictBankAccountNumber</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISNEW(), ISCHANGED(BankAccountNumber__c)), NOT(REGEX(BankAccountNumber__c, &apos;^\\d{8}$&apos;)))</errorConditionFormula>
+    <errorDisplayField>BankAccountNumber__c</errorDisplayField>
+    <errorMessage>Bank Account Number must be 8 digits.</errorMessage>
+</ValidationRule>

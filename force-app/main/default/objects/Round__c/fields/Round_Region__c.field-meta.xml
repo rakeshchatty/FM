@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Round_Region__c</fullName>
+    <description>Estimated area for round. Used to show capacity in an area.</description>
+    <label>Round Region</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Birmingham</fullName>
+                <default>false</default>
+                <label>Birmingham</label>
+            </value>
+            <value>
+                <fullName>Central East</fullName>
+                <default>false</default>
+                <label>Central East</label>
+            </value>
+            <value>
+                <fullName>Central West</fullName>
+                <default>false</default>
+                <label>Central West</label>
+            </value>
+            <value>
+                <fullName>East</fullName>
+                <default>false</default>
+                <label>East</label>
+            </value>
+            <value>
+                <fullName>North</fullName>
+                <default>false</default>
+                <label>North</label>
+            </value>
+            <value>
+                <fullName>North West</fullName>
+                <default>false</default>
+                <label>North West</label>
+            </value>
+            <value>
+                <fullName>South</fullName>
+                <default>false</default>
+                <label>South</label>
+            </value>
+            <value>
+                <fullName>South Central</fullName>
+                <default>false</default>
+                <label>South Central</label>
+            </value>
+            <value>
+                <fullName>South East</fullName>
+                <default>false</default>
+                <label>South East</label>
+            </value>
+            <value>
+                <fullName>South West</fullName>
+                <default>false</default>
+                <label>South West</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

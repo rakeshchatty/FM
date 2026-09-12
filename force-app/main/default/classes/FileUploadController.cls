@@ -1,11 +1,16 @@
 public without sharing class FileUploadController {
 
-    @AuraEnabled
-	public static List<FileUpload.Option> getOptions() {
-		List<FileUpload.Option> options = new List<FileUpload.Option>();
-		
-		options.add(new DeliveryRouteFileUpload().getOption());
-		options.add(new DeliveryOrderFileUpload().getOption());
+	private static List<FileUploader> fileUploaders = new List<FileUploader> {
+		new DeliveryRouteFileUploader(),
+		new DeliveryOrderFileUploader()
+	};
+
+	@AuraEnabled
+	public static List<FileUploader.Option> getOptions() {
+		List<FileUploader.Option> options = new List<FileUploader.Option>();
+		for (FileUploader fileUploader : fileUploaders) {
+			options.add(fileUploader.getOption());
+		}
 		return options;
 	}
 
@@ -24,14 +29,12 @@ public without sharing class FileUploadController {
 		getInstance(fileReference).process(objectData);
 	}
 
-	private static FileUpload getInstance(String fileReference) {
-		if (fileReference == DeliveryRouteFileUpload.FILE_REFERENCE) {
-			return new DeliveryRouteFileUpload();
-		} else if (fileReference == DeliveryOrderFileUpload.FILE_REFERENCE) {
-			return new DeliveryOrderFileUpload();
-		} else {
-			return null;
+	private static FileUploader getInstance(String fileReference) {
+		for (FileUploader fileUploader : fileUploaders) {
+			if (fileReference == fileUploader.getFileReference()) {
+				return fileUploader;
+			}
 		}
-		
+		return null;
 	}
 }

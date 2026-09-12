@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>58.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>SetChargeVariableWeight</name>
-        <label>Charge Variable Weight</label>
-        <locationX>182</locationX>
-        <locationY>503</locationY>
+        <name>CopyProductFields</name>
+        <label>Copy Product Fields</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>$Record.IsChargeVariableWeight__c</assignToReference>
+            <assignToReference>$Record.IsDeliveryByExternalCarrier__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.Product2.ChargeVariableWeight__c</elementReference>
+                <elementReference>$Record.Product2.IsDeliveryByExternalCarrier__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.IsCollection__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.IsCollection__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.WTNProduct__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.WTN_Product__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.IsVariableBilling__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.IsVariableBilling__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Product_Category__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.Product_Category__r.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.IsVATExemptProduct__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IsVatExemptProduct</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.VATRate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>VatRate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.PartnerVATRate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PartnerVatRate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.RecycleIdProduct__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.RecycleID__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -20,8 +77,8 @@
     <assignments>
         <name>SetDDDiscount</name>
         <label>DD Discount</label>
-        <locationX>50</locationX>
-        <locationY>1019</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.direct_debit_discount__c</assignToReference>
             <operator>Assign</operator>
@@ -34,26 +91,10 @@
         </connector>
     </assignments>
     <assignments>
-        <name>SetDeliveryByExternalCarrier</name>
-        <label>Delivery By External Carrier?</label>
-        <locationX>182</locationX>
-        <locationY>287</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.IsDeliveryByExternalCarrier__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Product2.IsDeliveryByExternalCarrier__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>SetWTNProduct</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>SetDiscountOrSupplement</name>
         <label>Discount Or Supplement</label>
-        <locationX>50</locationX>
-        <locationY>1619</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Discount_or_Supplement__c</assignToReference>
             <operator>Assign</operator>
@@ -63,10 +104,26 @@
         </assignmentItems>
     </assignments>
     <assignments>
+        <name>SetLocation</name>
+        <label>Location</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Location__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Order.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>CopyProductFields</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>SetManualProductName</name>
         <label>Manual Product Name</label>
-        <locationX>50</locationX>
-        <locationY>719</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Manual_Product_Name__c</assignToReference>
             <operator>Assign</operator>
@@ -81,8 +138,8 @@
     <assignments>
         <name>SetOverridingDiscount</name>
         <label>Overriding Discount</label>
-        <locationX>50</locationX>
-        <locationY>1319</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.Overriding_Account_discount__c</assignToReference>
             <operator>Assign</operator>
@@ -94,27 +151,11 @@
             <targetReference>IsDiscountOrSupplementNull</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>SetWTNProduct</name>
-        <label>WTN Product</label>
-        <locationX>182</locationX>
-        <locationY>395</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.WTNProduct__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Product2.WTN_Product__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>SetChargeVariableWeight</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>IsDirectDebitDiscountNull</name>
         <label>Direct Debit Discount Null?</label>
-        <locationX>182</locationX>
-        <locationY>911</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsOverridingAccountDiscountNull</targetReference>
         </defaultConnector>
@@ -145,8 +186,8 @@
     <decisions>
         <name>IsDiscountOrSupplementNull</name>
         <label>Discount Or Supplement Null?</label>
-        <locationX>182</locationX>
-        <locationY>1511</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesDiscountOrSupplementNull</name>
@@ -181,8 +222,8 @@
     <decisions>
         <name>IsManualProductNameNull</name>
         <label>Manual Product Name Null?</label>
-        <locationX>182</locationX>
-        <locationY>611</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsDirectDebitDiscountNull</targetReference>
         </defaultConnector>
@@ -206,8 +247,8 @@
     <decisions>
         <name>IsOverridingAccountDiscountNull</name>
         <label>Overriding Account Discount Null?</label>
-        <locationX>182</locationX>
-        <locationY>1211</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsDiscountOrSupplementNull</targetReference>
         </defaultConnector>
@@ -240,14 +281,35 @@
         <name>DDDiscount</name>
         <dataType>Number</dataType>
         <expression>IF(NOT(ISBLANK({!$Record.Order.Account.Parent.Direct_Debit_Discount__c})),
- {!$Record.Order.Account.Parent.Direct_Debit_Discount__c}, 
+ {!$Record.Order.Account.Parent.Direct_Debit_Discount__c},
 0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>DefaultVatRate</name>
+        <dataType>Number</dataType>
+        <expression>20</expression>
         <scale>2</scale>
     </formulas>
     <formulas>
         <name>DiscountOrSupplement</name>
         <dataType>String</dataType>
         <expression>IF({!$Record.Discount__c} &gt; 0, &apos;Discount&apos;, &apos;Supplement&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>HasPartnerOnOrder</name>
+        <dataType>Boolean</dataType>
+        <expression>OR({!IsPartnerOrder}, NOT(ISBLANK({!$Record.Order.Account.Partnership__c})))</expression>
+    </formulas>
+    <formulas>
+        <name>IsPartnerOrder</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.Order.Account.RecordType.Name} == &apos;Partner&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>IsVatExemptProduct</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(NOT(ISNEW()), {!$Record.IsVATExemptProduct__c}, {!$Record.Product2.IsVATExempt__c})</expression>
     </formulas>
     <formulas>
         <name>ManualProductName</name>
@@ -264,6 +326,20 @@
         <expression>IF(NOT(ISBLANK({!$Record.Order.Account.Parent.Account_Discount__c})),
  {!$Record.Order.Account.Parent.Account_Discount__c},
  0)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>PartnerVatRate</name>
+        <dataType>Number</dataType>
+        <expression>IF(NOT(ISNEW()), {!$Record.PartnerVATRate__c}, 
+IF({!HasPartnerOnOrder}, IF(OR({!$Record.Order.IsVATExemptPartner__c}, {!IsVatExemptProduct}), 0, {!DefaultVatRate}), null))</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>VatRate</name>
+        <dataType>Number</dataType>
+        <expression>IF(NOT(ISNEW()), {!$Record.VATRate__c}, 
+IF(NOT({!IsPartnerOrder}), IF(OR({!$Record.Order.IsVATExemptLocation__c}, {!IsVatExemptProduct}), 0, {!DefaultVatRate}), null))</expression>
         <scale>2</scale>
     </formulas>
     <interviewLabel>Order Product - Before Save {!$Flow.CurrentDateTime}</interviewLabel>
@@ -288,10 +364,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>56</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>SetDeliveryByExternalCarrier</targetReference>
+            <targetReference>SetLocation</targetReference>
         </connector>
         <object>OrderItem</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>

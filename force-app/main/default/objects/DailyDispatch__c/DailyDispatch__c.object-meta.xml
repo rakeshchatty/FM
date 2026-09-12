@@ -159,7 +159,7 @@
     <label>Daily Dispatch</label>
     <nameField>
         <label>Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Daily Dispatches</pluralLabel>

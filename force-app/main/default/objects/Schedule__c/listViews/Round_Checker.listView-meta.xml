@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Round_Checker</fullName>
+    <columns>NAME</columns>
+    <columns>Location__c</columns>
+    <columns>CollectionStatus__c</columns>
+    <columns>Fortnightly__c</columns>
+    <columns>Supplier__c</columns>
+    <columns>Supplier_Product_Name__c</columns>
+    <columns>Round__c</columns>
+    <columns>Days__c</columns>
+    <columns>Time__c</columns>
+    <columns>Round_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Location__c</field>
+        <operation>contains</operation>
+        <value>Three Colt Gallery</value>
+    </filters>
+    <label>Round Checker</label>
+</ListView>

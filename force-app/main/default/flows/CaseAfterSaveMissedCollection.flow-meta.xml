@@ -3,8 +3,8 @@
     <actionCalls>
         <name>CollectionHasBeenCompleted</name>
         <label>Post: Collection has been completed.</label>
-        <locationX>50</locationX>
-        <locationY>1463</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -24,13 +24,34 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>CreateAdditionalWaypoint</name>
+        <label>Create Additional Waypoint</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>CreateWaypointFromCase</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>IsCustomerToBeExcludedAndHasRecipients2</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>caseIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CreateWaypointFromCase</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>DriverHasBeenDispatched</name>
         <label>Post : Driver Has Been Dispatched</label>
-        <locationX>50</locationX>
-        <locationY>1055</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -50,13 +71,14 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
         <name>DriverWillDispatchShortly</name>
         <label>Post : Driver Will Dispatch Shortly</label>
-        <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <connector>
@@ -76,13 +98,14 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
         <name>MissedCollectionHasBeenAssigned</name>
         <label>Post: Missed collection has been assigned</label>
-        <locationX>50</locationX>
-        <locationY>1763</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -99,35 +122,88 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
-        <name>SendGridAdriverhasbeendispatched</name>
-        <label>SendGrid: A driver has been dispatched</label>
-        <locationX>50</locationX>
-        <locationY>947</locationY>
-        <actionName>SendGridSendServiceFinanceContactEmail</actionName>
+        <name>SendEmailCollectionCompleted</name>
+        <label>Send Email - Collection completed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>DriverHasBeenDispatched</targetReference>
+            <targetReference>CollectionHasBeenCompleted</targetReference>
         </connector>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>Missed_Collection__c</typeValue>
+        </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>accountId</name>
+            <name>collection</name>
             <value>
-                <elementReference>$Record.Location__r.Id</elementReference>
+                <elementReference>GetFirstMileMissedCollections</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>accountName</name>
+            <name>greetingName</name>
+            <value>
+                <elementReference>GreetingName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateId</name>
+            <value>
+                <stringValue>d-df46a1150b1e45b7aa9981c0dac92be1</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>toAddress</name>
+            <value>
+                <elementReference>ToAddress</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>toName</name>
+            <value>
+                <elementReference>ToName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var01</name>
             <value>
                 <elementReference>$Record.Location__r.Name</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>role</name>
+            <name>var02</name>
             <value>
-                <stringValue>Service Contact</stringValue>
+                <elementReference>LocationAddress</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>SendEmailDriverDispatched</name>
+        <label>Send Email - Driver dispatched</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>SendGridEmail</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>DriverHasBeenDispatched</targetReference>
+        </connector>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>Case</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>greetingName</name>
+            <value>
+                <elementReference>GreetingName</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -136,88 +212,123 @@
                 <stringValue>d-b61a266df06d439dbaddb33e7faecb20</stringValue>
             </value>
         </inputParameters>
-        <nameSegment>SendGridSendServiceFinanceContactEmail</nameSegment>
+        <inputParameters>
+            <name>toAddress</name>
+            <value>
+                <elementReference>ToAddress</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>toName</name>
+            <value>
+                <elementReference>ToName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var01</name>
+            <value>
+                <elementReference>$Record.Location__r.Name</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
-        <name>SendGridMissedcollectionlogged</name>
-        <label>SendGrid: Missed collection logged</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <actionName>SendGridSendServiceFinanceContactEmail</actionName>
+        <name>SendEmailMissedCollectionLogged</name>
+        <label>Send Email - Missed collection logged</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>SendGridEmail</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>DriverWillDispatchShortly</targetReference>
         </connector>
+        <dataTypeMappings>
+            <typeName>T__collection</typeName>
+            <typeValue>Case</typeValue>
+        </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>accountId</name>
+            <name>greetingName</name>
             <value>
-                <elementReference>$Record.Location__r.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>accountName</name>
-            <value>
-                <elementReference>$Record.Location__r.Name</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>role</name>
-            <value>
-                <stringValue>Service Contact</stringValue>
+                <elementReference>GreetingName</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
             <name>templateId</name>
             <value>
-                <stringValue>d-b35848701ab5413b8bad2594093b2965</stringValue>
+                <elementReference>MissedCollectionLoggedTemplateId</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>SendGridSendServiceFinanceContactEmail</nameSegment>
-    </actionCalls>
-    <actionCalls>
-        <name>SendGridYourcollectionhasbeencompleted</name>
-        <label>SendGrid: Your collection has been completed.</label>
-        <locationX>50</locationX>
-        <locationY>1355</locationY>
-        <actionName>SendGridSendServiceFinanceContactEmail</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>CollectionHasBeenCompleted</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>accountId</name>
+            <name>toAddress</name>
             <value>
-                <elementReference>$Record.Location__r.Id</elementReference>
+                <elementReference>ToAddress</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>accountName</name>
+            <name>toName</name>
+            <value>
+                <elementReference>ToName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>var01</name>
             <value>
                 <elementReference>$Record.Location__r.Name</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>role</name>
+            <name>var02</name>
             <value>
-                <stringValue>Service Contact</stringValue>
+                <elementReference>LocationAddress</elementReference>
             </value>
         </inputParameters>
-        <inputParameters>
-            <name>templateId</name>
-            <value>
-                <stringValue>d-eddb8d25a7a04b229e4ab9543aabe004</stringValue>
-            </value>
-        </inputParameters>
-        <nameSegment>SendGridSendServiceFinanceContactEmail</nameSegment>
+        <nameSegment>SendGridEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
-    <apiVersion>57.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>ErrorAssignDispatchOnMissedCollections</name>
+        <label>Assign Dispatch on Missed Collections</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>Dispatch must be assigned to Missed Collection. Use &apos;Assign Dispatch&apos; action button.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>HasMissedCollections</name>
+        <label>Missed Collections?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>CreateAdditionalWaypoint</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesHasMissedCollections</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetMissedCollections</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ErrorAssignDispatchOnMissedCollections</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>IsCollectionCompleted</name>
         <label>Collection Completed?</label>
-        <locationX>182</locationX>
-        <locationY>1247</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsSupplierMissed</targetReference>
         </defaultConnector>
@@ -240,17 +351,120 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>SendGridYourcollectionhasbeencompleted</targetReference>
+                <targetReference>GetFirstMileMissedCollections</targetReference>
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>Yes</label>
         </rules>
     </decisions>
     <decisions>
+        <name>IsCustomerToBeExcludedAndHasRecipients1</name>
+        <label>Customer to be Excluded and Recipients?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>DriverWillDispatchShortly</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcludedAndHasRecipients1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IsCustomerToBeExcluded</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailMissedCollectionLogged</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>IsCustomerToBeExcludedAndHasRecipients2</name>
+        <label>Customer to be Excluded and Recipients?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>DriverHasBeenDispatched</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcludedAndHasRecipients2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IsCustomerToBeExcluded</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailDriverDispatched</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>IsCustomerToBeExcludedAndHasRecipients3</name>
+        <label>Customer to be Excluded and Recipients?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>CollectionHasBeenCompleted</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCustomerToBeExcludedAndHasRecipients3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecipientCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>GetFirstMileMissedCollections</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IsCustomerToBeExcluded</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SendEmailCollectionCompleted</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>IsDriverHasBeenDispatched</name>
         <label>Driver Has Been Dispatched?</label>
-        <locationX>182</locationX>
-        <locationY>731</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsCollectionCompleted</targetReference>
         </defaultConnector>
@@ -273,7 +487,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>CreateCollectionWaypoints</targetReference>
+                <targetReference>GetMissedCollections</targetReference>
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>Yes</label>
@@ -282,8 +496,8 @@
     <decisions>
         <name>IsMissedCollectionLogged</name>
         <label>Missed Collection Logged?</label>
-        <locationX>182</locationX>
-        <locationY>323</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnector>
             <targetReference>IsDriverHasBeenDispatched</targetReference>
         </defaultConnector>
@@ -299,7 +513,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>SendGridMissedcollectionlogged</targetReference>
+                <targetReference>IsCustomerToBeExcludedAndHasRecipients1</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -307,8 +521,8 @@
     <decisions>
         <name>IsSupplierMissed</name>
         <label>Supplier missed?</label>
-        <locationX>182</locationX>
-        <locationY>1655</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>YesSupplierMissed</name>
@@ -343,9 +557,30 @@
     </decisions>
     <environments>Default</environments>
     <formulas>
+        <name>IsCustomerToBeExcluded</name>
+        <dataType>Boolean</dataType>
+        <expression>OR({!$Record.Account.EffectiveAttribution__c} = &quot;Greenzone&quot;, {!$Record.Account.EffectiveAttribution__c} = &quot;Greener Than Green&quot;)</expression>
+    </formulas>
+    <formulas>
         <name>IsOpenCaseWithAutoEmailSentEnabed</name>
         <dataType>Boolean</dataType>
         <expression>NOT({!$Record.IsClosed}) &amp;&amp; {!$Record.Auto_Email_Sent__c} &amp;&amp; (ISNEW() || ISCHANGED({!$Record.Auto_Email_Sent__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>LocationAddress</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Location__r.BillingStreetLineSingle__c} + &apos;, &apos; + {!$Record.Location__r.BillingPostalCode}</expression>
+    </formulas>
+    <formulas>
+        <name>MissedCollectionLoggedTemplateId</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.Account.Collection_Pin_Confirmed__c}, 
+IF({!$Record.Location__r.VIP_Customer__c}, &apos;d-0204840fbf95450283b124bc3c15848e&apos;,
+IF({!$Record.Location__r.On_Priority__c}, &apos;d-c71c4f4550654a23984126bb4bd96124&apos;,
+&apos;d-dcc069fe077c4cc39e0f25b937d10a93&apos;)),
+IF(OR({!$Record.Location__r.VIP_Customer__c}, {!$Record.Location__r.On_Priority__c}), 
+&apos;d-718938ab3d0a4561abfc4de25cd928a3&apos;,
+&apos;d-0ccc1fdcfb8b45d5bbce6496ade712a0&apos;))</expression>
     </formulas>
     <interviewLabel>Case - After Save - Missed Collection {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Case - After Save - Missed Collection</label>
@@ -368,11 +603,60 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetFirstMileMissedCollections</name>
+        <label>First Mile Missed Collections</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IsCustomerToBeExcludedAndHasRecipients3</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Case__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsExternalSupplier__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Missed_Collection__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetMissedCollections</name>
+        <label>Missed Collections</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HasMissedCollections</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Case__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Missed_Collection__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>56</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>IsMissedCollectionLogged</targetReference>
+            <targetReference>RetrieveCaseContactOrServiceContact</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -395,19 +679,76 @@
     </start>
     <status>Active</status>
     <subflows>
-        <name>CreateCollectionWaypoints</name>
-        <label>Create Collection Waypoints</label>
-        <locationX>50</locationX>
-        <locationY>839</locationY>
+        <name>RetrieveCaseContactOrServiceContact</name>
+        <label>Retrieve Case Contact or Service Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <connector>
-            <targetReference>SendGridAdriverhasbeendispatched</targetReference>
+            <targetReference>IsMissedCollectionLogged</targetReference>
         </connector>
-        <flowName>CreateCollectionWaypointsFromCase</flowName>
+        <flowName>RetrieveCaseContactOrAccountContact</flowName>
+        <inputAssignments>
+            <name>AccountId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <name>Case</name>
             <value>
                 <elementReference>$Record</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <name>Role</name>
+            <value>
+                <stringValue>Service Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>GreetingName</assignToReference>
+            <name>GreetingName</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>RecipientCount</assignToReference>
+            <name>RecipientCount</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToAddress</assignToReference>
+            <name>ToAddress</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToName</assignToReference>
+            <name>ToName</name>
+        </outputAssignments>
     </subflows>
+    <variables>
+        <name>GreetingName</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>RecipientCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>ToAddress</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ToName</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>

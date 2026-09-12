@@ -20,6 +20,7 @@
         <nameSegment>SendInvoiceEmail</nameSegment>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>IsStatusInvoiced</name>
         <label>Status Invoiced?</label>
@@ -100,6 +101,14 @@
             <name>EmailSentMessage</name>
             <fieldText>&lt;p&gt;Invoice Pdf sent as email.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -116,6 +125,14 @@
             <name>Copy_1_of_EmailSentMessage</name>
             <fieldText>&lt;p&gt;Since status is not Invoiced, the email was not sent.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>

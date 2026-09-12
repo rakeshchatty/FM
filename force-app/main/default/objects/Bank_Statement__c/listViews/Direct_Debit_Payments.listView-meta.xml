@@ -20,12 +20,7 @@
     <filters>
         <field>TransactionAmount__c</field>
         <operation>equals</operation>
-        <value>765.6</value>
-    </filters>
-    <filters>
-        <field>CREATED_DATE</field>
-        <operation>equals</operation>
-        <value>8/17/2022 12:00 AM</value>
+        <value>GBP 692.4</value>
     </filters>
     <label>Direct Debit Payments</label>
 </ListView>

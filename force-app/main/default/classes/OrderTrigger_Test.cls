@@ -9,6 +9,7 @@ public class OrderTrigger_Test{
 	}
 	@isTest
     public static void UnitTest(){
+        TestDataHelper.insertVat();
         TestDataHelper.insertSupplier('First Mile Ltd');
         Profile p = [SELECT Id FROM Profile WHERE Name='System Administrator']; 
         User u = new User(Alias = 'newUser', Email='newuser@testorg.com',

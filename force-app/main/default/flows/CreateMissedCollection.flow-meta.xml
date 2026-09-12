@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>NavigateToCase</name>
+        <label>Navigate To Case</label>
+        <locationX>50</locationX>
+        <locationY>1874</locationY>
+        <actionName>c:RecordPageNavigation</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:RecordPageNavigation</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>PrepareMissedCollection</name>
         <label>Prepare Missed Collection</label>
-        <locationX>264</locationX>
-        <locationY>866</locationY>
+        <locationX>270</locationX>
+        <locationY>1466</locationY>
         <assignmentItems>
             <assignToReference>MissedCollection.Case__c</assignToReference>
             <operator>Assign</operator>
@@ -31,11 +50,34 @@
             <targetReference>LoopSelectedRows</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Set_Record_Id</name>
+        <label>Set Record Id</label>
+        <locationX>50</locationX>
+        <locationY>1166</locationY>
+        <assignmentItems>
+            <assignToReference>recordId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CaseToInsert.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>IsNewCaseCreated</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopSelectedRows</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>HasCaseId</name>
         <label>Case Id?</label>
-        <locationX>176</locationX>
-        <locationY>134</locationY>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
         <defaultConnector>
             <targetReference>ChooseCaseScreen</targetReference>
         </defaultConnector>
@@ -56,38 +98,94 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <dynamicChoiceSets>
-        <name>CollectionSchedules</name>
-        <dataType>String</dataType>
-        <displayField>Name</displayField>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Location__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>GetCase.AccountId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Active__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <object>Schedule__c</object>
-        <sortField>Collection_Day__c</sortField>
-        <sortOrder>Asc</sortOrder>
-        <valueField>Id</valueField>
-    </dynamicChoiceSets>
+    <decisions>
+        <name>HasInputCaseRecord</name>
+        <label>Case Record as Input?</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>HasCaseId</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CaseToInsert</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetCollectionSchedule</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>IsCaseToBeInserted</name>
+        <label>Insert Case?</label>
+        <locationX>182</locationX>
+        <locationY>950</locationY>
+        <defaultConnector>
+            <targetReference>LoopSelectedRows</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesInsertCase</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CaseToInsert.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CaseRecord</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ShouldNavigateToCase</name>
+        <label>Navigate To Case</label>
+        <locationX>182</locationX>
+        <locationY>1766</locationY>
+        <defaultConnector>
+            <targetReference>SuccessScreen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesNavigateToCase</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNewCaseCreated</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>NavigateToCase</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>varToday</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
     <interviewLabel>Create Missed Collection {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create Missed Collection</label>
     <loops>
         <name>LoopSelectedRows</name>
         <label>Selected Rows</label>
-        <locationX>176</locationX>
-        <locationY>758</locationY>
+        <locationX>182</locationX>
+        <locationY>1358</locationY>
         <collectionReference>Data.selectedRows</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -117,21 +215,31 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
-        <name>CreateMissedCollection</name>
-        <label>Missed Collection</label>
-        <locationX>176</locationX>
+        <name>CaseRecord</name>
+        <label>Case Record</label>
+        <locationX>50</locationX>
         <locationY>1058</locationY>
         <connector>
-            <targetReference>SuccessScreen</targetReference>
+            <targetReference>Set_Record_Id</targetReference>
+        </connector>
+        <inputReference>CaseToInsert</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>CreateMissedCollection</name>
+        <label>Missed Collection</label>
+        <locationX>182</locationX>
+        <locationY>1658</locationY>
+        <connector>
+            <targetReference>ShouldNavigateToCase</targetReference>
         </connector>
         <inputReference>MissedCollections</inputReference>
     </recordCreates>
     <recordLookups>
         <name>GetCase</name>
         <label>Case</label>
-        <locationX>176</locationX>
-        <locationY>434</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <locationX>314</locationX>
+        <locationY>542</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>GetCollectionSchedule</targetReference>
         </connector>
@@ -143,28 +251,27 @@
                 <elementReference>recordId</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Case</object>
+        <outputReference>CaseToInsert</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>AccountId</queriedFields>
         <queriedFields>CaseNumber</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>GetCollectionSchedule</name>
         <label>Collection Schedule</label>
-        <locationX>176</locationX>
-        <locationY>542</locationY>
+        <locationX>182</locationX>
+        <locationY>734</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>ChooseSchedulesScreen</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND 2 AND (3 OR 4) AND (5 OR 6)</filterLogic>
         <filters>
             <field>Location__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>GetCase.AccountId</elementReference>
+                <elementReference>CaseToInsert.AccountId</elementReference>
             </value>
         </filters>
         <filters>
@@ -174,6 +281,34 @@
                 <booleanValue>false</booleanValue>
             </value>
         </filters>
+        <filters>
+            <field>End_Date__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <elementReference>varToday</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>End_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Start_Date__c</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <elementReference>varToday</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Start_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Schedule__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -181,8 +316,8 @@
     <screens>
         <name>ChooseCaseScreen</name>
         <label>Choose Case</label>
-        <locationX>264</locationX>
-        <locationY>242</locationY>
+        <locationX>402</locationX>
+        <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -235,6 +370,14 @@
                 <assignToReference>recordId</assignToReference>
                 <name>recordId</name>
             </outputParameters>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -242,18 +385,26 @@
     <screens>
         <name>ChooseSchedulesScreen</name>
         <label>Choose Schedules</label>
-        <locationX>176</locationX>
-        <locationY>650</locationY>
+        <locationX>182</locationX>
+        <locationY>842</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>LoopSelectedRows</targetReference>
+            <targetReference>IsCaseToBeInserted</targetReference>
         </connector>
         <fields>
             <name>CaseInformation</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Location: &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!GetCase.Account.Name} &lt;/span&gt;&lt;strong&gt;Case Number:&lt;/strong&gt; {!GetCase.CaseNumber} &lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Location: &lt;/strong&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CaseToInsert.Account.Name} &lt;/span&gt;&lt;strong style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;         &lt;/strong&gt;&lt;strong&gt;Case Number:&lt;/strong&gt; {!CaseToInsert.CaseNumber}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Data</name>
@@ -308,6 +459,14 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -315,28 +474,54 @@
     <screens>
         <name>SuccessScreen</name>
         <label>Success</label>
-        <locationX>176</locationX>
-        <locationY>1166</locationY>
+        <locationX>314</locationX>
+        <locationY>1874</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>SuccessMessage</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 255, 0);&quot;&gt;Records created successfully!&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Missed Collections created successfully.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>HasCaseId</targetReference>
+            <targetReference>HasInputCaseRecord</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>CaseToInsert</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>IsNewCaseCreated</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
     <variables>
         <name>MissedCollection</name>
         <dataType>SObject</dataType>
@@ -359,20 +544,5 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>ScheduledIds</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>SelectedRows</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Schedule__c</objectType>
     </variables>
 </Flow>

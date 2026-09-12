@@ -259,6 +259,7 @@
         <nameSegment>emailSimple</nameSegment>
     </actionCalls>
     <apiVersion>54.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>AmendOrderWhichOption</name>
         <label>AmendOrderWhichOption?</label>
@@ -804,6 +805,14 @@
             <name>DisplayText2</name>
             <fieldText>&lt;p&gt;Your email has been sent. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -820,6 +829,14 @@
             <name>DisplayText2_0</name>
             <fieldText>&lt;p&gt;Your email has been sent. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -836,6 +853,14 @@
             <name>DisplayText</name>
             <fieldText>&lt;p&gt;This button only works for a clearance order.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -852,6 +877,14 @@
             <name>DisplayText_0</name>
             <fieldText>&lt;p&gt;This order is {!recordId.Status}, you can no longer amend this order.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -886,6 +919,14 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>ResendEmailQuote</name>
@@ -893,6 +934,14 @@
             <fieldText>Get a quote</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Select one option&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ResendEmailQuote}=TRUE,1,0)+
@@ -916,6 +965,14 @@ IF({!ResendOrder}=TRUE,1,0)=1</formulaExpression>
             <fieldText>Book a clearance job</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Select one option &lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!ResendEmailQuote}=TRUE,1,0)+
@@ -952,6 +1009,14 @@ IF({!ResendOrder}=TRUE,1,0)=1</formulaExpression>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>NewSupplier</name>
@@ -990,6 +1055,14 @@ IF({!ResendOrder}=TRUE,1,0)=1</formulaExpression>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1005,6 +1078,14 @@ IF({!ResendOrder}=TRUE,1,0)=1</formulaExpression>
             <name>NewSupplierChoiceScreen</name>
             <fieldText>&lt;p&gt;What would you like to do with the new supplier?&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1022,6 +1103,14 @@ IF({!ResendOrder}=TRUE,1,0)=1</formulaExpression>
             <fieldText>Get a quote</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Select one option.&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!Get_a_quote}=TRUE,1,0) + 
@@ -1044,6 +1133,14 @@ IF({!Book_a_clearance_job}=TRUE,1,0) = 1</formulaExpression>
             <fieldText>Book a clearance job</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Select one option. &lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!Get_a_quote}=TRUE,1,0) + 
@@ -1111,11 +1208,27 @@ IF({!Book_a_clearance_job}=TRUE,1,0) = 1</formulaExpression>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>NewSupplierChoiceScreen_0</name>
             <fieldText>&lt;p&gt;What would you like to do with the new supplier?&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>Get_a_quote_0</name>
@@ -1123,6 +1236,14 @@ IF({!Book_a_clearance_job}=TRUE,1,0) = 1</formulaExpression>
             <fieldText>Get a quote</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Select one option.&lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!Get_a_quote_0}=TRUE,1,0) + 
@@ -1135,6 +1256,14 @@ IF({!Book_a_clearance_job_0}=TRUE,1,0) = 1</formulaExpression>
             <fieldText>Book a clearance job</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;Select one option. &lt;/p&gt;</errorMessage>
                 <formulaExpression>IF({!Get_a_quote_0}=TRUE,1,0) + 
@@ -1156,6 +1285,14 @@ IF({!Book_a_clearance_job_0}=TRUE,1,0) = 1</formulaExpression>
             <name>DisplayText1</name>
             <fieldText>&lt;p&gt;Select one option, press the previous button to go back. &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>

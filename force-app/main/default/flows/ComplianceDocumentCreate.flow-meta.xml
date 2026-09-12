@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>AccountRemoveSpacesAndSpecialCharacters</name>
+        <label>Account - Remove Spaces And Special Characters</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <actionName>RemoveSpacesAndSpecialCharacters</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>SetNameAndCode</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>inputs</name>
+            <value>
+                <elementReference>ComplianceDocument.Account__r.Name</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>RemoveSpacesAndSpecialCharacters</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>AfterRemovingSpacesAndSpecialCharacters</assignToReference>
+            <name>output</name>
+        </outputParameters>
+    </actionCalls>
     <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>ConsignmentNoteCount</name>
+        <label>Count</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>GetComplianceDocumentsCN</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AccountRemoveSpacesAndSpecialCharacters</targetReference>
+        </connector>
+    </assignments>
     <assignments>
         <name>CreateComplianceDocument</name>
         <label>Create Compliance Document</label>
-        <locationX>176</locationX>
+        <locationX>182</locationX>
         <locationY>134</locationY>
         <assignmentItems>
             <assignToReference>ComplianceDocument.RecordTypeId</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>WTNRecordTypeId</elementReference>
+                <elementReference>RecordTypeId</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -28,13 +69,6 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>ComplianceDocument.Name</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Name</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>ComplianceDocument.Annual_Caption__c</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -45,7 +79,7 @@
             <assignToReference>ComplianceDocument.MostRecent__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>MostRecent</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -66,14 +100,14 @@
             <assignToReference>ComplianceDocument.WasteHierarchyDeclaration__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>WasteHierarchyDeclaration</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>ComplianceDocument.SectionB_RegdWasteCarrierBrokerDealer__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <booleanValue>false</booleanValue>
+                <elementReference>RegisteredWasteCarrier</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -108,7 +142,7 @@
             <assignToReference>ComplianceDocument.Generated_on_Salesforce__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>GeneratedOnSalesforce</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -118,36 +152,161 @@
                 <elementReference>OrderId</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.ConsignmentNote_WasteProducer__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>WasteProducer</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.ConsignmentNote_WasteProducerAddress__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>WasteProducerAddress</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.ConsignmentNote_PremisesCode__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PremisesCode</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Contact</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.SectionB_RegWasteCBB_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>RegistrationNo</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.ConsignmentNote_VehicleRegNo__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>VehicleRegistrationNo</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.Signature_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SignatureDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>IsHazardousConsignmentNote</targetReference>
+        </connector>
     </assignments>
+    <assignments>
+        <name>SetNameAndCode</name>
+        <label>Set Name, Code</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.ConsignmentNote_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ConsignmentNoteCode</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ComplianceDocument.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ConsignmentNoteCode</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>IsHazardousConsignmentNote</name>
+        <label>Hazardous CN?</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesHazardousConsignmentNote</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>IsHazardous</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetComplianceDocumentsCN</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>BrokerAddress</name>
         <dataType>String</dataType>
-        <expression>IF({!IsLocationBroker}, {!ParentAddress}, 
-IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;70 - 71 Wells St, Fitzrovia, London&apos;))</expression>
+        <expression>IF({!IsHazardous}, null, 
+IF({!IsLocationBroker}, {!ParentAddress}, 
+IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;70 - 71 Wells St, Fitzrovia, London&apos;)))</expression>
     </formulas>
     <formulas>
         <name>BrokerCompanyName</name>
         <dataType>String</dataType>
-        <expression>IF({!IsLocationBroker}, {!ComplianceDocument.Account__r.Parent.Name}, 
-IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;First Mile Ltd&apos;))</expression>
+        <expression>IF({!IsHazardous}, null, 
+IF({!IsLocationBroker}, {!ComplianceDocument.Account__r.Parent.Name}, 
+IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;First Mile Ltd&apos;)))</expression>
     </formulas>
     <formulas>
         <name>BrokerPostcode</name>
         <dataType>String</dataType>
-        <expression>IF({!IsLocationBroker}, {!ComplianceDocument.Account__r.Parent.BillingPostalCode}, 
-IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;W1T 3QE&apos;))</expression>
+        <expression>IF({!IsHazardous}, null,
+IF({!IsLocationBroker}, {!ComplianceDocument.Account__r.Parent.BillingPostalCode}, 
+IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;W1T 3QE&apos;)))</expression>
     </formulas>
     <formulas>
         <name>BrokerRegistrationNumber</name>
         <dataType>String</dataType>
-        <expression>IF({!IsLocationBroker}, {!ComplianceDocument.Account__r.Parent.Business_Registration_Number__c}, 
-IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;&apos;))</expression>
+        <expression>IF({!IsHazardous}, null,
+IF({!IsLocationBroker}, {!ComplianceDocument.Account__r.Parent.Business_Registration_Number__c}, 
+IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;&apos;)))</expression>
+    </formulas>
+    <formulas>
+        <name>ConsignmentNoteCode</name>
+        <dataType>String</dataType>
+        <expression>IF({!IsHazardous}, LEFT({!AfterRemovingSpacesAndSpecialCharacters}, 6) &amp; &quot;/CN&quot; &amp; IF({!Count}&lt;9, &apos;00&apos;&amp; TEXT({!Count}+1) , &apos;0&apos;&amp;TEXT({!Count}+1)), null)</expression>
+    </formulas>
+    <formulas>
+        <name>Contact</name>
+        <dataType>String</dataType>
+        <expression>IF({!IsHazardous}, {!ComplianceDocument.Order__r.Contact__c}, null)</expression>
     </formulas>
     <formulas>
         <name>EndDateTime</name>
         <dataType>DateTime</dataType>
-        <expression>ADDMONTHS({!StartDateTime}, 12) - 1</expression>
+        <expression>IF({!IsHazardous}, null, ADDMONTHS({!StartDateTime}, 12) - 1)</expression>
+    </formulas>
+    <formulas>
+        <name>GeneratedOnSalesforce</name>
+        <dataType>Boolean</dataType>
+        <expression>True</expression>
+    </formulas>
+    <formulas>
+        <name>IsHazardous</name>
+        <dataType>Boolean</dataType>
+        <expression>{!WTNProduct} = &apos;Hazardous Consignment Note&apos;</expression>
     </formulas>
     <formulas>
         <name>IsLocationBroker</name>
@@ -160,9 +319,15 @@ IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;&apos;))</expression>
         <expression>{!ComplianceDocument.Contractor__r.Name} = &apos;First Mile Ltd&apos;</expression>
     </formulas>
     <formulas>
+        <name>MostRecent</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT({!IsHazardous})</expression>
+    </formulas>
+    <formulas>
         <name>Name</name>
         <dataType>String</dataType>
-        <expression>IF({!IsSeasonTicket}, &apos;Season Ticket WTN&apos;, &apos;AdHoc WTN&apos; ) + &apos; - &apos; + LEFT({!ComplianceDocument.Account__r.Name}, 47) + &apos; - &apos; + {!StartDateText}</expression>
+        <expression>IF({!IsHazardous}, null,
+IF({!IsSeasonTicket}, &apos;Season Ticket WTN&apos;, &apos;AdHoc WTN&apos; ) + &apos; - &apos; + LEFT({!ComplianceDocument.Account__r.Name}, 47) + &apos; - &apos; + {!StartDateText})</expression>
     </formulas>
     <formulas>
         <name>ParentAddress</name>
@@ -170,11 +335,31 @@ IF({!IsSupplierFirstMile}, &apos;&apos;, &apos;&apos;))</expression>
         <expression>{!ComplianceDocument.Account__r.Parent.BillingStreetLineSingle__c} + &apos;, &apos; + {!ComplianceDocument.Account__r.Parent.BillingCity} + &apos;, &apos; + {!ComplianceDocument.Account__r.Parent.BillingCountry}</expression>
     </formulas>
     <formulas>
+        <name>PremisesCode</name>
+        <dataType>String</dataType>
+        <expression>IF({!IsHazardous}, &apos;Exempt&apos;, null)</expression>
+    </formulas>
+    <formulas>
+        <name>RegisteredWasteCarrier</name>
+        <dataType>Boolean</dataType>
+        <expression>False</expression>
+    </formulas>
+    <formulas>
+        <name>RegistrationNo</name>
+        <dataType>String</dataType>
+        <expression>IF({!IsHazardous}, {!ComplianceDocument.Contractor__r.CarrierRegNo__c}, null)</expression>
+    </formulas>
+    <formulas>
+        <name>SignatureDate</name>
+        <dataType>Date</dataType>
+        <expression>IF({!IsHazardous}, {!ComplianceDocument.Order__r.Delivery_Date__c}, null)</expression>
+    </formulas>
+    <formulas>
         <name>StartDateText</name>
         <dataType>String</dataType>
-        <expression>IF(DAY({!StartDate}) &gt; 9, TEXT(DAY({!StartDate})), &apos;0&apos; + TEXT(DAY({!StartDate}))) +&apos;-&apos;+ 
+        <expression>IF({!IsHazardous}, null, IF(DAY({!StartDate}) &gt; 9, TEXT(DAY({!StartDate})), &apos;0&apos; + TEXT(DAY({!StartDate}))) +&apos;-&apos;+ 
 IF(MONTH({!StartDate}) &gt; 9, TEXT(MONTH({!StartDate})), &apos;0&apos; + TEXT(MONTH({!StartDate}))) + &apos;-&apos; + 
-TEXT(YEAR({!StartDate}))</expression>
+TEXT(YEAR({!StartDate})) )</expression>
     </formulas>
     <formulas>
         <name>StartDateTime</name>
@@ -182,10 +367,24 @@ TEXT(YEAR({!StartDate}))</expression>
         <expression>DATETIMEVALUE({!StartDate})</expression>
     </formulas>
     <formulas>
-        <description>Compliance Document - WTN record type Id</description>
-        <name>WTNRecordTypeId</name>
+        <name>VehicleRegistrationNo</name>
         <dataType>String</dataType>
-        <expression>&apos;0122X000000KCauQAG&apos;</expression>
+        <expression>IF({!IsHazardous}, {!ComplianceDocument.Order__r.Vehicle_Registration_Number__c}, null)</expression>
+    </formulas>
+    <formulas>
+        <name>WasteHierarchyDeclaration</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT({!IsHazardous})</expression>
+    </formulas>
+    <formulas>
+        <name>WasteProducer</name>
+        <dataType>String</dataType>
+        <expression>IF({!IsHazardous}, {!ComplianceDocument.Account__r.Name}, null)</expression>
+    </formulas>
+    <formulas>
+        <name>WasteProducerAddress</name>
+        <dataType>String</dataType>
+        <expression>IF({!IsHazardous}, {!ComplianceDocument.Account__r.BillingStreetLineSingle__c} + &apos;, &apos; + {!ComplianceDocument.Account__r.BillingCity} + &apos;, &apos; + {!ComplianceDocument.Account__r.BillingCountry}, null)</expression>
     </formulas>
     <interviewLabel>ComplianceDocumentCreate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Compliance Document - Create</label>
@@ -208,8 +407,37 @@ TEXT(YEAR({!StartDate}))</expression>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <start>
+    <recordLookups>
+        <name>GetComplianceDocumentsCN</name>
+        <label>Compliance Documents - CN</label>
         <locationX>50</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ConsignmentNoteCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LocationId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RecordTypeId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Compliance_Doc__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CreateComplianceDocument</targetReference>
@@ -217,12 +445,27 @@ TEXT(YEAR({!StartDate}))</expression>
     </start>
     <status>Active</status>
     <variables>
+        <name>AfterRemovingSpacesAndSpecialCharacters</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>ComplianceDocument</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>true</isOutput>
         <objectType>Compliance_Doc__c</objectType>
+    </variables>
+    <variables>
+        <name>Count</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
     </variables>
     <variables>
         <name>IsSeasonTicket</name>
@@ -246,6 +489,13 @@ TEXT(YEAR({!StartDate}))</expression>
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>RecordTypeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>StartDate</name>
         <dataType>Date</dataType>
         <isCollection>false</isCollection>
@@ -254,6 +504,13 @@ TEXT(YEAR({!StartDate}))</expression>
     </variables>
     <variables>
         <name>SupplierId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>WTNProduct</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>

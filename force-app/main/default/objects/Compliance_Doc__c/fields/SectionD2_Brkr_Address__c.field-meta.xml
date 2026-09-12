@@ -3,6 +3,7 @@
     <fullName>SectionD2_Brkr_Address__c</fullName>
     <label>Broker Address</label>
     <length>310</length>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>
     <visibleLines>2</visibleLines>

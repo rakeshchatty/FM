@@ -11,14 +11,14 @@ public class DeliveryPackageTrackingEventHandlerTest {
 		Product2 product = TestDataHelper.insertProduct('test product', '40001', 'Collection');
 		PricebookEntry PricebookEntry = TestDataHelper.insertPricebookEntry(Test.getStandardPricebookId(), product.Id, 100);
 
+        TestDataHelper.insertSupplierFirstMile();
 		Order order = TestDataHelper.insertOrder(location.Id, Date.today());
 		OrderItem orderItem = TestDataHelper.insertOrderItem(order.Id, product.Id, PricebookEntry.Id);
-		DeliveryPackage__c pkg = TestDataHelper.createDeliveryPackage(order.Id);
-		pkg.TrackingId__c = 'T12345';
-		pkg.Status__c =  DeliveryPackage.STATUS_LABELLED;
-		INSERT pkg;
-
-		pkg.Status__c =  DeliveryPackage.STATUS_PACKAGED;
+		DeliveryPackage__c pkg = TestDataHelper.insertDeliveryPackage(order.Id, DeliveryPackage.STATUS_NEW);
+		pkg.Status__c = DeliveryPackage.STATUS_LABELLED;	// Trigger creation of Items
+		pkg.TrackingIds__c = pkg.TrackingId__c = 'T12345';
+		UPDATE pkg;
+		pkg.Status__c = DeliveryPackage.STATUS_PACKAGED;	// Move out of Draft status
 		UPDATE pkg;
 	}
 

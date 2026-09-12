@@ -3,7 +3,7 @@
     <fullName>Type__c</fullName>
     <label>Type</label>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -11,24 +11,29 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Delivery</fullName>
-                <default>false</default>
-                <label>Delivery</label>
-            </value>
-            <value>
                 <fullName>Collection</fullName>
                 <default>false</default>
                 <label>Collection</label>
             </value>
             <value>
-                <fullName>In-Office</fullName>
+                <fullName>Collection - Support</fullName>
                 <default>false</default>
-                <label>In-Office</label>
+                <label>Collection - Support</label>
+            </value>
+            <value>
+                <fullName>Delivery</fullName>
+                <default>false</default>
+                <label>Delivery</label>
             </value>
             <value>
                 <fullName>Delivery (Bike)</fullName>
                 <default>false</default>
                 <label>Delivery (Bike)</label>
+            </value>
+            <value>
+                <fullName>In-Office</fullName>
+                <default>false</default>
+                <label>In-Office</label>
             </value>
             <value>
                 <fullName>Other</fullName>

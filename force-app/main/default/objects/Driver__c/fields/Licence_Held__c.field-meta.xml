@@ -3,6 +3,7 @@
     <fullName>Licence_Held__c</fullName>
     <label>Licence Held</label>
     <required>false</required>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

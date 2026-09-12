@@ -1,6 +1,6 @@
 @isTest
 private class DeliveryPackageShipmentBatchTest {
-    
+
 	@testSetup
 	static void setup() {
 		Account parent = TestDataHelper.insertAccount();

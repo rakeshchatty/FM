@@ -1,148 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>60.0</apiVersion>
-    <assignments>
-        <name>SetRecipient</name>
-        <label>Recipient</label>
-        <locationX>264</locationX>
-        <locationY>566</locationY>
-        <assignmentItems>
-            <assignToReference>ToAddress</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>EachContact.Contact.Email</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>ToName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>FullName</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>GreetingName</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Name</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>EachContact</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>SetRecipientCount</name>
-        <label>Recipient Count</label>
-        <locationX>176</locationX>
-        <locationY>842</locationY>
-        <assignmentItems>
-            <assignToReference>RecipientCount</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>ToAddress</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <collectionProcessors>
-        <name>RetainContactsByRole</name>
-        <elementSubtype>FilterCollectionProcessor</elementSubtype>
-        <label>Retain Contacts By Role</label>
-        <locationX>176</locationX>
-        <locationY>242</locationY>
-        <assignNextValueToReference>currentItem_RetainContactsByRole</assignNextValueToReference>
-        <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
-        <collectionReference>GeAccountRoles</collectionReference>
-        <conditionLogic>and</conditionLogic>
-        <conditions>
-            <leftValueReference>currentItem_RetainContactsByRole.Roles</leftValueReference>
-            <operator>Contains</operator>
-            <rightValue>
-                <elementReference>Role</elementReference>
-            </rightValue>
-        </conditions>
-        <connector>
-            <targetReference>EachContact</targetReference>
-        </connector>
-    </collectionProcessors>
-    <decisions>
-        <name>HasEmail</name>
-        <label>Email?</label>
-        <locationX>396</locationX>
-        <locationY>458</locationY>
-        <defaultConnector>
-            <targetReference>EachContact</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>YesHasEmail</name>
-            <conditionLogic>1 AND (2 OR (3 AND 4))</conditionLogic>
-            <conditions>
-                <leftValueReference>EachContact.Contact.Email</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>EachContact.Contact.Preferences__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Standard</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Role</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <stringValue>Finance</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>EachContact.Contact.Preferences__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Finance Only</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>SetRecipient</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
-    <formulas>
-        <name>EmailPreference</name>
-        <dataType>String</dataType>
-        <expression>IF(CONTAINS({!Role}, &apos;Finance&apos;), &apos;Finance Only&apos;, &apos;No Emails&apos;)</expression>
-    </formulas>
-    <formulas>
-        <name>FullName</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!EachContact.Contact.FirstName}), {!EachContact.Contact.LastName}, {!EachContact.Contact.FirstName} + &apos; &apos; + {!EachContact.Contact.LastName})</expression>
-    </formulas>
-    <formulas>
-        <name>Name</name>
-        <dataType>String</dataType>
-        <expression>IF(ISBLANK({!EachContact.Contact.FirstName}), {!EachContact.Contact.LastName}, {!EachContact.Contact.FirstName})</expression>
-    </formulas>
     <interviewLabel>Retrieve Account Contacts To Email {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Retrieve Account Contacts To Email</label>
-    <loops>
-        <name>EachContact</name>
-        <label>Contact</label>
-        <locationX>176</locationX>
-        <locationY>350</locationY>
-        <collectionReference>RetainContactsByRole</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>HasEmail</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>SetRecipientCount</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -163,13 +25,13 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>GeAccountRoles</name>
+        <name>GetAccountRoles</name>
         <label>Account Roles</label>
         <locationX>176</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>RetainContactsByRole</targetReference>
+            <targetReference>RetrieveContact</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -177,6 +39,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -187,24 +56,51 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>GeAccountRoles</targetReference>
+            <targetReference>GetAccountRoles</targetReference>
         </connector>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>RetrieveContact</name>
+        <label>Retrieve Contact</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <flowName>RetrieveContactByRole</flowName>
+        <inputAssignments>
+            <name>AccountContactRelationships</name>
+            <value>
+                <elementReference>GetAccountRoles</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Role</name>
+            <value>
+                <elementReference>Role</elementReference>
+            </value>
+        </inputAssignments>
+        <outputAssignments>
+            <assignToReference>GreetingName</assignToReference>
+            <name>GreetingName</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>RecipientCount</assignToReference>
+            <name>RecipientCount</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToAddress</assignToReference>
+            <name>ToAddress</name>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ToName</assignToReference>
+            <name>ToName</name>
+        </outputAssignments>
+    </subflows>
     <variables>
         <name>AccountId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>currentItem_RetainContactsByRole</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>AccountContactRelation</objectType>
     </variables>
     <variables>
         <name>GreetingName</name>

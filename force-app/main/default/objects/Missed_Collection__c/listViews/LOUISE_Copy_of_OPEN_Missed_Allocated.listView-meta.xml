@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOUISE_Copy_of_OPEN_Missed_Allocated</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>LocationName__c</columns>
+    <columns>Case__c</columns>
+    <columns>DispatchAllocated__c</columns>
+    <columns>Round__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Missed_Collection__c.Missed_Collections</value>
+    </filters>
+    <filters>
+        <field>IsCompleted__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Is_supplier_missed__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>OPEN MISSED to reallocate</label>
+    <sharedTo>
+        <group>Ops_Users</group>
+    </sharedTo>
+</ListView>

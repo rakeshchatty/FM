@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireGenerateMethod</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(CONTAINS(TEXT(Solver__c), &apos;Generate&apos;), ISBLANK(TEXT(GenerateMethod__c)))</errorConditionFormula>
+    <errorDisplayField>GenerateMethod__c</errorDisplayField>
+    <errorMessage>Generate Method is required to generate new routes.</errorMessage>
+</ValidationRule>

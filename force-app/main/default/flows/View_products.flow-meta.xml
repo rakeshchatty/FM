@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>AddRow</name>
         <label>AddRow</label>
-        <locationX>3364</locationX>
-        <locationY>2434</locationY>
+        <locationX>1498</locationX>
+        <locationY>1946</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTable</assignToReference>
             <operator>Add</operator>
@@ -34,8 +35,8 @@
     <assignments>
         <name>AddRow_0</name>
         <label>AddRow</label>
-        <locationX>1547</locationX>
-        <locationY>2704</locationY>
+        <locationX>3914</locationX>
+        <locationY>1946</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTableNoOverriding</assignToReference>
             <operator>Add</operator>
@@ -64,8 +65,8 @@
     <assignments>
         <name>AddRow_0_0</name>
         <label>AddRow</label>
-        <locationX>286</locationX>
-        <locationY>2466</locationY>
+        <locationX>2946</locationX>
+        <locationY>1946</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTableNoOverriddingAMd</assignToReference>
             <operator>Add</operator>
@@ -94,8 +95,8 @@
     <assignments>
         <name>AddRow_0_0_0</name>
         <label>AddRow</label>
-        <locationX>4022</locationX>
-        <locationY>542</locationY>
+        <locationX>314</locationX>
+        <locationY>1946</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTableAMdDiscount</assignToReference>
             <operator>Add</operator>
@@ -124,8 +125,8 @@
     <assignments>
         <name>AssignCorrectListPrice</name>
         <label>AssignCorrectListPrice</label>
-        <locationX>3251</locationX>
-        <locationY>1801</locationY>
+        <locationX>730</locationX>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>DiscountTable</assignToReference>
             <operator>Add</operator>
@@ -154,8 +155,8 @@
     <assignments>
         <name>AssignCorrectListPrice_0</name>
         <label>AssignCorrectListPrice</label>
-        <locationX>1053</locationX>
-        <locationY>1578</locationY>
+        <locationX>3200</locationX>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>DiscountTableNoOverriding</assignToReference>
             <operator>Add</operator>
@@ -184,8 +185,8 @@
     <assignments>
         <name>Close_Table</name>
         <label>Close Table</label>
-        <locationX>3403</locationX>
-        <locationY>1529</locationY>
+        <locationX>642</locationX>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>DiscountTable</assignToReference>
             <operator>Add</operator>
@@ -200,8 +201,8 @@
     <assignments>
         <name>Close_Table_0</name>
         <label>Close Table</label>
-        <locationX>1265</locationX>
-        <locationY>1729</locationY>
+        <locationX>3112</locationX>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>DiscountTableNoOverriding</assignToReference>
             <operator>Add</operator>
@@ -216,8 +217,8 @@
     <assignments>
         <name>CloseTableInvoices</name>
         <label>CloseTableInvoices</label>
-        <locationX>3910</locationX>
-        <locationY>2016</locationY>
+        <locationX>1234</locationX>
+        <locationY>2222</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTable</assignToReference>
             <operator>Add</operator>
@@ -232,8 +233,8 @@
     <assignments>
         <name>CloseTableInvoices_0</name>
         <label>CloseTableInvoices</label>
-        <locationX>2093</locationX>
-        <locationY>2284</locationY>
+        <locationX>3650</locationX>
+        <locationY>2222</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTableNoOverriding</assignToReference>
             <operator>Add</operator>
@@ -248,8 +249,8 @@
     <assignments>
         <name>CloseTableInvoices_0_0</name>
         <label>CloseTableInvoices</label>
-        <locationX>588</locationX>
-        <locationY>2218</locationY>
+        <locationX>2682</locationX>
+        <locationY>2222</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTableNoOverriddingAMd</assignToReference>
             <operator>Add</operator>
@@ -264,8 +265,8 @@
     <assignments>
         <name>CloseTableInvoices_0_0_0</name>
         <label>CloseTableInvoices</label>
-        <locationX>4450</locationX>
-        <locationY>54</locationY>
+        <locationX>50</locationX>
+        <locationY>2222</locationY>
         <assignmentItems>
             <assignToReference>InvoiceTableAMdDiscount</assignToReference>
             <operator>Add</operator>
@@ -281,8 +282,8 @@
         <name>SortInvoiceLines</name>
         <elementSubtype>SortCollectionProcessor</elementSubtype>
         <label>SortInvoiceLines</label>
-        <locationX>3600</locationX>
-        <locationY>1834</locationY>
+        <locationX>1234</locationX>
+        <locationY>1514</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
         <collectionReference>GetOrderLines</collectionReference>
         <connector>
@@ -299,8 +300,8 @@
         <name>SortInvoiceLines_0</name>
         <elementSubtype>SortCollectionProcessor</elementSubtype>
         <label>SortInvoiceLines</label>
-        <locationX>1998</locationX>
-        <locationY>2124</locationY>
+        <locationX>3650</locationX>
+        <locationY>1514</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
         <collectionReference>GetOrderLines_0</collectionReference>
         <connector>
@@ -317,8 +318,8 @@
         <name>SortInvoiceLines_0_0</name>
         <elementSubtype>SortCollectionProcessor</elementSubtype>
         <label>SortInvoiceLines</label>
-        <locationX>422</locationX>
-        <locationY>2004</locationY>
+        <locationX>2682</locationX>
+        <locationY>1514</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
         <collectionReference>GetOrderLinesAMd</collectionReference>
         <connector>
@@ -335,8 +336,8 @@
         <name>SortInvoiceLines_0_0_0</name>
         <elementSubtype>SortCollectionProcessor</elementSubtype>
         <label>SortInvoiceLines</label>
-        <locationX>3761</locationX>
-        <locationY>563</locationY>
+        <locationX>50</locationX>
+        <locationY>1514</locationY>
         <collectionProcessorType>SortCollectionProcessor</collectionProcessorType>
         <collectionReference>GetOrderLineAMdAndDiscounts</collectionReference>
         <connector>
@@ -352,8 +353,8 @@
     <decisions>
         <name>AccountHasOverridingDiscount</name>
         <label>AccountHasOverridingDiscount?</label>
-        <locationX>2363</locationX>
-        <locationY>1207</locationY>
+        <locationX>2117</locationX>
+        <locationY>134</locationY>
         <defaultConnector>
             <targetReference>GetActiveDiscounts_0</targetReference>
         </defaultConnector>
@@ -377,8 +378,8 @@
     <decisions>
         <name>AccountManaged</name>
         <label>AccountManaged?</label>
-        <locationX>1257</locationX>
-        <locationY>1909</locationY>
+        <locationX>3352</locationX>
+        <locationY>1190</locationY>
         <defaultConnector>
             <targetReference>GetOrderLines_0</targetReference>
         </defaultConnector>
@@ -402,8 +403,8 @@
     <decisions>
         <name>AccountManagedDecision</name>
         <label>AccountManaged</label>
-        <locationX>3488</locationX>
-        <locationY>1088</locationY>
+        <locationX>882</locationX>
+        <locationY>1190</locationY>
         <defaultConnector>
             <targetReference>GetOrderLines</targetReference>
         </defaultConnector>
@@ -427,8 +428,8 @@
     <decisions>
         <name>ActiveDiscounts</name>
         <label>ActiveDiscounts?</label>
-        <locationX>2772</locationX>
-        <locationY>1536</locationY>
+        <locationX>882</locationX>
+        <locationY>350</locationY>
         <defaultConnector>
             <targetReference>AccountManagedDecision</targetReference>
         </defaultConnector>
@@ -452,8 +453,8 @@
     <decisions>
         <name>ActiveDiscounts_0</name>
         <label>ActiveDiscounts?</label>
-        <locationX>2060</locationX>
-        <locationY>1576</locationY>
+        <locationX>3352</locationX>
+        <locationY>350</locationY>
         <defaultConnector>
             <targetReference>AccountManaged</targetReference>
         </defaultConnector>
@@ -477,8 +478,8 @@
     <decisions>
         <name>Already_Exists_In_Collection</name>
         <label>Already Exists In Collection</label>
-        <locationX>3738</locationX>
-        <locationY>2188</locationY>
+        <locationX>1410</locationX>
+        <locationY>1730</locationY>
         <defaultConnector>
             <targetReference>GetPriceBookInvoiceProducts</targetReference>
         </defaultConnector>
@@ -509,8 +510,8 @@
     <decisions>
         <name>Already_Exists_In_Collection_0</name>
         <label>Already Exists In Collection</label>
-        <locationX>1863</locationX>
-        <locationY>2471</locationY>
+        <locationX>3826</locationX>
+        <locationY>1730</locationY>
         <defaultConnector>
             <targetReference>GetPriceBookInvoiceProducts_0</targetReference>
         </defaultConnector>
@@ -541,8 +542,8 @@
     <decisions>
         <name>Already_Exists_In_Collection_0_0</name>
         <label>Already Exists In Collection</label>
-        <locationX>58</locationX>
-        <locationY>2230</locationY>
+        <locationX>2858</locationX>
+        <locationY>1730</locationY>
         <defaultConnector>
             <targetReference>GetPriceBookInvoiceProductsAMd</targetReference>
         </defaultConnector>
@@ -573,8 +574,8 @@
     <decisions>
         <name>Already_Exists_In_Collection_0_0_0</name>
         <label>Already Exists In Collection</label>
-        <locationX>3746</locationX>
-        <locationY>61</locationY>
+        <locationX>226</locationX>
+        <locationY>1730</locationY>
         <defaultConnector>
             <targetReference>GetPriceBookInvoiceProductsAMdAndDiscount</targetReference>
         </defaultConnector>
@@ -605,8 +606,8 @@
     <decisions>
         <name>FoundInvoiceLines</name>
         <label>FoundInvoiceLines?</label>
-        <locationX>3595</locationX>
-        <locationY>1614</locationY>
+        <locationX>1474</locationX>
+        <locationY>1406</locationY>
         <defaultConnector>
             <targetReference>View_Discounts</targetReference>
         </defaultConnector>
@@ -630,8 +631,8 @@
     <decisions>
         <name>FoundInvoiceLines_0</name>
         <label>FoundInvoiceLines?</label>
-        <locationX>2165</locationX>
-        <locationY>1939</locationY>
+        <locationX>3890</locationX>
+        <locationY>1406</locationY>
         <defaultConnector>
             <targetReference>View_Discounts_0</targetReference>
         </defaultConnector>
@@ -655,8 +656,8 @@
     <decisions>
         <name>FoundInvoiceLines_0_0_0</name>
         <label>FoundInvoiceLines?</label>
-        <locationX>3755</locationX>
-        <locationY>771</locationY>
+        <locationX>290</locationX>
+        <locationY>1406</locationY>
         <defaultConnector>
             <targetReference>View_Discounts_0_0_0</targetReference>
         </defaultConnector>
@@ -680,8 +681,8 @@
     <decisions>
         <name>FoundOrderLines_0_0</name>
         <label>FoundOrderLines?</label>
-        <locationX>587</locationX>
-        <locationY>2007</locationY>
+        <locationX>2814</locationX>
+        <locationY>1406</locationY>
         <defaultConnector>
             <targetReference>View_Discounts_0_0</targetReference>
         </defaultConnector>
@@ -703,6 +704,12 @@
         </rules>
     </decisions>
     <description>This version is looking at the Order Line object, not  the Invoice Line Object as we couldn&apos;t add a look up to the Parent Account ID to get the correct data.  This flow is used at account level.  If the customer has an &quot;Overriding account discount %&quot; then it will follow a different branch.  It will find any active discount records and then find the associated price book entry.  It will then find frequently ordered products (the number is limited to stop CPU limits).</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CurrencyCode</name>
+        <dataType>String</dataType>
+        <expression>CASE({!recordId.EffectiveCurrencyCode__c},  &quot;GBP&quot;, &quot;£&quot;,  &quot;EUR&quot;, &quot;€&quot;, &quot;&quot;)</expression>
+    </formulas>
     <formulas>
         <name>DiscountPercentageAmount</name>
         <dataType>Number</dataType>
@@ -760,8 +767,8 @@
     <loops>
         <name>LoopDiscounts</name>
         <label>LoopDiscounts</label>
-        <locationX>3070</locationX>
-        <locationY>1577</locationY>
+        <locationX>642</locationX>
+        <locationY>458</locationY>
         <collectionReference>GetActiveDiscounts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -774,8 +781,8 @@
     <loops>
         <name>LoopDiscounts_0</name>
         <label>LoopDiscounts</label>
-        <locationX>1654</locationX>
-        <locationY>1580</locationY>
+        <locationX>3112</locationX>
+        <locationY>458</locationY>
         <collectionReference>GetActiveDiscounts_0</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -788,8 +795,8 @@
     <loops>
         <name>LoopInvoiceLines_0</name>
         <label>LoopInvoiceLines</label>
-        <locationX>1784</locationX>
-        <locationY>2284</locationY>
+        <locationX>3650</locationX>
+        <locationY>1622</locationY>
         <collectionReference>GetOrderLines_0</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -802,8 +809,8 @@
     <loops>
         <name>LoopOrderLines</name>
         <label>LoopOrderLines</label>
-        <locationX>3600</locationX>
-        <locationY>2016</locationY>
+        <locationX>1234</locationX>
+        <locationY>1622</locationY>
         <collectionReference>GetOrderLines</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -816,8 +823,8 @@
     <loops>
         <name>LoopOrderLinesAMd</name>
         <label>LoopOrderLines</label>
-        <locationX>217</locationX>
-        <locationY>2012</locationY>
+        <locationX>2682</locationX>
+        <locationY>1622</locationY>
         <collectionReference>GetOrderLinesAMd</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -830,8 +837,8 @@
     <loops>
         <name>LoopOrderLinesAMdandDiscount</name>
         <label>LoopOrderLines</label>
-        <locationX>3748</locationX>
-        <locationY>356</locationY>
+        <locationX>50</locationX>
+        <locationY>1622</locationY>
         <collectionReference>GetOrderLineAMdAndDiscounts</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -850,7 +857,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -863,13 +870,14 @@
     <recordLookups>
         <name>GetActiveDiscounts</name>
         <label>GetActiveDiscounts</label>
-        <locationX>2779</locationX>
-        <locationY>1415</locationY>
+        <locationX>882</locationX>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>ActiveDiscounts</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen_0</targetReference>
         </faultConnector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
@@ -908,13 +916,14 @@
     <recordLookups>
         <name>GetActiveDiscounts_0</name>
         <label>GetActiveDiscounts</label>
-        <locationX>2066</locationX>
-        <locationY>1399</locationY>
+        <locationX>3352</locationX>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>ActiveDiscounts_0</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen</targetReference>
         </faultConnector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
@@ -953,13 +962,14 @@
     <recordLookups>
         <name>GetOrderLineAMdAndDiscounts</name>
         <label>GetOrderLineAMdAndDiscounts</label>
-        <locationX>3779</locationX>
-        <locationY>967</locationY>
+        <locationX>290</locationX>
+        <locationY>1298</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>FoundInvoiceLines_0_0_0</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen_0</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -984,13 +994,14 @@
     <recordLookups>
         <name>GetOrderLines</name>
         <label>GetOrderLines</label>
-        <locationX>3648</locationX>
-        <locationY>1252</locationY>
+        <locationX>1474</locationX>
+        <locationY>1298</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>FoundInvoiceLines</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen_0</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -1015,13 +1026,14 @@
     <recordLookups>
         <name>GetOrderLines_0</name>
         <label>GetOrderLines_0</label>
-        <locationX>1439</locationX>
-        <locationY>2160</locationY>
+        <locationX>3890</locationX>
+        <locationY>1298</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>FoundInvoiceLines_0</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -1048,13 +1060,14 @@
     <recordLookups>
         <name>GetOrderLinesAMd</name>
         <label>GetOrderLinesAMd</label>
-        <locationX>831</locationX>
-        <locationY>1813</locationY>
+        <locationX>2814</locationX>
+        <locationY>1298</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>FoundOrderLines_0_0</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -1079,8 +1092,8 @@
     <recordLookups>
         <name>GetPriceBookEntry</name>
         <label>GetPriceBookEntry</label>
-        <locationX>2962</locationX>
-        <locationY>1802</locationY>
+        <locationX>730</locationX>
+        <locationY>566</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AssignCorrectListPrice</targetReference>
@@ -1112,8 +1125,8 @@
     <recordLookups>
         <name>GetPriceBookEntry_0</name>
         <label>GetPriceBookEntry</label>
-        <locationX>1258</locationX>
-        <locationY>1444</locationY>
+        <locationX>3200</locationX>
+        <locationY>566</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AssignCorrectListPrice_0</targetReference>
@@ -1145,13 +1158,14 @@
     <recordLookups>
         <name>GetPriceBookInvoiceProducts</name>
         <label>GetPriceBookInvoiceProducts</label>
-        <locationX>3752</locationX>
-        <locationY>2437</locationY>
+        <locationX>1498</locationX>
+        <locationY>1838</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AddRow</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen_0</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -1176,13 +1190,14 @@
     <recordLookups>
         <name>GetPriceBookInvoiceProducts_0</name>
         <label>GetPriceBookInvoiceProducts</label>
-        <locationX>1871</locationX>
-        <locationY>2703</locationY>
+        <locationX>3914</locationX>
+        <locationY>1838</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AddRow_0</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -1207,8 +1222,8 @@
     <recordLookups>
         <name>GetPriceBookInvoiceProductsAMd</name>
         <label>GetPriceBookInvoiceProducts</label>
-        <locationX>56</locationX>
-        <locationY>2467</locationY>
+        <locationX>2946</locationX>
+        <locationY>1838</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AddRow_0_0</targetReference>
@@ -1235,13 +1250,14 @@
     <recordLookups>
         <name>GetPriceBookInvoiceProductsAMdAndDiscount</name>
         <label>GetPriceBookInvoiceProducts</label>
-        <locationX>4020</locationX>
-        <locationY>57</locationY>
+        <locationX>314</locationX>
+        <locationY>1838</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>AddRow_0_0_0</targetReference>
         </connector>
         <faultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>ErrorScreen_0</targetReference>
         </faultConnector>
         <filterLogic>and</filterLogic>
@@ -1266,8 +1282,8 @@
     <screens>
         <name>ErrorScreen</name>
         <label>ErrorScreen</label>
-        <locationX>211</locationX>
-        <locationY>910</locationY>
+        <locationX>3464</locationX>
+        <locationY>674</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1275,6 +1291,14 @@
             <name>ErrorMessageDisplayText</name>
             <fieldText>&lt;p&gt;An error has occurred, please pass this message to the Salesforce team.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1282,8 +1306,8 @@
     <screens>
         <name>ErrorScreen_0</name>
         <label>ErrorScreen</label>
-        <locationX>4714</locationX>
-        <locationY>1103</locationY>
+        <locationX>994</locationX>
+        <locationY>674</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1291,6 +1315,14 @@
             <name>ErrorMessageDisplayText_0</name>
             <fieldText>&lt;p&gt;An error has occurred, please pass this message to the Salesforce team.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -1298,8 +1330,8 @@
     <screens>
         <name>View_Discounts</name>
         <label>View Discounts</label>
-        <locationX>4111</locationX>
-        <locationY>2010</locationY>
+        <locationX>1474</locationX>
+        <locationY>2414</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1307,11 +1339,27 @@
             <name>OverriddingDiscountAmountText</name>
             <fieldText>&lt;p&gt;This customer has an overriding discount amount of {!recordId.Account_Discount__c}% and is on the {!recordId.Price_Book__r.Name} price book.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>DiscountRecordsDisplayText</name>
             <fieldText>&lt;p&gt;Discount records -&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!DiscountTable}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1327,6 +1375,14 @@
             <name>CommonProductsDisplayText</name>
             <fieldText>&lt;p&gt;Frequently ordered products - &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!InvoiceTable}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1342,6 +1398,14 @@
             <name>NoData</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;This account has no discounts or frequently ordered products.  &lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1364,6 +1428,14 @@
             <name>DDDiscountDisplayText2</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Please note that all prices do not include a Direct Debit discount.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>or</conditionLogic>
                 <conditions>
@@ -1388,8 +1460,8 @@
     <screens>
         <name>View_Discounts_0</name>
         <label>View Discounts</label>
-        <locationX>2248</locationX>
-        <locationY>2281</locationY>
+        <locationX>3890</locationX>
+        <locationY>2414</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1397,11 +1469,27 @@
             <name>DisplayPriceBook</name>
             <fieldText>&lt;p&gt;This customer is on the {!recordId.Price_Book__r.Name} price book.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>DiscountRecordsDisplayText_0</name>
             <fieldText>&lt;p&gt;Discount records -&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!DiscountTableNoOverriding}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1417,6 +1505,14 @@
             <name>CommonProductsDisplayText_0</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Frequently ordered products - &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!InvoiceTableNoOverriding}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1432,6 +1528,14 @@
             <name>NoData_0</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;This account has no discounts or frequently ordered products.  &lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1454,6 +1558,14 @@
             <name>DDDiscountDisplayText1</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Please note that all prices do not include a Direct Debit discount.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>or</conditionLogic>
                 <conditions>
@@ -1478,8 +1590,8 @@
     <screens>
         <name>View_Discounts_0_0</name>
         <label>View Discounts</label>
-        <locationX>820</locationX>
-        <locationY>2219</locationY>
+        <locationX>2814</locationX>
+        <locationY>2414</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1487,11 +1599,27 @@
             <name>DisplayPriceBook_0</name>
             <fieldText>&lt;p&gt;This customer is on the {!recordId.Price_Book__r.Name} price book.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>DiscountRecordsDisplayText_0_0</name>
             <fieldText>&lt;p&gt;Discount records -&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!DiscountTableNoOverriding}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1507,6 +1635,14 @@
             <name>CommonProductsDisplayText_0_0</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Frequently ordered products - &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!InvoiceTableNoOverriddingAMd}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1522,6 +1658,14 @@
             <name>DDDiscountDisplayText</name>
             <fieldText>&lt;p&gt;Please note that all prices do not include a Direct Debit discount.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>or</conditionLogic>
                 <conditions>
@@ -1537,6 +1681,14 @@
             <name>NoData_0_0</name>
             <fieldText>&lt;p&gt;This account has no discounts or frequently ordered products.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1561,8 +1713,8 @@
     <screens>
         <name>View_Discounts_0_0_0</name>
         <label>View Discounts</label>
-        <locationX>4637</locationX>
-        <locationY>50</locationY>
+        <locationX>290</locationX>
+        <locationY>2414</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1570,11 +1722,27 @@
             <name>OverriddingDiscountAmountText_0</name>
             <fieldText>&lt;p&gt;This customer has an overriding discount amount of {!recordId.Account_Discount__c}% and is on the {!recordId.Price_Book__r.Name} price book.  &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
         </fields>
         <fields>
             <name>DiscountRecordsDisplayText_0_0_0</name>
             <fieldText>&lt;p&gt;Discount records -&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!DiscountTable}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1590,6 +1758,14 @@
             <name>CommonProductsDisplayText_0_0_0</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Frequently ordered products - &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!InvoiceTableAMdDiscount}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1605,6 +1781,14 @@
             <name>NoData_0_0_0</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;This account has no discounts or frequently ordered products.  &lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
@@ -1627,6 +1811,14 @@
             <name>DDDiscountDisplayText3</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Please note that all prices do not include a Direct Debit discount.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
             <visibilityRule>
                 <conditionLogic>or</conditionLogic>
                 <conditions>
@@ -1649,8 +1841,8 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>2244</locationX>
-        <locationY>1013</locationY>
+        <locationX>1991</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>AccountHasOverridingDiscount</targetReference>
         </connector>
@@ -1660,26 +1852,26 @@
         <name>DiscountTableRow</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopDiscounts.Product__r.Name}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!GetPriceBookEntry.UnitPrice}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!LoopDiscounts.Product_Discount__c}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!DiscountPercentageAmount}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!DiscountPricetocustomer}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!GetPriceBookEntry.UnitPrice}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!LoopDiscounts.Product_Discount__c}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!DiscountPercentageAmount}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!DiscountPricetocustomer}
 &lt;/th&gt;&lt;/tr&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>DiscountTableRowNoOverrding</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopDiscounts_0.Product__r.Name}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!GetPriceBookEntry_0.UnitPrice}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!LoopDiscounts_0.Product_Discount__c}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!DiscountPriceToCustomerNoOverriding}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!GetPriceBookEntry_0.UnitPrice}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!LoopDiscounts_0.Product_Discount__c}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!DiscountPriceToCustomerNoOverriding}
 &lt;/th&gt;&lt;/tr&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>InvoiceRowNoOverridingAmd</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOrderLinesAMd.Product_Name__c}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!GetPriceBookInvoiceProductsAMd.UnitPrice}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!GetPriceBookInvoiceProductsAMd.UnitPrice}
 &lt;/th&gt;&lt;/tr&gt;</text>
     </textTemplates>
     <textTemplates>
@@ -1687,11 +1879,11 @@
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOrderLines.Product_Name__c}
 
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!GetPriceBookInvoiceProducts.UnitPrice}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!GetPriceBookInvoiceProducts.UnitPrice}
 
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!InvoiceLineDiscountPercentage}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!InvoiceLineDiscountPercentage}
 
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!InvoiceLinePriceToCustomer}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!InvoiceLinePriceToCustomer}
 
 &lt;/th&gt;&lt;/tr&gt;</text>
     </textTemplates>
@@ -1699,16 +1891,16 @@
         <name>InvoiceTableRowAMdandDiscount</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopOrderLinesAMdandDiscount.Product_Name__c}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!GetPriceBookInvoiceProductsAMdAndDiscount.UnitPrice}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!InvoiceLineDiscountAMsAndDiscount}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!InvoiceLinePriceToCustomerAMdAndDiscount}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!GetPriceBookInvoiceProductsAMdAndDiscount.UnitPrice}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!InvoiceLineDiscountAMsAndDiscount}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!InvoiceLinePriceToCustomerAMdAndDiscount}
 &lt;/th&gt;&lt;/tr&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>InvoiceTableRowNoOverridingDiscount</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;tr&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!LoopInvoiceLines_0.Product2.Name}
-&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;£{!GetPriceBookInvoiceProducts_0.UnitPrice}
+&lt;/th&gt;&lt;td style=&quot;border: 1px solid black;&quot;&gt;{!CurrencyCode}{!GetPriceBookInvoiceProducts_0.UnitPrice}
 &lt;/th&gt;&lt;/tr&gt;</text>
     </textTemplates>
     <variables>

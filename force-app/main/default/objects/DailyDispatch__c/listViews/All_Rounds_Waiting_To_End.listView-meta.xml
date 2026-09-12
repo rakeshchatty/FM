@@ -13,12 +13,7 @@
     <filters>
         <field>CREATED_DATE</field>
         <operation>greaterThan</operation>
-        <value>YESTERDAY</value>
-    </filters>
-    <filters>
-        <field>Vehicle__c</field>
-        <operation>equals</operation>
-        <value>LT72HGG</value>
+        <value>8/26/2026 12:00 AM</value>
     </filters>
     <label>All Rounds Waiting to zEnd</label>
 </ListView>

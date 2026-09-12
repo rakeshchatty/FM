@@ -16,19 +16,9 @@
     <columns>Transaction_Details__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Transaction_Type__c</field>
+        <field>AllocAmount__c</field>
         <operation>equals</operation>
-        <value>Credit Card</value>
-    </filters>
-    <filters>
-        <field>CREATEDBY_USER</field>
-        <operation>notContain</operation>
-        <value>portal</value>
-    </filters>
-    <filters>
-        <field>Document_name__c</field>
-        <operation>notContain</operation>
-        <value>Account Payment,First Mile Payment</value>
+        <value>1282.8</value>
     </filters>
     <label>Portal Balance &amp; Invoice Payments</label>
 </ListView>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequireCollectionDepot</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(IsCollection__c, ISBLANK(CollectionDepot__c))</errorConditionFormula>
+    <errorDisplayField>CollectionDepot__c</errorDisplayField>
+    <errorMessage>Collection Depot is required for Collection package.</errorMessage>
+</ValidationRule>

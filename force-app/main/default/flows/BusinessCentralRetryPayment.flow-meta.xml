@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Business Central - Retry Payment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Business Central - Retry Payment</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Retry</name>
+        <label>Retry</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>ErrorMessage__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Retry</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1 AND 2 AND (3 OR 4 OR 5 OR 6 OR 7)</filterLogic>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PaymentId__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ErrorMessage__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>cannot be found in the related table (Customer)</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ErrorMessage__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>because a record in table &apos;Cust. Ledger Entry&apos; is being updated in a transaction done by another session</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ErrorMessage__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>The record in table Gen. Journal Line already exists</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ErrorMessage__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Document No. does not exist</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ErrorMessage__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Read timed out</stringValue>
+            </value>
+        </filters>
+        <object>BusinessCentralSendRequest__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Delay30Minutes</name>
+            <connector>
+                <targetReference>Retry</targetReference>
+            </connector>
+            <label>Delay 30 Minutes</label>
+            <offsetNumber>30</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
