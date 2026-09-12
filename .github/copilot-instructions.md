@@ -6,7 +6,8 @@ Copilot Chat in `.vscode/settings.json`). Read `.myit/CAPABILITIES.yaml` for the
 ## What this repository is
 - **FM** — a Salesforce project in **SFDX source format**. Metadata: `force-app/main/default/`.
 - Git remote `github.com/rakeshchatty/FM`; default branch `main`.
-- No `sfdx-project.json` / `package.json` is checked in — do not add them unless asked.
+- `sfdx-project.json` defines the `force-app` package directory and source API version.
+- No `package.json` is checked in; do not add one unless asked.
 
 ## Load these
 - Guardrails (always): `.myit/instructions/salesforce-fm/guardrails.instructions.md`

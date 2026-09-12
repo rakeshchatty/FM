@@ -30,7 +30,6 @@ workflows, skills, and document templates. Both tools use the same command names
 │   ├── review.workflow.md            base gated review workflow (project-agnostic)
 │   ├── bugfix.md                     lightweight playbook
 │   └── metadata-change.md            lightweight playbook
-├── skills/                           deep domain guidance
 └── templates/                        requirements, exploration, technical-design, specs,
                                       worklog, test-plan, pull-request
 ```
@@ -85,7 +84,7 @@ Reload the VS Code window after changing `settings.json` so the locations are pi
 3. Add matching `.claude/commands/<project-id>-develop.md` / `-review.md` wrappers (copy the
    `salesforce-fm-*` ones and swap the prompt path).
 4. Register the project and its commands in `CAPABILITIES.yaml`.
-5. `common/` and `skills/` are shared as-is.
+5. `common/` is shared as-is.
 
 ## Guardrails (summary)
 

@@ -185,7 +185,7 @@ Trigger (1 per object)
 ```
 
 Recursion control lives in the handler (static `@TestVisible` guard), not the trigger.
-See `.myit/skills/apex-trigger-framework.md`.
+The **Triggers** subsection under Apex Best Practices has the full rule set.
 
 ---
 
@@ -407,7 +407,31 @@ No Hungarian notation: `lstAccounts` → `accounts`, `mapUsers` → `usersById`.
   handler early-returns when
   `NoTriggers__c.getInstance(UserInfo.getUserId())?.Flag__c == true`. Match the existing
   handlers in the repo.
-- See `.myit/skills/apex-trigger-framework.md` for the template.
+
+Template:
+
+```apex
+trigger OrderTrigger on Order (before insert, before update, after insert, after update) {
+    new OrderTriggerHandler().run();   // or explicit context routing, matching sibling triggers
+}
+
+public with sharing class OrderTriggerHandler {
+    @TestVisible private static Boolean hasRun = false;
+
+    public void run() {
+        if (hasRun) { return; }
+        if (NoTriggers__c.getInstance(UserInfo.getUserId())?.Flag__c == true) { return; }
+        hasRun = true;
+
+        if (Trigger.isBefore && Trigger.isInsert) { onBeforeInsert(Trigger.new); }
+        // ... one method per relevant context; gather ids, one bulk SOQL, mutate/DML in bulk
+    }
+}
+```
+
+Checklist: one trigger per object · every context delegated · no SOQL/DML in loops
+(filter by `Set<Id>`) · recursion guard · `NoTriggers__c` honored · handler test covers each
+context + a 200-record bulk case.
 
 ### Error logging
 
@@ -436,7 +460,7 @@ No Hungarian notation: `lstAccounts` → `accounts`, `mapUsers` → `usersById`.
 
 ## LWC Development Standards
 
-Deeper guidance in `.myit/skills/lwc-component-design.md`. Key rules:
+Key rules:
 
 - All new UI is LWC — no new Aura.
 - **Composition:** smart parent orchestrates; dumb children render and emit `CustomEvent`.

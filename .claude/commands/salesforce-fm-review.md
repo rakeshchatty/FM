@@ -21,7 +21,7 @@ Review target: $ARGUMENTS  (default: current branch diff vs `main`)
      is its **Code Review Standards** section
    - `.myit/instructions/salesforce-fm/guardrails.instructions.md`
    - `.myit/instructions/salesforce-fm/tools.instructions.md`
-   - `.myit/skills/salesforce-security-review.md` (security portion of Gate R3)
+   (Gate R3's security pass uses the Security items in that Code Review Standards checklist.)
 
 ## Critical
 

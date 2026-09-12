@@ -79,18 +79,6 @@ workflows:
     file: .myit/workflow/metadata-change.md
     description: Lightweight declarative / configuration change playbook.
 
-skills:
-  - name: apex-trigger-framework
-    file: .myit/skills/apex-trigger-framework.md
-  - name: soql-optimization
-    file: .myit/skills/soql-optimization.md
-  - name: lwc-component-design
-    file: .myit/skills/lwc-component-design.md
-  - name: salesforce-security-review
-    file: .myit/skills/salesforce-security-review.md
-  - name: tooling-and-mcp
-    file: .myit/skills/tooling-and-mcp.md
-
 templates:
   - { name: requirements,      file: .myit/templates/requirements.md,      gate: 1 }
   - { name: exploration,       file: .myit/templates/exploration.md,       gate: 2 }
@@ -103,4 +91,4 @@ templates:
 mcp:
   config_file: .vscode/mcp.json
   status: not-committed
-  guidance: .myit/skills/tooling-and-mcp.md
+  guidance: .myit/instructions/salesforce-fm/tools.instructions.md
