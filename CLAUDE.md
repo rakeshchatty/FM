@@ -8,7 +8,8 @@ in **`.myit/`**; `.myit/CAPABILITIES.yaml` is the map.
 - **FM (FirstMile)** — a Salesforce **Sales Cloud** project (waste / recycling collection
   and delivery logistics) in **SFDX source format**. Metadata: `force-app/main/default/`.
 - Git remote `github.com/rakeshchatty/FM`; default branch `main`; GitHub Pull Requests.
-- No `sfdx-project.json` / `package.json` is checked in — do not add them unless asked.
+- `sfdx-project.json` defines the `force-app` package directory and source API version.
+- No `package.json` is checked in; do not add one unless asked.
 
 ## Read these before working
 Load the relevant files under `.myit/instructions/` — they are the source of truth:
@@ -34,7 +35,7 @@ Same names as Copilot Chat. Defined in `.claude/commands/`, backed by `.myit/`:
   `.myit/workflow/review.workflow.md`.
 
 Lightweight playbooks: `.myit/workflow/bugfix.md`, `.myit/workflow/metadata-change.md`.
-Skills: `.myit/skills/`. Document templates: `.myit/templates/`.
+Document templates: `.myit/templates/`.
 
 ## Non-negotiable guardrails
 - Never connect to / deploy to / modify a **production** org. Sandbox or scratch only, on
