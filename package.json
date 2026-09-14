@@ -1,0 +1,30 @@
+{
+  "name": "fm",
+  "version": "1.0.0",
+  "description": "Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "sfdx-lwc-jest",
+    "test:unit": "sfdx-lwc-jest",
+    "test:unit:watch": "sfdx-lwc-jest --watch",
+    "test:unit:coverage": "sfdx-lwc-jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakeshchatty/FM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rakeshchatty/FM/issues"
+  },
+  "homepage": "https://github.com/rakeshchatty/FM#readme",
+  "devDependencies": {
+    "@salesforce/sfdx-lwc-jest": "^7.9.0"
+  }
+}

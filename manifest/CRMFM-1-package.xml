@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>ExceptionServiceTest</members>
+        <members>ExceptionService</members>
+        <members>InvoiceDashboardController</members>
+        <members>InvoiceDashboardControllerTest</members>
+        <members>InvoiceDashboardModel</members>
+        <members>InvoiceDashboardModelTest</members>
+        <members>InvoiceDashboardUtil</members>
+        <members>InvoiceDashboardUtilTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Invoice_Dashboard</members>
+        <name>CustomPermission</name>
+    </types>
+    <types>
+        <members>Invoice_Dashboard_Access</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>invoiceDashboard</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Invoice_Dashboard</members>
+        <name>CustomTab</name>
+    </types>
+    <version>65.0</version>
+</Package>

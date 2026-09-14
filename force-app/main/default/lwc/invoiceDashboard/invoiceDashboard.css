@@ -1,0 +1,36 @@
+.summary-grid {
+    border-top: 1px solid #d8dde6;
+    border-bottom: 1px solid #d8dde6;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+}
+
+.summary-item span {
+    color: #5c5c5c;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.summary-item strong {
+    font-size: 1.25rem;
+}
+
+.empty-state {
+    border: 1px dashed #9faab5;
+    color: #5c5c5c;
+    padding: 2rem;
+    text-align: center;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.line-row {
+    background: #f8f9fb;
+}
