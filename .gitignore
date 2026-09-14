@@ -1,4 +1,6 @@
 .vscode
-.jira-token
 .sf
 .sfdx
+node_modules
+.git-token
+.jira-token

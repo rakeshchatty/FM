@@ -58,12 +58,15 @@ instructions:
 prompts:
   - name: salesforce-fm-develop
     file: .myit/prompts/salesforce-fm-develop.prompt.md
-    description: Gated development workflow (Gates 1-7, worklog, analysis flow).
+    description: Gated development workflow with read-only Jira ticket retrieval (Gates 1-7, worklog, analysis flow).
     base_workflow: .myit/workflow/develop.workflow.md
   - name: salesforce-fm-review
     file: .myit/prompts/salesforce-fm-review.prompt.md
     description: Gated code review (scope -> automated -> deep review -> findings -> fixes).
     base_workflow: .myit/workflow/review.workflow.md
+  - name: jira-fetch
+    file: .myit/prompts/jira-fetch.prompt.md
+    description: Read-only Jira issue lookup without MCP using the local token file.
 
 workflows:
   - name: develop

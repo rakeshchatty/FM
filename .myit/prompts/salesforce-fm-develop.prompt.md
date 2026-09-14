@@ -1,6 +1,7 @@
 ---
-mode: agent
-description: FM Salesforce gated development workflow (Gates 1-7, worklog, analysis flow).
+agent: agent
+description: FM Salesforce gated development workflow with read-only Jira ticket retrieval (Gates 1-7, worklog, analysis flow).
+argument-hint: "[Jira issue key or browse URL, for example CRMFM-1]"
 ---
 
 # salesforce-fm-develop
@@ -33,8 +34,42 @@ sections below are **FM additions** layered onto the matching gates. Also load a
 
 ## 2. Session start
 
-`ls docs/artifacts/<TICKET-ID>/<TICKET-ID>-worklog.md`. If it exists, read it first and
-resume from the recorded gate — do not re-run completed gates.
+The ticket argument may be a Jira key such as `CRMFM-1` or a browse URL such as
+`https://rakeshchatty.atlassian.net/browse/CRMFM-1`.
+
+1. Normalize the argument to the Jira issue key. If no ticket key or browse URL was
+  provided, ask the developer for one before continuing.
+2. First check the local worklog:
+
+```powershell
+Test-Path docs/artifacts/<TICKET-ID>/<TICKET-ID>-worklog.md
+```
+
+3. If the worklog exists, read it first and resume from the recorded gate. Do not
+  re-run completed gates and do not fetch Jira details again for this session.
+4. If the worklog is not found, check whether `docs/artifacts/<TICKET-ID>/requirements.md`
+  exists. If it exists, read it as the local source of truth and do not fetch Jira.
+5. If neither the worklog nor `requirements.md` exists, fetch the ticket from Jira before
+  Gate 1. From the repository root, run the existing read-only helper:
+
+```powershell
+pwsh -NoProfile -File .myit/tools/Get-JiraIssue.ps1 -IssueKey <ISSUE-KEY-OR-BROWSE-URL>
+```
+
+If `pwsh` is unavailable, use `powershell -NoProfile` with the same arguments.
+The helper derives the Jira email from Git `user.email`, reads `.jira-token` only at
+runtime, validates and normalizes the issue input, and performs a GET request only.
+Never open, print, echo, copy, or paste the token.
+6. Use returned Jira details as the sole source for Gate 1 ticket understanding. Record
+  the issue key, summary, acceptance criteria, constraints, and explicit out-of-scope
+  items in `requirements.md`.
+7. If the helper reports a 404, stop and report that the issue is missing or not visible
+  to the configured Jira account. Do not proceed with guessed requirements. For other
+  errors, stop and report the configuration or request error without exposing secrets.
+
+Jira retrieval is external ticket reading, not codebase exploration. Gate 1 still forbids
+repository code access, file searches, and Git operations until the human approves the
+requirements.
 
 ---
 

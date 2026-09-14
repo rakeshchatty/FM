@@ -1,6 +1,6 @@
 ---
 description: FM Salesforce gated development workflow (Gates 1-7, worklog, analysis flow)
-argument-hint: "[ticket id or description]"
+argument-hint: "[Jira issue key or browse URL, for example CRMFM-1]"
 ---
 
 # /salesforce-fm-develop
@@ -8,6 +8,11 @@ argument-hint: "[ticket id or description]"
 Run the gated development workflow for the **FM** Salesforce project.
 
 Ticket / request: $ARGUMENTS
+
+At session start, follow section `2. Session start` in
+`.myit/prompts/salesforce-fm-develop.prompt.md`: check the worklog first and resume
+without Jira when it exists; otherwise check local requirements, then use
+`.myit/tools/Get-JiraIssue.ps1` only when both local artifacts are missing.
 
 ## How to run this
 
