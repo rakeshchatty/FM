@@ -213,9 +213,24 @@ The **Triggers** subsection under Apex Best Practices has the full rule set.
 
 ## Key Entities & Data Model
 
-FM is a waste / recycling collection and delivery-logistics business on Sales Cloud
-(~90 custom objects, ~40 triggers). Generated from `force-app/main/default/objects/` —
-re-verify against the repo when a field/relationship matters.
+FM is a waste / recycling collection and delivery-logistics business on Sales Cloud —
+**134 object folders** (custom objects + custom metadata + platform events) and **45 Apex
+triggers** under `force-app/main/default/`. Generated from
+`force-app/main/default/objects/` — re-verify against the repo when a field/relationship
+matters.
+
+> **Standard `Order` / `OrderItem` note:** there is **no `objects/Order/` or
+> `objects/OrderItem/` folder** in this repo — no custom field metadata for these standard
+> objects has been retrieved into source. They are still very much in active use:
+> `OrderTrigger` / `OrderItemTrigger` exist and 100+ Apex classes reference `Order` /
+> `OrderItem` (SOQL, DML, trigger logic), and custom fields clearly exist on them in the
+> live org (referenced by name in Apex, e.g. `Delivery_Date__c`,
+> `Requested_Delivery_Date__c`, `Discount_to_Apply__c`) with no matching
+> `field-meta.xml` in the repo. Treat this as a **metadata-retrieval gap**, not evidence
+> that `Order` was deprecated or replaced — `Collection__c` and `Order_Creation__c` are
+> separate objects, not `Order` substitutes (see below). If you touch `Order`/`OrderItem`
+> fields, retrieve current metadata from the sandbox first rather than guessing field
+> names from Apex.
 
 ### Customer & commercial
 
@@ -223,7 +238,9 @@ re-verify against the repo when a field/relationship matters.
 |---|---|---|
 | `Account` | Central identity. Record types: **Account**, **Location Partner**, **Prospect**. An Account also represents a **service location** — many operational objects reference it as `Location__c`. | `Contact`, `AccountContactRelation`, `Opportunity`, `Order` |
 | `Opportunity` | Sales pipeline; parent of `Collection__c` (master-detail). | `Collection__c`, `Account` |
-| `Order` / `OrderItem` | Commercial order lines that feed invoicing, delivery, and compliance. | `Account`, `Product2`, `Invoice_Line__c`, `DeliveryOrder__c` |
+| `Collection__c` | Lightweight collection-type tag hung off an Opportunity (5 fields, autonumber name labeled "Collection Type"). Not related to `Collection_Waypoints__c` or `Order_Creation__c` despite the similar name. | `Opportunity` (`Opportunity__c`, master-detail) |
+| `Order_Creation__c` | Staging record for a pending/queued order line per account + product — appears to feed actual `Order`/`OrderItem` creation. Distinct object from `Collection__c`. | `Account` (`Location__c`, master-detail), `Product2` (`Product__c`, lookup) |
+| `Order` / `OrderItem` | Standard objects; commercial order lines that feed invoicing, delivery, and compliance. **No local metadata retrieved** — see note above. | `Account`, `Product2`, `Invoice_Line__c`, `DeliveryOrder__c` |
 | `Product2` / `Pricebook2` / `PricebookEntry` | Standard product & pricing. | `Schedule__c`, `Supplier_Product__c`, `Recurrings__c` |
 | `Account_Discount__c` | Negotiated discount applied to collections. | `Account`, `Collection_Waypoints__c` |
 | `Subscribed_Products__c` / `Recurrings__c` | Recurring / subscribed product agreements per account. | `Account`, `Product2`, `Suppliers__c`, `Supplier_Product__c` |
@@ -233,7 +250,7 @@ re-verify against the repo when a field/relationship matters.
 
 | Entity | Purpose | Key relationships |
 |---|---|---|
-| `Schedule__c` | Core collection schedule (largest object, ~72 fields). Master-detail to `Account` (`Location__c`). | `Round__c`, `Suppliers__c`, `Supplier_Product__c`, `Product2`, `Pricebook2`, `CollectionAggregator__c` |
+| `Schedule__c` | Core collection schedule (largest object, ~93 fields). Master-detail to `Account` (`Location__c`). | `Round__c`, `Suppliers__c`, `Supplier_Product__c`, `Product2`, `Pricebook2`, `CollectionAggregator__c` |
 | `Collection_Waypoints__c` | An individual scheduled stop / visit. | `Account` (`Location__c`), `Schedule__c`, `DailyDispatch__c`, `Round__c`, `Case`, `Suppliers__c`, `Account_Discount__c` |
 | `Round__c` | A collection route. | `Driver__c` (default + 2nd), `Vehicle__c` |
 | `DailyDispatch__c` | A day's execution of a round. | `Round__c`, `Driver__c` (+2nd), `Vehicle__c` |
@@ -252,7 +269,19 @@ re-verify against the repo when a field/relationship matters.
 | `Weight__c` / `BinWeight__c` | Recorded weights per collection / bin (`WeightCategoryToFieldMapping__mdt`, `WeightTrigger`). | — |
 | `Waste_Category__c` / `WTN_Waste_Category__c` | Waste classification (EWC-style). | — |
 | `SeasonTicketWTN__c` / `SeasonTicketWTNProduct__c` | Season-ticket Waste Transfer Notes. | `Product2` |
-| `Compliance_Doc__c` / `CP_Doc_URL__c` | Duty-of-care / waste-transfer compliance documents (~48 fields). | `Account`, `Suppliers__c` (`Contractor__c`), `Order`, `Product2` |
+| `Compliance_Doc__c` / `CP_Doc_URL__c` | Duty-of-care / waste-transfer compliance documents (~54 fields). | `Account`, `Suppliers__c` (`Contractor__c`), `Order`, `Product2` |
+
+### Bin/weight reconciliation & waste destinations
+
+| Entity | Purpose | Key relationships |
+|---|---|---|
+| `BinLift__c` | Individual external-supplier bin lift/weight event reconciled against orders. | `Collection_Waypoints__c`, `Account` (`Location__c`), `OrderItem` (`OrderProduct__c`), `Weight__c`, self-lookup `DuplicateOf__c` |
+| `BinSummary__c` | Monthly matched/unmatched/excess bin-lift reconciliation summary per location. | `Account` (`Location__c`) |
+| `WeightronEvent__c` | Weighbridge ("Weightron") tip event capture (driver, vehicle, weights, timestamps). | `Driver__c`, `Vehicle__c` (plain identifier fields — not confirmed as formal lookups; verify before relying on relationship queries) |
+| `Facility__c` | Licensed waste-handling facility/site record (permit, licence holder). | — |
+| `WasteDestination__c` | Destination/outcome breakdown (recycled, landfill, incinerated, …) for waste leaving a facility. | `Facility__c` (master-detail) |
+| `TippingStation__c` | Physical tipping station location (address/coordinates). | — |
+| `Put_Out_Time__c` | Council bin put-out time windows by postcode/street. | `Region__c` (`Postcode__c`, lookup) |
 
 ### Delivery logistics
 
@@ -261,6 +290,8 @@ re-verify against the repo when a field/relationship matters.
 | `DeliveryOrderGroup__c` → `DeliveryOrder__c` → `DeliiveryLine__c` | Delivery order hierarchy (master-detail chain; note the misspelled `DeliiveryLine__c`). | `DeliveryRoute__c`, `Order` |
 | `DeliveryRouteGroup__c` → `DeliveryRoute__c` | Delivery route hierarchy (master-detail). | — |
 | `DeliveryPackage__c` + `DeliveryPackageTrackingEvent__c` + `DeliveryPackageTrackingFile__c` | Package + tracking scan events / files. | `Order` |
+| `DeliveryPackageItem__c` | Line item (contents/qty) inside a delivery package. | `DeliveryPackage__c` (master-detail) |
+| `DeliveryPackageQrCodeItem__c` | Line item under a package QR code record. | `DeliveryPackageQrCode__c` (master-detail) |
 | `Container_Type__c` / `Equipment__c` | Bin / container / equipment catalogue. | — |
 
 ### Billing & finance
@@ -269,7 +300,7 @@ re-verify against the repo when a field/relationship matters.
 |---|---|---|
 | `Invoice_Header__c` → `Invoice_Line__c` | Custom invoicing (master-detail; header MD to `Account`; self-lookup for credit notes). | `Order`, `OrderItem`, `Product2`, `Bank_Statement__c` |
 | `Payment__c` / `PaymentAllocation__c` | Payments and their allocation to invoices / bank statements. | `Account`, `Bank_Statement__c` (MD), `Invoice_Header__c` (MD) |
-| `Bank_Statement__c` | Imported bank statement lines (~33 fields; `OnBankStatement` trigger). | `PaymentAllocation__c`, `SageExtract__c` |
+| `Bank_Statement__c` | Imported bank statement lines (~39 fields; `OnBankStatement` trigger). | `PaymentAllocation__c`, `SageExtract__c` |
 | `Cash_Allocation__c` / `VATCorrection__c` / `TheVat__c` | Cash matching and VAT adjustments. | — |
 | `SageExtract__c` / `SageExtractFile__c` | Export feed to Sage accounting. | `Bank_Statement__c`, `Invoice_Line__c` |
 | `ScheduleAdvanceInvoiceHistory__c` / `ReportPercentEachMonth__c` / `ResultReportSent__c` | Advance-invoice and reporting history. | `Schedule__c` |
@@ -278,9 +309,12 @@ re-verify against the repo when a field/relationship matters.
 
 | Entity | Purpose | Key relationships |
 |---|---|---|
-| `Suppliers__c` | Waste contractors / haulier partners (~36 fields). | `Supplier_Product__c`, `Region__c` |
+| `Suppliers__c` | Waste contractors / haulier partners (~42 fields). | `Supplier_Product__c`, `Region__c` |
 | `Supplier_Product__c` | Product offered by a supplier, with pricing (`SuppProdTrigger`). | `Suppliers__c`, `Product2` |
 | `Product_Category__c` / `Product_Skin__c` / `Suggested_Product__c` | Product taxonomy & recommendations. | — |
+| `Postcode_Supplier__c` | Junction mapping a postcode/region to a waste supplier (many-to-many via two master-details). | `Region__c` (`Postcode__c`, MD), `Suppliers__c` (`Supplier__c`, MD) |
+| `SupplierDocuments__c` | Compliance/document storage for a supplier account. | `Account` (`SupplierAccount__c`, master-detail) |
+| `Packer__c` | Warehouse/depot packer staff reference (code, name, active flag). | — |
 
 ### Service & field sales
 
@@ -290,6 +324,56 @@ re-verify against the repo when a field/relationship matters.
 | `Feedback__c` | Customer feedback / NPS. | `Case`, `Account` |
 | `Field_Sales_Visit__c` + `Field_Sales_App_Setting__c` | Field-sales visit logging. | `Account` |
 | `Email_Activity__c` / `Send_Email__c` / `SendInvoiceEmail__c` | Outbound email orchestration via **SendGrid** (`SendGridEvent__e`, `SendGridSetting__c` / `Sendgrid_Setting__c`, `SendGridRequestLog__c`). | — |
+
+### External integrations (HubSpot, Google Ads, Business Central, Royal Mail, Miley, Infinity)
+
+Several undocumented outbound/inbound integrations exist beyond SendGrid and Enqix, each
+with its own config object and (for the event-driven ones) a log/queue object:
+
+| Entity | Purpose | Key relationships |
+|---|---|---|
+| `HubSpotEvent__c` → `HubSpotEventLine__c` | Outbound HubSpot marketing event header + child line values (`Value01`–`08`). | master-detail chain |
+| `HubSpotAcrSync__e` | Platform event streaming Account/Contact/Recurring changes to HubSpot. | — |
+| `HubSpotAssociationLabel__mdt` | Custom metadata mapping HubSpot association label IDs. | — |
+| `GoogleAdsEvent__c` / `GoogleAdsSetting__c` | Tracks Google Ads conversion/lead event status; inbox + lead-status-to-skip config. | — |
+| `BusinessCentralSendRequest__c` / `BusinessCentralSetting__c` | Outbound sync log/queue for Account, Contact, Invoice, Payment records to Microsoft Business Central, with error capture; sync toggles. | plain Id text fields to Account/Contact/Invoice/Payment (not formal lookups) |
+| `RoyalMailSetting__c` | Royal Mail carrier integration config: service codes, thresholds, status-code mapping (~26 fields). | — |
+| `MileyRequest__c` / `MileySetting__c` | Miley mobile driver-app request log (explicitly temporary/debug per object description) and its geofencing/location-accuracy config. | — |
+| `InfinitySetting__c` | External inbox config for the Infinity call-tracking integration. | — |
+| `RoutingSetting__c` / `RoutingParameterOverride__mdt` | Licence key/poll config and per-scenario overrides (~40 fields) for the route-optimization service. | — |
+
+### Settings & configuration (custom settings)
+
+Mostly single-purpose List/Hierarchy custom settings, one knob (or a handful) each:
+
+| Entity | Purpose |
+|---|---|
+| `AdditionalChargeSetting__c` | Extra delivery charges config (container name → charge product). |
+| `ByPassSetting__c` | Flag to bypass suspension-date validation. |
+| `CaseSetting__c` / `Case_Types__c` | Case reopen-duration threshold; Case type → record type mapping at creation. |
+| `CreditSetting__c` | Default product used for credit notes. |
+| `EntitySetting__c` | Org-wide default `LegalEntity__c` Id. |
+| `FuelSurchargeSetting__c` | Fuel surcharge % + product + active flag. |
+| `Send_Report_Config__c` | Config for scheduled report sending. |
+| `TonnageSettings__c` | Default dispatch Id for tonnage processing. |
+| `NominalCode__mdt` | Finance/nominal ledger code reference data. |
+| `IndustryToSICCodeMapping__mdt` | Maps Account Industry picklist values to UK SIC codes. |
+
+### Sales, account structure & misc
+
+| Entity | Purpose | Key relationships |
+|---|---|---|
+| `Account_Plan__c` | Account-level planning record. | `Account` (lookup) |
+| `Sales_History__c` | Historical sales figures snapshot per account. | `Account` (master-detail) |
+| `HybridParent__c` | Links a "hybrid" parent/child Account pair with an invoicing method. | `Account` (parent MD, child lookup) |
+| `LocationGroup__c` | Groups Account locations together. | `Account` (lookup) |
+| `LegalEntity__c` | Company/legal entity record used for invoicing (bank details, VAT, templates, logo). | referenced by `EntitySetting__c` default Id |
+| `ScheduleSuspension__c` | Suspension period tied to a collection aggregator/schedule. | `CollectionAggregator__c` (master-detail) |
+| `TriggerCollectionScheduleEmail__c` | Temporary flag object to fire a collection-schedule email for a location. | `Account` (`Location__c`, lookup) |
+| `OLDCAMP__c` | Legacy/retired campaign-like object, superseded by standard `Campaign`. | `Lead` (lookup) |
+| `SalesforceObject__c` | Metadata-tracking record of object record counts (health/monitoring utility object). | — |
+| `LineBreak__c` | Trivial single-value utility object, likely used for formatting/spacing in emails/reports. | — |
+| `Knowledge__kav` | Standard Salesforce Knowledge article record type (not custom, listed for completeness). | — |
 
 ### Integration, logging & configuration
 
@@ -301,7 +385,7 @@ re-verify against the repo when a field/relationship matters.
 | `ParcelforceSetting__c` | Parcelforce carrier integration config. |
 | `GlobalParameter__mdt` | Global configuration parameters. |
 | `CollectionExceptions__mdt` / `WeightCategoryToFieldMapping__mdt` | Rules for collection exceptions and weight-category field mapping. |
-| Platform events | `ReceivedWaypointGroupEvent__e` (inbound route waypoints), `SendGridEvent__e` (email delivery events). |
+| Platform events | `ReceivedWaypointGroupEvent__e` (inbound route waypoints), `SendGridEvent__e` (email delivery events), `HubSpotAcrSync__e` (outbound HubSpot sync). |
 
 > **Naming caution:** the repo contains real misspellings that are part of the API name —
 > `DeliiveryLine__c`, `Regionsuppler_association__c`, `EnquixImportMappings__c` vs
