@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Team_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Account_Manager__c</columns>
+    <columns>Enqix_Classification__c</columns>
+    <columns>On_Priority__c</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Enqix_Dead_Live__c</field>
+        <operation>equals</operation>
+        <value>Live</value>
+    </filters>
+    <filters>
+        <field>Account_Manager__c</field>
+        <operation>contains</operation>
+        <value>Alex Vandepeer,Sarah Howard,Chloe Downing</value>
+    </filters>
+    <label>AM Team Accounts</label>
+</ListView>

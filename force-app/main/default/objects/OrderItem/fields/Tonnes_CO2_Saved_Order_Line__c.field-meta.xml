@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tonnes_CO2_Saved_Order_Line__c</fullName>
+    <externalId>false</externalId>
+    <formula>Tonnes_CO2_Saved_Per_Unit__c* Quantity</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Tonnes CO2 saved per unit multiplied by quantity ordered</inlineHelpText>
+    <label>Tonnes CO2 Saved Order Line</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

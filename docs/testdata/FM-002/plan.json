@@ -1,0 +1,128 @@
+[
+  {
+    "sobject": "LegalEntity__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["LegalEntity__c.json"]
+  },
+  {
+    "sobject": "Account",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Account.json"]
+  },
+  {
+    "sobject": "Product2",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Product2.json"]
+  },
+  {
+    "sobject": "Pricebook2",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Pricebook2.json"]
+  },
+  {
+    "sobject": "PricebookEntry",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["PricebookEntry.json"]
+  },
+  {
+    "sobject": "Account",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["SupplierAccount.json"]
+  },
+  {
+    "sobject": "Suppliers__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Suppliers__c.json"]
+  },
+  {
+    "sobject": "Supplier_Product__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Supplier_Product__c.json"]
+  },
+  {
+    "sobject": "Depot__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Depot__c.json"]
+  },
+  {
+    "sobject": "Round__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Round__c.json"]
+  },
+  {
+    "sobject": "Round__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Round_bulk.json"]
+  },
+  {
+    "sobject": "Schedule__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Schedule__c.json"]
+  },
+  {
+    "sobject": "Schedule__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Schedule_bulk.json"]
+  },
+  {
+    "sobject": "Case",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Case.json"]
+  },
+  {
+    "sobject": "Case",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Case_bulk.json"]
+  },
+  {
+    "sobject": "Missed_Collection__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Missed_Collection__c.json"]
+  },
+  {
+    "sobject": "Missed_Collection__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Missed_Collection_bulk.json"]
+  },
+  {
+    "sobject": "Order",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Order.json"]
+  },
+  {
+    "sobject": "Order",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Order_bulk.json"]
+  },
+  {
+    "sobject": "OrderItem",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["OrderItem.json"]
+  },
+  {
+    "sobject": "OrderItem",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["OrderItem_bulk.json"]
+  }
+]

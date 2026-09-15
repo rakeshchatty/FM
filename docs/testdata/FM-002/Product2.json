@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Product2", "referenceId": "FM002ProductRef" },
+      "Name": "FM-002 General Waste Collection (P)",
+      "ProductCode": "FM2-GW01",
+      "Product_Type__c": "Collection",
+      "IsActive": true,
+      "Nl_accode__c": "4001"
+    }
+  ]
+}

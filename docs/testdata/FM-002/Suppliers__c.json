@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Suppliers__c", "referenceId": "FM002SupplierRef" },
+      "Name": "FM-002 Sample Haulage Supplier",
+      "SupplierAccount__c": "@FM002SupplierAccountRef",
+      "Branch__c": "First Mile",
+      "Phone_Number__c": "02070000002",
+      "Email__c": "fm002.supplier@example.com"
+    }
+  ]
+}

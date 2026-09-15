@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enqix_ReasonMarkedDead__c</fullName>
+    <label>Enqix ReasonMarkedDead</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Closed down</fullName>
+                <default>false</default>
+                <label>Site Closed down</label>
+            </value>
+            <value>
+                <fullName>Included in service charge</fullName>
+                <default>false</default>
+                <label>Moved to a serviced office</label>
+            </value>
+            <value>
+                <fullName>Price</fullName>
+                <default>false</default>
+                <label>Price</label>
+            </value>
+            <value>
+                <fullName>Poor Customer Support</fullName>
+                <default>false</default>
+                <label>Poor Customer Support</label>
+            </value>
+            <value>
+                <fullName>Delivery Issues</fullName>
+                <default>false</default>
+                <label>Delivery Issues</label>
+            </value>
+            <value>
+                <fullName>Collection Reliability Issues</fullName>
+                <default>false</default>
+                <label>Collection Reliability Issues</label>
+            </value>
+            <value>
+                <fullName>Missing Features</fullName>
+                <default>false</default>
+                <label>Missing Features</label>
+            </value>
+            <value>
+                <fullName>Reseller</fullName>
+                <default>false</default>
+                <label>Reseller Lost Work/Internalised</label>
+            </value>
+            <value>
+                <fullName>FM Terminated</fullName>
+                <default>false</default>
+                <label>FM Terminated</label>
+            </value>
+            <value>
+                <fullName>Dormant</fullName>
+                <default>false</default>
+                <label>Dormant</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

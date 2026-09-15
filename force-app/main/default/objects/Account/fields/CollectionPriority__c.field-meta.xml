@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CollectionPriority__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(RecordType.Name != &apos;Location&apos;, &apos;&apos;, IF(OR(VIP_Customer__c, On_Priority__c, Complex_Collection__c), &apos;VIP&apos;, IF(TODAY() &lt;= (Enqix_Start_Date__c + 30), &apos;New&apos;, &apos;Normal&apos;)))</formula>
+    <label>Collection Priority</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

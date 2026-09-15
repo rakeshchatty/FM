@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SetPriorityManually__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Tick this to prevent any automatic changing of priority status.</inlineHelpText>
+    <label>Set Priority Manually</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

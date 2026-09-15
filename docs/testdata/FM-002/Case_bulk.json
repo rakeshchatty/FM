@@ -1,0 +1,13 @@
+{
+  "records": [
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef02" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 02", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef03" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 03", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef04" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 04", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef05" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 05", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef06" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 06", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef07" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 07", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef08" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 08", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef09" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 09", "Location__c": "001Pt00000kUHwNIAW" },
+    { "attributes": { "type": "Case", "referenceId": "FM002CaseRef10" }, "Status": "New", "Priority": "Medium", "Origin": "Email", "Type": "Missed Collection", "Subject": "FM-002 Missed Collection 10", "Location__c": "001Pt00000kUHwNIAW" }
+  ]
+}

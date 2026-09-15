@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ExpectedDeliveryDate__c</fullName>
+    <formula>IF(OR(Clearance_Order__c, IsBinCollection__c, IsDeliveryByExternalCarrier__c, BinDeliveries__c &gt; 0, Original_Invoice_to_Credit__c != null), Requested_Delivery_Date__c,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c))), Requested_Delivery_Date__c,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c + 1))), Requested_Delivery_Date__c + 1,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c + 2))), Requested_Delivery_Date__c + 2,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c + 3))), Requested_Delivery_Date__c + 3,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c + 4))), Requested_Delivery_Date__c + 4,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c + 5))), Requested_Delivery_Date__c + 5,
+IF(CONTAINS(Account.ShippingPostcodeDistrict__r.DeliveryDaysIndex__c, TEXT(WEEKDAY(Requested_Delivery_Date__c + 6))), Requested_Delivery_Date__c + 6,
+Requested_Delivery_Date__c))))))))</formula>
+    <label>Expected Delivery Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

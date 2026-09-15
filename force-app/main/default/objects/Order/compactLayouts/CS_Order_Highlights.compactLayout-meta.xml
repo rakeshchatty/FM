@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Order_Highlights</fullName>
+    <fields>OrderNumber</fields>
+    <fields>TotalAmount</fields>
+    <fields>OK_or_Cancelled__c</fields>
+    <fields>Detrack_Status__c</fields>
+    <fields>reason__c</fields>
+    <fields>POD_Delivery_Date__c</fields>
+    <fields>Delivery_Signature_Name__c</fields>
+    <label>CS Order Highlights</label>
+</CompactLayout>

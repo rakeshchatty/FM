@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Created_By_Full_Name__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Created_By_Full_Name on Order 1 needs to be the copy of the Created By of Order 2.</description>
+    <label>Created By Full Name</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Orders</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

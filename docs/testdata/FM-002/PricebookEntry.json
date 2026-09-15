@@ -1,0 +1,13 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "PricebookEntry", "referenceId": "FM002PricebookEntryRef" },
+      "Pricebook2Id": "@FM002PricebookRef",
+      "Product2Id": "@FM002ProductRef",
+      "UnitPrice": 125.00,
+      "IsActive": true,
+      "UseStandardPrice": false,
+      "CurrencyIsoCode": "GBP"
+    }
+  ]
+}

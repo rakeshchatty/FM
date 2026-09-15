@@ -1,0 +1,16 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Schedule__c", "referenceId": "FM002ScheduleRef" },
+      "Location__c": "@FM002LocationRef",
+      "Round__c": "@FM002RoundRef",
+      "Supplier__c": "@FM002SupplierRef",
+      "Supplier_Product__c": "@FM002SupplierProductRef",
+      "Days__c": "Monday;Tuesday;Wednesday;Thursday;Friday",
+      "Time__c": "08:00",
+      "Collection_Quantity__c": 2,
+      "Start_Date__c": "2026-09-15",
+      "Active__c": true
+    }
+  ]
+}

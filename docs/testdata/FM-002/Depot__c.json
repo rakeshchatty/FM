@@ -1,0 +1,11 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Depot__c", "referenceId": "FM002DepotRef" },
+      "Name": "FM-002 North Depot",
+      "ContactName__c": "FM-002 Depot Contact",
+      "Coordinates__Latitude__s": 51.5074,
+      "Coordinates__Longitude__s": -0.1278
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DMR_Exemption__c</fullName>
+    <label>DMR Exemption</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Microfirm</fullName>
+                <default>false</default>
+                <label>Microfirm</label>
+            </value>
+            <value>
+                <fullName>Landlord Managed</fullName>
+                <default>false</default>
+                <label>Landlord Managed</label>
+            </value>
+            <value>
+                <fullName>Alternative Provider</fullName>
+                <default>false</default>
+                <label>Alternative Provider</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

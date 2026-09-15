@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsOverweightChargesEnabled__c</fullName>
+    <formula>IF(RecordType.DeveloperName == &apos;Account&apos;, NOT(No_Overweight_Charges__c),
+IF(RecordType.DeveloperName == &apos;Location&apos;, AND(NOT(No_Overweight_Charges__c), NOT(Parent.No_Overweight_Charges__c)), false))</formula>
+    <label>Overweight Charges?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LocationNumber__c</fullName>
+    <externalId>false</externalId>
+    <formula>If(mid(Name,1,14)=&apos;Jack Wills Ltd&apos;,
+mid(Name,17,5),
+If(mid(Name,1,10)=&apos;Jack Wills&apos;,
+mid(Name,13,4),&apos;&apos;
+)
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>LocationNumber</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

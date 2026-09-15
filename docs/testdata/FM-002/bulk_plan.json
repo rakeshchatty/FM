@@ -1,0 +1,8 @@
+[
+  { "sobject": "Round__c", "saveRefs": true, "resolveRefs": true, "files": ["Round_bulk.json"] },
+  { "sobject": "Schedule__c", "saveRefs": true, "resolveRefs": true, "files": ["Schedule_bulk.json"] },
+  { "sobject": "Case", "saveRefs": true, "resolveRefs": true, "files": ["Case_bulk.json"] },
+  { "sobject": "Missed_Collection__c", "saveRefs": true, "resolveRefs": true, "files": ["Missed_Collection_bulk.json"] },
+  { "sobject": "Order", "saveRefs": true, "resolveRefs": true, "files": ["Order_bulk.json"] },
+  { "sobject": "OrderItem", "saveRefs": true, "resolveRefs": true, "files": ["OrderItem_bulk.json"] }
+]

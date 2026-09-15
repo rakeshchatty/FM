@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictCreditNoteCreation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISBLANK(Original_Invoice_to_Credit__c)), ISNEW(), ISBLANK(Original_Invoice_to_Credit__r.BusinessCentralId__c))</errorConditionFormula>
+    <errorMessage>Credit note is not allowed as Original Invoice has not been sent to Business Central.</errorMessage>
+</ValidationRule>

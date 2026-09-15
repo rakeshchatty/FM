@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsCollectionByExternalCarrier__c</fullName>
+    <formula>AND(
+    ISPICKVAL(Status, &apos;Confirmed&apos;), ISPICKVAL(Detrack_Status__c, &apos;&apos;),
+    Requested_Delivery_Date__c &gt;= TODAY(),
+    Number_of_Order_Products__c &gt; 0, Number_of_Order_Products__c = OrderProductsByExternalCarrier__c, OrderProductsByExternalCarrier__c = CollectionProducts__c,
+    ISNULL(Delivery_Date__c)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Collection By External Carrier?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

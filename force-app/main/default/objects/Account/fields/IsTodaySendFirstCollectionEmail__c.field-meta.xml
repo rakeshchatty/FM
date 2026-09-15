@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsTodaySendFirstCollectionEmail__c</fullName>
+    <formula>AND(RecordType.DeveloperName == &apos;Location&apos;,
+OR(FirstCollectionDate__c + 1 =  TODAY(), FirstCollectionDate__c + 10 = TODAY()))</formula>
+    <label>First Collection Send Email Today</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

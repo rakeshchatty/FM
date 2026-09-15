@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsFuelSurchargeExemptLocation__c</fullName>
+    <formula>IF(RecordType.Name != &apos;Location&apos;, false, IF(IsFuelSurchargeExempt__c, true, Parent.IsFuelSurchargeExempt__c))</formula>
+    <label>Fuel Surcharge Exempt Location?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

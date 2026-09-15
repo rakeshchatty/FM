@@ -1,0 +1,31 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Account", "referenceId": "AccountRef1" },
+      "Name": "Acme Waste Solutions Ltd",
+      "RecordTypeId": "012w00000002cMrAAI",
+      "CurrencyIsoCode": "GBP",
+      "Enqix_Dead_Live__c": "Live",
+      "InvoiceFrequency__c": "Monthly - Scheduled",
+      "OwningEntity__c": "@LegalEntityRef1"
+    },
+    {
+      "attributes": { "type": "Account", "referenceId": "AccountRef2" },
+      "Name": "Greenfield Recycling Co",
+      "RecordTypeId": "012w00000002cMrAAI",
+      "CurrencyIsoCode": "GBP",
+      "Enqix_Dead_Live__c": "Live",
+      "InvoiceFrequency__c": "Weekly",
+      "OwningEntity__c": "@LegalEntityRef1"
+    },
+    {
+      "attributes": { "type": "Account", "referenceId": "AccountRef3" },
+      "Name": "Northside Logistics Ltd",
+      "RecordTypeId": "012w00000002cMrAAI",
+      "CurrencyIsoCode": "GBP",
+      "Enqix_Dead_Live__c": "Live",
+      "InvoiceFrequency__c": "Monthly",
+      "OwningEntity__c": "@LegalEntityRef1"
+    }
+  ]
+}

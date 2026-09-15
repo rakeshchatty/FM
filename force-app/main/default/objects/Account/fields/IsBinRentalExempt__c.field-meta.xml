@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsBinRentalExempt__c</fullName>
+    <formula>AND(RecordTypeName__c = &apos;Account&apos;, OR(No_Bin_Rental__c, NOT(ISBLANK(Account_Manager__c))))</formula>
+    <label>Bin Rental Exempt?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <inlineHelpText>What made them get in touch ?</inlineHelpText>
+    <label>Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Got a leaflet</fullName>
+                <default>false</default>
+                <label>Got a leaflet</label>
+            </value>
+            <value>
+                <fullName>Google</fullName>
+                <default>false</default>
+                <label>Google</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>Research</fullName>
+                <default>false</default>
+                <label>Research</label>
+            </value>
+            <value>
+                <fullName>Broker</fullName>
+                <default>false</default>
+                <label>Broker</label>
+            </value>
+            <value>
+                <fullName>Saw trucks or sacks on street.</fullName>
+                <default>false</default>
+                <label>Saw trucks or sacks on street.</label>
+            </value>
+            <value>
+                <fullName>Networking</fullName>
+                <default>false</default>
+                <label>Networking</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+            <value>
+                <fullName>Office* Exhibition (2012)</fullName>
+                <default>false</default>
+                <label>Office* Exhibition (2012)</label>
+            </value>
+            <value>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+                <label>Social Media</label>
+            </value>
+            <value>
+                <fullName>Council website referral</fullName>
+                <default>false</default>
+                <label>Council website referral</label>
+            </value>
+            <value>
+                <fullName>500 offices project</fullName>
+                <default>false</default>
+                <label>500 offices project</label>
+            </value>
+            <value>
+                <fullName>Dead lead</fullName>
+                <default>false</default>
+                <label>Dead lead</label>
+            </value>
+            <value>
+                <fullName>Used us before</fullName>
+                <default>false</default>
+                <label>Used us before</label>
+            </value>
+            <value>
+                <fullName>Chatter Picture</fullName>
+                <default>false</default>
+                <label>Chatter Picture</label>
+            </value>
+            <value>
+                <fullName>Giveaway</fullName>
+                <default>false</default>
+                <label>Giveaway</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

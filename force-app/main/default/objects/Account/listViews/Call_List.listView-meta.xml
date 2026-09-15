@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_List</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Main_Contact_Name1__c</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>Enqix_Classification__c</columns>
+    <columns>Enqix_Last_Order_Date__c</columns>
+    <columns>DaysBetweenOrders__c</columns>
+    <columns>DaysSinceLastOrder__c</columns>
+    <columns>OverdueDays__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Enqix_Last_Order_Date__c</field>
+        <operation>lessThan</operation>
+        <value>7/1/2017</value>
+    </filters>
+    <filters>
+        <field>FIRST_EVER_ORDER__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Enqix_Classification__c</field>
+        <operation>notContain</operation>
+        <value>Indirect Large,Indirect Medium</value>
+    </filters>
+    <filters>
+        <field>Enqix_Dead_Live__c</field>
+        <operation>equals</operation>
+        <value>Live</value>
+    </filters>
+    <filters>
+        <field>OverdueDays__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Call List</label>
+</ListView>

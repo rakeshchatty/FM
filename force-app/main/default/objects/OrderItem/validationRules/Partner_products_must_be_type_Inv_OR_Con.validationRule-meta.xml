@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_products_must_be_type_Inv_OR_Con</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF
+( OR(ISPICKVAL(Order.Type, &quot;Regular&quot;),
+ISPICKVAL(Order.Type, &quot;Delivery&quot;)),
+AND
+(( CONTAINS( Product2.Name , &quot;(P)&quot; )),
+	($Profile.Name &lt;&gt; &apos;System Administrator&apos;)
+), FALSE)</errorConditionFormula>
+    <errorMessage>You can only use Partner products if the Order type is &apos;Invoicing&apos; or &apos;Contractor&apos;.</errorMessage>
+</ValidationRule>

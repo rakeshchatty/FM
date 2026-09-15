@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Account", "referenceId": "FM002CustomerRef" },
+      "Name": "FM-002 Sample Customer",
+      "RecordTypeId": "012w00000002cMrAAI",
+      "CurrencyIsoCode": "GBP",
+      "Enqix_Dead_Live__c": "Live",
+      "InvoiceFrequency__c": "Monthly - Scheduled",
+      "OwningEntity__c": "@LegalEntityRef1"
+    },
+    {
+      "attributes": { "type": "Account", "referenceId": "FM002LocationRef" },
+      "Name": "FM-002 Sample Collection Location",
+      "RecordTypeId": "012w00000002cOdAAI",
+      "ParentId": "@FM002CustomerRef",
+      "CurrencyIsoCode": "GBP",
+      "Enqix_Dead_Live__c": "Live",
+      "OwningEntity__c": "@LegalEntityRef1"
+    }
+  ]
+}

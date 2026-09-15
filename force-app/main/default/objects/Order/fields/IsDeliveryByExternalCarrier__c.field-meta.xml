@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsDeliveryByExternalCarrier__c</fullName>
+    <formula>AND(Number_of_Order_Products__c &gt; 0, Number_of_Order_Products__c = OrderProductsByExternalCarrier__c, CollectionProducts__c = 0,
+NOT(OR(Account.Parent.IsExcludeDeliveryByExternalCarrier__c, Account.IsExcludeDeliveryByExternalCarrier__c)))</formula>
+    <label>Delivery By External Carrier?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

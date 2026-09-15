@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Classification__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Sales_Last_12_Months__c&gt;20000, &quot;Key Account&quot;,IF(Sales_Last_12_Months__c&gt;10000, &quot;Large&quot;,IF( Sales_Last_12_Months__c &gt;1000, &quot;Medium&quot;, IF( Sales_Last_12_Months__c &gt; 250, &quot;Small&quot;, &quot;Micro&quot;))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Classification</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

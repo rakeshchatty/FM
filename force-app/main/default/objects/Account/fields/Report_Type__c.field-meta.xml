@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Type__c</fullName>
+    <defaultValue>IF( $RecordType.Name = &quot;Prospect&quot;, &quot;Dashboard&quot;, null)</defaultValue>
+    <label>Report Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Manual</fullName>
+                <default>false</default>
+                <label>Manual</label>
+            </value>
+            <value>
+                <fullName>Dashboard</fullName>
+                <default>true</default>
+                <label>Dashboard</label>
+            </value>
+            <value>
+                <fullName>CO2 Report</fullName>
+                <default>false</default>
+                <label>CO2 Report</label>
+            </value>
+            <value>
+                <fullName>No Report</fullName>
+                <default>false</default>
+                <label>No Report</label>
+            </value>
+            <value>
+                <fullName>Enqix Spreadsheet</fullName>
+                <default>false</default>
+                <label>Enqix Spreadsheet</label>
+            </value>
+            <value>
+                <fullName>Group Report</fullName>
+                <default>false</default>
+                <label>Group Report</label>
+            </value>
+            <value>
+                <fullName>Partnership CO2 Report</fullName>
+                <default>false</default>
+                <label>Partnership CO2 Report</label>
+            </value>
+            <value>
+                <fullName>Linked Account CO2 Report</fullName>
+                <default>false</default>
+                <label>Linked Account CO2 Report</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

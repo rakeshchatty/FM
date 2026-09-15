@@ -213,34 +213,22 @@ The **Triggers** subsection under Apex Best Practices has the full rule set.
 
 ## Key Entities & Data Model
 
-FM is a waste / recycling collection and delivery-logistics business on Sales Cloud —
-**134 object folders** (custom objects + custom metadata + platform events) and **45 Apex
-triggers** under `force-app/main/default/`. Generated from
-`force-app/main/default/objects/` — re-verify against the repo when a field/relationship
-matters.
-
-> **Standard `Order` / `OrderItem` note:** there is **no `objects/Order/` or
-> `objects/OrderItem/` folder** in this repo — no custom field metadata for these standard
-> objects has been retrieved into source. They are still very much in active use:
-> `OrderTrigger` / `OrderItemTrigger` exist and 100+ Apex classes reference `Order` /
-> `OrderItem` (SOQL, DML, trigger logic), and custom fields clearly exist on them in the
-> live org (referenced by name in Apex, e.g. `Delivery_Date__c`,
-> `Requested_Delivery_Date__c`, `Discount_to_Apply__c`) with no matching
-> `field-meta.xml` in the repo. Treat this as a **metadata-retrieval gap**, not evidence
-> that `Order` was deprecated or replaced — `Collection__c` and `Order_Creation__c` are
-> separate objects, not `Order` substitutes (see below). If you touch `Order`/`OrderItem`
-> fields, retrieve current metadata from the sandbox first rather than guessing field
-> names from Apex.
+FM runs a waste / recycling collection and delivery-logistics business on Sales Cloud, with
+**134 object folders** (custom objects, custom metadata, and platform events) and **45 Apex
+triggers** under `force-app/main/default/`. The tables below are generated from
+`force-app/main/default/objects/` — treat them as a map, not a contract, and re-verify
+against the repo whenever a specific field or relationship matters.
 
 ### Customer & commercial
 
 | Entity | Purpose | Key relationships |
 |---|---|---|
-| `Account` | Central identity. Record types: **Account**, **Location Partner**, **Prospect**. An Account also represents a **service location** — many operational objects reference it as `Location__c`. | `Contact`, `AccountContactRelation`, `Opportunity`, `Order` |
+| `Account` | Central identity (~514 fields). Record types: **Account**, **Location**, **Partner**, **Prospect**, **Supplier** (not "Location Partner" as one type — two separate types). An Account also represents a **service location** — many operational objects reference it as `Location__c`. | `Contact`, `AccountContactRelation`, `Opportunity`, `Order` |
+| `Contact` | ~109 fields, customized beyond standard. | `Account` |
 | `Opportunity` | Sales pipeline; parent of `Collection__c` (master-detail). | `Collection__c`, `Account` |
 | `Collection__c` | Lightweight collection-type tag hung off an Opportunity (5 fields, autonumber name labeled "Collection Type"). Not related to `Collection_Waypoints__c` or `Order_Creation__c` despite the similar name. | `Opportunity` (`Opportunity__c`, master-detail) |
 | `Order_Creation__c` | Staging record for a pending/queued order line per account + product — appears to feed actual `Order`/`OrderItem` creation. Distinct object from `Collection__c`. | `Account` (`Location__c`, master-detail), `Product2` (`Product__c`, lookup) |
-| `Order` / `OrderItem` | Standard objects; commercial order lines that feed invoicing, delivery, and compliance. **No local metadata retrieved** — see note above. | `Account`, `Product2`, `Invoice_Line__c`, `DeliveryOrder__c` |
+| `Order` / `OrderItem` | Standard objects, both heavily customized (~216 / ~150 fields) — the commercial hub for both **delivery** and **collection** order lines (see gotchas above), feeding invoicing and compliance. | `Account`, `Product2`, `Invoice_Line__c`, `DeliveryOrder__c`, `Collection_Waypoints__c` (via `OrderItem.Collection_Waypoint__c`) |
 | `Product2` / `Pricebook2` / `PricebookEntry` | Standard product & pricing. | `Schedule__c`, `Supplier_Product__c`, `Recurrings__c` |
 | `Account_Discount__c` | Negotiated discount applied to collections. | `Account`, `Collection_Waypoints__c` |
 | `Subscribed_Products__c` / `Recurrings__c` | Recurring / subscribed product agreements per account. | `Account`, `Product2`, `Suppliers__c`, `Supplier_Product__c` |
@@ -327,8 +315,8 @@ matters.
 
 ### External integrations (HubSpot, Google Ads, Business Central, Royal Mail, Miley, Infinity)
 
-Several undocumented outbound/inbound integrations exist beyond SendGrid and Enqix, each
-with its own config object and (for the event-driven ones) a log/queue object:
+Beyond SendGrid and Enqix, FM has several other outbound/inbound integrations, each with
+its own config object and, for the event-driven ones, a log or queue object:
 
 | Entity | Purpose | Key relationships |
 |---|---|---|
@@ -344,7 +332,7 @@ with its own config object and (for the event-driven ones) a log/queue object:
 
 ### Settings & configuration (custom settings)
 
-Mostly single-purpose List/Hierarchy custom settings, one knob (or a handful) each:
+Mostly single-purpose List/Hierarchy custom settings, each holding one knob or a handful:
 
 | Entity | Purpose |
 |---|---|

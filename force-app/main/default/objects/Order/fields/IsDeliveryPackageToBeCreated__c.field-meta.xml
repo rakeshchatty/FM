@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsDeliveryPackageToBeCreated__c</fullName>
+    <formula>AND(OR(IsDeliveryByExternalCarrier__c, IsIncludeInDeliveryPacking__c), 
+ISPICKVAL(Status, &apos;Confirmed&apos;), Requested_Delivery_Date__c &gt;= TODAY(),
+OR(AND(WEEKDAY(TODAY()) = 6, Requested_Delivery_Date__c &lt;= TODAY() + 5), Requested_Delivery_Date__c &lt;= TODAY() + 3),
+ISBLANK(RouteName__c), ISNULL(Delivery_Date__c),
+OR(NOT(In_CS_Care__c), CS_Issue_Fixed__c))</formula>
+    <label>Create Delivery Package?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

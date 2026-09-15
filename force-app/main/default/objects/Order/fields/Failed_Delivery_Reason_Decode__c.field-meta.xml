@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Failed_Delivery_Reason_Decode__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(reason__c=&quot;Customer Closed&quot;,&quot;The driver located the customer, but couldn&apos;t deliver as they were closed&quot;, 
+IF(reason__c=&quot;Wrong Product&quot;,&quot;The wrong products were on the customers order&quot;, 
+IF(reason__c=&quot;Wrong Address&quot;,&quot;The business isn&apos;t at the delivery address provided&quot;, 
+IF(reason__c=&quot;Moved Out&quot;,&quot;The driver has been told the business has moved out/is no longer at that address&quot;, 
+IF(reason__c=&quot;Can’t Find Location&quot;,&quot;The driver can&apos;t find the delivery address or the location at that address&quot;, 
+IF(reason__c=&quot;Order Rejected&quot;,&quot;The customer rejected the order on delivery&quot;, 
+IF(reason__c=&quot;Ran out of Time&quot;,&quot;The driver ran out of time and will try again tomorrow&quot;,&quot;&quot;
+)))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Failed Delivery Reason Decode</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

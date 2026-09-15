@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Supplier_Info</fullName>
+    <booleanFilter>(1 AND 2 AND 3 AND 4 AND 5 AND 6) OR 7</booleanFilter>
+    <columns>Created_by__c</columns>
+    <columns>ORDERS.ORDER_NUMBER</columns>
+    <columns>SALES.ACCOUNT.NAME</columns>
+    <columns>Supplier__c</columns>
+    <columns>PO_for_Supplier__c</columns>
+    <columns>Delivery_Date__c</columns>
+    <columns>Supplier_Price__c</columns>
+    <columns>Supplier_Invoice_Date__c</columns>
+    <columns>Supplier_Invoice_No__c</columns>
+    <columns>Supplier_Invoice_Received_Date__c</columns>
+    <columns>Supplier_Invoice_Amount__c</columns>
+    <columns>Supplier_Invoice_Recieved__c</columns>
+    <columns>Supplier_Invoice_Difference__c</columns>
+    <columns>Supplier_Invoice_Flagged__c</columns>
+    <columns>Internal_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Clearance_Order__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>ORDERS.CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2024 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>ORDERS.STATUS</field>
+        <operation>equals</operation>
+        <value>Confirmed,Delivered,Invoiced</value>
+    </filters>
+    <filters>
+        <field>Delivery_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>12/31/2022</value>
+    </filters>
+    <filters>
+        <field>Supplier__c</field>
+        <operation>notContain</operation>
+        <value>First Mile</value>
+    </filters>
+    <filters>
+        <field>Supplier_Invoice_Recieved__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Supplier_Invoice_Flagged__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Add Supplier Info</label>
+</ListView>

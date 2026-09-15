@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BinDeliveries__c</fullName>
+    <label>Bin Deliveries</label>
+    <summaryFilterItems>
+        <field>OrderItem.Product_Category__c</field>
+        <operation>equals</operation>
+        <value>External Bin</value>
+    </summaryFilterItems>
+    <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

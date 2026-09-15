@@ -1,0 +1,13 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Case", "referenceId": "FM002CaseRef" },
+      "Status": "New",
+      "Priority": "Medium",
+      "Origin": "Email",
+      "Type": "Missed Collection",
+      "Subject": "FM-002 Missed Collection",
+      "Location__c": "@FM002LocationRef"
+    }
+  ]
+}

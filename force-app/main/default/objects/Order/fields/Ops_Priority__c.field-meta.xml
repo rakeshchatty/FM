@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ops_Priority__c</fullName>
+    <label>Ops Priority</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer moving out/New customer</fullName>
+                <default>false</default>
+                <label>Customer moving out/New customer</label>
+            </value>
+            <value>
+                <fullName>Older than 5 days</fullName>
+                <default>false</default>
+                <label>Older than 5 days</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

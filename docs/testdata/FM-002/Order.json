@@ -1,0 +1,14 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Order", "referenceId": "FM002OrderRef" },
+      "Name": "FM-002 Sample Collection Order",
+      "AccountId": "@FM002LocationRef",
+      "EffectiveDate": "2026-09-15",
+      "Status": "Draft",
+      "Pricebook2Id": "@FM002PricebookRef",
+      "CurrencyIsoCode": "GBP",
+      "Description": "Sample order linked to the FM-002 collection schedule"
+    }
+  ]
+}

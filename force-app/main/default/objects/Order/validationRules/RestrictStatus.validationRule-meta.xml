@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RestrictStatus</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Account.RecordType.DeveloperName = &apos;Prospect&apos;, OR(ISPICKVAL(Status, &apos;Delivered&apos;), ISPICKVAL(Status,&apos;Invoiced&apos;)))</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Prospect Orders can&apos;t be delivered or invoiced.</errorMessage>
+</ValidationRule>

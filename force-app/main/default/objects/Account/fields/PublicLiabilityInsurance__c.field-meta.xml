@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PublicLiabilityInsurance__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Public Liability Insurance</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>SupplierDocuments__c.DocumentType__c</field>
+            <operation>equals</operation>
+            <value>Public Liability Insurance</value>
+        </filterItems>
+        <filterItems>
+            <field>SupplierDocuments__c.SupplierAccount__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Id</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>SupplierDocuments__c</referenceTo>
+    <relationshipLabel>Suppliers (Public Liability Insurance)</relationshipLabel>
+    <relationshipName>MandatoryPublicLiabilityInsurance</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

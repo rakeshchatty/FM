@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BG2019_Sales_Category_BG__c</fullName>
+    <description>If new in calendar year = new
+If new last calendar year = prior new
+If account managed and new at least 2 calendar years ago = Key Account
+If indirect and new at least 2 calendar years ago = Indirect
+If new at least 2 calendar years ago and spending £5000 PA+ = Large
+If new at least 2 calendar years ago and spending £1000 - £5000 PA = Medium
+If new at least 2 calendar years ago and spending £100 - £1000 PA = Small
+If new at least 2 calendar years ago and spending &lt; £100 PA = Micro</description>
+    <externalId>false</externalId>
+    <label>BG Sales Category</label>
+    <length>100</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

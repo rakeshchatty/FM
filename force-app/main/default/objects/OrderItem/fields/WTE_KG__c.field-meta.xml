@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WTE_KG__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+/* First condition: Delivery Date is less than 22/09/2024 */
+Order.Delivery_Date__c &lt; DATE(2024, 9, 22),
+/* Use the original logic */
+IF(
+NOT(ISNULL(WTE_KG_from_Weights__c)),
+WTE_KG_from_Weights__c,
+Quantity *  PricebookEntry.Product2.WTE_KG__c
+),
+
+/* Second condition: Delivery Date is on or after 22/09/2024 */
+IF(
+/* Check if WTE_KG_from_Weights__c is greater than 0 */
+WTE_KG_from_Weights__c &gt; 0,
+WTE_KG_from_Weights__c,
+
+/* If WTE_KG_from_Weights__c is blank or zero, apply Fall_Back_Weight_Type__c logic */
+IF(
+TEXT(Order.Account.Fall_Back_Weight_Type__c) = &quot;No Weight&quot;,
+/* Fall Back Weight Type is &quot;No Weight&quot; */
+0,
+
+IF(
+/* Check if it&apos;s a Company Average Weight and WTE_KG__c &gt; 0 */
+TEXT(Order.Account.Fall_Back_Weight_Type__c) = &quot;Company Average Weight&quot;
+&amp;&amp; PricebookEntry.Product2.WTE_KG__c &gt; 0,
+/* Apply Company Average Weight if WTE_KG__c is greater than 0 */
+Quantity * PricebookEntry.Product2.Estimated_Weight__c,
+
+/* Default value if none of the conditions match */
+Quantity * PricebookEntry.Product2.WTE_KG__c
+)
+)
+)
+)</formula>
+    <label>WTE KG</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

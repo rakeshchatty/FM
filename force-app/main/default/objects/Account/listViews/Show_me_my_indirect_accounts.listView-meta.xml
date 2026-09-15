@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Show_me_my_indirect_accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.INDUSTRY</columns>
+    <columns>ACCOUNT.SALES</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>ACCOUNT.INDUSTRY</field>
+        <operation>equals</operation>
+        <value>Cleaning Company,Facility Management Company,Waste Broker,Other Broker</value>
+    </filters>
+    <label>ROSIE MADDY Show me my indirect accounts</label>
+</ListView>

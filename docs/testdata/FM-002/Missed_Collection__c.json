@@ -1,0 +1,10 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Missed_Collection__c", "referenceId": "FM002MissedCollectionRef" },
+      "Case__c": "@FM002CaseRef",
+      "Collection_Schedule__c": "@FM002ScheduleRef",
+      "Date__c": "2026-09-17"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsValid__c</fullName>
+    <formula>OR(AND(DATEVALUE(CreatedDate)&gt;=DATE(2019,03,01),is_Salesforce__c = true ),AND(DATEVALUE(CreatedDate)&lt;DATE(2019,03,01),is_Salesforce__c = false))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>IsValid</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

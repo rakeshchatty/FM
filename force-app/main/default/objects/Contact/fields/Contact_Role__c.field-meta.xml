@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Role__c</fullName>
+    <label>Contact Role</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Overall Account Contact</fullName>
+                <default>false</default>
+                <label>Overall Account Contact</label>
+            </value>
+            <value>
+                <fullName>Finance Contact</fullName>
+                <default>false</default>
+                <label>Finance Contact</label>
+            </value>
+            <value>
+                <fullName>Service Contact</fullName>
+                <default>false</default>
+                <label>Service Contact</label>
+            </value>
+            <value>
+                <fullName>Environmental Contact</fullName>
+                <default>false</default>
+                <label>Environmental Contact</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

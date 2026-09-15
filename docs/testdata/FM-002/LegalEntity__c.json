@@ -1,0 +1,17 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "LegalEntity__c", "referenceId": "LegalEntityRef1" },
+      "Name": "FM-002 Sample Legal Entity",
+      "RegistrationNumber__c": "FM002-12345",
+      "VatNumber__c": "GB000000000",
+      "Phone__c": "03333003448",
+      "AccountsEmail__c": "accounts.fm002@example.com",
+      "Email__c": "info.fm002@example.com",
+      "Website__c": "https://www.thefirstmile.co.uk",
+      "Address__Street__s": "Street line 1",
+      "Address__City__s": "London",
+      "Address__PostalCode__s": "AB1 9DE"
+    }
+  ]
+}

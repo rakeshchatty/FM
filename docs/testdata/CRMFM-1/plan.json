@@ -1,0 +1,14 @@
+[
+  {
+    "sobject": "Invoice_Header__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Invoice_Header__c.json"]
+  },
+  {
+    "sobject": "Invoice_Line__c",
+    "saveRefs": true,
+    "resolveRefs": true,
+    "files": ["Invoice_Line__c.json"]
+  }
+]

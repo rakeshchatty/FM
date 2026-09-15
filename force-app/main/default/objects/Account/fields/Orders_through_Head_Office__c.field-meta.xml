@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orders_through_Head_Office__c</fullName>
+    <formula>Parent.Has_a_central_order_point__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>pulls in central order point check box from parent account</inlineHelpText>
+    <label>Orders through Head Office</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

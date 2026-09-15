@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsIncludeInDeliveryPacking__c</fullName>
+    <formula>OR(Account.Parent.IsIncludeInDeliveryPacking__c, Account.IsIncludeInDeliveryPacking__c)</formula>
+    <label>Include In Delivery Packing?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

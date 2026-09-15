@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "OrderItem", "referenceId": "FM002OrderItemRef1" },
+      "OrderId": "@FM002OrderRef",
+      "PricebookEntryId": "@FM002PricebookEntryRef",
+      "Quantity": 2,
+      "UnitPrice": 125.00,
+      "ServiceDate": "2026-09-15",
+      "Description": "General waste collection service"
+    },
+    {
+      "attributes": { "type": "OrderItem", "referenceId": "FM002OrderItemRef2" },
+      "OrderId": "@FM002OrderRef",
+      "PricebookEntryId": "@FM002PricebookEntryRef",
+      "Quantity": 1,
+      "UnitPrice": 25.00,
+      "ServiceDate": "2026-09-15",
+      "Description": "Additional collection handling"
+    }
+  ]
+}

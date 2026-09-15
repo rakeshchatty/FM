@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Account", "referenceId": "FM002SupplierAccountRef" },
+      "Name": "FM-002 Sample Haulage Supplier Account",
+      "RecordTypeId": "012Py000001SwoTIAS",
+      "CurrencyIsoCode": "GBP",
+      "SupplierEmail__c": "fm002.supplier@example.com",
+      "SupplierEscalationEmail__c": "fm002.escalation@example.com"
+    }
+  ]
+}

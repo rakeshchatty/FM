@@ -1,0 +1,11 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Pricebook2", "referenceId": "FM002PricebookRef" },
+      "Name": "FM-002 Sample Pricebook",
+      "IsActive": true,
+      "Effective_Date__c": "2026-09-15",
+      "Description": "Sample pricebook for FM-002 order fixtures"
+    }
+  ]
+}

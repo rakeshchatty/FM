@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parter_type__c</fullName>
+    <label>Partner type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BID</fullName>
+                <default>false</default>
+                <label>BID</label>
+            </value>
+            <value>
+                <fullName>Estate</fullName>
+                <default>false</default>
+                <label>Estate</label>
+            </value>
+            <value>
+                <fullName>Brand</fullName>
+                <default>false</default>
+                <label>Brand</label>
+            </value>
+            <value>
+                <fullName>Supply chain product</fullName>
+                <default>false</default>
+                <label>Supply chain product</label>
+            </value>
+            <value>
+                <fullName>Street Association</fullName>
+                <default>false</default>
+                <label>Street Association</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

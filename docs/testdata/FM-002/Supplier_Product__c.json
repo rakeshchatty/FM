@@ -1,0 +1,10 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Supplier_Product__c", "referenceId": "FM002SupplierProductRef" },
+      "Name": "FM-002 General Waste Service",
+      "Supplier__c": "@FM002SupplierRef",
+      "Product__c": "@FM002ProductRef"
+    }
+  ]
+}

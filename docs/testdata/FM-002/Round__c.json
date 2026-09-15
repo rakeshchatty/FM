@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "Round__c", "referenceId": "FM002RoundRef" },
+      "Name": "FM-002 North Monday Round",
+      "RoundNo__c": 2002,
+      "Type__c": "Collection",
+      "Round_Type__c": "AM",
+      "StartDepot__c": "@FM002DepotRef",
+      "EndDepot__c": "@FM002DepotRef",
+      "StartTime__c": "07:00",
+      "Mon__c": true,
+      "Tue__c": true,
+      "Wed__c": true,
+      "Thu__c": true,
+      "Fri__c": true,
+      "Sat__c": false,
+      "Sun__c": false,
+      "IsSequencingEnabled__c": false
+    }
+  ]
+}

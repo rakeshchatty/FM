@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "attributes": { "type": "LegalEntity__c", "referenceId": "LegalEntityRef1" },
+      "Name": "First Mile Test Entity",
+      "Logo__c": "some logo",
+      "RegistrationNumber__c": "12345",
+      "VatNumber__c": "09876",
+      "BankAccountNumber__c": "12345678",
+      "BankSortCode__c": "123456",
+      "TermsOfService__c": "link to terms",
+      "Website__c": "wwww.thefirstmile.co.uk",
+      "Phone__c": "03333003448",
+      "AccountsEmail__c": "test1@test.com",
+      "Email__c": "test2@test.com",
+      "InvoiceTemplate__c": "d-2fa0d0b2c86748088f8110991eee40de",
+      "CreditNoteTemplate__c": "d-0009c7448f80452da503547551218575",
+      "InvoiceSenderName__c": "First Mile Test Entity",
+      "InvoiceSenderEmail__c": "test1@test.com",
+      "Address__Street__s": "Street line 1",
+      "Address__City__s": "London",
+      "Address__PostalCode__s": "AB1 9DE"
+    }
+  ]
+}

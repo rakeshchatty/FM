@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clearance_collection_time__c</fullName>
+    <label>clearance_collection_time</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Anytime (9-5)</fullName>
+                <default>false</default>
+                <label>Anytime (9-5)</label>
+            </value>
+            <value>
+                <fullName>Morning (9-12)</fullName>
+                <default>false</default>
+                <label>Morning (9-12)</label>
+            </value>
+            <value>
+                <fullName>Afternoon (1-5)</fullName>
+                <default>false</default>
+                <label>Afternoon (1-5)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
