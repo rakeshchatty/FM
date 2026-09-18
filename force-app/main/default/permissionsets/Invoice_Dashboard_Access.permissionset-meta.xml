@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Access to the Invoice Dashboard for approved System Administrators.</description>
+    <label>Invoice Dashboard Access</label>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Invoice_Dashboard</name>
+    </customPermissions>
+</PermissionSet>

@@ -1,0 +1,96 @@
+<template>
+    <lightning-card title="Invoice Dashboard" icon-name="standard:currency">
+        <template if:false={hasAccess}>
+            <div class="slds-notify slds-notify_alert slds-theme_error slds-m-around_medium" role="alert">
+                You do not have access to the Invoice Dashboard.
+            </div>
+        </template>
+
+        <template if:true={hasAccess}>
+            <div class="slds-p-around_medium">
+                <div class="filters slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                        <lightning-combobox label="Reporting period" value={mode} options={modeOptions} onchange={handleModeChange}></lightning-combobox>
+                    </div>
+                    <template if:true={isYearly}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <lightning-input type="number" label="Year" value={selectedYear} onchange={handleYearChange}></lightning-input>
+                        </div>
+                    </template>
+                    <template if:true={isMonthly}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <lightning-input type="number" label="Year" value={selectedYear} onchange={handleYearChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <lightning-input type="number" label="Month" min="1" max="12" value={selectedMonth} onchange={handleMonthChange}></lightning-input>
+                        </div>
+                    </template>
+                    <template if:true={isWeekly}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <lightning-input type="date" label="Week starting Monday" value={weekStart} onchange={handleWeekChange}></lightning-input>
+                        </div>
+                    </template>
+                    <template if:true={isCustom}>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <lightning-input type="date" label="Start date" value={startDate} onchange={handleStartDateChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <lightning-input type="date" label="End date" value={endDate} onchange={handleEndDateChange}></lightning-input>
+                        </div>
+                    </template>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                        <lightning-record-picker label="Customer" object-api-name="Account" value={accountId} onchange={handleAccountChange}></lightning-record-picker>
+                    </div>
+                </div>
+
+                <template if:true={validationMessage}>
+                    <div class="slds-notify slds-notify_alert slds-theme_error slds-m-top_small" role="alert">{validationMessage}</div>
+                </template>
+                <div class="actions slds-m-top_medium">
+                    <lightning-button label="Apply filters" variant="brand" onclick={handleApply} disabled={isLoading}></lightning-button>
+                    <lightning-button label="Export CSV" class="slds-m-left_small" onclick={handleExportCsv} disabled={isExportDisabled}></lightning-button>
+                    <a data-id="csv-download" class="slds-hide" download="invoice-dashboard.csv"></a>
+                </div>
+
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Loading invoice data"></lightning-spinner>
+                </template>
+                <template if:true={errorMessage}>
+                    <div class="slds-notify slds-notify_alert slds-theme_error slds-m-top_medium" role="alert">{errorMessage}</div>
+                </template>
+
+                <div class="summary-grid slds-grid slds-wrap slds-gutters slds-m-top_large">
+                    <div class="summary-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4"><span>Invoices</span><strong>{summary.invoiceCount}</strong></div>
+                    <div class="summary-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4"><span>Excl. VAT</span><lightning-formatted-number value={summary.totalAmountExclVat} format-style="currency" currency-code="GBP"></lightning-formatted-number></div>
+                    <div class="summary-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4"><span>VAT</span><lightning-formatted-number value={summary.totalVat} format-style="currency" currency-code="GBP"></lightning-formatted-number></div>
+                    <div class="summary-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4"><span>Outstanding</span><lightning-formatted-number value={summary.totalOutstandingAmount} format-style="currency" currency-code="GBP"></lightning-formatted-number></div>
+                </div>
+
+                <template if:true={showEmptyState}>
+                    <div class="empty-state slds-m-top_large">No invoices match the selected filters.</div>
+                </template>
+                <template if:true={hasRows}>
+                    <div class="table-wrap slds-m-top_large">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                            <thead><tr class="slds-line-height_reset"><th scope="col"><span class="slds-assistive-text">Expand</span></th><th scope="col">Invoice</th><th scope="col">Customer</th><th scope="col">Invoice date</th><th scope="col">Status</th><th scope="col">Due date</th><th scope="col">Excl. VAT</th><th scope="col">Incl. VAT</th><th scope="col">Outstanding</th></tr></thead>
+                            <tbody>
+                                <template for:each={rows} for:item="row">
+                                    <tr key={row.id}>
+                                        <td><lightning-button-icon icon-name={row.iconName} alternative-text="Expand invoice" title="Expand invoice" data-id={row.id} onclick={handleRowToggle}></lightning-button-icon></td>
+                                        <td>{row.invoiceNumber}</td><td>{row.accountName}</td><td>{row.invoicedDate}</td><td>{row.status}</td><td>{row.dueDate}</td>
+                                        <td><lightning-formatted-number value={row.amountExclVat} format-style="currency" currency-code="GBP"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={row.amountInclVat} format-style="currency" currency-code="GBP"></lightning-formatted-number></td>
+                                        <td><lightning-formatted-number value={row.amountOutstanding} format-style="currency" currency-code="GBP"></lightning-formatted-number></td>
+                                    </tr>
+                                    <template if:true={row.isExpanded}>
+                                        <tr key={row.id} class="line-row"><td></td><td colspan="8"><template if:true={row.isLineLoading}><lightning-spinner alternative-text="Loading invoice lines" size="small"></lightning-spinner></template><template if:true={row.lineError}><span class="slds-text-color_error">{row.lineError}</span></template><template if:false={row.isLineLoading}><template if:false={row.lineError}><template if:true={row.lines.length}><table class="slds-table slds-table_cell-buffer"><thead><tr><th>Product</th><th>Description</th><th>Quantity</th><th>Unit price</th><th>Total</th></tr></thead><tbody><template for:each={row.lines} for:item="line"><tr key={line.id}><td>{line.productName}</td><td>{line.description}</td><td>{line.quantity}</td><td><lightning-formatted-number value={line.unitPrice} format-style="currency" currency-code="GBP"></lightning-formatted-number></td><td><lightning-formatted-number value={line.totalPrice} format-style="currency" currency-code="GBP"></lightning-formatted-number></td></tr></template></tbody></table></template><template if:false={row.lines.length}><span>No invoice lines found.</span></template></template></template></td></tr>
+                                    </template>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>
