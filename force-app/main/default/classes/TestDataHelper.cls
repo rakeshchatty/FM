@@ -431,7 +431,7 @@ public class TestDataHelper {
 	}
 
 	public static Recurrings__c insertRecurring(Id accountId, Id productId, Id supplierId) {
-		Recurrings__c recurring  = new Recurrings__c(Account__c = accountId, Product__c = productId, Supplier__c = supplierId, Name = 'Test Recurring', Active__c = true, Type__c = 'Delivery', First_Date__c = Date.today().addDays(1), Rec__c = 'Month', Recur_Every__c = '1', Discount_to_Apply__c = 'Account');
+		Recurrings__c recurring  = new Recurrings__c(Account__c = accountId, Product__c = productId, Supplier__c = supplierId, Name = 'Test Recurring', Active__c = true, Type__c = 'Delivery', First_Date__c = Date.today().addDays(1), Rec__c = 'Month', Recur_Every__c = '1');
 		INSERT recurring;
 		return recurring;
 	}

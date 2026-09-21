@@ -2,10 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RestrictDiscountToApply</fullName>
     <active>true</active>
-    <errorConditionFormula>OR(
-    AND(NOT(ISBLANK(ManualPrice__c)), NOT(ISBLANK(TEXT(Discount_to_Apply__c)))),
-    AND(ISBLANK(ManualPrice__c), ISBLANK(TEXT(Discount_to_Apply__c)))
-)</errorConditionFormula>
+    <errorConditionFormula>AND(NOT(ISBLANK(ManualPrice__c)), NOT(ISBLANK(TEXT(Discount_to_Apply__c))))</errorConditionFormula>
     <errorDisplayField>Discount_to_Apply__c</errorDisplayField>
-    <errorMessage>A Recurring Order must have either a Manual Price or a Discount to Apply, but not both and not neither.</errorMessage>
+    <errorMessage>You can have a &quot;Manual Price&quot; or Discount but not both.</errorMessage>
 </ValidationRule>
