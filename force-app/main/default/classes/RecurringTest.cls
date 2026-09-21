@@ -127,7 +127,8 @@ public with sharing class RecurringTest {
             Type__c = 'Invoicing',
             Price_Book__c = standardPricebook.Id,
             Supplier__c = supplier.Id,
-            Facility__c = facility.Id
+            Facility__c = facility.Id,
+            Discount_to_Apply__c = 'Account'
         );
         insert first_recurring;
 
@@ -142,7 +143,8 @@ public with sharing class RecurringTest {
             Name = 'Test_Recurring1',
             Type__c = 'Invoicing',
             Price_Book__c = standardPricebook.Id,
-            Facility__c = facility.Id
+            Facility__c = facility.Id,
+            Discount_to_Apply__c = 'Account'
         );
         insert recurring;
 
@@ -157,7 +159,8 @@ public with sharing class RecurringTest {
             Name = 'Test_Recurring2',
             Type__c = 'Invoicing',
             Price_Book__c = standardPricebook.Id,
-            Facility__c = facility.Id
+            Facility__c = facility.Id,
+            Discount_to_Apply__c = 'Account'
         );
         insert recurring2;
         
@@ -226,5 +229,163 @@ public with sharing class RecurringTest {
         prod.Service_Subtype__c = 'Liquid';
 
         return prod;
+    }
+
+    // CRMFM-2: RestrictDiscountToApply now also blocks Manual Price + Discount to Apply both blank
+    @testSetup
+    static void setupCrmfm2TestData() {
+        Suppliers__c supplier = TestDataHelper.insertSupplier('First Mile Ltd - CRMFM2');
+        Facility__c facility = TestDataHelper.insertFacility('Facility - CRMFM2');
+
+        Account parent = new Account(
+            Name = 'CRMFM-2 Parent Account',
+            RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Account').getRecordTypeId(),
+            Enqix_Dead_Live__c = 'Live'
+        );
+        insert parent;
+
+        Account location = new Account(
+            Name = 'CRMFM-2 Location Account',
+            ParentId = parent.Id,
+            RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Location').getRecordTypeId(),
+            Enqix_Dead_Live__c = 'Live'
+        );
+        insert location;
+
+        Product2 product = createTestProduct('CRMFM2-Prod', 10, 1, 9999);
+        product.IsActive = true;
+        insert product;
+    }
+
+    @isTest
+    static void should_allow_save_when_only_discount_to_apply_is_populated() {
+        Recurrings__c recurring = buildValidRecurring('CRMFM-2 Recurring');
+        recurring.Discount_to_Apply__c = 'Account';
+        recurring.ManualPrice__c = null;
+
+        Test.startTest();
+        insert recurring;
+        Test.stopTest();
+
+        Assert.isNotNull(recurring.Id, 'Recurring Order should save when only Discount to Apply is populated.');
+    }
+
+    @isTest
+    static void should_allow_save_when_only_manual_price_is_populated() {
+        Recurrings__c recurring = buildValidRecurring('CRMFM-2 Recurring');
+        recurring.Discount_to_Apply__c = null;
+        recurring.ManualPrice__c = 10;
+
+        Test.startTest();
+        insert recurring;
+        Test.stopTest();
+
+        Assert.isNotNull(recurring.Id, 'Recurring Order should save when only Manual Price is populated.');
+    }
+
+    @isTest
+    static void should_block_save_when_manual_price_and_discount_to_apply_are_both_blank() {
+        Recurrings__c recurring = buildValidRecurring('CRMFM-2 Recurring');
+        recurring.Discount_to_Apply__c = null;
+        recurring.ManualPrice__c = null;
+
+        Test.startTest();
+        try {
+            insert recurring;
+            Assert.fail('Expected a DmlException when both Manual Price and Discount to Apply are blank.');
+        } catch (DmlException ex) {
+            Assert.isTrue(ex.getMessage().contains('A Recurring Order must have either a Manual Price or a Discount to Apply'),
+                'Expected the RestrictDiscountToApply error message, got: ' + ex.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @isTest
+    static void should_block_save_when_manual_price_and_discount_to_apply_are_both_populated() {
+        Recurrings__c recurring = buildValidRecurring('CRMFM-2 Recurring');
+        recurring.Discount_to_Apply__c = 'Account';
+        recurring.ManualPrice__c = 10;
+
+        Test.startTest();
+        try {
+            insert recurring;
+            Assert.fail('Expected a DmlException when both Manual Price and Discount to Apply are populated.');
+        } catch (DmlException ex) {
+            Assert.isTrue(ex.getMessage().contains('A Recurring Order must have either a Manual Price or a Discount to Apply'),
+                'Expected the RestrictDiscountToApply error message, got: ' + ex.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @isTest
+    static void should_block_update_when_both_fields_are_cleared() {
+        Recurrings__c recurring = buildValidRecurring('CRMFM-2 Recurring');
+        recurring.Discount_to_Apply__c = 'Account';
+        recurring.ManualPrice__c = null;
+        insert recurring;
+
+        recurring.Discount_to_Apply__c = null;
+
+        Test.startTest();
+        try {
+            update recurring;
+            Assert.fail('Expected a DmlException when clearing Discount to Apply leaves both fields blank.');
+        } catch (DmlException ex) {
+            Assert.isTrue(ex.getMessage().contains('A Recurring Order must have either a Manual Price or a Discount to Apply'),
+                'Expected the RestrictDiscountToApply error message, got: ' + ex.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @isTest
+    static void should_allow_bulk_insert_when_each_record_has_exactly_one_field_populated() {
+        Id locationId = [SELECT Id FROM Account WHERE Name = 'CRMFM-2 Location Account' LIMIT 1].Id;
+        Id productId = [SELECT Id FROM Product2 WHERE Name = 'CRMFM2-Prod' LIMIT 1].Id;
+        Id supplierId = [SELECT Id FROM Suppliers__c WHERE Name = 'First Mile Ltd - CRMFM2' LIMIT 1].Id;
+        Id facilityId = [SELECT Id FROM Facility__c WHERE Name = 'Facility - CRMFM2' LIMIT 1].Id;
+
+        List<Recurrings__c> recurrings = new List<Recurrings__c>();
+        for (Integer i = 0; i < 200; i++) {
+            Recurrings__c recurring = buildRecurring(locationId, productId, supplierId, facilityId, 'Bulk_Recurring_' + i);
+            if (Math.mod(i, 2) == 0) {
+                recurring.Discount_to_Apply__c = 'Account';
+                recurring.ManualPrice__c = null;
+            } else {
+                recurring.Discount_to_Apply__c = null;
+                recurring.ManualPrice__c = 10;
+            }
+            recurrings.add(recurring);
+        }
+
+        Test.startTest();
+        insert recurrings;
+        Test.stopTest();
+
+        Assert.areEqual(200, [SELECT COUNT() FROM Recurrings__c WHERE Name LIKE 'Bulk_Recurring_%'],
+            'All 200 bulk Recurring Orders with exactly one populated field should save successfully.');
+    }
+
+    private static Recurrings__c buildValidRecurring(String name) {
+        Id locationId = [SELECT Id FROM Account WHERE Name = 'CRMFM-2 Location Account' LIMIT 1].Id;
+        Id productId = [SELECT Id FROM Product2 WHERE Name = 'CRMFM2-Prod' LIMIT 1].Id;
+        Id supplierId = [SELECT Id FROM Suppliers__c WHERE Name = 'First Mile Ltd - CRMFM2' LIMIT 1].Id;
+        Id facilityId = [SELECT Id FROM Facility__c WHERE Name = 'Facility - CRMFM2' LIMIT 1].Id;
+        return buildRecurring(locationId, productId, supplierId, facilityId, name);
+    }
+
+    private static Recurrings__c buildRecurring(Id locationId, Id productId, Id supplierId, Id facilityId, String name) {
+        return new Recurrings__c(
+            Account__c = locationId,
+            Active__c = false,
+            First_Date__c = Date.today().addDays(1),
+            Product__c = productId,
+            Quantity__c = 2,
+            Recur_every__c = '1',
+            Rec__c = 'Month',
+            Name = name,
+            Type__c = 'Invoicing',
+            Supplier__c = supplierId,
+            Facility__c = facilityId
+        );
     }
 }
