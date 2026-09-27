@@ -25,14 +25,28 @@ are touching (e.g. read `architecture.instructions.md` before editing anything u
 `force-app/`).
 
 ## Slash commands
-Same names as Copilot Chat. Defined in `.claude/commands/`, backed by `.myit/`:
+Same names as Copilot Chat. Defined in `.claude/commands/`, backed by `.myit/`.
 
-- **`/salesforce-fm-develop`** — gated development workflow (Gates 1–7, worklog, analysis
-  flow). Prompt: `.myit/prompts/salesforce-fm-develop.prompt.md`; base:
+**The `.myit/prompts/*.prompt.md` files are the master source of truth.** Each
+`.claude/commands/*.md` file is only a thin pointer to its matching prompt file — it does
+not duplicate the FM-specific content. To change what a command does, edit the prompt file
+(and, where relevant, the base `.myit/workflow/*.workflow.md` file); the command file picks
+up the change automatically the next time it runs and normally does not need editing. Only
+touch the command file if the *set of sections* in the prompt changes enough that the
+command's own summary of it goes stale.
+
+- **`/salesforce-fm-develop`** — gated development workflow (Gates 1–9: requirements,
+  exploration/design, specs, branch, sandbox retrieve, implementation + tests, manifest +
+  sandbox deploy/verify, commit + PR, release-document update, Jira + business
+  communication; worklog-based resume). Master prompt:
+  `.myit/prompts/salesforce-fm-develop.prompt.md`; base workflow:
   `.myit/workflow/develop.workflow.md`.
-- **`/salesforce-fm-review`** — gated code review (scope → automated → deep review →
-  findings → fixes). Prompt: `.myit/prompts/salesforce-fm-review.prompt.md`; base:
-  `.myit/workflow/review.workflow.md`.
+- **`/salesforce-fm-review`** — gated code review (Pre-Gate → Phase 1 Change
+  Understanding → Phase 2 Standards → Phase 3 Business Logic → Phase 4 Security &
+  Performance → Phase 5 Test Adequacy → Phase 6 Present Review → Phase 7 Post Comments,
+  human-approved). Master prompt: `.myit/prompts/salesforce-fm-review.prompt.md`; base
+  workflow: `.myit/workflow/review.workflow.md`. Mandatory deliverable:
+  `docs/artifacts/<TICKET-ID>/<TICKET-ID>-review-summary.md`.
 
 Lightweight playbooks: `.myit/workflow/bugfix.md`, `.myit/workflow/metadata-change.md`.
 Document templates: `.myit/templates/`.

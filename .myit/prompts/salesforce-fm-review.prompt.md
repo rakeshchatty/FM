@@ -1,11 +1,35 @@
-# Salesforce FM — Code Review
+---
+agent: agent
+description: FM Salesforce gated code review (scope -> automated -> deep review -> findings -> fixes), with FM-specific standards and blocker checklist.
+argument-hint: "[branch | PR # | paths — defaults to current branch vs main]"
+---
+
+# salesforce-fm-review
 
 This prompt performs a structured code review of a FirstMile (FM) Salesforce pull request
 against established team standards and best practices.
 
+Review target: the branch, PR number, or paths given as the command argument. If none is
+given, default to the current branch diff vs `main`.
+
 ## Workflow
 
-Follow the workflow defined in: `review.workflow.md`
+Follow `.myit/workflow/review.workflow.md` phase-for-phase (Pre-Gate -> Phase 1-7).
+Everything in it applies, including:
+- **Honor every STOP marker** — end the response immediately at a STOP; do not post PR
+  comments or continue past a gate until the human responds.
+- **Read-only until the human approves findings** — Phases 1-6 do not modify files or post
+  anywhere; only Phase 7 (posting) may act, and only after explicit human approval.
+- No commit, push, or branch changes as part of a review.
+
+The sections below are **FM additions** layered onto that base workflow.
+
+### Severity mapping
+
+This file's FM-specific findings (Section 3 below) use `Critical` / `Major` / `Minor`. Map
+them onto `review.workflow.md`'s severity levels when presenting or posting findings:
+`Critical -> Blocker`, `Major -> Major`, `Minor -> Minor`. `Nit` and `Praise` are used as
+defined in the base workflow where applicable.
 
 ## Instructions
 
