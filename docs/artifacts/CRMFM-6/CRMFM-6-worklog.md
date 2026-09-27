@@ -9,8 +9,8 @@ Last updated: 2026-09-27
 # Worklog — CRMFM-6: Recurring Order discount validation and defaulting
 
 ## Current state
-- **Active gate:** Gate 7 — Commit + Pull Request
-- **Next action:** Obtain approval to open the pull request, then reconcile the release document.
+- **Active gate:** Gate 8 — Release Document
+- **Next action:** Update the maintained release Word document and obtain approval before Gate 9 communications.
 - **Blocked on:** None; developer confirmed manual deployment and acceptance verification in `fm-ai`.
 
 ## Story type
@@ -35,8 +35,8 @@ Last updated: 2026-09-27
 | 5 Implementation | APPROVED | 2026-09-27 | Added validation rule, focused tests, and read-only candidate report |
 | 5/6 Tests | APPROVED | 2026-09-27 | Local metadata/consistency checks passed; sandbox test pending |
 | 6 Verification | APPROVED | 2026-09-27 | Developer manually deployed and checked acceptance criteria in `fm-ai`; scanner step removed from workflow |
-| 7 Commit + PR | IN PROGRESS | 2026-09-27 | Artifacts `4e98b8e`; implementation `c4c9b16`; tests `098852b`; PR creation pending |
-| 8 Release Document | | | |
+| 7 Commit + PR | APPROVED | 2026-09-27 | PR [#3](https://github.com/rakeshchatty/FM/pull/3); artifacts `4e98b8e`; implementation `c4c9b16`; tests `098852b`; cleanup `e7cdf0c` |
+| 8 Release Document | IN PROGRESS | 2026-09-27 | |
 | 9 Jira + Business Communication | | | |
 
 ## Implementation steps
@@ -63,6 +63,7 @@ Last updated: 2026-09-27
 - 2026-09-27 — Pre-Gate 6 — generated a source-scoped manifest containing only `RecurringTest` and `Recurrings__c.RequirePriceOrDiscount`.
 - 2026-09-27 — Gate 6 verification approved — developer confirmed manual deployment and acceptance-criteria verification in `fm-ai`.
 - 2026-09-27 — Gate 7 approved — committed artifacts (`4e98b8e`), implementation (`c4c9b16`), and tests (`098852b`).
+- 2026-09-27 — Gate 7 PR opened — [FM pull request #3](https://github.com/rakeshchatty/FM/pull/3) targets `main`.
 
 ## Deviations from design
 - None yet.
