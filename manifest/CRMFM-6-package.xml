@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!--
+        CRMFM-6 scoped deployment manifest.
+        Pre-deploy manual steps: None.
+        Post-deploy manual steps: Run docs/artifacts/CRMFM-6/post-deployment-report.md against fm-ai; do not perform automatic remediation.
+    -->
+    <types>
+        <members>RecurringTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Recurrings__c.RequirePriceOrDiscount</members>
+        <name>ValidationRule</name>
+    </types>
+    <version>65.0</version>
+</Package>
