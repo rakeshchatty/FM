@@ -10,7 +10,7 @@ Last updated: 2026-09-27
 
 ## Current state
 - **Active gate:** Gate 7 — Commit + Pull Request
-- **Next action:** Obtain Gate 7 approval before committing artifacts and implementation.
+- **Next action:** Obtain approval to open the pull request, then reconcile the release document.
 - **Blocked on:** None; developer confirmed manual deployment and acceptance verification in `fm-ai`.
 
 ## Story type
@@ -35,7 +35,7 @@ Last updated: 2026-09-27
 | 5 Implementation | APPROVED | 2026-09-27 | Added validation rule, focused tests, and read-only candidate report |
 | 5/6 Tests | APPROVED | 2026-09-27 | Local metadata/consistency checks passed; sandbox test pending |
 | 6 Verification | APPROVED | 2026-09-27 | Developer manually deployed and checked acceptance criteria in `fm-ai`; scanner step removed from workflow |
-| 7 Commit + PR | | | artifacts committed: no |
+| 7 Commit + PR | IN PROGRESS | 2026-09-27 | Artifacts `4e98b8e`; implementation `c4c9b16`; tests `098852b`; PR creation pending |
 | 8 Release Document | | | |
 | 9 Jira + Business Communication | | | |
 
@@ -62,6 +62,7 @@ Last updated: 2026-09-27
 - 2026-09-27 — Gate 5 and Gate 5/6 approvals received — proceed to Gate 6 manifest review.
 - 2026-09-27 — Pre-Gate 6 — generated a source-scoped manifest containing only `RecurringTest` and `Recurrings__c.RequirePriceOrDiscount`.
 - 2026-09-27 — Gate 6 verification approved — developer confirmed manual deployment and acceptance-criteria verification in `fm-ai`.
+- 2026-09-27 — Gate 7 approved — committed artifacts (`4e98b8e`), implementation (`c4c9b16`), and tests (`098852b`).
 
 ## Deviations from design
 - None yet.

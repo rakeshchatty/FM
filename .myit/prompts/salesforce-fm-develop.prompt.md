@@ -24,6 +24,23 @@ Set:
   (do not assume one).
 - `PR_BASE` = `main` (GitHub — `github.com/rakeshchatty/FM`)
 
+### Canonical workflow artifact names
+
+Use these exact filenames under `docs/artifacts/<TICKET-ID>/`:
+
+| Gate | Artifact |
+|---|---|
+| Gate 1 | `requirements.md` |
+| Gate 2 exploration | `exploration.md` |
+| Gate 2 design | `technical-design.md` |
+| Gate 3 | `specifications.md` |
+| All gates | `<TICKET-ID>-worklog.md` |
+
+Do not substitute generic names such as `design.md` or `specs.md`. Before creating an
+artifact, confirm its filename from this table. After creating it, verify that the exact
+path exists, the old generic alternative does not exist, and the traceability header's
+`Artifact:` value matches the filename. Correct any mismatch before advancing the gate.
+
 ## 1. Load the base workflow
 
 Follow `.myit/workflow/develop.workflow.md` gate-for-gate. Everything in it applies. The
@@ -124,14 +141,16 @@ component hierarchy. Error logging pattern: `ExceptionService.registerException`
 **Implementation order:**
 `Metadata -> Models/Builders -> Utils -> TriggerHandlers -> RestResources -> Controllers -> LWC -> Tests`
 
-Do not forget the MANDATORY exploration.md save question. **STOP at each marker.**
+Do not forget the MANDATORY `exploration.md` save question. Save the technical design as
+`technical-design.md`, then validate its exact path and traceability header before asking
+for design approval. **STOP at each marker.**
 
 ---
 
 ## Gate 3 additions — Specifications
 
 Per spec, also define: governor-limit budget (SOQL/DML/CPU) and the FM implementation
-order below. Save to `docs/artifacts/<TICKET-ID>/specs.md`. **STOP.**
+order below. Save to `docs/artifacts/<TICKET-ID>/specifications.md`. **STOP.**
 
 ### FM implementation order per spec
 1. Custom Objects / Fields (schema)
@@ -268,7 +287,6 @@ this ticket (do not deploy the entire `force-app` tree).
 |---|---|
 | Apex tests | all pass, 85%+ coverage |
 | LWC tests | all pass, 80%+ coverage |
-| Static analysis | no critical / high |
 | Sonar (local) | no blocker / critical |
 | Class naming | all names <= 36 chars |
 | Deploy to dev | successful |
