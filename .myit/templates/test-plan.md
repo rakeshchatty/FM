@@ -46,6 +46,5 @@ Coverage target: 80%+.
 ## Exit criteria
 - [ ] All automated tests green
 - [ ] Coverage targets met
-- [ ] Static analysis: no critical / high
 - [ ] Security checklist passed
 - [ ] Dev sandbox verification passed

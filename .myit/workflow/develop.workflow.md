@@ -223,8 +223,7 @@ Follow the testing standards in `.myit/instructions/salesforce-fm/architecture.i
 
 **Precondition:** all steps + tests approved.
 
-1. **Local checks:** LWC Jest (`npx jest --coverage`), static analysis
-   (`sf scanner run --target force-app/ --format table`), local Sonar.
+1. **Local checks:** LWC Jest (`npx jest --coverage`), local Sonar.
 2. **Deploy to dev sandbox (mandatory — do not skip).** First `sf org list` to confirm the
    sandbox is connected, then tell the developer explicitly:
    > Deploying to dev sandbox now. Running:

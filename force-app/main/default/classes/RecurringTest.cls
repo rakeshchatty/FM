@@ -1,5 +1,66 @@
 @isTest
 public with sharing class RecurringTest {
+    @IsTest
+    private static void should_validate_price_and_discount_combinations() {
+        Account account = TestDataHelper.insertAccount();
+
+        Recurrings__c defaultedRecord = new Recurrings__c(
+            Account__c = account.Id,
+            First_Date__c = Date.today().addDays(1),
+            Rec__c = 'Month',
+            Recur_every__c = '1',
+            Type__c = 'Delivery',
+            Name = 'Default discount'
+        );
+        insert defaultedRecord;
+        defaultedRecord = [SELECT Discount_to_Apply__c FROM Recurrings__c WHERE Id = :defaultedRecord.Id];
+        Assert.areEqual('Account', defaultedRecord.Discount_to_Apply__c, 'Expected omitted discount to default to Account.');
+
+        List<Recurrings__c> validRecords = new List<Recurrings__c>{
+            createValidationRecurring(account.Id, 100, null, 'Manual price only'),
+            createValidationRecurring(account.Id, null, 'Account', 'Account discount only'),
+            createValidationRecurring(account.Id, null, 'Partner', 'Partner discount only')
+        };
+
+        Database.SaveResult[] validResults = Database.insert(validRecords, false);
+        for (Database.SaveResult result : validResults) {
+            Assert.isTrue(result.isSuccess(), 'Expected the single-value recurring record to save.');
+        }
+
+        Recurrings__c bothValues = createValidationRecurring(account.Id, 100, 'Account', 'Both values');
+        Database.SaveResult bothValuesResult = Database.insert(bothValues, false);
+        Assert.isFalse(bothValuesResult.isSuccess(), 'Expected both values to be rejected.');
+        Assert.isTrue(bothValuesResult.getErrors()[0].getMessage().contains('Manual Price'), 'Expected the existing both-values validation message.');
+
+        Recurrings__c neitherValue = createValidationRecurring(account.Id, null, null, 'Neither value');
+        Database.SaveResult neitherValueResult = Database.insert(neitherValue, false);
+        Assert.isFalse(neitherValueResult.isSuccess(), 'Expected both blank values to be rejected.');
+        Assert.isTrue(neitherValueResult.getErrors()[0].getMessage().contains('Enter either Manual Price'), 'Expected the new both-blank validation message.');
+
+        List<Recurrings__c> bulkRecords = new List<Recurrings__c>();
+        for (Integer index = 0; index < 200; index++) {
+            bulkRecords.add(createValidationRecurring(account.Id, Math.mod(index, 2) == 0 ? 100 : null, Math.mod(index, 2) == 0 ? null : 'Account', 'Bulk ' + index));
+        }
+
+        Database.SaveResult[] bulkResults = Database.insert(bulkRecords, false);
+        for (Database.SaveResult result : bulkResults) {
+            Assert.isTrue(result.isSuccess(), 'Expected every bulk record to use exactly one value.');
+        }
+    }
+
+    private static Recurrings__c createValidationRecurring(Id accountId, Decimal manualPrice, String discountToApply, String name) {
+        return new Recurrings__c(
+            Account__c = accountId,
+            First_Date__c = Date.today().addDays(1),
+            Rec__c = 'Month',
+            Recur_every__c = '1',
+            Type__c = 'Delivery',
+            ManualPrice__c = manualPrice,
+            Discount_to_Apply__c = discountToApply,
+            Name = name
+        );
+    }
+
     public static testmethod void test() {
         TestDataHelper.insertSupplier('First Mile Ltd');
         Account acc;

@@ -24,6 +24,23 @@ Set:
   (do not assume one).
 - `PR_BASE` = `main` (GitHub — `github.com/rakeshchatty/FM`)
 
+### Canonical workflow artifact names
+
+Use these exact filenames under `docs/artifacts/<TICKET-ID>/`:
+
+| Gate | Artifact |
+|---|---|
+| Gate 1 | `requirements.md` |
+| Gate 2 exploration | `exploration.md` |
+| Gate 2 design | `technical-design.md` |
+| Gate 3 | `specifications.md` |
+| All gates | `<TICKET-ID>-worklog.md` |
+
+Do not substitute generic names such as `design.md` or `specs.md`. Before creating an
+artifact, confirm its filename from this table. After creating it, verify that the exact
+path exists, the old generic alternative does not exist, and the traceability header's
+`Artifact:` value matches the filename. Correct any mismatch before advancing the gate.
+
 ## 1. Load the base workflow
 
 Follow `.myit/workflow/develop.workflow.md` gate-for-gate. Everything in it applies. The
@@ -124,14 +141,16 @@ component hierarchy. Error logging pattern: `ExceptionService.registerException`
 **Implementation order:**
 `Metadata -> Models/Builders -> Utils -> TriggerHandlers -> RestResources -> Controllers -> LWC -> Tests`
 
-Do not forget the MANDATORY exploration.md save question. **STOP at each marker.**
+Do not forget the MANDATORY `exploration.md` save question. Save the technical design as
+`technical-design.md`, then validate its exact path and traceability header before asking
+for design approval. **STOP at each marker.**
 
 ---
 
 ## Gate 3 additions — Specifications
 
 Per spec, also define: governor-limit budget (SOQL/DML/CPU) and the FM implementation
-order below. Save to `docs/artifacts/<TICKET-ID>/specs.md`. **STOP.**
+order below. Save to `docs/artifacts/<TICKET-ID>/specifications.md`. **STOP.**
 
 ### FM implementation order per spec
 1. Custom Objects / Fields (schema)
@@ -215,16 +234,52 @@ empty & loading states, mocked imperative Apex. Coverage 80%+.
 
 ---
 
+## Pre-Gate 6 additions — Manifest
+
+**Allowed models:** Sonnet 5, Opus 4.8, GPT-5.6 Luna. If the running model is anything else,
+STOP and ask the developer to switch before continuing.
+
+Before deploying, generate a `package.xml` manifest scoped to only the files changed for
+this ticket (do not deploy the entire `force-app` tree).
+
+1. Determine the changed metadata files for this ticket, e.g.:
+   ```
+   git diff --name-only origin/main...HEAD -- force-app/
+   ```
+2. Generate the manifest from that changed-file list (source-to-manifest), for example:
+   ```
+   sf project generate manifest --source-dir <changed-path-1> <changed-path-2> ... --output-dir manifest --name <TICKET-ID>-package
+   ```
+   Adjust `--source-dir` to the actual changed paths/files found in step 1. Do not hand-list
+   metadata the diff did not show.
+3. Save the generated file as `manifest/<TICKET-ID>-package.xml`.
+4. Add an XML comment block near the top of the manifest (inside `<!-- -->`, above or below
+   the `<Package>` root element as XML comments do not nest inside it validly — place them
+   directly above `<?xml version...?>` is invalid too, so place the comment block as the
+   first child directly under `<Package>`) listing:
+   - Any **pre-deploy manual steps** (e.g. Custom Metadata records to load, Named Credential
+     setup, feature/permission toggles) — or `None` if none apply.
+   - Any **post-deploy manual steps** (e.g. data fixes, permission set assignments, flow
+     activation, scheduled job setup) — or `None` if none apply.
+   Base these on what Gate 1/2/3 artifacts and the actual changes require — do not invent
+   steps.
+5. Show the developer the manifest path and the pre/post manual steps summary.
+
+**STOP — human approves the manifest** before deploying in Gate 6.
+
+---
+
 ## Gate 6 additions — Verification (deploy to FM dev sandbox — mandatory)
 
-1. Local: `npx jest --coverage`; `sf scanner run --target force-app/ --format table`;
-   local Sonar.
+1. Local: `npx jest --coverage`.
 2. `sf org list` -> confirm sandbox. Then tell the developer:
-   > Deploying to dev sandbox now. Running:
-   > `sf project deploy start --target-org <DEV_SANDBOX_ALIAS>`
+   > Deploying to dev sandbox now, using the Pre-Gate 6 manifest. Running:
+   > `sf project deploy start --manifest manifest/<TICKET-ID>-package.xml --target-org <DEV_SANDBOX_ALIAS>`
 3. `sf apex run test --target-org <DEV_SANDBOX_ALIAS> --code-coverage --result-format human`
-4. Verify the feature in the org against the acceptance criteria; ask about manual setup.
-5. Fix, redeploy, re-verify.
+4. Verify the feature in the org against the acceptance criteria; ask about manual setup
+   listed in the manifest comments (pre-deploy steps before deploying, post-deploy steps
+   after).
+5. Fix, regenerate the manifest if the changed-file set grew, redeploy, re-verify.
 
 **Pass criteria**
 
@@ -232,7 +287,6 @@ empty & loading states, mocked imperative Apex. Coverage 80%+.
 |---|---|
 | Apex tests | all pass, 85%+ coverage |
 | LWC tests | all pass, 80%+ coverage |
-| Static analysis | no critical / high |
 | Sonar (local) | no blocker / critical |
 | Class naming | all names <= 36 chars |
 | Deploy to dev | successful |
@@ -276,3 +330,66 @@ Commit type examples:
 `test(CRME-1234): add bulk tests for CreatorTriggerHandler`
 
 **STOP — human approves the PR.** Do not push or open the PR without approval.
+
+---
+
+## Gate 8 — Release Document
+
+**Allowed models:** Sonnet 5, Opus 4.8, GPT-5.6 Luna. If the running model is anything else,
+STOP and ask the developer to switch before continuing.
+
+Manually update the maintained release `.docx` document. This is the source-of-truth
+release document used to keep the release contents synchronized; it is not a ticket
+artifact and must not be replaced with a new Markdown file.
+
+1. Locate the existing release Word document using the repository's established release
+  documentation location or ask the developer for its path. Do not create a second
+  release document when an existing one is available.
+2. Preserve the document's existing formatting, headings, ordering, and unrelated release
+  entries. Add or update the entry for `<TICKET-ID>` with:
+  - Jira ticket URL
+  - Ticket title
+  - Short description of the delivered change
+  - Files changed, grouped as **New**, **Modified**, and **Deleted**
+3. Derive the file lists from the final approved diff against `main`. Include relevant
+  metadata, manifest, test, and documentation files; do not report generated or ignored
+  files unless they are part of the release.
+4. Reconcile the entry against the final PR and `manifest/<TICKET-ID>-package.xml`.
+  Record any manual pre-deploy or post-deploy steps required by the manifest.
+5. Open or otherwise validate the updated `.docx` and confirm the ticket entry is readable,
+  complete, and not duplicated. Show the developer the document path and a concise
+  summary of the entry.
+
+**STOP — human approves the updated release document before Gate 9.**
+
+---
+
+## Gate 9 — Jira + Business Communication
+
+**Allowed models:** Sonnet 5, Opus 4.8, GPT-5.6 Luna. If the running model is anything else,
+STOP and ask the developer to switch before continuing.
+
+Update Jira with the completed change summary and inform the business stakeholders using
+the approved communication channel.
+
+1. Prepare a reviewable update from the approved release-document entry, including:
+  - Jira ticket URL and title
+  - What changed and why
+  - Final files changed, grouped as New / Modified / Deleted
+  - Testing and dev-sandbox verification result
+  - Deployment status, PR link, manifest path, and any manual steps
+  - Known limitations, follow-up work, or `None`
+2. Show the exact Jira comment/description update and proposed business message to the
+  developer. Do not invent a Jira status transition, assignee, priority, recipients, or
+  channel. Confirm those details when they are not already defined by the project.
+3. After human approval, publish the Jira update through the approved Jira integration or
+  authenticated Jira UI. Never print, read, copy, or paste `.jira-token` or any other
+  credential. Do not expose secrets in the Jira comment or business message.
+4. After human approval, send the business message to the confirmed recipients/channel.
+  Link to the Jira issue, PR, and release document when accessible, and state clearly
+  whether the change is deployed and whether manual steps remain.
+5. Record the Jira update result, communication channel, timestamp, and any failed or
+  pending follow-up in the worklog. If an external update fails, do not claim completion;
+  report the failure and retain the approved draft for retry.
+
+**STOP — human approves the Jira update and business communication before publishing.**

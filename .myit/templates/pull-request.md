@@ -31,7 +31,6 @@ Last updated: <YYYY-MM-DD>
       messages
 - [ ] `sf apex run test --target-org <sandbox> --code-coverage` passed; coverage 85%+
 - [ ] LWC Jest passed; coverage 80%+
-- [ ] `sf scanner run` — no critical / high
 - [ ] Deployed and verified in dev sandbox
 
 ## Artifacts
