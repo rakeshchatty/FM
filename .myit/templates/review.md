@@ -1,7 +1,7 @@
 <!--
 Traceability
 Ticket: <TICKET-ID>
-Artifact: pull-request.md
+Artifact: review.md
 Base branch: main (GitHub)
 Last updated: <YYYY-MM-DD>
 -->
@@ -46,7 +46,7 @@ See `docs/artifacts/<TICKET-ID>/` for design documents and analysis.
 - [ ] No production org connected or modified
 - [ ] No destructive commands run
 - [ ] No secrets committed
-- [ ] Class names <= 36 chars; API version >= 60.0
+- [ ] Class names <= 36 chars; API version targets latest (67.0 as of 2026-09)
 
 ## Review
 - Base branch: `main`

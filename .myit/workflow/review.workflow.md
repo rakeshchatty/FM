@@ -372,28 +372,31 @@ Only if human chose **"Post to PR"** and the GitHub CLI is available.
 
 ## Posting
 
-Post one comment per finding so the author can resolve each finding individually:
+Post exactly **one** PR comment containing the entire review — never one comment per
+finding. Compose the full body first, then make a single `gh pr comment` call.
 
-```markdown
-**[<severity>]** <title>
+Body structure, in order:
 
-**Issue:** <what is wrong>
+1. Verdict
+2. Finding counts (Blockers / Major / Minor / Nits / Praise)
+3. Findings grouped by severity, each as:
 
-**Standard:** <which rule violated>
+   ```markdown
+   **[<severity>]** <title> — `<file>:<line>`
 
-**Suggested fix:**
+   **Issue:** <what is wrong>
 
-~~~code
-<code suggestion>
-~~~
-```
+   **Standard:** <which rule violated>
 
-Post individual findings first, then the summary:
+   **Suggested fix:**
 
-- verdict
-- counts
-- test assessment
-- checklist
+   ~~~code
+   <code suggestion>
+   ~~~
+   ```
+
+4. Test assessment
+5. Checklist
 
 last.
 

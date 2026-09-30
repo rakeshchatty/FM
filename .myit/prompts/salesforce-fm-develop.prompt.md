@@ -42,7 +42,7 @@ The ticket argument may be a Jira key such as `CRMFM-1` or a browse URL such as
 2. First check the local worklog:
 
 ```powershell
-Test-Path docs/artifacts/<TICKET-ID>/<TICKET-ID>-worklog.md
+Test-Path docs/artifacts/<TICKET-ID>/worklog.md
 ```
 
 3. If the worklog exists, read it first and resume from the recorded gate. Do not
@@ -180,7 +180,7 @@ classes / interfaces / Application factory / UoW in implementation code. Approve
 step, then write its tests immediately.
 
 FM Apex rules to enforce while coding (see `architecture.instructions.md`):
-- Class names <= 36 chars; API version >= 60.0.
+- Class names <= 36 chars; API version targets latest (67.0 as of 2026-09).
 - `with sharing` by default; document any `without sharing`.
 - Bulkify; no SOQL/DML in loops; no hardcoded IDs (use Custom Metadata / Labels).
 - Error logging via `ExceptionService.registerException(ex, 'Class.method')` +
@@ -244,18 +244,37 @@ If you did not deploy to the dev sandbox, you cannot proceed. **STOP — human a
 
 ## Gate 7 additions — Commit + Pull Request
 
-### Part A: artifacts FIRST (automatic — do not ask)
-```
-ls docs/artifacts/<TICKET-ID>/
-git add docs/artifacts/<TICKET-ID>/
-git commit -m "docs(<TICKET-ID>): add design artifacts"
-```
-Then implementation (`feat(<TICKET-ID>): ...`), then tests (`test(<TICKET-ID>): ...`).
-Analysis-only: `git commit -m "docs(<TICKET-ID>): add analysis findings"` is the sole
-deliverable.
+### Part A: single commit per branch (automatic — do not ask)
 
-**SELF-CHECK:** `git log --oneline -5` must show `docs(<TICKET-ID>): add design
-artifacts`. If not, commit now.
+FM branches carry **exactly one commit**. Never stack separate `docs`/`feat`/`test`
+commits on the same branch.
+
+- **First commit on the branch:** stage everything for this unit of work (artifacts,
+  implementation, tests) and create one commit:
+  ```
+  ls docs/artifacts/<TICKET-ID>/
+  git add docs/artifacts/<TICKET-ID>/ force-app/ <other changed paths>
+  git commit -m "feat(<TICKET-ID>): <summary>"
+  ```
+  Analysis-only work: `git commit -m "docs(<TICKET-ID>): add analysis findings"` is the
+  sole deliverable.
+- **Any subsequent change on the same branch** (fixes from review, additional test
+  coverage, more artifacts, etc.): stage the new changes and **amend** the existing
+  commit instead of creating a new one:
+  ```
+  git add <changed paths>
+  git commit --amend --no-edit
+  ```
+  Update the commit message with `git commit --amend -m "<type>(<TICKET-ID>): <summary>"`
+  only if the summary needs to change to still describe the full contents.
+- If the branch was already pushed, amending rewrites history — this requires a
+  force-push (`git push --force-with-lease`). Amending/force-pushing a branch you are
+  actively developing is authorized by this workflow gate; **never** amend or
+  force-push a branch once someone else may have based work on it, and never touch
+  `main`.
+
+**SELF-CHECK:** `git log --oneline` must show exactly **one** commit ahead of `main`. If
+it shows more than one, amend them down to one before proceeding.
 
 ### Part B: Pull Request (GitHub)
 - Title: `<type>(<TICKET-ID>): <summary>`

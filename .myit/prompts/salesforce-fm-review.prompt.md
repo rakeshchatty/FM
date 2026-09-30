@@ -86,8 +86,9 @@ focus on.
   `architecture.instructions.md`; until `ExceptionService` exists in the repo, flag
   divergence rather than blocking on it.)
 - **Inner Error/Exception classes** — must be `virtual` for Salesforce serialization.
-- **API version** — new Apex classes should use API version `>= 60.0`, consistent with
-  sibling files in the same folder. Do not bulk-bump existing files as a side effect.
+- **API version** — new Apex classes should target the latest available API version
+  (`67.0` as of 2026-09), consistent with sibling files in the same folder. Do not
+  bulk-bump existing files as a side effect.
 
 ### LWC Review — FM Focus
 
@@ -222,8 +223,8 @@ When the PR includes metadata changes (`.xml` files):
 - **No numbers in names** — variable and method names must not contain numbers (e.g.
   `value1`, `result2`).
 - **No Hungarian notation** — e.g. `lstAccounts` → `accounts`, `mapUsers` → `usersByIdMap`.
-- **API version** — new Apex classes should use API version `>= 60.0`, consistent with
-  sibling files in the same folder.
+- **API version** — new Apex classes should target the latest available API version
+  (`67.0` as of 2026-09), consistent with sibling files in the same folder.
 
 ## 3. FM-Specific Anti-Patterns (Blockers)
 
@@ -244,7 +245,7 @@ The following are automatic blockers in code review:
 | Variable/method name ≤ 3 chars | Major | Names must be descriptive |
 | Placeholder names (`abc`, `xyz`, `lmn`) | Major | No placeholder names in production code |
 | Numbers in variable/method names | Major | Use descriptive names |
-| Apex class API version < 60.0 | Major | New classes should use API version >= 60.0 |
+| Apex class API version not targeting latest | Major | New classes should target the latest API version (67.0 as of 2026-09) |
 | New Aura component | Critical | All new UI must be LWC |
 | `console.log` in LWC production code | Major | No console logging in production |
 | Missing error/loading/empty state | Major | LWC must handle all three states |
@@ -267,10 +268,10 @@ After completing the review, you MUST generate a review summary markdown file.
 **File Name & Location**
 
 ```
-docs/artifacts/<TICKET-ID>/<TICKET-ID>-review-summary.md
+docs/artifacts/<TICKET-ID>/review-summary.md
 ```
 
-Example: `docs/artifacts/FM-002/FM-002-review-summary.md`
+Example: `docs/artifacts/FM-002/review-summary.md`
 
 **File Contents**
 

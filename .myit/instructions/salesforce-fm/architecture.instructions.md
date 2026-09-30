@@ -427,8 +427,9 @@ No Hungarian notation: `lstAccounts` → `accounts`, `mapUsers` → `usersById`.
 ### API version
 
 - New Apex classes: use a current API version and keep it **consistent with sibling files
-  in the same folder**. The repo currently spans 29.0–62.0; target **>= 60.0** for new
-  code. Do not bulk-bump existing files as a side effect.
+  in the same folder**. The repo currently spans 29.0–62.0; target the latest available
+  API version (**67.0** as of 2026-09) for new code. Do not bulk-bump existing files as a
+  side effect.
 
 ### LWC
 
@@ -657,8 +658,8 @@ and toast verification, empty & loading states.
   Functional changes need an explicit request and should be **retrieved from a sandbox**,
   not hand-authored.
 - Grant new object/field access via **permission sets**, not profiles.
-- Keep `<apiVersion>` consistent within a metadata type/folder (Apex/triggers >= 60.0 for
-  new files).
+- Keep `<apiVersion>` consistent within a metadata type/folder (Apex/triggers target the
+  latest available API version, 67.0 as of 2026-09, for new files).
 - Never commit secrets, endpoints with embedded tokens, or real-org ids in metadata.
 - Object/field changes: update the `-meta.xml` **and** dependent permission sets in the
   same change — only when explicitly asked.
@@ -733,7 +734,7 @@ performance / maintainability) · **exact fix** (copy-paste ready where possible
 **Naming & versioning**
 - [ ] Class names <= 36 chars; one `{Class}Test` per production class.
 - [ ] Test methods `should_<behavior>[_when_<condition>]` (snake_case).
-- [ ] API version >= 60.0, consistent with siblings.
+- [ ] API version targets latest (67.0 as of 2026-09), consistent with siblings.
 
 **Tests**
 - [ ] Dedicated test class present and updated.

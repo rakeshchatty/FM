@@ -1,7 +1,7 @@
 <!--
 Traceability
 Ticket: <TICKET-ID>
-Artifact: <TICKET-ID>-worklog.md
+Artifact: worklog.md
 Purpose: context persistence across sessions — read this FIRST on resume.
 Last updated: <YYYY-MM-DD HH:MM>
 -->

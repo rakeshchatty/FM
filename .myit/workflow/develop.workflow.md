@@ -63,14 +63,14 @@ Done
 
 ## Worklog file (MANDATORY — context persistence)
 
-Path: `<ARTIFACT_DIRECTORY>/<TICKET-ID>/<TICKET-ID>-worklog.md`
-Example: `docs/artifacts/CRME-1234/CRME-1234-worklog.md`
+Path: `<ARTIFACT_DIRECTORY>/<TICKET-ID>/worklog.md`
+Example: `docs/artifacts/CRME-1234/worklog.md`
 
 - **Create** immediately after Gate 1 approval (once the ticket ID is known), from
   `.myit/templates/worklog.md`.
 - **Update** at the end of every gate and after every significant decision.
 - **Read first** at the start of every session:
-  `ls <ARTIFACT_DIRECTORY>/<TICKET-ID>/<TICKET-ID>-worklog.md` — if found, it is the
+  `ls <ARTIFACT_DIRECTORY>/<TICKET-ID>/worklog.md` — if found, it is the
   primary context source. Do NOT re-ask questions or re-run exploration it already
   documents.
 
@@ -240,24 +240,33 @@ You cannot proceed to Gate 7 without a successful dev-sandbox deployment + verif
 
 ---
 
-## Gate 7 — Commit (artifacts FIRST) + Pull / Merge Request
+## Gate 7 — Commit (single commit per branch) + Pull / Merge Request
 
 **Precondition:** verification approved.
 
-### Part A: Commit artifacts FIRST (mandatory, automatic — do not ask whether to)
+### Part A: one commit per branch (mandatory, automatic — do not ask whether to)
+
+A branch carries **exactly one commit** for the whole unit of work (artifacts +
+implementation + tests together), not a separate commit per file group.
+
 1. `ls <ARTIFACT_DIRECTORY>/<TICKET-ID>/`
-2. `git add <ARTIFACT_DIRECTORY>/<TICKET-ID>/ && git commit -m "docs(<TICKET-ID>): add design artifacts"`
-   (includes whichever of `requirements.md`, `exploration.md`, `technical-design.md`,
-   `specs.md`, worklog exist)
-3. Commit implementation — one commit per logical unit: `feat(<TICKET-ID>): <desc>`
-4. Commit tests if separate: `test(<TICKET-ID>): <desc>`
+2. First commit on the branch — stage everything (artifacts, implementation, tests) and
+   commit once: `git add <ARTIFACT_DIRECTORY>/<TICKET-ID>/ <implementation paths> && git
+   commit -m "feat(<TICKET-ID>): <desc>"`
+   (artifacts include whichever of `requirements.md`, `exploration.md`,
+   `technical-design.md`, `specs.md`, worklog exist)
+3. Any later change on the same branch (fixes, more tests, more artifacts): stage it and
+   **amend** the existing commit rather than adding a new one — `git add <paths> && git
+   commit --amend --no-edit` (or `--amend -m "..."` if the summary needs updating). If the
+   branch is already pushed, this requires `git push --force-with-lease` on that branch.
 
-For analysis-only stories the artifacts commit is the only deliverable:
-`git commit -m "docs(<TICKET-ID>): add analysis findings"`.
+For analysis-only stories the single commit is `docs(<TICKET-ID>): add analysis
+findings`.
 
-**SELF-CHECK — STOP AND VERIFY:** run `git log --oneline -5` and confirm you see
-`docs(<TICKET-ID>): add design artifacts`. If not, commit them NOW. This is the #1 most
-commonly missed step. No "later", no waiting to be asked.
+**SELF-CHECK — STOP AND VERIFY:** run `git log --oneline` and confirm the branch has
+exactly **one** commit ahead of the base branch. If there's more than one, amend them
+down to one now. This is the #1 most commonly missed step. No "later", no waiting to be
+asked.
 
 ### Part B: Pull / Merge Request
 Present the PR/MR title, branch, description (what / why / testing / artifacts), and commit

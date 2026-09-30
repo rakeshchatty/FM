@@ -88,8 +88,7 @@ templates:
   - { name: technical-design,  file: .myit/templates/technical-design.md,  gate: 2 }
   - { name: specs,             file: .myit/templates/specs.md,             gate: 3 }
   - { name: worklog,           file: .myit/templates/worklog.md,           gate: "1 (create), all (update)" }
-  - { name: test-plan,         file: .myit/templates/test-plan.md,         gate: "3/6" }
-  - { name: pull-request,      file: .myit/templates/pull-request.md,      gate: 7 }
+  - { name: review,            file: .myit/templates/review.md,            gate: 7 }
 
 mcp:
   config_file: .vscode/mcp.json

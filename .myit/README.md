@@ -31,7 +31,7 @@ workflows, skills, and document templates. Both tools use the same command names
 │   ├── bugfix.md                     lightweight playbook
 │   └── metadata-change.md            lightweight playbook
 └── templates/                        requirements, exploration, technical-design, specs,
-                                      worklog, test-plan, pull-request
+                                      worklog, review
 ```
 
 ## How Copilot Chat consumes it
