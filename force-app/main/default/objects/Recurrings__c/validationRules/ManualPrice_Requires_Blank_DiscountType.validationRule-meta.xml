@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ManualPrice_Requires_Blank_DiscountType</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    OR(ISNEW(), ISCHANGED(ManualPrice__c), ISCHANGED(Discount_to_Apply__c)),
+    NOT(ISBLANK(ManualPrice__c)),
+    NOT(ISPICKVAL(Discount_to_Apply__c, &apos;&apos;))
+)</errorConditionFormula>
+    <errorDisplayField>Discount_to_Apply__c</errorDisplayField>
+    <errorMessage>Discount Type must be blank when Manual Price is populated. Clear Discount Type before saving.</errorMessage>
+</ValidationRule>
