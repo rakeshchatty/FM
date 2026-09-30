@@ -9,9 +9,9 @@ Last updated: 2026-09-30
 # Worklog — CRMFM-7: Default Discount Type and enforce manual pricing rules on Recurring Orders
 
 ## Current state
-- **Active gate:** Gate 7 — Commit + Pull Request
-- **Next action:** Create the single commit, then propose PR for human approval.
-- **Blocked on:** nothing — committing now.
+- **Active gate:** Done
+- **Next action:** None — PR opened, awaiting review/merge.
+- **Blocked on:** nothing.
 
 ## Gate 2 exploration findings (do not re-derive)
 - Recurring Order = `Recurrings__c` custom object.
@@ -68,7 +68,7 @@ Last updated: 2026-09-30
 | 5 Implementation | | | steps done: 0/n |
 | 5/6 Tests | APPROVED | 2026-09-30 | RecurringDiscountTypeTest.cls approved |
 | 6 Verification | APPROVED | 2026-09-30 | Deployed to fm-ai (2 rounds — 2nd fixed a Gate-6 design gap); 8/8 Apex tests pass; static analysis explicitly skipped per developer instruction |
-| 7 Commit + PR | | | artifacts committed: no |
+| 7 Commit + PR | DONE | 2026-09-30 | artifacts committed: yes (1799965, single commit); PR: https://github.com/rakeshchatty/FM/pull/4 |
 
 ## Implementation steps
 | # | Component | Implemented | Tested | Approved |
