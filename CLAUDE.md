@@ -24,10 +24,21 @@ Claude Code does not auto-apply these by path glob — open the ones that match 
 are touching (e.g. read `architecture.instructions.md` before editing anything under
 `force-app/`).
 
+## Direct chat development
+For implementation requests made in ordinary chat, terminal-oriented wording, or a custom
+command, apply the FM rules even when `/salesforce-fm-develop` is not used. Before planning
+or editing, read the three instruction files above and use the repository's existing
+`RestResource -> Util/Handler -> Builder/Model` architecture, explicit sharing, bulk-safe
+patterns, Apex test requirements, ticket-scoped manifest, and Gate 8/9 release and Jira
+procedures where applicable. A slash command is not required to activate these standards.
+If the request includes a ticket, resume the matching gated workflow and worklog; if it is
+an ad-hoc change, still use the same implementation and validation standards and do not
+bypass the production, secret, deployment, or destructive-command guardrails.
+
 ## Slash commands
 Same names as Copilot Chat. Defined in `.claude/commands/`, backed by `.myit/`:
 
-- **`/salesforce-fm-develop`** — gated development workflow (Gates 1–7, worklog, analysis
+- **`/salesforce-fm-develop`** — gated development workflow (Gates 1–9, worklog, analysis
   flow). Prompt: `.myit/prompts/salesforce-fm-develop.prompt.md`; base:
   `.myit/workflow/develop.workflow.md`.
 - **`/salesforce-fm-review`** — gated code review (scope → automated → deep review →

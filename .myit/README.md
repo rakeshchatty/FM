@@ -23,7 +23,7 @@ workflows, skills, and document templates. Both tools use the same command names
 │   └── common/                       project-agnostic (general, code-quality, css, git,
 │                                     testing, troubleshoot)
 ├── prompts/
-│   ├── salesforce-fm-develop.prompt.md   gated dev workflow (Gates 1-7)
+│   ├── salesforce-fm-develop.prompt.md   gated dev workflow (Gates 1-9)
 │   └── salesforce-fm-review.prompt.md    gated code review
 ├── workflow/
 │   ├── develop.workflow.md           base gated dev workflow (project-agnostic)

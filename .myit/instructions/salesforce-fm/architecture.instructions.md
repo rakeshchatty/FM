@@ -83,7 +83,7 @@ dependencies for the test tooling; they are not installed yet.
 | Config | Custom Metadata Types, Custom Settings, Custom Labels |
 | Async | Batch / Queueable / Scheduled Apex, Platform Events |
 | Integration | Named Credentials, Connected Apps |
-| Test tooling _(target)_ | `fflib-apex-mocks` (mocks only), `@salesforce/sfdx-lwc-jest`, PMD, Salesforce Code Analyzer |
+| Test tooling _(target)_ | `fflib-apex-mocks` (mocks only), `@salesforce/sfdx-lwc-jest` |
 
 ---
 
@@ -616,7 +616,7 @@ and toast verification, empty & loading states.
 
 | Environment | Purpose | How |
 |---|---|---|
-| Dev sandbox | Feature development | `sf project deploy start -d force-app --target-org <alias>` |
+| Dev sandbox | Feature development | `sf project deploy start --manifest manifest/<TICKET-ID>/package.xml --target-org <alias>` |
 | QA / UAT sandbox | Validation / UAT | pipeline _(target)_ or manual `sf` deploy |
 | Production | Live | **protected — manual approval, pipeline only; agents never deploy here** |
 
@@ -624,8 +624,8 @@ and toast verification, empty & loading states.
   `sf project deploy validate --source-dir <paths> --test-level RunLocalTests --target-org <sandbox>`.
 - Deploy only to sandboxes, only when asked. Retrieve latest from the dev sandbox before
   starting implementation.
-- Quality gates: Apex tests all pass @ 85%+; LWC Jest all pass @ 80%+; Code Analyzer no
-  critical/high; Sonar (run locally) no blocker/critical; deploy validation succeeds.
+- Quality gates: Apex tests all pass @ 85%+; when LWC changes are included, LWC Jest must
+  pass @ 80%+; deploy validation succeeds.
 
 ---
 
@@ -743,7 +743,8 @@ performance / maintainability) · **exact fix** (copy-paste ready where possible
       assertion.
 - [ ] `@TestSetup` or a data factory; `SeeAllData=false`; no reliance on org data.
 - [ ] Mock injection via `@TestVisible private static` fields; external callouts mocked.
-- [ ] Coverage: 85%+ (aim 95%); LWC Jest 80%+.
+- [ ] Apex coverage: 85%+ (aim 95%); when LWC changes are included, LWC Jest coverage is
+  80%+.
 
 **LWC**
 - [ ] `@wire` for reads; imperative Apex only for writes; `{ data, error }` handled.
@@ -754,7 +755,6 @@ performance / maintainability) · **exact fix** (copy-paste ready where possible
 
 **Cross-cutting**
 - [ ] Zero-regression: callers / dependents traced.
-- [ ] Sonar run locally — no blocker/critical.
 - [ ] No new code duplicating existing functionality.
 
 ---

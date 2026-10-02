@@ -1,6 +1,6 @@
 ---
 agent: agent
-description: FM Salesforce gated development workflow with read-only Jira ticket retrieval (Gates 1-7, worklog, analysis flow).
+description: FM Salesforce gated development workflow with Jira retrieval, release-document update, and automated Jira-comment posting (Gates 1-9, worklog, analysis flow).
 argument-hint: "[Jira issue key or browse URL, for example CRMFM-1]"
 ---
 
@@ -147,7 +147,7 @@ order below. Save to `docs/artifacts/<TICKET-ID>/specs.md`. **STOP.**
 10. Apex Controllers (thin, for LWC)
 11. Lightning Web Components
 12. Apex test classes (one per production class, `{Class}Test`)
-13. LWC Jest tests
+13. LWC Jest tests (if LWC is implemented)
 
 ---
 
@@ -178,6 +178,17 @@ Follow the FM implementation order. FM pragmatic layered patterns only
 (`RestResource -> Util/Handler -> Builder/Model`, versioning via `_V[N]`). No fflib base
 classes / interfaces / Application factory / UoW in implementation code. Approve each
 step, then write its tests immediately.
+
+At the start of Gate 5, create the directory `manifest/<TICKET-ID>/` and create
+`manifest/<TICKET-ID>/package.xml` inside it. Keep this ticket-scoped package file current
+as each metadata component is added or changed:
+- Include every metadata member that will be deployed for the ticket; use explicit members
+  rather than a catch-all wildcard where practical.
+- Update the manifest after every implementation and test step.
+- Add a valid XML comment block with detailed, ticket-specific pre-deployment and
+  post-deployment instructions, including ordering, manual setup, data preparation,
+  permissions, and verification. If no pre- or post-deployment action is required, record
+  that explicitly in the comment block.
 
 FM Apex rules to enforce while coding (see `architecture.instructions.md`):
 - Class names <= 36 chars; API version targets latest (67.0 as of 2026-09).
@@ -217,13 +228,15 @@ empty & loading states, mocked imperative Apex. Coverage 80%+.
 
 ## Gate 6 additions — Verification (deploy to FM dev sandbox — mandatory)
 
-1. Local: `npx jest --coverage`; `sf scanner run --target force-app/ --format table`;
-   local Sonar.
-2. `sf org list` -> confirm sandbox. Then tell the developer:
+1. Optional local check: when LWC changes are included, run `npx jest --coverage`.
+2. Confirm `manifest/<TICKET-ID>/package.xml` is present and current. Run `sf org list` to
+  confirm the sandbox, follow the manifest's pre-deployment instructions, then tell the
+  developer:
    > Deploying to dev sandbox now. Running:
-   > `sf project deploy start --target-org <DEV_SANDBOX_ALIAS>`
+  > `sf project deploy start --manifest manifest/<TICKET-ID>/package.xml --target-org <DEV_SANDBOX_ALIAS>`
 3. `sf apex run test --target-org <DEV_SANDBOX_ALIAS> --code-coverage --result-format human`
-4. Verify the feature in the org against the acceptance criteria; ask about manual setup.
+4. Follow the manifest's post-deployment instructions, then verify the feature in the org
+  against the acceptance criteria.
 5. Fix, redeploy, re-verify.
 
 **Pass criteria**
@@ -231,9 +244,7 @@ empty & loading states, mocked imperative Apex. Coverage 80%+.
 | Gate | Criteria |
 |---|---|
 | Apex tests | all pass, 85%+ coverage |
-| LWC tests | all pass, 80%+ coverage |
-| Static analysis | no critical / high |
-| Sonar (local) | no blocker / critical |
+| LWC tests, when applicable | all pass, 80%+ coverage |
 | Class naming | all names <= 36 chars |
 | Deploy to dev | successful |
 | Org verification | feature works as expected |
@@ -295,3 +306,60 @@ Commit type examples:
 `test(CRME-1234): add bulk tests for CreatorTriggerHandler`
 
 **STOP — human approves the PR.** Do not push or open the PR without approval.
+
+---
+
+## Gate 8 additions — Release Document
+
+After Gate 7 is approved, this mandatory update must be performed for every ticket or
+subsequent implementation change. Update the existing Word document at
+`docs/Release document.docx`. Preserve existing entries, insert a page break, and place
+the new entry at the beginning of the document so the newest entry is always on the first
+page. Do not append new entries to the end. Add one entry containing:
+
+- **Ticket Number:** `<TICKET-ID>`
+- **Title:** `<ticket or implementation title>`
+- **Short description:** `<concise implementation summary>`
+- A table with exactly these columns: `File name`, `File type`, `New/Modified`.
+
+Add one row for every changed or newly created implementation, test, metadata, and
+deployment-manifest file, including `manifest/<TICKET-ID>/package.xml`. Verify the table
+against the final diff, confirm the new entry is on the first page, save the document, and
+confirm it opens successfully. If the file cannot be opened or is not a valid Word
+document, stop and request approval before converting or replacing it.
+
+Amend the existing single branch commit to include the release document; do not create a
+second commit. If the PR is already open, update it after the amend. **STOP — human
+approves the release-document update.**
+
+---
+
+## Gate 9 additions — Jira Implementation Comment
+
+After Gate 8 approval, compose the detailed implementation comment in memory containing:
+
+- Ticket number, title, and summary of what changed and why.
+- Implementation details, including layers, classes, triggers, LWCs, metadata, and key
+  behavior.
+- Changed files with each file marked `New` or `Modified`.
+- Deployment manifest path: `manifest/<TICKET-ID>/package.xml`.
+- Pre-deployment and post-deployment instructions, or an explicit `None required`.
+- Apex test results, optional LWC Jest results when applicable, sandbox verification, and
+  known limitations or follow-up items.
+
+Post the comment automatically after it is composed:
+
+```powershell
+$implementationComment = @'
+<implementation details from the template above>
+'@
+pwsh -NoProfile -File .myit/tools/Add-JiraComment.ps1 `
+  -IssueKey <TICKET-ID> `
+  -CommentText $implementationComment
+```
+
+Use `powershell -NoProfile` if `pwsh` is unavailable. The helper reads `.jira-token` only
+at runtime and returns the issue key, comment ID, and URL. Never print or expose the token.
+The `.myit/tools/Get-JiraIssue.ps1` helper is read-only and must not be used to post
+comments. Record the returned comment URL or ID in the worklog. Do not create a comment file
+or a second commit for the comment. Gate 9 completes only after the Jira post succeeds.

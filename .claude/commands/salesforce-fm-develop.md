@@ -1,5 +1,5 @@
 ---
-description: FM Salesforce gated development workflow (Gates 1-7, worklog, analysis flow)
+description: FM Salesforce gated development workflow (Gates 1-9, worklog, analysis flow)
 argument-hint: "[Jira issue key or browse URL, for example CRMFM-1]"
 ---
 

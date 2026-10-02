@@ -40,7 +40,13 @@ Gate 6: Verification (quality gates + deploy to dev sandbox)
     | HUMAN APPROVES
     v
 Gate 7: Commit (artifacts FIRST) + Pull / Merge Request
-    | HUMAN APPROVES
+  | HUMAN APPROVES
+  v
+Gate 8: Release Document Update
+  | HUMAN APPROVES
+  v
+Gate 9: Jira Implementation Comment
+  | AUTOMATIC POST
     v
 Done
 ```
@@ -193,6 +199,17 @@ conflicts, help resolve them first.
 
 **Precondition:** retrieval confirmed.
 
+Before the first implementation step, create the directory `manifest/<TICKET-ID>/` and
+create `manifest/<TICKET-ID>/package.xml` inside it. Maintain this ticket-scoped manifest
+throughout Gate 5:
+- Add every changed or newly created Salesforce metadata member to `package.xml` as the
+  implementation progresses; do not use the root catch-all manifest for ticket deploys.
+- Keep the manifest synchronized after each implementation and test step.
+- Add a valid XML comment block in `package.xml` with ticket-specific instructions for
+  any required pre-deployment and post-deployment actions. If none are required, state
+  that explicitly in the comment block. Keep instructions detailed enough to execute,
+  including ordering, manual setup, data preparation, permissions, and verification.
+
 Follow the implementation order from the specs (project prompt defines the platform order).
 For each step:
 1. Implement following the project's existing patterns.
@@ -223,16 +240,18 @@ Follow the testing standards in `.myit/instructions/salesforce-fm/architecture.i
 
 **Precondition:** all steps + tests approved.
 
-1. **Local checks:** LWC Jest (`npx jest --coverage`), static analysis
-   (`sf scanner run --target force-app/ --format table`), local Sonar.
-2. **Deploy to dev sandbox (mandatory — do not skip).** First `sf org list` to confirm the
-   sandbox is connected, then tell the developer explicitly:
+1. **Optional local check:** when LWC changes are included, run LWC Jest
+  (`npx jest --coverage`).
+2. **Deploy to dev sandbox (mandatory — do not skip).** Confirm that
+  `manifest/<TICKET-ID>/package.xml` exists and is current. First `sf org list` to confirm
+  the sandbox is connected, then follow the manifest's pre-deployment instructions and
+  tell the developer explicitly:
    > Deploying to dev sandbox now. Running:
-   > `sf project deploy start --target-org <alias>`
+  > `sf project deploy start --manifest manifest/<TICKET-ID>/package.xml --target-org <alias>`
 3. **Run Apex tests in the sandbox:**
    `sf apex run test --target-org <alias> --code-coverage --result-format human`
-4. **Verify in the org:** manually test against the acceptance criteria; ask the developer
-   if any manual setup/config is needed first.
+4. **Complete post-deployment instructions and verify in the org:** follow the manifest's
+  post-deployment instructions, then manually test against the acceptance criteria.
 5. **Fix issues found, redeploy, re-verify.**
 
 You cannot proceed to Gate 7 without a successful dev-sandbox deployment + verification.
@@ -279,4 +298,80 @@ See `<ARTIFACT_DIRECTORY>/<TICKET-ID>/` for design documents and analysis.
 ```
 
 **STOP — human approves the PR/MR.** (The project prompt defines the VCS platform, base
-branch, template, and reviewers.)
+branch, template, and reviewers.) Continue to Gate 8 only after approval.
+
+---
+
+## Gate 8 — Release Document Update
+
+**Precondition:** Gate 7 commit and PR/MR preparation approved.
+
+This update is mandatory for every completed ticket or subsequent implementation change.
+Update the existing release document at `docs/Release document.docx` using a
+Word-compatible editor. Preserve all existing release entries and formatting. Insert a
+page break before the new entry and place it at the beginning of the document, above all
+previous release entries. Never append a new release entry to the end of the document.
+Add one release entry containing:
+
+- **Ticket Number:** `<TICKET-ID>`
+- **Title:** `<ticket or implementation title>`
+- **Short description:** `<concise implementation summary>`
+- A table with one row for every changed or newly created implementation, test, metadata,
+  and deployment-manifest file, using exactly these columns:
+
+  | File name | File type | New/Modified |
+  |---|---|---|
+  | `<path>` | `<Apex/LWC/Metadata/Test/Manifest/etc.>` | `<New/Modified>` |
+
+Include `manifest/<TICKET-ID>/package.xml` in the table. Check that the table matches the
+final diff, that the new entry is on the first page, and that the document saves and opens
+successfully. Every later ticket or implementation change must receive its own new page
+at the beginning of the document. If the existing file cannot be opened or is not a valid
+Word document, stop and ask for approval before converting or replacing it; do not silently
+overwrite it.
+
+Because the release document is part of the same unit of work, add it to the existing
+branch commit by amending that commit. Do not create a second commit. If a PR/MR already
+exists, update it after the amend. **STOP — human approves the release-document update.**
+
+---
+
+## Gate 9 — Jira Implementation Comment
+
+**Precondition:** Gate 8 release-document update approved.
+
+Compose the implementation comment in memory containing:
+
+```text
+Implementation details
+
+Ticket: <TICKET-ID>
+Title: <title>
+Summary: <what changed and why>
+Implementation: <layers, classes, triggers, LWCs, metadata, and key behavior>
+Files: <changed files and whether each is new or modified>
+Deployment: manifest/<TICKET-ID>/package.xml
+Pre-deployment: <steps, or None required>
+Post-deployment: <steps, verification, or None required>
+Testing: <Apex results and optional LWC Jest results>
+Verification: <sandbox verification outcome>
+Known limitations / follow-up: <items, or None>
+```
+
+Post the comment automatically after it is composed:
+
+```powershell
+$implementationComment = @'
+<implementation details from the template above>
+'@
+pwsh -NoProfile -File .myit/tools/Add-JiraComment.ps1 `
+  -IssueKey <TICKET-ID> `
+  -CommentText $implementationComment
+```
+
+If `pwsh` is unavailable, use `powershell -NoProfile` with the same arguments. The helper
+reads `.jira-token` only at runtime and returns the issue key, comment ID, and comment URL;
+it must never print or expose the token. Do not use the read-only
+`.myit/tools/Get-JiraIssue.ps1` helper to post comments. Record the returned comment URL or
+ID in the worklog. Do not create a comment file or a second commit for the comment. Gate 9
+completes after a successful Jira post.

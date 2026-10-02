@@ -39,6 +39,9 @@ When reading the diff for the FM Salesforce project:
 - Aura code = files under `aura/` (`.cmp`, `.app`, `.evt`, `.js`, `.css`, `.helper`, `.controller`) — legacy, no new components allowed
 - Distinguish by path, not extension: `.js` and `.css` exist in both LWC and Aura — check the parent folder (`lwc/` vs `aura/`)
 - Metadata = `.xml` files (object definitions, fields, permissions, layouts)
+- Deployment manifest = `manifest/<TICKET-ID>/package.xml`; verify it includes every
+  changed metadata member and documents any pre-/post-deployment instructions in XML
+  comments
 - Configuration = `sfdx-project.json`, `config/project-scratch-def.json`
 - Test code = `*Test.cls` files (FM's repo also has a legacy `*_Test.cls` pattern — match the sibling file); `__tests__/*.test.js` files
 - Skip = `.sfdx/`, `.sf/`, `node_modules/`, generated metadata timestamps
@@ -140,6 +143,14 @@ code:
 ### Metadata Review — FM Focus
 
 When the PR includes metadata changes (`.xml` files):
+
+- Confirm `manifest/<TICKET-ID>/package.xml` exists, is scoped to the ticket, and is
+  synchronized with the metadata in the diff.
+- Confirm `docs/Release document.docx` was updated for the ticket and that the newest
+  release entry starts on a new first page above older entries.
+- Read the manifest XML comments and verify that required pre-deployment and
+  post-deployment actions are detailed, ordered, and covered by the review. An explicit
+  "none required" note is acceptable when no actions are needed.
 
 **Custom Objects & Fields**
 - Field-level security — new fields must have FLS configured in relevant permission sets.

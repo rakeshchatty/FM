@@ -30,8 +30,10 @@ Last updated: <YYYY-MM-DD>
 - [ ] Apex tests updated (happy / bulk 200 / edge / negative / regression), `Assert` with
       messages
 - [ ] `sf apex run test --target-org <sandbox> --code-coverage` passed; coverage 85%+
-- [ ] LWC Jest passed; coverage 80%+
-- [ ] `sf scanner run` — no critical / high
+- [ ] LWC Jest passed; coverage 80%+ (when LWC changes are included)
+- [ ] `manifest/<TICKET-ID>/package.xml` is current and pre-/post-deployment instructions
+      are documented in XML comments
+- [ ] `docs/Release document.docx` is updated with a new first-page entry for the ticket
 - [ ] Deployed and verified in dev sandbox
 
 ## Artifacts

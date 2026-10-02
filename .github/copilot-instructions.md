@@ -16,8 +16,19 @@ Copilot Chat in `.vscode/settings.json`). Read `.myit/CAPABILITIES.yaml` for the
 - Tools & MCP: `.myit/instructions/salesforce-fm/tools.instructions.md`
 - Path-scoped instruction files apply automatically via their `applyTo` globs.
 
+## Direct chat development
+For any implementation request made in ordinary chat, terminal-oriented wording, or a
+custom command, apply the FM rules even when `/salesforce-fm-develop` is not used. Before
+planning or editing, read the three files above and use the repository's existing
+`RestResource -> Util/Handler -> Builder/Model` architecture, explicit sharing, bulk-safe
+patterns, Apex test requirements, ticket-scoped manifest, and Gate 8/9 release and Jira
+procedures where applicable. A slash command is not required to activate these standards.
+If the request includes a ticket, resume the matching gated workflow and worklog; if it is
+an ad-hoc change, still use the same implementation and validation standards and do not
+bypass the production, secret, deployment, or destructive-command guardrails.
+
 ## Slash commands (Copilot Chat)
-- `/salesforce-fm-develop` — gated development workflow (Gates 1-7, worklog, analysis flow).
+- `/salesforce-fm-develop` — gated development workflow (Gates 1-9, worklog, analysis flow).
   Base: `.myit/workflow/develop.workflow.md`.
 - `/salesforce-fm-review` — gated code review. Base: `.myit/workflow/review.workflow.md`.
 
